@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: eaasgrid-api
+    runtime: node
+    rootDir: apps/api
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000

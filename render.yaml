@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: eaasgrid-api
+    runtime: node
+    rootDir: apps/api
+    buildCommand: npm install
+    startCommand: npm start
