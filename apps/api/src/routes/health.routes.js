@@ -1,13 +1,18 @@
 const express = require("express");
-
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    status: "ok",
-    service: "eaasgrid-api",
-    route: "health"
-  });
+const {
+ testDatabaseConnection
+} = require("../services/databaseService");
+
+
+router.get("/database", async (req,res)=>{
+
+ const result = await testDatabaseConnection();
+
+ res.json(result);
+
 });
+
 
 module.exports = router;
