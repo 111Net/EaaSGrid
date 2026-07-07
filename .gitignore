@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Python environment
+venv/
+.venv/
+
+# Environment secrets
+.env
+.env.*
+
+# Next.js
+.next/
+out/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
