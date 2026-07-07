@@ -1,15 +1,11 @@
-require("dotenv").config();
-
 const express = require("express");
-const cors = require("cors");
-
-const billingRoutes = require("./routes/billing");
 
 const app = express();
 
-app.use(cors());
+const routes = require("./routes");
+
 app.use(express.json());
 
-app.use("/api/billing", billingRoutes);
+app.use("/api/v1", routes);
 
 module.exports = app;
