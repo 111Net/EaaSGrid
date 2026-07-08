@@ -1,37 +1,49 @@
-exports.getInvestorProfile = (req, res) => {
-  res.json({
-    company: "EAASGrid Platform Ltd",
+const supabase = require("../config/database");
 
-    project: "Energy-as-a-Service (EaaS) Platform",
 
-    stage: "Investor Showcase",
+exports.getInvestorProfile = async (req,res)=>{
 
-    funding_required: {
-      currency: "NGN",
-      amount: 298000000
-    },
 
-    business_model: [
-      "Energy-as-a-Service",
-      "Subscription Revenue",
-      "Infrastructure Leasing",
-      "Carbon Credits",
-      "Energy Management Software"
-    ],
+const {data,error}=await supabase
+.from("investors")
+.select("*")
+.single();
 
-    target_markets: [
-      "Commercial",
-      "Industrial",
-      "Government",
-      "Healthcare",
-      "Education"
-    ],
 
-    projected_rollout: {
-      pilot_sites: 6,
-      annual_expansion_sites: 60
-    },
+if(error){
 
-    headquarters: "Ibadan, Nigeria"
-  });
+return res.status(500).json({
+error:error.message
+});
+
+}
+
+
+res.json({
+
+company:data.company_name,
+
+project:data.project,
+
+stage:data.stage,
+
+funding_required:{
+currency:data.funding_currency,
+amount:data.funding_amount
+},
+
+business_model:data.business_model,
+
+target_markets:data.target_markets,
+
+projected_rollout:{
+pilot_sites:data.pilot_sites,
+annual_expansion_sites:data.annual_expansion_sites
+},
+
+headquarters:data.headquarters
+
+});
+
+
 };
