@@ -1,18 +1,47 @@
 const express = require("express");
 const router = express.Router();
 
-const {
- testDatabaseConnection
-} = require("../services/databaseService");
+const supabase = require("../config/database");
 
 
-router.get("/database", async (req,res)=>{
+router.get("/", (req,res)=>{
+    res.json({
+        status:"ok",
+        service:"eaasgrid-api"
+    });
+});
 
- const result = await testDatabaseConnection();
 
- res.json(result);
+router.get("/database", async(req,res)=>{
+
+    if(!supabase){
+        return res.json({
+            status:"failed",
+            message:"Supabase not configured"
+        });
+    }
+
+
+    const {data,error}=await supabase
+        .from("companies")
+        .select("*")
+        .limit(1);
+
+
+    if(error){
+        return res.json({
+            status:"error",
+            message:error.message
+        });
+    }
+
+
+    res.json({
+        status:"connected",
+        data
+    });
 
 });
 
 
-module.exports = router;
+module.exports=router;

@@ -1,13 +1,8 @@
 const express = require("express");
-
 const router = express.Router();
 
-const {
-  getCompanyProfile
-} = require("../controllers/company.controller");
+const companyController = require("../controllers/company.controller");
 
-
-router.get("/", getCompanyProfile);
-
+router.get("/", companyController.getCompany);
 
 module.exports = router;

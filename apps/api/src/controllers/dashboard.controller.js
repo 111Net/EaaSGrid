@@ -1,5 +1,20 @@
-exports.getDashboard = (req, res) => {
+const supabase = require("../config/database");
+
+exports.getDashboard = async (req, res) => {
+
+  const { data: investor, error } = await supabase
+    .from("investors")
+    .select("*")
+    .single();
+
+  if (error) {
+    return res.status(500).json({
+      error: error.message
+    });
+  }
+
   res.json({
+
     platform: {
       name: "EaaSGrid",
       version: "1.0.0",
@@ -14,15 +29,15 @@ exports.getDashboard = (req, res) => {
     },
 
     infrastructure: {
-      pilot_sites: 6,
-      planned_sites_per_year: 60,
+      pilot_sites: investor.pilot_sites,
+      planned_sites_per_year: investor.annual_expansion_sites,
       active_sites: 0,
       monitored_sites: 0
     },
 
     investment: {
-      required_capital_ngn: 298000000,
-      funding_status: "Seeking Investment"
+      required_capital_ngn: investor.funding_amount,
+      funding_status: investor.stage
     },
 
     system: {
@@ -30,5 +45,6 @@ exports.getDashboard = (req, res) => {
       platform: process.platform,
       memory: process.memoryUsage()
     }
+
   });
 };

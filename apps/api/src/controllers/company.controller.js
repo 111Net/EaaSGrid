@@ -1,27 +1,37 @@
-exports.getCompanyProfile = (req, res) => {
+const supabase = require("../config/supabase");
 
-  res.json({
-    company: "EAASGrid Platform Ltd",
+exports.getCompany = async (req, res) => {
 
-    parent_company: "IIMCICS Ltd",
+    try {
 
-    country: "Nigeria",
+        const { data, error } = await supabase
+            .from("companies")
+            .select("*")
+            .order("created_at", { ascending: true })
+            .limit(1)
+            .single();
 
-    platform: "Energy-as-a-Service (EaaS)",
 
-    vision:
-      "To become Africa's leading intelligent energy and enterprise infrastructure platform.",
+        if (error) {
 
-    mission:
-      "Deliver reliable distributed energy infrastructure through technology, automation and digital services.",
+            return res.status(500).json({
+                success:false,
+                error:error.message
+            });
 
-    current_stage:
-      "Investor Showcase and Technology Validation",
+        }
 
-    deployment:
-      "Docker + FastAPI + Supabase",
 
-    year_started: 2024
-  });
+        res.json(data);
+
+
+    } catch(err){
+
+        res.status(500).json({
+            success:false,
+            error:err.message
+        });
+
+    }
 
 };
