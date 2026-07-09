@@ -1,43 +1,27 @@
-const supabase = require("../config/supabase");
-const response = require("../utils/response");
+const companyService = require("../services/company.service");
 
 
-exports.getCompany = async (req, res) => {
+exports.getCompany = async (req,res,next)=>{
 
-    try {
+    try{
 
-        const { data, error } = await supabase
-            .from("companies")
-            .select("*")
-            .order("created_at", { ascending: false })
-            .limit(1)
-            .single();
+        const company = await companyService.getCompany();
 
 
-        if (error) {
+        res.json({
 
-            return response.error(
-                res,
-                error.message,
-                500
-            );
+            success:true,
 
-        }
+            message:"Company retrieved successfully",
 
+            data:company
 
-        return response.success(
-            res,
-            data,
-            "Company retrieved successfully"
-        );
+        });
 
 
-    } catch(err){
+    }catch(error){
 
-        return response.error(
-            res,
-            err.message
-        );
+        next(error);
 
     }
 
