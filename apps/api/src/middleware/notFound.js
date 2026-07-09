@@ -1,10 +1,6 @@
-function notFound(req, res, next) {
-
+module.exports = (req, res) => {
     res.status(404).json({
         success: false,
-        message: `Route ${req.originalUrl} not found`
+        message: "Route not found"
     });
-
-}
-
-module.exports = notFound;
+};
