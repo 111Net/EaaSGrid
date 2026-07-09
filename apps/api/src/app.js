@@ -4,22 +4,15 @@ const app = express();
 
 const routes = require("./routes");
 
-const notFound = require("./middleware/notFound");
-const errorHandler = require("./middleware/errorHandler");
+const corsMiddleware = require("./middleware/cors");
+const securityHeaders = require("./middleware/security");
 
+app.use(corsMiddleware);
+
+app.use(securityHeaders);
 
 app.use(express.json());
 
-
 app.use("/api/v1", routes);
-
-
-// 404 handler
-app.use(notFound);
-
-
-// Global error handler
-app.use(errorHandler);
-
 
 module.exports = app;
