@@ -1,0 +1,83 @@
+openapi: 3.0.3
+
+info:
+  title: EaaSGrid Platform API
+  description: |
+    Backend API for EaaSGrid Energy-as-a-Service Platform.
+
+    Provides company information,
+    investor data,
+    dashboard metrics,
+    and platform services.
+
+  version: 1.0.0
+
+
+servers:
+
+  - url: http://localhost:4000/api/v1
+    description: Local development server
+
+
+paths:
+
+
+  /health:
+
+    get:
+
+      summary: API health check
+
+      responses:
+
+        "200":
+
+          description: API running successfully
+
+          content:
+
+            application/json:
+
+              example:
+
+                status: ok
+                service: eaasgrid-api
+
+
+
+  /company:
+
+    get:
+
+      summary: Retrieve EAASGrid company information
+
+      responses:
+
+        "200":
+
+          description: Company data returned
+
+          content:
+
+            application/json:
+
+              example:
+
+                success: true
+
+                message:
+                  Company retrieved successfully
+
+
+
+  /database:
+
+    get:
+
+      summary: Retrieve database records
+
+      responses:
+
+        "200":
+
+          description: Database query result
