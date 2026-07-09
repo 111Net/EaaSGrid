@@ -1,11 +1,15 @@
+const path = require("path");
+
 require("dotenv").config({
-  path: "../../.env"
+  path: path.resolve(__dirname, "../../../.env")
 });
 
+console.log("Loaded SUPABASE_URL:", process.env.SUPABASE_URL);
+
 const app = require("./app");
+const config = require("./config/config");
 
-const PORT = process.env.PORT || 4000;
-
-app.listen(PORT, () => {
-  console.log(`EAASGrid API running on port ${PORT}`);
+app.listen(config.port, () => {
+  console.log(`EAASGrid API running on port ${config.port}`);
+  console.log(`Environment: ${config.environment}`);
 });
