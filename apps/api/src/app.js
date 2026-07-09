@@ -6,10 +6,13 @@ const routes = require("./routes");
 
 const corsMiddleware = require("./middleware/cors");
 const securityHeaders = require("./middleware/security");
+const logger = require("./middleware/logger");
 
 app.use(corsMiddleware);
 
 app.use(securityHeaders);
+
+app.use(logger);
 
 app.use(express.json());
 
