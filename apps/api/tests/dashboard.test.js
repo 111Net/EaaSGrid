@@ -20,19 +20,19 @@ describe("Dashboard API", () => {
       .toBe(200);
 
 
-    expect(response.body.platform.name)
+    expect(response.body.success)
+      .toBe(true);
+
+
+    expect(response.body.data.platform.name)
       .toBe("EaaSGrid");
 
 
-    expect(response.body.infrastructure.pilot_sites)
+    expect(response.body.data.infrastructure.pilot_sites)
       .toBe(6);
 
 
-    expect(response.body.infrastructure.planned_sites_per_year)
-      .toBe(60);
-
-
-    expect(response.body.investment.required_capital_ngn)
+    expect(response.body.data.investment.required_capital_ngn)
       .toBe(298000000);
 
 

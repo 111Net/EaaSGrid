@@ -1,13 +1,11 @@
 const supabase = require("../config/database");
 
 
-async function getCompany(){
+async function getInvestor(){
 
     const { data, error } = await supabase
-        .from("companies")
+        .from("investors")
         .select("*")
-        .order("created_at", { ascending:false })
-        .limit(1)
         .single();
 
 
@@ -22,5 +20,5 @@ async function getCompany(){
 
 
 module.exports = {
-    getCompany
+    getInvestor
 };

@@ -1,49 +1,44 @@
-const supabase = require("../config/database");
+const investorService = require("../services/investor.service");
 
 
-exports.getInvestorProfile = async (req,res)=>{
+exports.getInvestorProfile = async (req,res,next)=>{
+
+    try {
+
+        const data = await investorService.getInvestor();
 
 
-const {data,error}=await supabase
-.from("investors")
-.select("*")
-.single();
+        res.json({
+
+            company:data.company_name,
+
+            project:data.project,
+
+            stage:data.stage,
+
+            funding_required:{
+                currency:data.funding_currency,
+                amount:data.funding_amount
+            },
+
+            business_model:data.business_model,
+
+            target_markets:data.target_markets,
+
+            projected_rollout:{
+                pilot_sites:data.pilot_sites,
+                annual_expansion_sites:data.annual_expansion_sites
+            },
+
+            headquarters:data.headquarters
+
+        });
 
 
-if(error){
+    } catch(error){
 
-return res.status(500).json({
-error:error.message
-});
+        next(error);
 
-}
-
-
-res.json({
-
-company:data.company_name,
-
-project:data.project,
-
-stage:data.stage,
-
-funding_required:{
-currency:data.funding_currency,
-amount:data.funding_amount
-},
-
-business_model:data.business_model,
-
-target_markets:data.target_markets,
-
-projected_rollout:{
-pilot_sites:data.pilot_sites,
-annual_expansion_sites:data.annual_expansion_sites
-},
-
-headquarters:data.headquarters
-
-});
-
+    }
 
 };
