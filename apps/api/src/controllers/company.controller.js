@@ -1,4 +1,6 @@
 const supabase = require("../config/supabase");
+const response = require("../utils/response");
+
 
 exports.getCompany = async (req, res) => {
 
@@ -7,30 +9,35 @@ exports.getCompany = async (req, res) => {
         const { data, error } = await supabase
             .from("companies")
             .select("*")
-            .order("created_at", { ascending: true })
+            .order("created_at", { ascending: false })
             .limit(1)
             .single();
 
 
         if (error) {
 
-            return res.status(500).json({
-                success:false,
-                error:error.message
-            });
+            return response.error(
+                res,
+                error.message,
+                500
+            );
 
         }
 
 
-        res.json(data);
+        return response.success(
+            res,
+            data,
+            "Company retrieved successfully"
+        );
 
 
     } catch(err){
 
-        res.status(500).json({
-            success:false,
-            error:err.message
-        });
+        return response.error(
+            res,
+            err.message
+        );
 
     }
 
