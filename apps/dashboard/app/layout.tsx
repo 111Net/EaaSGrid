@@ -5,12 +5,10 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -19,9 +17,10 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  title: "EaaSGrid Operational Dashboard",
+  title: "EaaSGrid Dashboard",
   description:
-    "EaaSGrid Energy-as-a-Service operational monitoring dashboard for distributed renewable energy infrastructure.",
+    "Operational monitoring dashboard for EaaSGrid distributed renewable energy infrastructure, pilot deployments and Energy-as-a-Service performance.",
+
   keywords: [
     "EaaSGrid",
     "Energy-as-a-Service",
@@ -29,20 +28,23 @@ export const metadata: Metadata = {
     "Solar Infrastructure",
     "Battery Storage",
     "Energy Dashboard",
-    "Africa",
-    "Nigeria"
+    "Africa"
   ],
+
   authors: [
     {
       name: "EaaSGrid Platform Ltd",
     },
   ],
+
   creator: "EaaSGrid Platform Ltd",
   publisher: "EaaSGrid Platform Ltd",
+
   robots: {
     index: false,
     follow: false,
   },
+
   icons: {
     icon: "/favicon.ico",
   },
@@ -56,7 +58,6 @@ export default function RootLayout({
 }>) {
 
   return (
-
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
@@ -66,17 +67,14 @@ export default function RootLayout({
 
         <Navbar />
 
-
         <main className="flex-1">
           {children}
         </main>
-
 
         <Footer />
 
       </body>
 
     </html>
-
   );
 }
