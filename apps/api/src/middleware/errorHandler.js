@@ -10,15 +10,15 @@ module.exports = (err, req, res, next) => {
 
   res.status(err.status || 500).json({
 
-    success:false,
+  success: false,
 
-    error:{
-      message:
-        err.message || "Internal Server Error"
-    },
+  message: "Request failed",
 
-    timestamp:new Date().toISOString()
+  error: {
+    details: err.message || "Internal Server Error"
+  },
 
-  });
+  timestamp: new Date().toISOString()
 
+});
 };
