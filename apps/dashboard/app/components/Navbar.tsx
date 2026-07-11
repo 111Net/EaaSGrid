@@ -1,50 +1,66 @@
-import Image from "next/image";
-
 export default function Navbar() {
   return (
-    <nav className="border-b bg-white sticky top-0 z-50">
+    <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
-        <div className="flex items-center gap-3">
+        <div>
+          <h1 className="text-xl font-bold text-gray-900">
+            EaaSGrid Dashboard
+          </h1>
 
-          <Image
-            src="/branding/logo.svg"
-            alt="EaaSGrid"
-            width={160}
-            height={44}
-            priority
-          />
-
+          <p className="text-xs text-gray-500">
+            Energy-as-a-Service Infrastructure Platform
+          </p>
         </div>
 
 
-        <div className="flex gap-6 text-sm text-gray-700">
+        <nav className="hidden md:flex gap-6 text-sm text-gray-700">
 
-          <a href="#overview">
+          <a
+            href="#overview"
+            className="hover:text-black"
+          >
             Overview
           </a>
 
-          <a href="#sites">
-            Sites
+
+          <a
+            href="#sites"
+            className="hover:text-black"
+          >
+            Deployments
           </a>
 
-          <a href="#energy">
+
+          <a
+            href="#energy"
+            className="hover:text-black"
+          >
             Energy
           </a>
 
-          <a href="#finance">
+
+          <a
+            href="#finance"
+            className="hover:text-black"
+          >
             Finance
           </a>
 
-          <a href="#performance">
-            Performance
+
+          <a
+            href="#performance"
+            className="hover:text-black"
+          >
+            Operations
           </a>
 
-        </div>
+        </nav>
+
 
       </div>
 
-    </nav>
+    </header>
   );
 }
