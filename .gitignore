@@ -1,3 +1,15 @@
+# Backups
+backups/
+apps/dashboard/backups/
+apps/api/src/controllers/*.backup.js
+apps/dashboard/app/**/*.backup.tsx
+apps/dashboard/app/**/*.backup.tsbackups/
+apps/dashboard/backups/
+apps/api/src/controllers/*.backup.js
+apps/dashboard/app/**/*.backup.tsx
+apps/dashboard/app/**/*.backup.ts
+
+
 # Dependencies
 node_modules/
 **/node_modules/
