@@ -4,21 +4,85 @@ import Energy from "./sections/Energy";
 import Finance from "./sections/Finance";
 import Performance from "./sections/Performance";
 
+import { getDashboardData } from "./services/dashboardService";
 
-export default function Home() {
+
+export default async function Home() {
+
+
+  const dashboard =
+    await getDashboardData();
+
+
+  const data =
+    dashboard.data;
+
+
+
   return (
+
     <div className="bg-gray-50">
 
-      <Overview />
 
-      <Sites />
+      <Overview
 
-      <Energy />
+        infrastructure={
+          data.infrastructure
+        }
 
-      <Finance />
+      />
 
-      <Performance />
+
+
+      <Sites
+
+        infrastructure={
+          data.infrastructure
+        }
+
+        sites={
+          data.sites
+        }
+
+      />
+
+
+
+      <Energy
+
+        energy={
+          data.energy
+        }
+
+      />
+
+
+
+      <Finance
+
+        investment={
+          data.investment
+        }
+
+        finance={
+          data.finance
+        }
+
+      />
+
+
+
+      <Performance
+
+        performance={
+          data.performance
+        }
+
+      />
+
 
     </div>
+
   );
+
 }

@@ -68,7 +68,46 @@ paths:
                 message:
                   Company retrieved successfully
 
+  /dashboard:
 
+    get:
+
+      summary: Retrieve EaaSGrid operational dashboard data
+
+      responses:
+
+        "200":
+
+          description: Dashboard data returned successfully
+
+          content:
+
+            application/json:
+
+              example:
+
+                success: true
+
+                message:
+                  Dashboard data retrieved successfully
+
+                data:
+
+                  platform:
+
+                    name:
+                      EaaSGrid
+
+                    version:
+                      1.0.0
+
+
+                  infrastructure:
+
+                    pilot_sites:
+                      6
+
+                    planned_sites_per_year
 
   /database:
 

@@ -1,7 +1,20 @@
 import MetricCard from "../components/MetricCard";
 
 
-export default function Overview() {
+interface OverviewProps {
+  infrastructure: {
+    pilot_sites: number;
+    planned_sites_per_year: number;
+    active_sites: number;
+    monitored_sites: number;
+  };
+}
+
+
+export default function Overview({
+  infrastructure,
+}: OverviewProps) {
+
   return (
     <section
       id="overview"
@@ -25,34 +38,37 @@ export default function Overview() {
 
       <div className="mt-12 grid gap-6 md:grid-cols-4">
 
+
+        <MetricCard
+          title="Pilot Sites"
+          value={String(infrastructure.pilot_sites)}
+          description="Deployment locations"
+        />
+
+
+        <MetricCard
+          title="Planned Expansion"
+          value={String(infrastructure.planned_sites_per_year)}
+          description="Annual deployment target"
+        />
+
+
         <MetricCard
           title="Active Sites"
-          value="6"
-          description="Pilot deployment locations"
+          value={String(infrastructure.active_sites)}
+          description="Currently operational"
         />
 
 
         <MetricCard
-          title="Installed Capacity"
-          value="70 kW"
-          description="Solar + storage infrastructure"
+          title="Monitored Sites"
+          value={String(infrastructure.monitored_sites)}
+          description="Connected assets"
         />
 
-
-        <MetricCard
-          title="Energy Delivered"
-          value="12.4 MWh"
-          description="Cumulative pilot output"
-        />
-
-
-        <MetricCard
-          title="System Availability"
-          value="99.2%"
-          description="Infrastructure uptime"
-        />
 
       </div>
+
 
     </section>
   );

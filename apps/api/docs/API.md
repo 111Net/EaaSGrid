@@ -74,6 +74,9 @@ Response:
 {
     "status": "ok",
     "service": "eaasgrid-api"
+
+---
+
 5. Company Endpoint
 GET
 /company
@@ -100,6 +103,9 @@ Response:
     "deployment": "Docker + Node.js + Supabase",
     "year_started": 2024
 }
+
+---
+
 6. Investor Endpoint
 GET
 /investor
@@ -137,9 +143,12 @@ Response:
         "Education"
     ]
 }
+---
+
 7. Database Endpoint
 GET
 /database
+
 
 Purpose:
 
@@ -156,6 +165,77 @@ Response:
     "rows": 1,
     "data": []
 }
+
+
+Dashboard Endpoint
+
+GET
+
+/dashboard
+
+
+Purpose:
+
+Returns operational dashboard information for the EaaSGrid investor demonstration platform.
+
+
+Example:
+
+curl http://localhost:4000/api/v1/dashboard
+
+
+Response:
+
+
+{
+    "success": true,
+    "message": "Dashboard data retrieved successfully",
+    "data": {
+
+        "platform": {
+            "name": "EaaSGrid",
+            "version": "1.0.0",
+            "environment": "development",
+            "uptime_seconds": 120,
+            "server_time": "2026-07-11T00:00:00Z"
+        },
+
+        "infrastructure": {
+
+            "pilot_sites": 6,
+            "planned_sites_per_year": 60,
+            "active_sites": 0,
+            "monitored_sites": 0
+        },
+
+        "investment": {
+
+            "required_capital_ngn": 298000000,
+            "currency": "NGN",
+            "funding_stage": "Investor Showcase"
+        },
+
+        "business_model": [
+            "Energy-as-a-Service",
+            "Subscription Revenue",
+            "Infrastructure Leasing",
+            "Carbon Credits",
+            "Energy Management Software"
+        ],
+
+        "target_markets": [
+            "Commercial",
+            "Industrial",
+            "Government",
+            "Healthcare",
+            "Education"
+        ]
+
+    }
+}
+
+---
+
 8. Error Handling
 
 Unknown routes return JSON:
@@ -172,6 +252,9 @@ Response:
     "success": false,
     "message": "Route /invalid-route not found"
 }
+
+---
+
 9. HTTP Status Codes
 Code	Meaning
 200	Successful request
@@ -180,6 +263,9 @@ Code	Meaning
 403	Forbidden
 404	Resource not found
 500	Internal server error
+
+---
+
 10. Current Technology Stack
 
 Backend:
@@ -198,6 +284,9 @@ CORS
 Security Headers
 Environment Validation
 Error Middleware
+
+---
+
 11. Deployment Architecture
 
 Current:
@@ -224,6 +313,9 @@ Investor Portal
         |
         |
  Energy Monitoring Platform
+
+---
+
 12. Future API Modules
 
 Planned:
@@ -240,6 +332,7 @@ Monitoring
 /monitoring
 IoT Devices
 /devices
+
 Document Control
 
 Project:
