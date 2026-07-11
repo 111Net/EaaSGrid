@@ -1,6 +1,3 @@
-import KPICard from "../components/cards/KPICard";
-
-
 interface ExecutiveSummaryProps {
 
   investment: {
@@ -14,38 +11,38 @@ interface ExecutiveSummaryProps {
   };
 
 
-  finance: {
-
-    monthly_revenue: number;
-
-    portfolio_value: number;
-
-  };
-
-
-  energy: {
-
-    monthly_generation: number;
-
-    connected_assets: number;
-
-  };
-
-
-  performance: {
-
-    availability: number;
-
-  };
-
-
   infrastructure: {
 
-    active_sites: number;
+    pilot_sites: number;
 
     planned_sites_per_year: number;
 
+    active_sites: number;
+
+    monitored_sites: number;
+
   };
+
+
+  platform: {
+
+    name: string;
+
+    version: string;
+
+    environment: string;
+
+  };
+
+
+  dashboard: {
+
+    status: string;
+
+  };
+
+
+  target_markets: string[];
 
 }
 
@@ -55,157 +52,116 @@ export default function ExecutiveSummary({
 
   investment,
 
-  finance,
-
-  energy,
-
-  performance,
-
   infrastructure,
+
+  platform,
+
+  dashboard,
+
+  target_markets,
 
 }: ExecutiveSummaryProps) {
 
 
-return (
+  return (
 
-<section
+    <section className="bg-white">
 
-className="mx-auto max-w-7xl px-6 py-12"
 
->
+      <div className="mx-auto max-w-7xl px-6 py-16">
 
 
-<h1 className="text-4xl font-bold text-gray-900">
+        <h1 className="text-4xl font-bold text-gray-900">
 
-EaaSGrid Executive Dashboard
+          EaaSGrid Investor Dashboard
 
-</h1>
+        </h1>
 
 
-<p className="mt-3 text-gray-600">
+        <p className="mt-4 text-gray-600 max-w-3xl">
 
-Energy-as-a-Service infrastructure performance and investment overview.
+          Energy-as-a-Service infrastructure platform enabling
+          distributed renewable energy deployment, financing,
+          monitoring and recurring energy services.
 
-</p>
+        </p>
 
 
 
-<div className="mt-8 grid gap-6 md:grid-cols-4">
+        <div className="mt-10 grid gap-6 md:grid-cols-4">
 
 
-<KPICard
+          <SummaryCard
 
-title="Portfolio Value"
+            title="Capital Requirement"
 
-value={formatCurrency(
+            value={
+              formatCurrency(
+                investment.required_capital_ngn,
+                investment.currency
+              )
+            }
 
-finance.portfolio_value,
+            description={
+              investment.funding_stage
+            }
 
-investment.currency
+          />
 
-)}
 
-description="Energy infrastructure portfolio"
 
-/>
+          <SummaryCard
 
+            title="Pilot Deployment"
 
+            value={
+              `${infrastructure.active_sites}/${infrastructure.pilot_sites}`
+            }
 
-<KPICard
+            description="Active pilot sites"
 
-title="Monthly Revenue"
+          />
 
-value={formatCurrency(
 
-finance.monthly_revenue,
 
-investment.currency
+          <SummaryCard
 
-)}
+            title="Platform"
 
-description="Recurring subscription revenue"
+            value={
+              dashboard.status
+            }
 
-/>
+            description={
+              `${platform.name} v${platform.version}`
+            }
 
+          />
 
 
-<KPICard
 
-title="Energy Generated"
+          <SummaryCard
 
-value={`${energy.monthly_generation} MWh`}
+            title="Target Markets"
 
-description="Monthly renewable generation"
+            value={
+              String(target_markets.length)
+            }
 
-/>
+            description="Market segments"
 
+          />
 
 
-<KPICard
+        </div>
 
-title="Asset Availability"
 
-value={`${performance.availability}%`}
+      </div>
 
-description="System uptime"
 
-/>
+    </section>
 
-
-
-<KPICard
-
-title="Active Sites"
-
-value={String(infrastructure.active_sites)}
-
-description="Currently deployed sites"
-
-/>
-
-
-
-<KPICard
-
-title="Expansion Plan"
-
-value={String(infrastructure.planned_sites_per_year)}
-
-description="Sites planned annually"
-
-/>
-
-
-
-<KPICard
-
-title="Connected Assets"
-
-value={String(energy.connected_assets)}
-
-description="Monitored energy assets"
-
-/>
-
-
-
-<KPICard
-
-title="Funding Stage"
-
-value={investment.funding_stage}
-
-description="Investment programme"
-
- />
-
-
-</div>
-
-
-</section>
-
-);
+  );
 
 }
 
@@ -213,26 +169,79 @@ description="Investment programme"
 
 function formatCurrency(
 
-amount:number,
+  amount:number,
 
-currency:string
+  currency:string
 
 ){
 
-return new Intl.NumberFormat(
+  return new Intl.NumberFormat(
 
-"en-NG",
+    "en-NG",
 
-{
+    {
 
-style:"currency",
+      style:"currency",
 
-currency,
+      currency,
 
-maximumFractionDigits:0
+      maximumFractionDigits:0
+
+    }
+
+  ).format(amount);
 
 }
 
-).format(amount);
+
+
+function SummaryCard({
+
+  title,
+
+  value,
+
+  description,
+
+}:{
+
+  title:string;
+
+  value:string;
+
+  description:string;
+
+}) {
+
+
+  return (
+
+    <div className="rounded-xl border bg-gray-50 p-6 shadow-sm">
+
+
+      <p className="text-sm text-gray-500">
+
+        {title}
+
+      </p>
+
+
+      <p className="mt-3 text-2xl font-bold text-gray-900">
+
+        {value}
+
+      </p>
+
+
+      <p className="mt-2 text-sm text-gray-600">
+
+        {description}
+
+      </p>
+
+
+    </div>
+
+  );
 
 }

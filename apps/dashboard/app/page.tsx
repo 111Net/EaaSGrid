@@ -1,3 +1,4 @@
+import ExecutiveSummary from "./sections/ExecutiveSummary";
 import Overview from "./sections/Overview";
 import Sites from "./sections/Sites";
 import Energy from "./sections/Energy";
@@ -23,6 +24,32 @@ export default async function Home() {
   return (
 
     <div className="bg-gray-50">
+
+
+      <ExecutiveSummary
+
+        investment={
+          data.investment
+        }
+
+        infrastructure={
+          data.infrastructure
+        }
+
+        platform={
+          data.platform
+        }
+
+        dashboard={
+          data.dashboard
+        }
+
+        target_markets={
+          data.target_markets
+        }
+
+      />
+
 
 
       <Overview
