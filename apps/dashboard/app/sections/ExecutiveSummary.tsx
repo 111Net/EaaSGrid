@@ -68,32 +68,48 @@ export default function ExecutiveSummary({
     <section className="bg-white">
 
 
-      <div className="mx-auto max-w-7xl px-6 py-16">
+      <div className="mx-auto max-w-7xl px-6 py-20">
 
 
-        <h1 className="text-4xl font-bold text-gray-900">
-
-          EaaSGrid Investor Dashboard
-
-        </h1>
+        <div className="max-w-4xl">
 
 
-        <p className="mt-4 text-gray-600 max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">
 
-          Energy-as-a-Service infrastructure platform enabling
-          distributed renewable energy deployment, financing,
-          monitoring and recurring energy services.
+            Energy-as-a-Service Infrastructure Platform
 
-        </p>
+          </p>
 
 
 
-        <div className="mt-10 grid gap-6 md:grid-cols-4">
+          <h1 className="mt-4 text-5xl font-bold leading-tight text-gray-900">
+
+            Building scalable renewable energy infrastructure through digital energy services.
+
+          </h1>
 
 
-          <SummaryCard
 
-            title="Capital Requirement"
+          <p className="mt-6 text-lg text-gray-600">
+
+            EaaSGrid enables organisations to access reliable renewable energy
+            through financed solar infrastructure, intelligent monitoring and
+            recurring Energy-as-a-Service delivery.
+
+          </p>
+
+
+        </div>
+
+
+
+        <div className="mt-12 grid gap-6 md:grid-cols-4">
+
+
+
+          <Card
+
+            title="Investment Requirement"
 
             value={
               formatCurrency(
@@ -110,7 +126,7 @@ export default function ExecutiveSummary({
 
 
 
-          <SummaryCard
+          <Card
 
             title="Pilot Deployment"
 
@@ -118,15 +134,31 @@ export default function ExecutiveSummary({
               `${infrastructure.active_sites}/${infrastructure.pilot_sites}`
             }
 
-            description="Active pilot sites"
+            description="Operational pilot assets"
 
           />
 
 
 
-          <SummaryCard
+          <Card
 
-            title="Platform"
+            title="Expansion Capacity"
+
+            value={
+              String(
+                infrastructure.planned_sites_per_year
+              )
+            }
+
+            description="Annual planned deployments"
+
+          />
+
+
+
+          <Card
+
+            title="Platform Status"
 
             value={
               dashboard.status
@@ -139,18 +171,41 @@ export default function ExecutiveSummary({
           />
 
 
+        </div>
 
-          <SummaryCard
 
-            title="Target Markets"
 
-            value={
-              String(target_markets.length)
-            }
+        <div className="mt-10 rounded-xl border bg-gray-50 p-6">
 
-            description="Market segments"
 
-          />
+          <h3 className="text-lg font-semibold text-gray-900">
+
+            Target Markets
+
+          </h3>
+
+
+          <div className="mt-4 flex flex-wrap gap-3">
+
+
+            {target_markets.map((market)=>(
+
+              <span
+
+                key={market}
+
+                className="rounded-full bg-white border px-4 py-2 text-sm text-gray-700"
+
+              >
+
+                {market}
+
+              </span>
+
+            ))}
+
+
+          </div>
 
 
         </div>
@@ -195,7 +250,7 @@ function formatCurrency(
 
 
 
-function SummaryCard({
+function Card({
 
   title,
 
@@ -226,11 +281,13 @@ function SummaryCard({
       </p>
 
 
+
       <p className="mt-3 text-2xl font-bold text-gray-900">
 
         {value}
 
       </p>
+
 
 
       <p className="mt-2 text-sm text-gray-600">
