@@ -25,65 +25,98 @@ export default function Performance({
 
       id="performance"
 
-      className="mx-auto max-w-7xl px-6 py-16"
+      className="bg-gray-50 border-t"
 
     >
 
 
-      <h2 className="text-3xl font-bold text-gray-900">
-
-        Infrastructure Performance
-
-      </h2>
+      <div className="mx-auto max-w-7xl px-6 py-16">
 
 
+        <h2 className="text-3xl font-bold text-gray-900">
 
-      <p className="mt-4 text-gray-600">
+          Operational Performance
 
-        Operational monitoring of deployed renewable
-        energy assets.
-
-      </p>
+        </h2>
 
 
 
-      <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <p className="mt-4 max-w-3xl text-gray-600">
+
+          Digital monitoring and operational intelligence
+          supporting reliable renewable energy infrastructure
+          deployment at scale.
+
+        </p>
 
 
 
-        <Metric
 
-          title="Asset Availability"
-
-          value={`${performance.availability}%`}
-
-          description="System uptime"
-
-        />
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
 
 
+          <PerformanceCard
 
-        <Metric
+            title="Asset Availability"
 
-          title="Remote Monitoring"
+            value={`${performance.availability}%`}
 
-          value="Online"
+            description="Infrastructure uptime performance"
 
-          description="Digital platform connectivity"
-
-        />
+          />
 
 
 
-        <Metric
+          <PerformanceCard
 
-          title="Maintenance Alerts"
+            title="Remote Monitoring"
 
-          value={String(performance.maintenance_alerts)}
+            value="Online"
 
-          description="Current active issues"
+            description="Continuous digital asset visibility"
 
-        />
+          />
+
+
+
+          <PerformanceCard
+
+            title="Maintenance Alerts"
+
+            value={String(performance.maintenance_alerts)}
+
+            description="Current operational issues"
+
+          />
+
+
+        </div>
+
+
+
+
+        <div className="mt-10 rounded-xl border bg-white p-6 shadow-sm">
+
+
+          <h3 className="text-xl font-semibold text-gray-900">
+
+            Scalable Asset Management
+
+          </h3>
+
+
+
+          <p className="mt-3 text-gray-600">
+
+            EaaSGrid's software platform provides monitoring,
+            performance tracking and operational control across
+            distributed renewable energy assets.
+
+          </p>
+
+
+        </div>
+
 
 
       </div>
@@ -99,7 +132,7 @@ export default function Performance({
 
 
 
-function Metric({
+function PerformanceCard({
 
   title,
 
@@ -123,15 +156,15 @@ function Metric({
     <div className="rounded-xl border bg-white p-6 shadow-sm">
 
 
-      <h3 className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500">
 
         {title}
 
-      </h3>
+      </p>
 
 
 
-      <p className="mt-3 text-3xl font-bold">
+      <p className="mt-3 text-3xl font-bold text-gray-900">
 
         {value}
 

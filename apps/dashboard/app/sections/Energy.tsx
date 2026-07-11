@@ -13,102 +13,177 @@ interface EnergyProps {
 }
 
 
+
 export default function Energy({
+
   energy,
+
 }: EnergyProps) {
 
 
-return (
+  return (
 
-<section
-id="energy"
-className="mx-auto max-w-7xl px-6 py-16"
->
+    <section
 
+      id="energy"
 
-<h2 className="text-3xl font-bold text-gray-900">
-Energy Performance
-</h2>
+      className="bg-gray-50 border-t"
+
+    >
 
 
-<p className="mt-4 text-gray-600">
-Renewable generation, storage utilisation and connected energy assets.
-</p>
+      <div className="mx-auto max-w-7xl px-6 py-16">
 
 
+        <h2 className="text-3xl font-bold text-gray-900">
 
-<div className="mt-8 grid gap-6 md:grid-cols-3">
+          Energy Infrastructure Performance
 
-
-<div className="rounded-xl border bg-white p-6 shadow-sm">
-
-<h3 className="text-sm text-gray-500">
-Solar Generation
-</h3>
-
-<p className="mt-3 text-3xl font-bold">
-
-{energy.monthly_generation} MWh
-
-</p>
-
-<p className="mt-2 text-sm text-gray-600">
-Monthly renewable generation
-</p>
-
-</div>
+        </h2>
 
 
 
-<div className="rounded-xl border bg-white p-6 shadow-sm">
+        <p className="mt-4 max-w-3xl text-gray-600">
 
-<h3 className="text-sm text-gray-500">
-Battery Utilisation
-</h3>
+          Operational view of renewable energy generation,
+          battery storage utilisation and digitally connected
+          distributed energy assets.
 
-<p className="mt-3 text-3xl font-bold">
-
-{energy.battery_utilisation}%
-
-</p>
-
-
-<p className="mt-2 text-sm text-gray-600">
-Average storage utilisation
-</p>
-
-</div>
+        </p>
 
 
 
 
-<div className="rounded-xl border bg-white p-6 shadow-sm">
-
-<h3 className="text-sm text-gray-500">
-Connected Assets
-</h3>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
 
 
-<p className="mt-3 text-3xl font-bold">
+          <EnergyCard
 
-{energy.connected_assets}
+            title="Renewable Generation"
 
-</p>
+            value={`${energy.monthly_generation} MWh`}
 
+            description="Monthly clean energy production"
 
-<p className="mt-2 text-sm text-gray-600">
-Sites monitored by platform
-</p>
-
-
-</div>
+          />
 
 
-</div>
+
+          <EnergyCard
+
+            title="Battery Utilisation"
+
+            value={`${energy.battery_utilisation}%`}
+
+            description="Average storage utilisation efficiency"
+
+          />
 
 
-</section>
 
-);
+          <EnergyCard
+
+            title="Connected Energy Assets"
+
+            value={String(energy.connected_assets)}
+
+            description="Assets monitored through the EaaSGrid platform"
+
+          />
+
+
+        </div>
+
+
+
+
+        <div className="mt-10 rounded-xl border bg-white p-6 shadow-sm">
+
+
+          <h3 className="text-xl font-semibold text-gray-900">
+
+            Digital Energy Platform Advantage
+
+          </h3>
+
+
+
+          <p className="mt-3 text-gray-600">
+
+            EaaSGrid combines renewable generation,
+            battery storage and software-based monitoring
+            to deliver scalable Energy-as-a-Service infrastructure
+            with recurring revenue potential.
+
+          </p>
+
+
+        </div>
+
+
+
+      </div>
+
+
+    </section>
+
+  );
+
+}
+
+
+
+
+
+function EnergyCard({
+
+  title,
+
+  value,
+
+  description,
+
+}:{
+
+  title:string;
+
+  value:string;
+
+  description:string;
+
+}) {
+
+
+  return (
+
+    <div className="rounded-xl border bg-white p-6 shadow-sm">
+
+
+      <p className="text-sm text-gray-500">
+
+        {title}
+
+      </p>
+
+
+
+      <p className="mt-3 text-3xl font-bold text-gray-900">
+
+        {value}
+
+      </p>
+
+
+
+      <p className="mt-2 text-sm text-gray-600">
+
+        {description}
+
+      </p>
+
+
+    </div>
+
+  );
 
 }

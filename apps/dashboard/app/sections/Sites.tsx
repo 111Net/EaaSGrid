@@ -19,6 +19,7 @@ interface Site {
 }
 
 
+
 interface SitesProps {
 
   infrastructure: {
@@ -49,6 +50,24 @@ export default function Sites({
 }: SitesProps) {
 
 
+  const totalCapacity = sites.reduce(
+
+    (sum, site) => sum + site.system_size_kw,
+
+    0
+
+  );
+
+
+  const totalStorage = sites.reduce(
+
+    (sum, site) => sum + site.battery_capacity_kwh,
+
+    0
+
+  );
+
+
   return (
 
     <section
@@ -66,12 +85,10 @@ export default function Sites({
         </h2>
 
 
-        <p className="mt-4 text-gray-600 max-w-3xl">
+        <p className="mt-4 text-gray-600">
 
-          EaaSGrid is building a scalable distributed renewable
-          energy infrastructure portfolio through Energy-as-a-Service
-          deployments across commercial, industrial, education and
-          institutional customers.
+          Investor view of EaaSGrid renewable energy infrastructure rollout,
+          deployed assets and expansion pipeline.
 
         </p>
 
@@ -82,7 +99,7 @@ export default function Sites({
 
           <MetricBox
 
-            title="Current Pilot Sites"
+            title="Pilot Sites"
 
             value={infrastructure.pilot_sites}
 
@@ -91,9 +108,18 @@ export default function Sites({
 
           <MetricBox
 
-            title="Active Deployments"
+            title="Installed Capacity"
 
-            value={infrastructure.active_sites}
+            value={`${totalCapacity} kW`}
+
+          />
+
+
+          <MetricBox
+
+            title="Energy Storage"
+
+            value={`${totalStorage} kWh`}
 
           />
 
@@ -107,15 +133,6 @@ export default function Sites({
           />
 
 
-          <MetricBox
-
-            title="Connected Assets"
-
-            value={infrastructure.monitored_sites}
-
-          />
-
-
         </div>
 
 
@@ -125,17 +142,9 @@ export default function Sites({
 
           <h3 className="text-xl font-semibold text-gray-900">
 
-            Pilot Deployment Pipeline
+            Current Deployment Pipeline
 
           </h3>
-
-
-          <p className="mt-2 text-gray-600">
-
-            Representative customer deployments demonstrating
-            platform scalability and recurring energy service delivery.
-
-          </p>
 
 
 
@@ -151,7 +160,7 @@ export default function Sites({
 
 
                   <th className="py-3">
-                    Deployment
+                    Site
                   </th>
 
 
@@ -161,7 +170,7 @@ export default function Sites({
 
 
                   <th className="py-3">
-                    Energy Capacity
+                    Capacity
                   </th>
 
 
@@ -176,7 +185,7 @@ export default function Sites({
 
 
                   <th className="py-3">
-                    Status
+                    Deployment Status
                   </th>
 
 
@@ -193,8 +202,11 @@ export default function Sites({
 
 
                   <tr
+
                     key={site.id}
+
                     className="border-b"
+
                   >
 
 
@@ -239,11 +251,17 @@ export default function Sites({
 
 
                     <td
+
                       className={
+
                         site.status === "Active"
+
                         ? "text-green-700 font-medium"
+
                         : "text-yellow-700 font-medium"
+
                       }
+
                     >
 
                       {site.status}
@@ -270,27 +288,44 @@ export default function Sites({
 
 
 
-        <div className="mt-10 rounded-xl border bg-gray-50 p-6">
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
 
 
-          <h3 className="text-lg font-semibold text-gray-900">
+          <InvestorCard
 
-            Investment Perspective
+            title="Active Assets"
 
-          </h3>
+            value={infrastructure.active_sites}
+
+            description="Currently operating energy assets"
+
+          />
 
 
-          <p className="mt-3 text-gray-600">
+          <InvestorCard
 
-            Each deployment represents a long-term infrastructure
-            asset generating recurring Energy-as-a-Service revenue.
-            The platform model allows expansion from pilot projects
-            into a multi-site distributed energy portfolio.
+            title="Monitored Infrastructure"
 
-          </p>
+            value={infrastructure.monitored_sites}
+
+            description="Connected digital energy assets"
+
+          />
+
+
+          <InvestorCard
+
+            title="Growth Strategy"
+
+            value="60 Sites / Year"
+
+            description="Planned distributed energy expansion"
+
+          />
 
 
         </div>
+
 
 
       </div>
@@ -316,14 +351,14 @@ function MetricBox({
 
   title:string;
 
-  value:number;
+  value:number|string;
 
 }) {
 
 
   return (
 
-    <div className="rounded-xl border bg-gray-50 p-5">
+    <div className="rounded-xl border bg-gray-50 p-6">
 
 
       <p className="text-sm text-gray-500">
@@ -333,9 +368,64 @@ function MetricBox({
       </p>
 
 
-      <p className="mt-2 text-3xl font-bold text-gray-900">
+      <p className="mt-3 text-2xl font-bold text-gray-900">
 
         {value}
+
+      </p>
+
+
+    </div>
+
+  );
+
+}
+
+
+
+
+
+function InvestorCard({
+
+  title,
+
+  value,
+
+  description,
+
+}:{
+
+  title:string;
+
+  value:number|string;
+
+  description:string;
+
+}) {
+
+
+  return (
+
+    <div className="rounded-xl border bg-white p-6 shadow-sm">
+
+
+      <h4 className="text-sm text-gray-500">
+
+        {title}
+
+      </h4>
+
+
+      <p className="mt-3 text-3xl font-bold text-gray-900">
+
+        {value}
+
+      </p>
+
+
+      <p className="mt-2 text-sm text-gray-600">
+
+        {description}
 
       </p>
 

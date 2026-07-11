@@ -48,78 +48,107 @@ export default function Finance({
 
         <h2 className="text-3xl font-bold text-gray-900">
 
-          Financial Performance
+          Investment & Financial Performance
 
         </h2>
 
 
 
-        <p className="mt-4 text-gray-600">
+        <p className="mt-4 max-w-3xl text-gray-600">
 
-          Investor view of recurring
-          Energy-as-a-Service economics.
+          Investor view of EaaSGrid's Energy-as-a-Service
+          infrastructure financing model, recurring revenue
+          opportunity and scalable asset portfolio.
 
         </p>
 
 
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
 
 
+          <FinanceCard
 
-          <Metric
+            title="Capital Requirement"
 
-            title="Funding Requirement"
+            value={formatCurrency(
 
-            value={
-              formatCurrency(
-                investment.required_capital_ngn,
-                investment.currency
-              )
-            }
+              investment.required_capital_ngn,
 
-            description={
-              investment.funding_stage
-            }
+              investment.currency
 
-          />
+            )}
 
-
-
-          <Metric
-
-            title="Monthly Revenue"
-
-            value={
-              formatCurrency(
-                finance.monthly_revenue,
-                investment.currency
-              )
-            }
-
-            description="Current recurring revenue"
+            description={investment.funding_stage}
 
           />
 
 
 
-          <Metric
+          <FinanceCard
 
-            title="Asset Portfolio"
+            title="Recurring Monthly Revenue"
 
-            value={
-              formatCurrency(
-                finance.portfolio_value,
-                investment.currency
-              )
-            }
+            value={formatCurrency(
 
-            description="Infrastructure portfolio value"
+              finance.monthly_revenue,
+
+              investment.currency
+
+            )}
+
+            description="Energy service subscriptions"
+
+          />
+
+
+
+          <FinanceCard
+
+            title="Infrastructure Portfolio Value"
+
+            value={formatCurrency(
+
+              finance.portfolio_value,
+
+              investment.currency
+
+            )}
+
+            description="Distributed energy assets"
 
           />
 
 
         </div>
+
+
+
+
+        <div className="mt-10 rounded-xl border bg-gray-50 p-6">
+
+
+          <h3 className="text-xl font-semibold text-gray-900">
+
+            Energy-as-a-Service Investment Model
+
+          </h3>
+
+
+
+          <p className="mt-3 text-gray-600">
+
+            EaaSGrid transforms renewable energy deployment
+            into a recurring infrastructure business by combining
+            customer subscriptions, asset financing and digital
+            energy management.
+
+          </p>
+
+
+        </div>
+
 
 
       </div>
@@ -134,13 +163,15 @@ export default function Finance({
 
 
 
+
 function formatCurrency(
 
   amount:number,
 
   currency:string
 
-){
+) {
+
 
   return new Intl.NumberFormat(
 
@@ -164,7 +195,7 @@ function formatCurrency(
 
 
 
-function Metric({
+function FinanceCard({
 
   title,
 
@@ -188,18 +219,20 @@ function Metric({
     <div className="rounded-xl border bg-white p-6 shadow-sm">
 
 
-      <h3 className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500">
 
         {title}
 
-      </h3>
+      </p>
 
 
-      <p className="mt-3 text-3xl font-bold">
+
+      <p className="mt-3 text-3xl font-bold text-gray-900">
 
         {value}
 
       </p>
+
 
 
       <p className="mt-2 text-sm text-gray-600">
