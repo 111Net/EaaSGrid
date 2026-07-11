@@ -54,9 +54,8 @@ export default function Sites({
 
     <section
       id="sites"
-      className="bg-gray-50 border-t"
+      className="bg-white border-t"
     >
-
 
       <div className="mx-auto max-w-7xl px-6 py-16">
 
@@ -69,146 +68,63 @@ export default function Sites({
 
 
 
-        <p className="mt-4 max-w-3xl text-gray-600">
+        <p className="mt-4 text-gray-600">
 
-          EaaSGrid deploys distributed renewable energy infrastructure
-          through an Energy-as-a-Service model, combining solar generation,
-          battery storage and digital monitoring across commercial,
-          institutional and industrial customers.
+          Investor view of deployed assets, operational capacity and
+          scalable Energy-as-a-Service infrastructure.
 
         </p>
 
 
 
-        <div className="mt-10 grid gap-6 md:grid-cols-4">
+        <div className="mt-8 overflow-x-auto">
 
 
-          <MetricBox
+          <table className="w-full border-collapse">
 
-            title="Pilot Projects"
 
-            value={infrastructure.pilot_sites}
+            <thead>
 
-            description="Initial deployment portfolio"
+              <tr className="border-b text-left text-sm text-gray-500">
 
-          />
 
+                <th className="py-3">
+                  Asset
+                </th>
 
-          <MetricBox
 
-            title="Annual Growth Target"
+                <th className="py-3">
+                  Market Segment
+                </th>
 
-            value={infrastructure.planned_sites_per_year}
 
-            description="Sites planned per year"
+                <th className="py-3">
+                  Solar Capacity
+                </th>
 
-          />
 
+                <th className="py-3">
+                  Storage Capacity
+                </th>
 
-          <MetricBox
 
-            title="Active Sites"
+                <th className="py-3">
+                  Location
+                </th>
 
-            value={infrastructure.active_sites}
 
-            description="Currently operating"
+                <th className="py-3">
+                  Deployment Status
+                </th>
 
-          />
 
+              </tr>
 
-          <MetricBox
+            </thead>
 
-            title="Connected Assets"
 
-            value={infrastructure.monitored_sites}
 
-            description="Digitally monitored"
-
-          />
-
-
-        </div>
-
-
-
-
-        <div className="mt-12 rounded-xl border bg-white shadow-sm">
-
-
-          <div className="border-b px-6 py-5">
-
-
-            <h3 className="text-xl font-semibold text-gray-900">
-
-              Pilot Deployment Pipeline
-
-            </h3>
-
-
-            <p className="mt-2 text-sm text-gray-600">
-
-              Investor view of deployed and planned renewable energy assets.
-
-            </p>
-
-
-          </div>
-
-
-
-
-
-          <div className="overflow-x-auto">
-
-
-            <table className="w-full">
-
-
-              <thead>
-
-
-                <tr className="border-b text-left text-sm text-gray-500">
-
-
-                  <th className="px-6 py-4">
-                    Site
-                  </th>
-
-
-                  <th className="px-6 py-4">
-                    Market Segment
-                  </th>
-
-
-                  <th className="px-6 py-4">
-                    Solar Capacity
-                  </th>
-
-
-                  <th className="px-6 py-4">
-                    Storage
-                  </th>
-
-
-                  <th className="px-6 py-4">
-                    Location
-                  </th>
-
-
-                  <th className="px-6 py-4">
-                    Status
-                  </th>
-
-
-                </tr>
-
-
-              </thead>
-
-
-
-
-              <tbody>
+            <tbody>
 
 
               {sites.map((site)=>(
@@ -216,11 +132,11 @@ export default function Sites({
 
                 <tr
                   key={site.id}
-                  className="border-b last:border-0"
+                  className="border-b"
                 >
 
 
-                  <td className="px-6 py-4 font-medium text-gray-900">
+                  <td className="py-4 font-medium">
 
                     {site.site_name}
 
@@ -228,8 +144,7 @@ export default function Sites({
 
 
 
-
-                  <td className="px-6 py-4 text-gray-700">
+                  <td>
 
                     {site.customer_type}
 
@@ -237,8 +152,7 @@ export default function Sites({
 
 
 
-
-                  <td className="px-6 py-4 text-gray-700">
+                  <td>
 
                     {site.system_size_kw} kW
 
@@ -246,8 +160,7 @@ export default function Sites({
 
 
 
-
-                  <td className="px-6 py-4 text-gray-700">
+                  <td>
 
                     {site.battery_capacity_kwh} kWh
 
@@ -255,8 +168,7 @@ export default function Sites({
 
 
 
-
-                  <td className="px-6 py-4 text-gray-700">
+                  <td>
 
                     {site.location}
 
@@ -264,31 +176,17 @@ export default function Sites({
 
 
 
+                  <td
+                    className={
+                      site.status === "Active"
+                      ? "text-green-700 font-medium"
+                      : "text-yellow-700 font-medium"
+                    }
+                  >
 
-                  <td className="px-6 py-4">
-
-
-                    <span
-
-                      className={
-
-                        site.status === "Active"
-
-                        ? "rounded-full bg-green-100 px-3 py-1 text-sm text-green-700"
-
-                        : "rounded-full bg-yellow-100 px-3 py-1 text-sm text-yellow-700"
-
-                      }
-
-                    >
-
-                      {site.status}
-
-                    </span>
-
+                    {site.status}
 
                   </td>
-
 
 
                 </tr>
@@ -297,13 +195,57 @@ export default function Sites({
               ))}
 
 
-              </tbody>
+            </tbody>
 
 
-            </table>
+          </table>
 
 
-          </div>
+        </div>
+
+
+
+
+        <div className="mt-8 grid gap-4 md:grid-cols-4">
+
+
+          <MetricBox
+
+            title="Pilot Assets"
+
+            value={infrastructure.pilot_sites}
+
+          />
+
+
+
+          <MetricBox
+
+            title="Operational Assets"
+
+            value={infrastructure.active_sites}
+
+          />
+
+
+
+          <MetricBox
+
+            title="Connected Assets"
+
+            value={infrastructure.monitored_sites}
+
+          />
+
+
+
+          <MetricBox
+
+            title="Annual Expansion Target"
+
+            value={infrastructure.planned_sites_per_year}
+
+          />
 
 
         </div>
@@ -322,14 +264,11 @@ export default function Sites({
 
 
 
-
 function MetricBox({
 
   title,
 
   value,
-
-  description,
 
 }:{
 
@@ -337,14 +276,12 @@ function MetricBox({
 
   value:number;
 
-  description:string;
-
 }) {
 
 
   return (
 
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
+    <div className="rounded-xl border bg-gray-50 p-5">
 
 
       <p className="text-sm text-gray-500">
@@ -354,16 +291,10 @@ function MetricBox({
       </p>
 
 
-      <p className="mt-3 text-3xl font-bold text-gray-900">
+
+      <p className="mt-2 text-2xl font-bold text-gray-900">
 
         {value}
-
-      </p>
-
-
-      <p className="mt-2 text-sm text-gray-600">
-
-        {description}
 
       </p>
 
