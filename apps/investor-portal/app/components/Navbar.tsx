@@ -1,47 +1,73 @@
 export default function Navbar() {
-  return (
-    <nav className="w-full border-b bg-white sticky top-0 z-50">
 
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+  return (
+
+    <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+
 
         <a
-          href="#"
-          className="flex items-center"
+          href="/"
+          className="text-xl font-bold text-gray-900"
         >
-          <img
-            src="/branding/logo.svg"
-            alt="EaaSGrid"
-            className="h-12 w-auto"
-          />
+          EaaSGrid
         </a>
 
 
-        <div className="flex gap-6 text-sm text-gray-700">
 
-          <a href="#solution">
-            Solution
+        <nav className="hidden gap-6 text-sm font-medium text-gray-600 md:flex">
+
+
+          <a
+            href="#investment"
+            className="hover:text-green-700"
+          >
+            Investment
           </a>
 
-          <a href="#business">
-            Business Model
-          </a>
 
-          <a href="#financials">
+          <a
+            href="#financials"
+            className="hover:text-green-700"
+          >
             Financials
           </a>
 
-          <a href="#roadmap">
+
+          <a
+            href="#roadmap"
+            className="hover:text-green-700"
+          >
             Roadmap
           </a>
 
-          <a href="#contact">
+
+          <a
+            href="#contact"
+            className="hover:text-green-700"
+          >
             Contact
           </a>
 
-        </div>
+
+        </nav>
+
+
+
+        <a
+          href="#investment"
+          className="rounded-lg bg-green-700 px-5 py-2 text-sm font-semibold text-white hover:bg-green-800"
+        >
+          Invest With Us
+        </a>
+
 
       </div>
 
-    </nav>
+
+    </header>
+
   );
+
 }
