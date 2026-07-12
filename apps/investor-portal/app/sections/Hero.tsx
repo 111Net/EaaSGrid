@@ -1,122 +1,56 @@
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="bg-gradient-to-b from-white via-gray-50 to-white"
-    >
+    <section className="bg-gradient-to-b from-white to-gray-50">
 
-      <div className="mx-auto max-w-7xl px-6 py-24">
-
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto max-w-6xl px-6 py-20">
 
 
-          <div>
-
-            <p className="text-sm font-semibold uppercase tracking-wider text-green-700">
-              Energy-as-a-Service Infrastructure Platform
-            </p>
+        <div className="max-w-3xl">
 
 
-            <h1 className="mt-4 text-5xl font-bold tracking-tight text-gray-900 md:text-6xl">
+          <h1 className="text-5xl font-bold tracking-tight text-gray-900">
 
-              Powering Africa&apos;s Energy Future Through
-              <span className="text-green-700">
-                {" "}
-                Renewable Infrastructure
-              </span>
+            Powering Africa&apos;s Energy Future
+            Through Energy-as-a-Service Infrastructure
 
-            </h1>
-
-
-            <p className="mt-6 max-w-2xl text-xl leading-8 text-gray-600">
-
-              EaaSGrid develops distributed renewable energy infrastructure
-              that enables businesses, institutions and communities to access
-              reliable clean power without the burden of upfront capital
-              investment.
-
-            </p>
-
-
-            <div className="mt-8 flex flex-wrap gap-4">
-
-
-              <a
-                href="#investment"
-                className="rounded-lg bg-green-700 px-6 py-3 font-semibold text-white hover:bg-green-800"
-              >
-                Investment Opportunity
-              </a>
-
-
-              <a
-                href="#pilot"
-                className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-100"
-              >
-                View Pilot Programme
-              </a>
-
-
-            </div>
-
-
-          </div>
+          </h1>
 
 
 
-          <div className="rounded-2xl border bg-white p-8 shadow-sm">
+          <p className="mt-6 text-xl leading-8 text-gray-600">
 
+            EaaSGrid enables businesses, institutions and communities
+            to access reliable renewable energy infrastructure without
+            the burden of upfront capital investment.
 
-            <h2 className="text-xl font-bold text-gray-900">
-              Investor Proposition
-            </h2>
-
-
-            <p className="mt-4 text-gray-600">
-              A scalable infrastructure model combining renewable energy,
-              digital monitoring and recurring service revenue.
-            </p>
-
-
-            <div className="mt-8 space-y-5">
-
-
-              <div>
-                <p className="text-sm text-gray-500">
-                  Business Model
-                </p>
-
-                <p className="font-semibold text-gray-900">
-                  Energy-as-a-Service Subscription Infrastructure
-                </p>
-              </div>
+          </p>
 
 
 
-              <div>
-                <p className="text-sm text-gray-500">
-                  Target Markets
-                </p>
-
-                <p className="font-semibold text-gray-900">
-                  Commercial • Industrial • Healthcare • Education
-                </p>
-              </div>
+          <div className="mt-8 flex flex-wrap gap-4">
 
 
+            <a
+              href="#investment"
+              className="rounded-lg bg-green-700 px-6 py-3 font-semibold text-white hover:bg-green-800"
+            >
 
-              <div>
-                <p className="text-sm text-gray-500">
-                  Platform Capability
-                </p>
+              Investment Opportunity
 
-                <p className="font-semibold text-gray-900">
-                  Renewable Assets + Digital Energy Management
-                </p>
-              </div>
+            </a>
 
 
-            </div>
+
+            <a
+              href="http://192.168.100.21:3001"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-50"
+            >
+
+              View Live Dashboard
+
+            </a>
 
 
           </div>
@@ -126,7 +60,8 @@ export default function Hero() {
 
 
 
-        <div className="mt-20 grid gap-6 md:grid-cols-4">
+
+        <div className="mt-16 grid gap-6 md:grid-cols-4">
 
 
           <Metric
@@ -135,10 +70,12 @@ export default function Hero() {
           />
 
 
+
           <Metric
             value="6"
             label="Initial Pilot Deployment Sites"
           />
+
 
 
           <Metric
@@ -147,8 +84,9 @@ export default function Hero() {
           />
 
 
+
           <Metric
-            value="≈₦3B"
+            value="₦3B"
             label="Estimated Annual Deployment Capital"
           />
 
@@ -157,6 +95,7 @@ export default function Hero() {
 
 
       </div>
+
 
     </section>
   );
@@ -168,22 +107,29 @@ function Metric({
   value,
   label,
 }: {
-  value: string;
-  label: string;
+  value:string;
+  label:string;
 }) {
 
   return (
 
     <div className="rounded-xl border bg-white p-6 shadow-sm">
 
-      <p className="text-3xl font-bold text-green-700">
+
+      <h2 className="text-3xl font-bold text-green-700">
+
         {value}
-      </p>
+
+      </h2>
+
 
 
       <p className="mt-2 text-sm text-gray-600">
+
         {label}
+
       </p>
+
 
     </div>
 
