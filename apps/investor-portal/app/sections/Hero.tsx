@@ -1,110 +1,192 @@
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-b from-white to-gray-50">
+    <section
+      id="home"
+      className="bg-gradient-to-b from-white via-gray-50 to-white"
+    >
 
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="mx-auto max-w-7xl px-6 py-24">
 
-        <div className="max-w-3xl">
-
-          <h1 className="text-5xl font-bold tracking-tight text-gray-900">
-            Powering Africa&apos;s Energy Future
-            Through Energy-as-a-Service Infrastructure
-          </h1>
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
 
 
-          <p className="mt-6 text-xl leading-8 text-gray-600">
+          <div>
 
-            EaaSGrid enables businesses, institutions and communities
-            to access reliable renewable energy infrastructure without
-            the burden of upfront capital investment.
-
-          </p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-green-700">
+              Energy-as-a-Service Infrastructure Platform
+            </p>
 
 
-          <div className="mt-8 flex gap-4">
+            <h1 className="mt-4 text-5xl font-bold tracking-tight text-gray-900 md:text-6xl">
 
-            <button
-              className="rounded-lg bg-green-700 px-6 py-3
-              font-semibold text-white hover:bg-green-800"
-            >
-              Investment Opportunity
-            </button>
+              Powering Africa&apos;s Energy Future Through
+              <span className="text-green-700">
+                {" "}
+                Renewable Infrastructure
+              </span>
+
+            </h1>
 
 
-            <button
-              className="rounded-lg border border-gray-300
-              px-6 py-3 font-semibold text-gray-700"
-            >
-              View Pilot Programme
-            </button>
+            <p className="mt-6 max-w-2xl text-xl leading-8 text-gray-600">
+
+              EaaSGrid develops distributed renewable energy infrastructure
+              that enables businesses, institutions and communities to access
+              reliable clean power without the burden of upfront capital
+              investment.
+
+            </p>
+
+
+            <div className="mt-8 flex flex-wrap gap-4">
+
+
+              <a
+                href="#investment"
+                className="rounded-lg bg-green-700 px-6 py-3 font-semibold text-white hover:bg-green-800"
+              >
+                Investment Opportunity
+              </a>
+
+
+              <a
+                href="#pilot"
+                className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-100"
+              >
+                View Pilot Programme
+              </a>
+
+
+            </div>
+
 
           </div>
+
+
+
+          <div className="rounded-2xl border bg-white p-8 shadow-sm">
+
+
+            <h2 className="text-xl font-bold text-gray-900">
+              Investor Proposition
+            </h2>
+
+
+            <p className="mt-4 text-gray-600">
+              A scalable infrastructure model combining renewable energy,
+              digital monitoring and recurring service revenue.
+            </p>
+
+
+            <div className="mt-8 space-y-5">
+
+
+              <div>
+                <p className="text-sm text-gray-500">
+                  Business Model
+                </p>
+
+                <p className="font-semibold text-gray-900">
+                  Energy-as-a-Service Subscription Infrastructure
+                </p>
+              </div>
+
+
+
+              <div>
+                <p className="text-sm text-gray-500">
+                  Target Markets
+                </p>
+
+                <p className="font-semibold text-gray-900">
+                  Commercial • Industrial • Healthcare • Education
+                </p>
+              </div>
+
+
+
+              <div>
+                <p className="text-sm text-gray-500">
+                  Platform Capability
+                </p>
+
+                <p className="font-semibold text-gray-900">
+                  Renewable Assets + Digital Energy Management
+                </p>
+              </div>
+
+
+            </div>
+
+
+          </div>
+
 
         </div>
 
 
-        <div className="mt-16 grid gap-6 md:grid-cols-4">
+
+        <div className="mt-20 grid gap-6 md:grid-cols-4">
 
 
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-            <h2 className="text-3xl font-bold text-green-700">
-              ₦298M
-            </h2>
-
-            <p className="mt-2 text-sm text-gray-600">
-              Initial 6-Site Pilot Capital Requirement
-            </p>
-
-          </div>
+          <Metric
+            value="₦298M"
+            label="Initial 6-Site Pilot Capital Requirement"
+          />
 
 
-
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-            <h2 className="text-3xl font-bold text-green-700">
-              6
-            </h2>
-
-            <p className="mt-2 text-sm text-gray-600">
-              Initial Pilot Deployment Sites
-            </p>
-
-          </div>
+          <Metric
+            value="6"
+            label="Initial Pilot Deployment Sites"
+          />
 
 
-
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-            <h2 className="text-3xl font-bold text-green-700">
-              &gt;60
-            </h2>
-
-            <p className="mt-2 text-sm text-gray-600">
-              Annual Deployment Target
-            </p>
-
-          </div>
+          <Metric
+            value="60+"
+            label="Annual Deployment Target"
+          />
 
 
-
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-            <h2 className="text-3xl font-bold text-green-700">
-              ≈₦3B
-            </h2>
-
-            <p className="mt-2 text-sm text-gray-600">
-              Estimated Annual Deployment Capital
-            </p>
-
-          </div>
+          <Metric
+            value="≈₦3B"
+            label="Estimated Annual Deployment Capital"
+          />
 
 
         </div>
+
 
       </div>
 
     </section>
   );
+}
+
+
+
+function Metric({
+  value,
+  label,
+}: {
+  value: string;
+  label: string;
+}) {
+
+  return (
+
+    <div className="rounded-xl border bg-white p-6 shadow-sm">
+
+      <p className="text-3xl font-bold text-green-700">
+        {value}
+      </p>
+
+
+      <p className="mt-2 text-sm text-gray-600">
+        {label}
+      </p>
+
+    </div>
+
+  );
+
 }
