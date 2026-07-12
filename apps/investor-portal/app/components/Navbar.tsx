@@ -2,16 +2,24 @@ export default function Navbar() {
 
   return (
 
-    <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur">
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
 
         <a
           href="/"
-          className="text-xl font-bold text-gray-900"
+          className="flex flex-col"
         >
-          EaaSGrid
+
+          <span className="text-xl font-bold tracking-tight text-gray-900">
+            EaaSGrid Ltd
+          </span>
+
+          <span className="text-xs text-gray-500">
+            Energy-as-a-Service Infrastructure Platform
+          </span>
+
         </a>
 
 
@@ -19,34 +27,22 @@ export default function Navbar() {
         <nav className="hidden gap-6 text-sm font-medium text-gray-600 md:flex">
 
 
-          <a
-            href="#investment"
-            className="hover:text-green-700"
-          >
+          <a href="#investment" className="hover:text-green-700">
             Investment
           </a>
 
 
-          <a
-            href="#financials"
-            className="hover:text-green-700"
-          >
+          <a href="#financials" className="hover:text-green-700">
             Financials
           </a>
 
 
-          <a
-            href="#roadmap"
-            className="hover:text-green-700"
-          >
+          <a href="#roadmap" className="hover:text-green-700">
             Roadmap
           </a>
 
 
-          <a
-            href="#contact"
-            className="hover:text-green-700"
-          >
+          <a href="#contact" className="hover:text-green-700">
             Contact
           </a>
 
@@ -73,7 +69,6 @@ export default function Navbar() {
 
 
       </div>
-
 
     </header>
 
