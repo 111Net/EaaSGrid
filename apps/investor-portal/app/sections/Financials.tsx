@@ -1,143 +1,180 @@
 export default function Financials() {
-  return (
-    <section id="financials">
 
-      <div className="mx-auto max-w-6xl px-6 py-20">
+  return (
+
+    <section
+      id="financials"
+      className="border-t bg-gray-50"
+    >
+
+      <div className="mx-auto max-w-7xl px-6 py-20">
+
 
         <div className="max-w-3xl">
 
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900">
-            Financial Model & Investment Opportunity
+          <p className="text-sm font-semibold uppercase tracking-wider text-green-700">
+            Financial Model
+          </p>
+
+
+          <h2 className="mt-4 text-4xl font-bold text-gray-900">
+
+            Building a Recurring Renewable Energy Infrastructure Business
+
           </h2>
+
 
           <p className="mt-6 text-lg leading-8 text-gray-600">
 
-            EaaSGrid is structured as an infrastructure-as-a-service
-            platform, transforming renewable energy deployment into a
-            long-term recurring revenue business.
+            EaaSGrid combines renewable energy assets, digital monitoring
+            and subscription-based services to create predictable
+            long-term infrastructure revenue.
 
           </p>
 
         </div>
+
 
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
 
 
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-            <h3 className="text-xl font-semibold">
-              Pilot Programme
-            </h3>
-
-            <p className="mt-4 text-gray-600">
-
-              Initial investor showcase deployment covering:
-
-            </p>
-
-            <ul className="mt-4 space-y-2 text-gray-600">
-
-              <li>• 6 Energy-as-a-Service pilot sites</li>
-
-              <li>• Capital requirement: ₦298 Million</li>
-
-              <li>• Technology validation and operational demonstration</li>
-
-            </ul>
-
-          </div>
+          <Metric
+            title="Initial Investment Requirement"
+            value="₦298M"
+            description="Capital required for first 6-site pilot deployment"
+          />
 
 
-
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-            <h3 className="text-xl font-semibold">
-              Deployment Scale
-            </h3>
-
-            <p className="mt-4 text-gray-600">
-
-              Planned expansion through distributed energy
-              infrastructure deployment.
-
-            </p>
+          <Metric
+            title="Revenue Structure"
+            value="Recurring"
+            description="Energy subscription and infrastructure service income"
+          />
 
 
-            <ul className="mt-4 space-y-2 text-gray-600">
-
-              <li>• 60+ sites annual deployment target</li>
-
-              <li>• Multi-sector customer expansion</li>
-
-              <li>• Regional infrastructure growth</li>
-
-            </ul>
-
-
-          </div>
-
-
-
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-            <h3 className="text-xl font-semibold">
-              Revenue Streams
-            </h3>
-
-
-            <p className="mt-4 text-gray-600">
-
-              Long-term recurring income generated through:
-
-            </p>
-
-
-            <ul className="mt-4 space-y-2 text-gray-600">
-
-              <li>• Energy service subscriptions</li>
-
-              <li>• Infrastructure leasing</li>
-
-              <li>• Energy management software services</li>
-
-              <li>• Sustainability and carbon opportunities</li>
-
-            </ul>
-
-
-          </div>
+          <Metric
+            title="Expansion Model"
+            value="60+ Sites / Year"
+            description="Scalable deployment across commercial sectors"
+          />
 
 
         </div>
 
 
 
-        <div className="mt-12 rounded-xl bg-gray-900 p-8 text-white">
+        <div className="mt-12 rounded-2xl border bg-white p-8">
 
 
-          <h3 className="text-2xl font-semibold">
+          <h3 className="text-2xl font-bold text-gray-900">
 
-            Investor Value Proposition
+            Capital Deployment Strategy
 
           </h3>
 
 
-          <p className="mt-4 text-lg leading-8 text-gray-200">
 
-            EaaSGrid enables investors to participate in the growth of
-            distributed energy infrastructure through a scalable
-            service model rather than a traditional one-time equipment
-            sales approach.
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
 
-          </p>
+
+            <Allocation
+              title="Energy Infrastructure"
+              description="Solar generation systems, battery storage and installation."
+            />
+
+
+            <Allocation
+              title="Technology Platform"
+              description="Monitoring, billing and operational management systems."
+            />
+
+
+            <Allocation
+              title="Growth Expansion"
+              description="Scaling deployments into additional customer sectors."
+            />
+
+
+          </div>
 
 
         </div>
+
 
 
       </div>
 
     </section>
+
   );
+
+}
+
+
+
+function Metric({
+  title,
+  value,
+  description,
+}: {
+  title:string;
+  value:string;
+  description:string;
+}) {
+
+  return (
+
+    <div className="rounded-xl border bg-white p-6 shadow-sm">
+
+      <p className="text-sm text-gray-500">
+        {title}
+      </p>
+
+
+      <p className="mt-3 text-3xl font-bold text-green-700">
+        {value}
+      </p>
+
+
+      <p className="mt-3 text-sm text-gray-600">
+        {description}
+      </p>
+
+
+    </div>
+
+  );
+
+}
+
+
+
+
+function Allocation({
+  title,
+  description,
+}: {
+  title:string;
+  description:string;
+}) {
+
+  return (
+
+    <div className="rounded-lg bg-gray-50 p-5">
+
+      <h4 className="font-bold text-gray-900">
+        {title}
+      </h4>
+
+
+      <p className="mt-3 text-sm text-gray-600">
+        {description}
+      </p>
+
+
+    </div>
+
+  );
+
 }
