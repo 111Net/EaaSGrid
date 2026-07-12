@@ -51,6 +51,15 @@ export default function Navbar() {
           </a>
 
 
+          <a
+            href="http://192.168.100.21:3001"
+            target="_blank"
+            className="hover:text-green-700"
+          >
+            Dashboard
+          </a>
+
+
         </nav>
 
 
