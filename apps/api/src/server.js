@@ -10,7 +10,7 @@ const app = require("./app");
 const config = require("./config/config");
 
 
-const server = app.listen(config.port, () => {
+const server = app.listen(config.port, "0.0.0.0", () => {
 
     console.log(
       `EAASGrid API running on port ${config.port}`

@@ -1,4 +1,16 @@
-export default function Financials() {
+import { getInvestorProfile } from "../lib/api";
+
+
+export default async function Financials() {
+
+  const investor = await getInvestorProfile();
+
+
+  const fundingAmount =
+    new Intl.NumberFormat("en-NG").format(
+      investor.funding_required.amount
+    );
+
 
   return (
 
@@ -41,8 +53,8 @@ export default function Financials() {
 
           <Metric
             title="Initial Investment Requirement"
-            value="₦298M"
-            description="Capital required for first 6-site pilot deployment"
+            value={`${investor.funding_required.currency} ${fundingAmount}`}
+            description={`Capital required for first ${investor.projected_rollout.pilot_sites}-site pilot deployment`}
           />
 
 
@@ -55,7 +67,7 @@ export default function Financials() {
 
           <Metric
             title="Expansion Model"
-            value="60+ Sites / Year"
+            value={`${investor.projected_rollout.annual_expansion_sites}+ Sites / Year`}
             description="Scalable deployment across commercial sectors"
           />
 
