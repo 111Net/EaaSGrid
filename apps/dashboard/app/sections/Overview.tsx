@@ -1,3 +1,5 @@
+import MetricCard from "../components/MetricCard";
+
 interface OverviewProps {
 
   infrastructure: {
@@ -29,7 +31,7 @@ export default function Overview({
 
       id="overview"
 
-      className="mx-auto max-w-7xl px-6 py-16"
+      className="scroll-mt-24 mx-auto max-w-7xl px-6 py-16"
 
     >
 
@@ -57,7 +59,7 @@ export default function Overview({
         <div className="mt-10 grid gap-6 md:grid-cols-4">
 
 
-          <OverviewCard
+          <MetricCard
 
             title="Pilot Portfolio"
 
@@ -73,7 +75,7 @@ export default function Overview({
 
 
 
-          <OverviewCard
+          <MetricCard
 
             title="Operational Assets"
 
@@ -89,7 +91,7 @@ export default function Overview({
 
 
 
-          <OverviewCard
+          <MetricCard
 
             title="Digital Monitoring"
 
@@ -105,7 +107,7 @@ export default function Overview({
 
 
 
-          <OverviewCard
+          <MetricCard
 
             title="Annual Expansion"
 
@@ -135,7 +137,7 @@ export default function Overview({
 
 
 
-function OverviewCard({
+function OverviewCard_DISABLED({
 
   title,
 
@@ -159,7 +161,7 @@ function OverviewCard({
     <div className="rounded-xl border bg-white p-6 shadow-sm">
 
 
-      <p className="text-sm text-gray-500">
+      <p className="block text-sm leading-6 text-gray-500">
 
         {title}
 

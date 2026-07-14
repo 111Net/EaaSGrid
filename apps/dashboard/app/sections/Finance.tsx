@@ -1,249 +1,133 @@
+import MetricCard from "../components/MetricCard";
+
 interface FinanceProps {
 
-  investment: {
-
-    required_capital_ngn: number;
-
-    currency: string;
-
-    funding_stage: string;
-
+  investment:{
+    required_capital_ngn:number;
+    currency:string;
+    funding_stage:string;
   };
 
-
-  finance: {
-
-    monthly_revenue: number;
-
-    portfolio_value: number;
-
+  finance:{
+    monthly_revenue:number;
+    portfolio_value:number;
   };
 
 }
-
 
 
 export default function Finance({
-
   investment,
-
   finance,
+}:FinanceProps){
 
-}: FinanceProps) {
+return (
 
+<section id="finance" className="bg-white border-t relative z-10">
 
-  return (
+<div className="mx-auto max-w-7xl px-6 pt-20 pb-20 relative z-10">
 
-    <section
 
-      id="finance"
+<div className="space-y-4 mb-12">
 
-      className="bg-white border-t"
+<h2 className="text-2xl font-bold text-gray-900">
+Finance
+</h2>
 
-    >
+<p className="text-gray-600">
+Investment requirements, recurring revenue and infrastructure value.
+</p>
 
+</div>
 
-      <div className="mx-auto max-w-7xl px-6 py-16">
 
+<div className="grid gap-8 md:grid-cols-3">
 
-        <h2 className="text-3xl font-bold text-gray-900">
 
-          Investment & Financial Performance
+<MetricCard
+title="Capital Requirement"
+value={formatCurrency(
+investment.required_capital_ngn,
+investment.currency
+)}
+description={investment.funding_stage}
+/>
 
-        </h2>
 
+<MetricCard
+title="Recurring Monthly Revenue"
+value={formatCurrency(
+finance.monthly_revenue,
+investment.currency
+)}
+description="Energy service subscriptions"
+/>
 
 
-        <p className="mt-4 max-w-3xl text-gray-600">
+<MetricCard
+title="Infrastructure Portfolio Value"
+value={formatCurrency(
+finance.portfolio_value,
+investment.currency
+)}
+description="Distributed energy assets"
+/>
 
-          Investor view of EaaSGrid's Energy-as-a-Service
-          infrastructure financing model, recurring revenue
-          opportunity and scalable asset portfolio.
 
-        </p>
+</div>
 
 
+</div>
 
+</section>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-
-
-          <FinanceCard
-
-            title="Capital Requirement"
-
-            value={formatCurrency(
-
-              investment.required_capital_ngn,
-
-              investment.currency
-
-            )}
-
-            description={investment.funding_stage}
-
-          />
-
-
-
-          <FinanceCard
-
-            title="Recurring Monthly Revenue"
-
-            value={formatCurrency(
-
-              finance.monthly_revenue,
-
-              investment.currency
-
-            )}
-
-            description="Energy service subscriptions"
-
-          />
-
-
-
-          <FinanceCard
-
-            title="Infrastructure Portfolio Value"
-
-            value={formatCurrency(
-
-              finance.portfolio_value,
-
-              investment.currency
-
-            )}
-
-            description="Distributed energy assets"
-
-          />
-
-
-        </div>
-
-
-
-
-        <div className="mt-10 rounded-xl border bg-gray-50 p-6">
-
-
-          <h3 className="text-xl font-semibold text-gray-900">
-
-            Energy-as-a-Service Investment Model
-
-          </h3>
-
-
-
-          <p className="mt-3 text-gray-600">
-
-            EaaSGrid transforms renewable energy deployment
-            into a recurring infrastructure business by combining
-            customer subscriptions, asset financing and digital
-            energy management.
-
-          </p>
-
-
-        </div>
-
-
-
-      </div>
-
-
-    </section>
-
-  );
+);
 
 }
 
 
+function formatCurrency(amount:number,currency:string){
 
-
-
-function formatCurrency(
-
-  amount:number,
-
-  currency:string
-
-) {
-
-
-  return new Intl.NumberFormat(
-
-    "en-NG",
-
-    {
-
-      style:"currency",
-
-      currency,
-
-      maximumFractionDigits:0
-
-    }
-
-  ).format(amount);
+return new Intl.NumberFormat(
+"en-NG",
+{
+style:"currency",
+currency,
+maximumFractionDigits:0
+}
+).format(amount);
 
 }
 
 
-
-
-
-function FinanceCard({
-
-  title,
-
-  value,
-
-  description,
-
+function Card({
+title,
+value,
+description,
 }:{
+title:string;
+value:string;
+description:string;
+}){
 
-  title:string;
+return (
 
-  value:string;
+<div className="rounded-xl border bg-white p-6 shadow-sm">
 
-  description:string;
+<p className="text-sm leading-6 text-gray-500">
+{title}
+</p>
 
-}) {
+<p className="mt-3 text-3xl font-bold text-gray-900">
+{value}
+</p>
 
+<p className="mt-2 text-sm text-gray-600">
+{description}
+</p>
 
-  return (
+</div>
 
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-
-      <p className="text-sm text-gray-500">
-
-        {title}
-
-      </p>
-
-
-
-      <p className="mt-3 text-3xl font-bold text-gray-900">
-
-        {value}
-
-      </p>
-
-
-
-      <p className="mt-2 text-sm text-gray-600">
-
-        {description}
-
-      </p>
-
-
-    </div>
-
-  );
+);
 
 }

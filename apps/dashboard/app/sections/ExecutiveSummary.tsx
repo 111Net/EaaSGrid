@@ -1,46 +1,29 @@
+import MetricCard from "../components/MetricCard";
+
 interface ExecutiveSummaryProps {
 
   investment: {
-
     required_capital_ngn: number;
-
     currency: string;
-
     funding_stage: string;
-
   };
-
 
   infrastructure: {
-
     pilot_sites: number;
-
     planned_sites_per_year: number;
-
     active_sites: number;
-
     monitored_sites: number;
-
   };
-
 
   platform: {
-
     name: string;
-
     version: string;
-
     environment: string;
-
   };
-
 
   dashboard: {
-
     status: string;
-
   };
-
 
   target_markets: string[];
 
@@ -65,49 +48,90 @@ export default function ExecutiveSummary({
 
   return (
 
-    <section className="bg-white">
-
+    <section
+      id="top"
+      className="scroll-mt-24 bg-white"
+    >
 
       <div className="mx-auto max-w-7xl px-6 py-20">
 
 
-        <div className="max-w-4xl">
+        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
 
 
-          <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">
-
-            Energy-as-a-Service Infrastructure Platform
-
-          </p>
+          <div className="max-w-4xl">
 
 
+            <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">
 
-          <h1 className="mt-4 text-5xl font-bold leading-tight text-gray-900">
+              EaaSGrid Operations Dashboard
 
-            Building scalable renewable energy infrastructure through digital energy services.
-
-          </h1>
-
+            </p>
 
 
-          <p className="mt-6 text-lg text-gray-600">
+            <h1 className="mt-4 text-5xl font-bold leading-tight text-gray-900">
 
-            EaaSGrid enables organisations to access reliable renewable energy
-            through financed solar infrastructure, intelligent monitoring and
-            recurring Energy-as-a-Service delivery.
+              Energy-as-a-Service Infrastructure Monitoring Platform
 
-          </p>
+            </h1>
+
+
+            <p className="mt-6 text-lg text-gray-600">
+
+              Building scalable renewable energy infrastructure through
+              digital energy services, intelligent monitoring and recurring
+              infrastructure revenue.
+
+            </p>
+
+
+          </div>
+
+
+
+          <div className="rounded-xl border bg-gray-50 px-6 py-5 shadow-sm">
+
+
+            <p className="block text-sm leading-6 text-gray-500">
+
+              Platform Status
+
+            </p>
+
+
+            <p className="mt-2 text-xl font-bold text-gray-900">
+
+              ● {dashboard.status}
+
+            </p>
+
+
+            <p className="mt-2 text-sm text-gray-600">
+
+              {platform.name} v{platform.version}
+
+            </p>
+
+
+            <p className="block text-sm leading-6 text-gray-500">
+
+              {platform.environment}
+
+            </p>
+
+
+          </div>
 
 
         </div>
 
 
 
+
         <div className="mt-12 grid gap-6 md:grid-cols-4">
 
 
-
-          <Card
+          <MetricCard
 
             title="Investment Requirement"
 
@@ -126,7 +150,7 @@ export default function ExecutiveSummary({
 
 
 
-          <Card
+          <MetricCard
 
             title="Pilot Deployment"
 
@@ -140,7 +164,7 @@ export default function ExecutiveSummary({
 
 
 
-          <Card
+          <MetricCard
 
             title="Expansion Capacity"
 
@@ -156,22 +180,23 @@ export default function ExecutiveSummary({
 
 
 
-          <Card
+          <MetricCard
 
-            title="Platform Status"
+            title="Connected Assets"
 
             value={
-              dashboard.status
+              String(
+                infrastructure.monitored_sites
+              )
             }
 
-            description={
-              `${platform.name} v${platform.version}`
-            }
+            description="Digitally monitored infrastructure"
 
           />
 
 
         </div>
+
 
 
 
@@ -194,7 +219,7 @@ export default function ExecutiveSummary({
 
                 key={market}
 
-                className="rounded-full bg-white border px-4 py-2 text-sm text-gray-700"
+                className="rounded-full border bg-white px-4 py-2 text-sm text-gray-700"
 
               >
 
@@ -222,33 +247,6 @@ export default function ExecutiveSummary({
 
 
 
-function formatCurrency(
-
-  amount:number,
-
-  currency:string
-
-){
-
-  return new Intl.NumberFormat(
-
-    "en-NG",
-
-    {
-
-      style:"currency",
-
-      currency,
-
-      maximumFractionDigits:0
-
-    }
-
-  ).format(amount);
-
-}
-
-
 
 function Card({
 
@@ -271,23 +269,21 @@ function Card({
 
   return (
 
-    <div className="rounded-xl border bg-gray-50 p-6 shadow-sm">
+    <div className="rounded-xl border bg-white p-6 shadow-sm">
 
 
-      <p className="text-sm text-gray-500">
+      <p className="block text-sm leading-6 text-gray-500">
 
         {title}
 
       </p>
 
 
-
-      <p className="mt-3 text-2xl font-bold text-gray-900">
+      <p className="mt-3 text-3xl font-bold text-gray-900">
 
         {value}
 
       </p>
-
 
 
       <p className="mt-2 text-sm text-gray-600">
@@ -300,5 +296,35 @@ function Card({
     </div>
 
   );
+
+}
+
+
+
+
+function formatCurrency(
+
+  amount:number,
+
+  currency:string
+
+) {
+
+
+  return new Intl.NumberFormat(
+
+    "en-NG",
+
+    {
+
+      style:"currency",
+
+      currency,
+
+      maximumFractionDigits:0
+
+    }
+
+  ).format(amount);
 
 }

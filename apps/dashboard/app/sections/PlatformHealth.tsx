@@ -41,7 +41,7 @@ export default function PlatformHealth({
       className="bg-gray-900 text-white"
     >
 
-      <div className="mx-auto max-w-7xl px-6 py-12">
+      <div className="mx-auto max-w-7xl px-6 pt-12 pb-16">
 
 
         <h2 className="text-3xl font-bold">

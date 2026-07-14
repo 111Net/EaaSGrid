@@ -1,186 +1,104 @@
+import MetricCard from "../components/MetricCard";
+
 interface PerformanceProps {
 
-  performance: {
-
-    availability: number;
-
-    maintenance_alerts: number;
-
-  };
+performance:{
+availability:number;
+maintenance_alerts:number;
+};
 
 }
-
 
 
 export default function Performance({
+performance,
+}:PerformanceProps){
 
-  performance,
+return (
 
-}: PerformanceProps) {
+<section id="performance" className="bg-white border-t relative z-10">
 
+<div className="mx-auto max-w-7xl px-6 pt-20 pb-20 relative z-10">
 
-  return (
 
-    <section
+<div className="space-y-4 mb-12">
 
-      id="performance"
+<h2 className="text-2xl font-bold text-gray-900">
+Performance
+</h2>
 
-      className="bg-gray-50 border-t"
+<p className="text-gray-600">
+Operational reliability, monitoring and maintenance intelligence.
+</p>
 
-    >
+</div>
 
 
-      <div className="mx-auto max-w-7xl px-6 py-16">
+<div className="grid gap-8 md:grid-cols-3">
 
 
-        <h2 className="text-3xl font-bold text-gray-900">
+<MetricCard
+title="Asset Availability"
+value={`${performance.availability}%`}
+description="Infrastructure uptime performance"
+/>
 
-          Operational Performance
 
-        </h2>
+<MetricCard
+title="Remote Monitoring"
+value="Online"
+description="Continuous digital asset visibility"
+/>
 
 
+<MetricCard
+title="Maintenance Alerts"
+value={String(performance.maintenance_alerts)}
+description="Current operational issues"
+/>
 
-        <p className="mt-4 max-w-3xl text-gray-600">
 
-          Digital monitoring and operational intelligence
-          supporting reliable renewable energy infrastructure
-          deployment at scale.
+</div>
 
-        </p>
 
+</div>
 
+</section>
 
-
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-
-
-          <PerformanceCard
-
-            title="Asset Availability"
-
-            value={`${performance.availability}%`}
-
-            description="Infrastructure uptime performance"
-
-          />
-
-
-
-          <PerformanceCard
-
-            title="Remote Monitoring"
-
-            value="Online"
-
-            description="Continuous digital asset visibility"
-
-          />
-
-
-
-          <PerformanceCard
-
-            title="Maintenance Alerts"
-
-            value={String(performance.maintenance_alerts)}
-
-            description="Current operational issues"
-
-          />
-
-
-        </div>
-
-
-
-
-        <div className="mt-10 rounded-xl border bg-white p-6 shadow-sm">
-
-
-          <h3 className="text-xl font-semibold text-gray-900">
-
-            Scalable Asset Management
-
-          </h3>
-
-
-
-          <p className="mt-3 text-gray-600">
-
-            EaaSGrid's software platform provides monitoring,
-            performance tracking and operational control across
-            distributed renewable energy assets.
-
-          </p>
-
-
-        </div>
-
-
-
-      </div>
-
-
-    </section>
-
-  );
+);
 
 }
 
 
 
-
-
-function PerformanceCard({
-
-  title,
-
-  value,
-
-  description,
-
+function Card({
+title,
+value,
+description,
 }:{
+title:string;
+value:string;
+description:string;
+}){
 
-  title:string;
+return (
 
-  value:string;
+<div className="rounded-xl border bg-white p-6 shadow-sm">
 
-  description:string;
+<p className="text-sm leading-6 text-gray-500">
+{title}
+</p>
 
-}) {
+<p className="mt-3 text-3xl font-bold text-gray-900">
+{value}
+</p>
 
+<p className="mt-2 text-sm text-gray-600">
+{description}
+</p>
 
-  return (
+</div>
 
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
-
-
-      <p className="text-sm text-gray-500">
-
-        {title}
-
-      </p>
-
-
-
-      <p className="mt-3 text-3xl font-bold text-gray-900">
-
-        {value}
-
-      </p>
-
-
-
-      <p className="mt-2 text-sm text-gray-600">
-
-        {description}
-
-      </p>
-
-
-    </div>
-
-  );
+);
 
 }

@@ -23,7 +23,7 @@ export default async function Home() {
 
   return (
 
-    <div className="bg-gray-50">
+    <div className="bg-white">
 
 
       <ExecutiveSummary

@@ -1,8 +1,42 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Navbar() {
+
+  const [open, setOpen] = useState(false);
+
+
+  const links = [
+    {
+      name: "Overview",
+      href: "#overview",
+    },
+    {
+      name: "Deployments",
+      href: "#sites",
+    },
+    {
+      name: "Energy",
+      href: "#energy",
+    },
+    {
+      name: "Finance",
+      href: "#finance",
+    },
+    {
+      name: "Operations",
+      href: "#performance",
+    },
+  ];
+
+
   return (
+
     <header className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur">
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+
 
         <a href="/" className="flex flex-col">
 
@@ -17,33 +51,76 @@ export default function Navbar() {
         </a>
 
 
+
         <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
 
-          <a href="#overview" className="hover:text-green-700">
-            Overview
-          </a>
+          {links.map((link)=>(
 
-          <a href="#sites" className="hover:text-green-700">
-            Deployments
-          </a>
+            <a
+              key={link.href}
+              href={link.href}
+              className="hover:text-green-700"
+            >
+              {link.name}
+            </a>
 
-          <a href="#energy" className="hover:text-green-700">
-            Energy
-          </a>
-
-          <a href="#finance" className="hover:text-green-700">
-            Finance
-          </a>
-
-          <a href="#performance" className="hover:text-green-700">
-            Operations
-          </a>
+          ))}
 
         </nav>
 
 
+
+        <button
+
+          className="md:hidden rounded border px-3 py-2 text-sm"
+
+          onClick={()=>setOpen(!open)}
+
+        >
+
+          Menu
+
+        </button>
+
+
       </div>
 
+
+
+      {open && (
+
+        <div className="md:hidden border-t bg-white px-6 py-4">
+
+          <nav className="flex flex-col gap-4 text-sm font-medium text-gray-600">
+
+            {links.map((link)=>(
+
+              <a
+
+                key={link.href}
+
+                href={link.href}
+
+                onClick={()=>setOpen(false)}
+
+                className="hover:text-green-700"
+
+              >
+
+                {link.name}
+
+              </a>
+
+            ))}
+
+          </nav>
+
+        </div>
+
+      )}
+
+
     </header>
+
   );
 }

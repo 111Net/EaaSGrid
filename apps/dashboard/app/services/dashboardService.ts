@@ -1,6 +1,6 @@
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://192.168.100.21:4000/api/v1";
+  "http://10.247.48.78:4000/api/v1";
 
 
 

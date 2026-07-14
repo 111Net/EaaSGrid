@@ -12,24 +12,29 @@ export default function MetricCard({
 }: MetricCardProps) {
 
   return (
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
 
-      <h3 className="text-sm font-medium text-gray-500">
+    <div className="rounded-xl border bg-white p-6 shadow-sm min-h-[150px]">
+
+      <p className="block text-sm leading-6 text-gray-500">
         {title}
-      </h3>
+      </p>
 
 
-      <p className="mt-3 text-3xl font-bold text-gray-900">
+      <p className="mt-3 text-3xl font-bold leading-tight text-gray-900">
         {value}
       </p>
 
 
       {description && (
-        <p className="mt-2 text-sm text-gray-600">
+
+        <p className="mt-2 text-sm leading-5 text-gray-600">
           {description}
         </p>
+
       )}
 
     </div>
+
   );
+
 }
