@@ -42,7 +42,7 @@ export default function Hero() {
 
 
             <a
-              href="http://192.168.100.21:3001"
+              href={process.env.NEXT_PUBLIC_DASHBOARD_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-50"

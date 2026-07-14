@@ -48,7 +48,7 @@ export default function Navbar() {
 
 
           <a
-            href="http://192.168.100.21:3001"
+            href={process.env.NEXT_PUBLIC_DASHBOARD_URL}
             target="_blank"
             className="hover:text-green-700"
           >
