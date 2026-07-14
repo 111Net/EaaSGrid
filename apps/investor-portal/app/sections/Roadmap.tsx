@@ -4,7 +4,7 @@ export default function Roadmap() {
 
     <section
       id="roadmap"
-      className="border-t bg-white"
+      className="bg-white"
     >
 
       <div className="mx-auto max-w-7xl px-6 py-20">
