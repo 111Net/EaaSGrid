@@ -5,3 +5,35 @@ services:
     rootDir: apps/api
     buildCommand: npm install
     startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+
+  - type: web
+    name: eaasgrid-dashboard
+    runtime: node
+    rootDir: apps/dashboard
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_URL
+        sync: false
+
+  - type: web
+    name: eaasgrid-investor-portal
+    runtime: node
+    rootDir: apps/investor-portal
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        sync: false
