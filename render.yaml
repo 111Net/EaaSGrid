@@ -2,6 +2,7 @@ services:
   - type: web
     name: eaasgrid-api
     runtime: node
+    plan: free
     rootDir: apps/api
     buildCommand: npm install
     startCommand: npm start
@@ -17,6 +18,7 @@ services:
   - type: web
     name: eaasgrid-dashboard
     runtime: node
+    plan: free
     rootDir: apps/dashboard
     buildCommand: npm install && npm run build
     startCommand: npm run start
@@ -29,6 +31,7 @@ services:
   - type: web
     name: eaasgrid-investor-portal
     runtime: node
+    plan: free
     rootDir: apps/investor-portal
     buildCommand: npm install && npm run build
     startCommand: npm run start
