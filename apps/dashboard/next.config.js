@@ -1,3 +1,4 @@
-allowedDevOrigins: [
-  "192.168.100.21"
-],
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
+
+module.exports = nextConfig;
