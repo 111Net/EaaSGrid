@@ -1,0 +1,351 @@
+===== company.service.js =====
+const pool = require("../config/postgres");
+
+async function getCompany() {
+  const result = await pool.query(`
+    SELECT *
+    FROM companies
+    ORDER BY created_at DESC
+    LIMIT 1
+  `);
+
+  return result.rows[0] || null;
+}
+
+module.exports = {
+  getCompany
+};
+
+===== investor.service.js =====
+const pool = require("../config/postgres");
+
+async function getInvestor() {
+  const result = await pool.query(`
+    SELECT *
+    FROM investors
+    LIMIT 1
+  `);
+
+  return result.rows[0] || null;
+}
+
+module.exports = {
+  getInvestor
+};
+
+===== dashboard.service.js =====
+const pool = require("../config/postgres");
+
+async function getDashboardData() {
+  const [
+    investorResult,
+    sitesResult,
+    energyResult,
+    performanceResult,
+    financeResult
+  ] = await Promise.all([
+    pool.query(`
+      SELECT *
+      FROM investors
+      LIMIT 1
+    `),
+
+    pool.query(`
+      SELECT *
+      FROM pilot_sites
+      ORDER BY created_at
+    `),
+
+    pool.query(`
+      SELECT *
+      FROM energy_metrics
+      ORDER BY recorded_at DESC
+      LIMIT 1
+    `),
+
+    pool.query(`
+      SELECT *
+      FROM performance_metrics
+      ORDER BY recorded_at DESC
+      LIMIT 1
+    `),
+
+    pool.query(`
+      SELECT *
+      FROM financial_metrics
+      ORDER BY recorded_at DESC
+      LIMIT 1
+    `)
+  ]);
+
+  return {
+    investor: investorResult.rows[0] || null,
+    sites: sitesResult.rows,
+    energy: energyResult.rows[0] || null,
+    performance: performanceResult.rows[0] || null,
+    finance: financeResult.rows[0] || null
+  };
+}
+
+module.exports = {
+  getDashboardData
+};
+
+===== company.controller.js =====
+const companyService = require("../services/company.service");
+
+
+exports.getCompany = async (req,res,next)=>{
+
+    try{
+
+        const company = await companyService.getCompany();
+
+
+        res.json({
+
+            success:true,
+
+            message:"Company retrieved successfully",
+
+            data:company
+
+        });
+
+
+    }catch(error){
+
+        next(error);
+
+    }
+
+};
+
+===== investor.controller.js =====
+const investorService = require("../services/investor.service");
+
+
+exports.getInvestorProfile = async (req,res,next)=>{
+
+    try {
+
+        const data = await investorService.getInvestor();
+
+
+        res.json({
+
+            company:data.company_name,
+
+            project:data.project,
+
+            stage:data.stage,
+
+            funding_required:{
+                currency:data.funding_currency,
+                amount:data.funding_amount
+            },
+
+            business_model:data.business_model,
+
+            target_markets:data.target_markets,
+
+            projected_rollout:{
+                pilot_sites:data.pilot_sites,
+                annual_expansion_sites:data.annual_expansion_sites
+            },
+
+            headquarters:data.headquarters
+
+        });
+
+
+    } catch(error){
+
+        next(error);
+
+    }
+
+};
+
+===== dashboard.controller.js =====
+const dashboardService = require("../services/dashboard.service");
+
+
+exports.getDashboard = async (req, res, next) => {
+
+    try {
+
+
+        const dashboard =
+            await dashboardService.getDashboardData();
+
+
+
+        res.json({
+
+            success:true,
+
+            message:
+                "Dashboard data retrieved successfully",
+
+
+            data:{
+
+
+                platform:{
+
+                    name:
+                        "EaaSGrid",
+
+                    version:
+                        "1.0.0",
+
+                    environment:
+                        process.env.NODE_ENV || "development",
+
+                    server_time:
+                        new Date().toISOString()
+
+                },
+
+
+
+                company:{
+
+                    name:
+                        dashboard.investor.company_name,
+
+                    headquarters:
+                        dashboard.investor.headquarters,
+
+                    project:
+                        dashboard.investor.project
+
+                },
+
+
+
+                dashboard:{
+
+                    status:
+                        "Operational",
+
+                    last_updated:
+                        new Date().toISOString()
+
+                },
+
+
+
+                infrastructure:{
+
+
+                    pilot_sites:
+                        dashboard.sites.length,
+
+
+                    planned_sites_per_year:
+                        dashboard.investor.annual_expansion_sites,
+
+
+                    active_sites:
+                        dashboard.sites.filter(
+                            site =>
+                            site.status === "Active"
+                        ).length,
+
+
+                    monitored_sites:
+                        dashboard.energy.connected_assets
+
+                },
+
+
+
+                investment:{
+
+
+                    required_capital_ngn:
+                        dashboard.finance.portfolio_value_ngn,
+
+
+                    currency:
+                        dashboard.investor.funding_currency,
+
+
+                    funding_stage:
+                        dashboard.investor.stage
+
+                },
+
+
+
+                energy:{
+
+                    monthly_generation:
+                        dashboard.energy.monthly_generation_mwh,
+
+
+                    battery_utilisation:
+                        dashboard.energy.battery_utilisation_percent,
+
+
+                    connected_assets:
+                        dashboard.energy.connected_assets
+
+                },
+
+
+
+                finance:{
+
+
+                    monthly_revenue:
+                        dashboard.finance.monthly_revenue_ngn,
+
+
+                    portfolio_value:
+                        dashboard.finance.portfolio_value_ngn
+
+                },
+
+
+
+                performance:{
+
+
+                    availability:
+                        dashboard.performance.availability_percent,
+
+
+                    maintenance_alerts:
+                        dashboard.performance.maintenance_alerts
+
+                },
+
+
+
+                sites:
+                    dashboard.sites,
+
+
+                business_model:
+                    dashboard.investor.business_model,
+
+
+                target_markets:
+                    dashboard.investor.target_markets
+
+
+            }
+
+        });
+
+
+    } catch(error){
+
+        next(error);
+
+    }
+
+};

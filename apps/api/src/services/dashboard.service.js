@@ -1,112 +1,56 @@
-const supabase = require("../config/database");
-
+const pool = require("../config/postgres");
 
 async function getDashboardData() {
+  const [
+    investorResult,
+    sitesResult,
+    energyResult,
+    performanceResult,
+    financeResult
+  ] = await Promise.all([
+    pool.query(`
+      SELECT *
+      FROM investors
+      LIMIT 1
+    `),
 
+    pool.query(`
+      SELECT *
+      FROM pilot_sites
+      ORDER BY created_at
+    `),
 
-    const [
-        investorResult,
-        sitesResult,
-        energyResult,
-        performanceResult,
-        financeResult
-    ] = await Promise.all([
+    pool.query(`
+      SELECT *
+      FROM energy_metrics
+      ORDER BY recorded_at DESC
+      LIMIT 1
+    `),
 
+    pool.query(`
+      SELECT *
+      FROM performance_metrics
+      ORDER BY recorded_at DESC
+      LIMIT 1
+    `),
 
-        supabase
-            .from("investors")
-            .select("*")
-            .single(),
+    pool.query(`
+      SELECT *
+      FROM financial_metrics
+      ORDER BY recorded_at DESC
+      LIMIT 1
+    `)
+  ]);
 
-
-        supabase
-            .from("pilot_sites")
-            .select("*")
-            .order("created_at"),
-
-
-        supabase
-            .from("energy_metrics")
-            .select("*")
-            .order("recorded_at", {
-                ascending:false
-            })
-            .limit(1)
-            .single(),
-
-
-        supabase
-            .from("performance_metrics")
-            .select("*")
-            .order("recorded_at", {
-                ascending:false
-            })
-            .limit(1)
-            .single(),
-
-
-        supabase
-            .from("financial_metrics")
-            .select("*")
-            .order("recorded_at", {
-                ascending:false
-            })
-            .limit(1)
-            .single()
-
-    ]);
-
-
-
-    const errors = [
-        investorResult.error,
-        sitesResult.error,
-        energyResult.error,
-        performanceResult.error,
-        financeResult.error
-    ]
-    .filter(Boolean);
-
-
-
-    if(errors.length){
-
-        throw new Error(
-            errors[0].message
-        );
-
-    }
-
-
-
-    return {
-
-
-        investor:
-            investorResult.data,
-
-
-        sites:
-            sitesResult.data,
-
-
-        energy:
-            energyResult.data,
-
-
-        performance:
-            performanceResult.data,
-
-
-        finance:
-            financeResult.data
-
-    };
-
-
+  return {
+    investor: investorResult.rows[0] || null,
+    sites: sitesResult.rows,
+    energy: energyResult.rows[0] || null,
+    performance: performanceResult.rows[0] || null,
+    finance: financeResult.rows[0] || null
+  };
 }
 
-
 module.exports = {
-    getDashboardData
+  getDashboardData
 };
