@@ -1,3 +1,7 @@
+-- EAASGrid Initial Schema Migration
+-- Generated automatically from database/schema.sql
+-- Generated: 2026-07-16T08:38:07+00:00
+
 --
 -- PostgreSQL database dump
 --
