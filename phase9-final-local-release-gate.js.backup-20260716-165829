@@ -1,0 +1,189 @@
+const fs = require("fs");
+const path = require("path");
+const { execFileSync } = require("child_process");
+
+const ROOT = process.cwd();
+let failures = 0;
+
+function exists(file) {
+  return fs.existsSync(path.join(ROOT, file));
+}
+
+function read(file) {
+  return fs.readFileSync(path.join(ROOT, file), "utf8");
+}
+
+function pass(label) {
+  console.log(`${label}=PASS`);
+}
+
+function fail(label) {
+  console.log(`${label}=FAIL`);
+  failures++;
+}
+
+function run(command, args = [], env = {}) {
+  try {
+    execFileSync(command, args, {
+      cwd: ROOT,
+      env: { ...process.env, ...env },
+      stdio: "inherit"
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+console.log("EAASGRID PHASE 9 FINAL LOCAL RELEASE GATE");
+console.log("==========================================");
+console.log();
+console.log(new Date().toISOString());
+console.log();
+
+console.log("===== DEPLOYMENT ARCHITECTURE =====");
+
+if (!exists("render.yaml")) {
+  pass("RENDER_CONFIGURATION_ABSENT");
+} else {
+  fail("RENDER_CONFIGURATION_ABSENT");
+}
+
+const sourceFiles = [
+  "apps",
+  "packages"
+];
+
+let obsoleteReferences = 0;
+
+for (const directory of sourceFiles) {
+  if (!exists(directory)) continue;
+
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (
+        entry.name === "node_modules" ||
+        entry.name === ".next" ||
+        entry.name === ".git"
+      ) {
+        continue;
+      }
+
+      const full = path.join(dir, entry.name);
+
+      if (entry.isDirectory()) {
+        walk(full);
+        continue;
+      }
+
+      if (!/\.(js|jsx|ts|tsx|json|yaml|yml)$/.test(entry.name)) {
+        continue;
+      }
+
+      const content = fs.readFileSync(full, "utf8");
+
+      if (
+        content.includes("supabase.co") ||
+        content.includes("@supabase/") ||
+        content.includes("SUPABASE_URL") ||
+        content.includes("SUPABASE_SERVICE_ROLE_KEY") ||
+        content.includes("service_role")
+      ) {
+        console.log(`OBSOLETE_REFERENCE=${path.relative(ROOT, full)}`);
+        obsoleteReferences++;
+      }
+    }
+  }
+
+  walk(path.join(ROOT, directory));
+}
+
+if (obsoleteReferences === 0) {
+  pass("OBSOLETE_SUPABASE_REFERENCE_SCAN");
+} else {
+  fail("OBSOLETE_SUPABASE_REFERENCE_SCAN");
+}
+
+console.log();
+
+console.log("===== LOCAL POSTGRESQL =====");
+
+if (run("psql", [
+  "-h", "127.0.0.1",
+  "-p", "5432",
+  "-U", "eaas_user",
+  "-d", "eaas_db",
+  "-c", "SELECT current_database(), current_user;"
+], {
+  PGPASSWORD: process.env.PGPASSWORD || ""
+})) {
+  pass("POSTGRESQL_CONNECTION");
+} else {
+  fail("POSTGRESQL_CONNECTION");
+}
+
+console.log();
+
+console.log("===== NPM INSTALL =====");
+
+if (run("npm", ["install"])) {
+  pass("NPM_INSTALL");
+} else {
+  fail("NPM_INSTALL");
+}
+
+console.log();
+
+console.log("===== PRODUCTION BUILDS =====");
+
+if (run("npm", ["run", "build", "--workspace", "investor-portal"], {
+  NODE_ENV: "production"
+})) {
+  pass("INVESTOR_PORTAL_BUILD");
+} else {
+  fail("INVESTOR_PORTAL_BUILD");
+}
+
+if (run("npm", ["run", "build", "--workspace", "dashboard"], {
+  NODE_ENV: "production"
+})) {
+  pass("DASHBOARD_BUILD");
+} else {
+  fail("DASHBOARD_BUILD");
+}
+
+console.log();
+
+console.log("===== API SYNTAX =====");
+
+const syntaxFiles = [
+  "apps/api/src/server.js",
+  "apps/api/src/config/postgres.js",
+  "apps/api/src/services/investor.service.js",
+  "apps/api/src/services/dashboard.service.js"
+];
+
+for (const file of syntaxFiles) {
+  if (!exists(file)) {
+    fail(`SYNTAX_FILE_${file}`);
+    continue;
+  }
+
+  if (run("node", ["--check", file])) {
+    pass(`SYNTAX_${file}`);
+  } else {
+    fail(`SYNTAX_${file}`);
+  }
+}
+
+console.log();
+
+console.log("===== FINAL RELEASE RESULT =====");
+console.log(`FAILED_CHECKS=${failures}`);
+
+if (failures > 0) {
+  console.log("PHASE9_FINAL_LOCAL_RELEASE_GATE=FAIL");
+  process.exit(1);
+}
+
+console.log("PHASE9_FINAL_LOCAL_RELEASE_GATE=PASS");
