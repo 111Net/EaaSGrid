@@ -3,6 +3,6 @@ require("dotenv").config({
 });
 
 console.log(
-    "Jest loaded SUPABASE:",
-    process.env.SUPABASE_URL ? "YES" : "NO"
+    "Jest loaded :",
+    process.env. ? "YES" : "NO"
 );

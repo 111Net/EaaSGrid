@@ -12,6 +12,7 @@
     "start": "echo 'Start handled per app'"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "turbo": "^2.10.3",
     "typescript": "^6.0.3"
   },

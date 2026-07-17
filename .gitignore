@@ -40,3 +40,7 @@ build/
 # IDE
 .vscode/
 .idea/
+
+.env.local
+node_modules
+.next

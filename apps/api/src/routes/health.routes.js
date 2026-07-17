@@ -1,47 +1,33 @@
 const express = require("express");
 const router = express.Router();
 
-const supabase = require("../config/database");
+const pool = require("../config/postgres");
 
-
-router.get("/", (req,res)=>{
-    res.json({
-        status:"ok",
-        service:"eaasgrid-api"
-    });
+router.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    service: "eaasgrid-api"
+  });
 });
 
-
-router.get("/database", async(req,res)=>{
-
-    if(!supabase){
-        return res.json({
-            status:"failed",
-            message:"Supabase not configured"
-        });
-    }
-
-
-    const {data,error}=await supabase
-        .from("companies")
-        .select("*")
-        .limit(1);
-
-
-    if(error){
-        return res.json({
-            status:"error",
-            message:error.message
-        });
-    }
-
+router.get("/database", async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT current_database() AS database,
+             current_user AS user,
+             current_timestamp AS server_time
+    `);
 
     res.json({
-        status:"connected",
-        data
+      status: "connected",
+      database: result.rows[0]
     });
-
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error.message
+    });
+  }
 });
 
-
-module.exports=router;
+module.exports = router;

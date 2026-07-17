@@ -1,0 +1,389 @@
+EaaSGrid Database Master Verification Report
+============================================
+Project: /data/eaasgrid-platform
+Started: Fri Jul 17 09:27:43 AM UTC 2026
+
+==============================================
+ EaaSGrid Automated Migration Controller
+==============================================
+Project: /data/eaasgrid-platform
+Started: Fri Jul 17 09:28:56 AM UTC 2026
+
+Configuration:
+  Host:     127.0.0.1
+  Port:     5432
+  Database: eaas_db
+  User:     eaas_user
+  Password: [loaded from .env]
+
+[PASS] PostgreSQL service is running
+[PASS] Application database connection successful
+[PASS] Migration directory detected
+[PASS] 1 SQL migration(s) detected
+[PASS] Migration baseline registry verified
+[PASS] Migration history registry verified
+
+==============================================
+ Creating Pre-Migration Backup
+==============================================
+[PASS] Pre-migration backup created
+
+==============================================
+ Processing Migration Files
+==============================================
+[SKIP] 001_initial_schema.sql already applied
+
+==============================================
+ Post-Migration Verification
+==============================================
+[PASS] Schema verification successful: 11 public tables
+[PASS] Migration history verified: 1 record(s)
+
+==============================================
+ FINAL RESULT
+==============================================
+PASS: 9
+WARN: 0
+FAIL: 0
+Applied: 0
+Skipped: 1
+Backup: /data/eaasgrid-platform/backups/database/eaas_db_pre_controller_20260717_092857.sql
+Report: /data/eaasgrid-platform/eaasgrid-migration-controller-report.txt
+
+MIGRATION CONTROLLER STATUS: PASS
+==============================================
+ EaaSGrid Migration Controller End-to-End Test
+==============================================
+Project: /data/eaasgrid-platform
+Started: Fri Jul 17 09:28:58 AM UTC 2026
+
+[PASS] Migration controller detected
+[PASS] Temporary test migration created
+
+==============================================
+ TEST RUN 1: APPLY NEW MIGRATION
+==============================================
+==============================================
+ EaaSGrid Automated Migration Controller
+==============================================
+Project: /data/eaasgrid-platform
+Started: Fri Jul 17 09:28:58 AM UTC 2026
+
+Configuration:
+  Host:     127.0.0.1
+  Port:     5432
+  Database: eaas_db
+  User:     eaas_user
+  Password: [loaded from .env]
+
+[PASS] PostgreSQL service is running
+[PASS] Application database connection successful
+[PASS] Migration directory detected
+[PASS] 2 SQL migration(s) detected
+[PASS] Migration baseline registry verified
+[PASS] Migration history registry verified
+
+==============================================
+ Creating Pre-Migration Backup
+==============================================
+[PASS] Pre-migration backup created
+
+==============================================
+ Processing Migration Files
+==============================================
+[SKIP] 001_initial_schema.sql already applied
+[INFO] Applying new migration: 999_test_controller_migration.sql
+CREATE TABLE
+INSERT 0 1
+[PASS] Migration applied: 999_test_controller_migration.sql
+
+==============================================
+ Post-Migration Verification
+==============================================
+[PASS] Schema verification successful: 12 public tables
+[PASS] Migration history verified: 2 record(s)
+
+==============================================
+ FINAL RESULT
+==============================================
+PASS: 10
+WARN: 0
+FAIL: 0
+Applied: 1
+Skipped: 1
+Backup: /data/eaasgrid-platform/backups/database/eaas_db_pre_controller_20260717_092858.sql
+Report: /data/eaasgrid-platform/eaasgrid-migration-controller-report.txt
+
+MIGRATION CONTROLLER STATUS: PASS
+[PASS] Migration controller completed successfully
+[PASS] Temporary migration created the test table
+[PASS] Migration was recorded in migration history
+
+==============================================
+ TEST RUN 2: VERIFY IDEMPOTENCY
+==============================================
+==============================================
+ EaaSGrid Automated Migration Controller
+==============================================
+Project: /data/eaasgrid-platform
+Started: Fri Jul 17 09:29:00 AM UTC 2026
+
+Configuration:
+  Host:     127.0.0.1
+  Port:     5432
+  Database: eaas_db
+  User:     eaas_user
+  Password: [loaded from .env]
+
+[PASS] PostgreSQL service is running
+[PASS] Application database connection successful
+[PASS] Migration directory detected
+[PASS] 2 SQL migration(s) detected
+[PASS] Migration baseline registry verified
+[PASS] Migration history registry verified
+
+==============================================
+ Creating Pre-Migration Backup
+==============================================
+[PASS] Pre-migration backup created
+
+==============================================
+ Processing Migration Files
+==============================================
+[SKIP] 001_initial_schema.sql already applied
+[SKIP] 999_test_controller_migration.sql already applied
+
+==============================================
+ Post-Migration Verification
+==============================================
+[PASS] Schema verification successful: 12 public tables
+[PASS] Migration history verified: 2 record(s)
+
+==============================================
+ FINAL RESULT
+==============================================
+PASS: 9
+WARN: 0
+FAIL: 0
+Applied: 0
+Skipped: 2
+Backup: /data/eaasgrid-platform/backups/database/eaas_db_pre_controller_20260717_092900.sql
+Report: /data/eaasgrid-platform/eaasgrid-migration-controller-report.txt
+
+MIGRATION CONTROLLER STATUS: PASS
+[PASS] Second controller execution completed successfully
+[PASS] Already-applied migration was not replayed
+
+==============================================
+ FINAL TEST RESULT
+==============================================
+PASS: 7
+FAIL: 0
+
+MIGRATION CONTROLLER END-TO-END TEST: PASS
+
+[INFO] Cleaning up migration controller test...
+[PASS] Test cleanup completed
+==============================================
+ EaaSGrid Automated Backup Verification
+==============================================
+Project: /data/eaasgrid-platform
+Started: Fri Jul 17 09:29:03 AM UTC 2026
+
+[PASS] Backup directory detected
+[PASS] Latest backup detected
+[PASS] Backup file size valid: 22132 bytes
+[PASS] PostgreSQL dump signature verified
+[PASS] Backup SHA-256 checksum calculated
+
+==============================================
+ RESTORE TEST
+==============================================
+[PASS] Temporary restore database created
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+SET
+SET
+SET
+CREATE TABLE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+COPY 1
+COPY 0
+COPY 10
+COPY 1
+COPY 0
+COPY 2
+COPY 0
+COPY 1
+COPY 0
+COPY 5
+COPY 0
+COPY 0
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+     14
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      7
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      5
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+ALTER TABLE
+[PASS] Backup restored successfully
+[PASS] Restored schema verified: 12 public tables
+[PASS] Restored indexes verified: 33
+
+==============================================
+ FINAL RESULT
+==============================================
+PASS: 9
+WARN: 0
+FAIL: 0
+Backup: /data/eaasgrid-platform/backups/database/eaas_db_pre_controller_20260717_092900.sql
+Report: /data/eaasgrid-platform/eaasgrid-database-backup-verification-report.txt
+
+DATABASE BACKUP VERIFICATION: PASS
+
+[INFO] Cleaning up temporary restore database...
+[PASS] Temporary restore database cleanup completed
+
+============================================
+FINAL MASTER VERIFICATION RESULT
+============================================
+PASS: 11
+WARN: 0
+FAIL: 0
+Completed: Fri Jul 17 09:29:06 AM UTC 2026

@@ -1,30 +1,23 @@
-const supabase = require("../config/database");
+const pool = require("../config/postgres");
 
 async function testDatabaseConnection() {
+  try {
+    const result = await pool.query(`
+      SELECT current_database() AS database,
+             current_user AS user,
+             current_timestamp AS server_time
+    `);
 
-  if (!supabase) {
     return {
-      status: "not_configured",
-      message: "Supabase credentials missing"
+      status: "connected",
+      data: result.rows[0]
     };
-  }
-
-  const { data, error } = await supabase
-    .from("health_check")
-    .select("*")
-    .limit(1);
-
-  if (error) {
+  } catch (error) {
     return {
       status: "error",
       message: error.message
     };
   }
-
-  return {
-    status: "connected",
-    data
-  };
 }
 
 module.exports = {

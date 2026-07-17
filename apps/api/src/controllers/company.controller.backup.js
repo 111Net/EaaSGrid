@@ -19,7 +19,7 @@ exports.getCompanyProfile = (req, res) => {
       "Investor Showcase and Technology Validation",
 
     deployment:
-      "Docker + FastAPI + Supabase",
+      "Docker + FastAPI + ",
 
     year_started: 2024
   });

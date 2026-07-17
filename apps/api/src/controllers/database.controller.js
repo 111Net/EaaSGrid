@@ -1,28 +1,21 @@
-const supabase = require("../config/database")
+const pool = require("../config/postgres");
 
 exports.testDatabase = async (req, res) => {
-    try {
-        const { data, error } = await supabase
-            .from("companies")
-            .select("*");
+  try {
+    const result = await pool.query(`
+      SELECT current_database() AS database,
+             current_user AS user,
+             current_timestamp AS server_time
+    `);
 
-        if (error) {
-            return res.status(500).json({
-                success: false,
-                error: error.message
-            });
-        }
-
-        res.json({
-            success: true,
-            rows: data.length,
-            data
-        });
-
-    } catch (err) {
-        res.status(500).json({
-            success: false,
-            error: err.message
-        });
-    }
+    res.json({
+      success: true,
+      data: result.rows[0]
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
 };
