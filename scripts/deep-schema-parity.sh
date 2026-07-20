@@ -43,6 +43,14 @@ LEGACY_TABLES=$(sudo -u postgres psql \
     SELECT table_name
     FROM information_schema.tables
     WHERE table_schema = 'public'
+      AND table_name NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
+      AND table_name NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
       AND table_name <> 'alembic_version'
       AND table_type = 'BASE TABLE'
     ORDER BY table_name;
@@ -56,6 +64,14 @@ TARGET_TABLES=$(sudo -u postgres psql \
     SELECT table_name
     FROM information_schema.tables
     WHERE table_schema = 'public'
+      AND table_name NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
+      AND table_name NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
       AND table_name <> 'alembic_version'
       AND table_type = 'BASE TABLE'
     ORDER BY table_name;
@@ -87,6 +103,14 @@ LEGACY_COLUMNS=$(sudo -u postgres psql \
            is_nullable
     FROM information_schema.columns
     WHERE table_schema = 'public'
+      AND table_name NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
+      AND table_name NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
       AND table_name <> 'alembic_version'
     ORDER BY table_name, ordinal_position;
   ")
@@ -102,6 +126,14 @@ TARGET_COLUMNS=$(sudo -u postgres psql \
            is_nullable
     FROM information_schema.columns
     WHERE table_schema = 'public'
+      AND table_name NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
+      AND table_name NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
       AND table_name <> 'alembic_version'
     ORDER BY table_name, ordinal_position;
   ")
@@ -137,6 +169,11 @@ LEGACY_PK=$(sudo -u postgres psql \
      AND tc.table_schema = kcu.table_schema
     WHERE tc.constraint_type = 'PRIMARY KEY'
       AND tc.table_schema = 'public'
+      AND tc.table_name NOT IN (
+          'alembic_version',
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
     ORDER BY tc.table_name, kcu.ordinal_position;
   ")
 
@@ -152,6 +189,11 @@ TARGET_PK=$(sudo -u postgres psql \
      AND tc.table_schema = kcu.table_schema
     WHERE tc.constraint_type = 'PRIMARY KEY'
       AND tc.table_schema = 'public'
+      AND tc.table_name NOT IN (
+          'alembic_version',
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
     ORDER BY tc.table_name, kcu.ordinal_position;
   ")
 

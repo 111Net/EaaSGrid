@@ -46,6 +46,14 @@ sudo -u postgres psql \
       indexdef
     FROM pg_indexes
     WHERE schemaname = 'public'
+      AND tablename NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
+      AND tablename NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
       AND tablename <> 'alembic_version'
     ORDER BY tablename, indexname;
   " > /tmp/eaasgrid-legacy-indexes.txt
@@ -66,6 +74,14 @@ sudo -u postgres psql \
       indexdef
     FROM pg_indexes
     WHERE schemaname = 'public'
+      AND tablename NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
+      AND tablename NOT IN (
+          'eaasgrid_migration_baseline',
+          'eaasgrid_migration_history'
+      )
       AND tablename <> 'alembic_version'
     ORDER BY tablename, indexname;
   " > /tmp/eaasgrid-target-indexes.txt

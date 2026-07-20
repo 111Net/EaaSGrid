@@ -44,3 +44,14 @@ build/
 .env.local
 node_modules
 .next
+# Runtime state
+.runtime/
+*.pid
+
+# Local environment and generated runtime state
+.env
+.env.local
+.env.*.local
+
+# Generated audit output
+reports/
