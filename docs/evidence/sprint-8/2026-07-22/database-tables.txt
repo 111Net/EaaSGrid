@@ -1,0 +1,7 @@
+                    List of relations
+ Schema |            Name             | Type  |   Owner   
+--------+-----------------------------+-------+-----------
+ public | eaasgrid_migration_baseline | table | eaas_user
+ public | eaasgrid_migration_history  | table | eaas_user
+(2 rows)
+

@@ -15,7 +15,7 @@ export default function Footer() {
 
             <p className="mt-2 text-sm text-gray-600">
               Building distributed renewable energy infrastructure
-              through Energy-as-a-Service.
+              through Everything-as-a-Service.
             </p>
 
           </div>

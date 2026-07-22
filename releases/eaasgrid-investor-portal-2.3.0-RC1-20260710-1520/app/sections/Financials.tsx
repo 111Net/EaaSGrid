@@ -38,7 +38,7 @@ export default function Financials() {
 
             <ul className="mt-4 space-y-2 text-gray-600">
 
-              <li>• 6 Energy-as-a-Service pilot sites</li>
+              <li>• 6 Everything-as-a-Service pilot sites</li>
 
               <li>• Capital requirement: ₦298 Million</li>
 

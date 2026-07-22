@@ -96,7 +96,7 @@ Response:
     "company_name": "EAASGrid Platform Ltd",
     "parent_company": "IIMCICS Ltd",
     "country": "Nigeria",
-    "platform": "Energy-as-a-Service (EaaS)",
+    "platform": "Everything-as-a-Service (EaaS)",
     "vision": "To become Africa's leading intelligent energy and enterprise infrastructure platform.",
     "mission": "Deliver reliable distributed energy infrastructure through technology, automation and digital services.",
     "current_stage": "Investor Showcase and Technology Validation",
@@ -122,14 +122,14 @@ Response:
 
 {
     "company": "EAASGrid Platform Ltd",
-    "project": "Energy-as-a-Service (EaaS) Platform",
+    "project": "Everything-as-a-Service (EaaS) Platform",
     "stage": "Investor Showcase",
     "funding_required": {
         "currency": "NGN",
         "amount": 298000000
     },
     "business_model": [
-        "Energy-as-a-Service",
+        "Everything-as-a-Service",
         "Subscription Revenue",
         "Infrastructure Leasing",
         "Carbon Credits",
@@ -216,7 +216,7 @@ Response:
         },
 
         "business_model": [
-            "Energy-as-a-Service",
+            "Everything-as-a-Service",
             "Subscription Revenue",
             "Infrastructure Leasing",
             "Carbon Credits",

@@ -21,7 +21,7 @@ export default function Footer() {
 
           <p className="text-sm text-gray-500">
 
-            Energy-as-a-Service Infrastructure Platform
+            Everything-as-a-Service Infrastructure Platform
 
           </p>
 

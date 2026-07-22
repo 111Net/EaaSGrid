@@ -36,7 +36,7 @@ COPY public.providers (id, provider_code, company_name, contact_person, email, p
 2	P002	GreenVolt Solutions Ltd	Chika Okafor	chika.okafor@greenvolt-demo.com	+2348001001002	Solar & Battery Systems
 3	P003	BrightPower Technologies	Musa Ibrahim	musa.ibrahim@brightpower-demo.com	+2348001001003	Smart Metering
 4	P004	EcoSun Services Ltd	Kemi Adebayo	kemi.adebayo@ecosun-demo.com	+2348001001004	Solar Maintenance
-5	P005	Nova Energy Systems	Emeka Nwosu	emeka.nwosu@novaenergy-demo.com	+2348001001005	Energy-as-a-Service
+5	P005	Nova Energy Systems	Emeka Nwosu	emeka.nwosu@novaenergy-demo.com	+2348001001005	Everything-as-a-Service
 \.
 
 

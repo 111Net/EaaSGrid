@@ -5,7 +5,7 @@ export default function Contact() {
 
       <p>
         EaaSGrid Platform Ltd is building Africa’s distributed energy
-        infrastructure through an Energy-as-a-Service business model.
+        infrastructure through an Everything-as-a-Service business model.
       </p>
 
       <p>
@@ -34,7 +34,7 @@ export default function Contact() {
       <p>
         EaaSGrid Platform Ltd
         <br />
-        Energy-as-a-Service infrastructure for Africa.
+        Everything-as-a-Service infrastructure for Africa.
       </p>
     </section>
   );

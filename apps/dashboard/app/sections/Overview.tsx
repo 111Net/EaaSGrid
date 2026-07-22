@@ -50,7 +50,7 @@ export default function Overview({
 
           EaaSGrid provides a scalable renewable energy
           infrastructure platform combining financed energy assets,
-          digital monitoring and recurring Energy-as-a-Service delivery.
+          digital monitoring and recurring Everything-as-a-Service delivery.
 
         </p>
 

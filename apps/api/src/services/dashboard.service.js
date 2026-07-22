@@ -53,11 +53,11 @@ async function getDashboardData() {
   return {
     investor: {
       company_name: provider?.company_name || "EaaSGrid",
-      project: "Energy-as-a-Service Platform",
+      project: "Everything-as-a-Service Platform",
       stage: "Pilot Deployment",
       funding_currency: "NGN",
       funding_amount: 298000000,
-      business_model: "Energy-as-a-Service",
+      business_model: "Everything-as-a-Service",
       target_markets: [
         "Nigeria",
         "Commercial and institutional energy users"

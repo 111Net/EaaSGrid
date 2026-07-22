@@ -1,0 +1,51 @@
+ M README.md
+ M apps/api/docs/API.md
+ M apps/api/docs/openapi.yaml
+ M apps/api/src/controllers/company.controller.backup.js
+ M apps/api/src/controllers/dashboard.controller.js
+ M apps/api/src/services/dashboard.service.js
+ M apps/api/src/services/investor.service.js
+ M apps/dashboard/app/components/Footer.tsx
+ M apps/dashboard/app/components/Navbar.tsx
+ M apps/dashboard/app/layout.tsx
+ M apps/dashboard/app/sections/ExecutiveSummary.tsx
+ M apps/dashboard/app/sections/Overview.tsx
+ M apps/investor-portal/app/components/Footer.tsx
+ M apps/investor-portal/app/components/Navbar.tsx
+ M apps/investor-portal/app/layout.tsx
+ M apps/investor-portal/app/sections.backup/Hero.tsx
+ M apps/investor-portal/app/sections/BusinessModel.tsx
+ M apps/investor-portal/app/sections/Contact.tsx
+ M apps/investor-portal/app/sections/Hero.tsx
+ M apps/investor-portal/app/sections/InvestmentOpportunity.tsx
+ M apps/investor-portal/app/sections/Market.tsx
+ M apps/investor-portal/app/sections/Roadmap.tsx
+ M apps/investor-portal/app/sections/Solution.tsx
+ M database/legacy-snapshot/eaas_db-data.sql
+ M docs/investor-portal/content-management.md
+ M docs/investor-portal/overview.md
+ M docs/releases/content-freeze-v1.md
+ M packages/config/src/brand.ts
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/components/Footer.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/layout.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/sections.backup/Hero.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/sections/BusinessModel.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/sections/Contact.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/sections/Financials.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/sections/Hero.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/sections/Market.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app/sections/Solution.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/components/Footer.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/layout.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/sections.backup/Hero.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/sections/BusinessModel.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/sections/Contact.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/sections/Financials.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/sections/Hero.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/sections/Market.tsx
+ M releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app/sections/Solution.tsx
+?? docs/evidence/
+?? docs/sprint-reports/
+?? eaasgrid-migration-release-gate-report.txt
+?? eaasgrid-schema-comparison-report.txt
+?? scripts/sprint-8-migration-release-gate.sh

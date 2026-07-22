@@ -45,7 +45,7 @@ export default function Navbar() {
           </span>
 
           <span className="text-xs text-gray-500">
-            Energy-as-a-Service Infrastructure Platform
+            Everything-as-a-Service Infrastructure Platform
           </span>
 
         </a>

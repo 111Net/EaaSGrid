@@ -3,7 +3,7 @@ openapi: 3.0.3
 info:
   title: EaaSGrid Platform API
   description: |
-    Backend API for EaaSGrid Energy-as-a-Service Platform.
+    Backend API for EaaSGrid Everything-as-a-Service Platform.
 
     Provides company information,
     investor data,

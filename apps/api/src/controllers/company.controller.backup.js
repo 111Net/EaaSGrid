@@ -7,7 +7,7 @@ exports.getCompanyProfile = (req, res) => {
 
     country: "Nigeria",
 
-    platform: "Energy-as-a-Service (EaaS)",
+    platform: "Everything-as-a-Service (EaaS)",
 
     vision:
       "To become Africa's leading intelligent energy and enterprise infrastructure platform.",

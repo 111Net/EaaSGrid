@@ -66,7 +66,7 @@ File:
 
 Purpose:
 
-Explains the EaaSGrid Energy-as-a-Service model.
+Explains the EaaSGrid Everything-as-a-Service model.
 
 Contains:
 

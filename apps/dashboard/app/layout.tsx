@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "EaaSGrid Dashboard",
   description:
-    "Operational monitoring dashboard for EaaSGrid distributed renewable energy infrastructure, pilot deployments and Energy-as-a-Service performance.",
+    "Operational monitoring dashboard for EaaSGrid distributed renewable energy infrastructure, pilot deployments and Everything-as-a-Service performance.",
 
   keywords: [
     "EaaSGrid",
-    "Energy-as-a-Service",
+    "Everything-as-a-Service",
     "Renewable Energy",
     "Solar Infrastructure",
     "Battery Storage",

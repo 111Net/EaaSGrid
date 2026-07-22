@@ -16,7 +16,7 @@ export default function Market() {
             Across Africa, businesses and institutions require reliable
             electricity infrastructure to operate efficiently. EaaSGrid
             addresses this challenge by deploying distributed renewable
-            energy systems through an Energy-as-a-Service model.
+            energy systems through an Everything-as-a-Service model.
 
           </p>
 

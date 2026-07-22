@@ -7,7 +7,7 @@ export default function Hero() {
 
       <p>
         EaaSGrid delivers reliable distributed energy
-        infrastructure through an Energy-as-a-Service
+        infrastructure through an Everything-as-a-Service
         business model.
       </p>
 

@@ -5,7 +5,7 @@
 The EaaSGrid Investor Portal is the public-facing presentation platform
 for EaaSGrid Platform Ltd.
 
-It communicates the Energy-as-a-Service infrastructure model,
+It communicates the Everything-as-a-Service infrastructure model,
 investment opportunity, deployment strategy and partnership
 opportunities.
 
@@ -45,7 +45,7 @@ The portal contains:
 
 ### Hero
 
-Introduces EaaSGrid and the Energy-as-a-Service vision.
+Introduces EaaSGrid and the Everything-as-a-Service vision.
 
 ### Problem
 

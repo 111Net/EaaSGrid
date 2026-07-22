@@ -63,7 +63,7 @@ export default function Roadmap() {
           <Phase
             phase="Phase 4"
             title="Regional Growth"
-            description="Expand the Energy-as-a-Service platform across African markets."
+            description="Expand the Everything-as-a-Service platform across African markets."
           />
 
 

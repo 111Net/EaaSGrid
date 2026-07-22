@@ -1,6 +1,6 @@
 export const BRAND = {
   company: "EaaSGrid Energy",
-  product: "Energy-as-a-Service Platform",
+  product: "Everything-as-a-Service Platform",
 
   tagline:
     "Reliable, intelligent, and scalable energy infrastructure",

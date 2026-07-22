@@ -7,7 +7,7 @@ export default function Solution() {
         <div className="max-w-3xl">
 
           <h2 className="text-4xl font-bold tracking-tight text-gray-900">
-            Our Solution: Energy-as-a-Service Infrastructure Platform
+            Our Solution: Everything-as-a-Service Infrastructure Platform
           </h2>
 
 

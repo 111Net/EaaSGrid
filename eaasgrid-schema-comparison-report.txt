@@ -1,0 +1,131 @@
+==============================================
+EAASGRID LEGACY VS TARGET SCHEMA COMPARISON
+==============================================
+Date: 2026-07-22T21:02:50+00:00
+Legacy database: eaas_db
+Target schema: /data/eaasgrid-platform/database/schema.sql
+
+==============================================
+1. LEGACY TABLES
+==============================================
+alembic_version
+clients
+devices
+eaasgrid_migration_baseline
+eaasgrid_migration_history
+energy_usage
+ledger_accounts
+ledger_entries
+providers
+transactions
+wallets
+
+==============================================
+2. TARGET SQL FILE
+==============================================
+TARGET_SCHEMA_FILE=FOUND
+TARGET_SCHEMA_LINES=576
+TARGET_SCHEMA_BYTES=12553
+
+==============================================
+3. TARGET TABLE DEFINITIONS
+==============================================
+29:CREATE TABLE public.alembic_version (
+38:CREATE TABLE public.clients (
+73:CREATE TABLE public.devices (
+106:CREATE TABLE public.energy_usage (
+140:CREATE TABLE public.ledger_accounts (
+171:CREATE TABLE public.ledger_entries (
+205:CREATE TABLE public.providers (
+240:CREATE TABLE public.transactions (
+274:CREATE TABLE public.wallets (
+
+==============================================
+4. LEGACY TABLES NOT FOUND IN TARGET SQL
+==============================================
+eaasgrid_migration_baseline
+eaasgrid_migration_history
+
+==============================================
+5. LEGACY COLUMN INVENTORY
+==============================================
+         table_name          |     column_name     |          data_type          | is_nullable 
+-----------------------------+---------------------+-----------------------------+-------------
+ clients                     | id                  | integer                     | NO
+ clients                     | client_code         | character varying           | YES
+ clients                     | full_name           | character varying           | YES
+ clients                     | email               | character varying           | YES
+ clients                     | phone               | character varying           | YES
+ clients                     | device_type         | character varying           | YES
+ clients                     | provider_code       | character varying           | YES
+ devices                     | id                  | integer                     | NO
+ devices                     | device_code         | character varying           | YES
+ devices                     | device_type         | character varying           | YES
+ devices                     | manufacturer        | character varying           | YES
+ devices                     | connectivity        | character varying           | YES
+ eaasgrid_migration_baseline | id                  | bigint                      | NO
+ eaasgrid_migration_baseline | migration_file      | text                        | NO
+ eaasgrid_migration_baseline | migration_checksum  | text                        | NO
+ eaasgrid_migration_baseline | alembic_revision    | text                        | YES
+ eaasgrid_migration_baseline | baseline_created_at | timestamp with time zone    | NO
+ eaasgrid_migration_history  | id                  | bigint                      | NO
+ eaasgrid_migration_history  | migration_name      | text                        | NO
+ eaasgrid_migration_history  | checksum            | text                        | NO
+ eaasgrid_migration_history  | applied_at          | timestamp with time zone    | NO
+ energy_usage                | id                  | integer                     | NO
+ energy_usage                | user                | character varying           | YES
+ energy_usage                | kwh                 | double precision            | YES
+ energy_usage                | cost                | double precision            | YES
+ energy_usage                | timestamp           | timestamp without time zone | YES
+ energy_usage                | provider_code       | character varying           | YES
+ ledger_accounts             | id                  | integer                     | NO
+ ledger_accounts             | owner_id            | character varying           | YES
+ ledger_accounts             | balance_cached      | double precision            | YES
+ ledger_entries              | id                  | integer                     | NO
+ ledger_entries              | owner_id            | character varying           | YES
+ ledger_entries              | entry_type          | character varying           | YES
+ ledger_entries              | amount              | double precision            | YES
+ ledger_entries              | reference           | character varying           | YES
+ ledger_entries              | timestamp           | timestamp without time zone | YES
+ providers                   | id                  | integer                     | NO
+ providers                   | provider_code       | character varying           | YES
+ providers                   | company_name        | character varying           | YES
+ providers                   | contact_person      | character varying           | YES
+ providers                   | email               | character varying           | YES
+ providers                   | phone               | character varying           | YES
+ providers                   | service_type        | character varying           | YES
+ transactions                | id                  | integer                     | NO
+ transactions                | user                | character varying           | YES
+ transactions                | type                | character varying           | YES
+ transactions                | amount              | double precision            | YES
+ transactions                | timestamp           | timestamp without time zone | YES
+ transactions                | provider_code       | character varying           | YES
+ wallets                     | id                  | integer                     | NO
+ wallets                     | user                | character varying           | YES
+ wallets                     | balance             | double precision            | YES
+ wallets                     | provider_code       | character varying           | YES
+(53 rows)
+
+
+==============================================
+6. TARGET SQL REFERENCES TO LEGACY TABLES
+==============================================
+TARGET_REFERENCES=clients
+TARGET_REFERENCES=devices
+TARGET_REFERENCES=energy_usage
+TARGET_REFERENCES=ledger_accounts
+TARGET_REFERENCES=ledger_entries
+TARGET_REFERENCES=providers
+TARGET_REFERENCES=transactions
+TARGET_REFERENCES=wallets
+
+==============================================
+7. MIGRATION DIRECTORY
+==============================================
+MIGRATION_FILES=1
+/data/eaasgrid-platform/database/migrations/001_initial_schema.sql
+
+==============================================
+COMPARISON COMPLETE
+STATUS: PASS
+==============================================

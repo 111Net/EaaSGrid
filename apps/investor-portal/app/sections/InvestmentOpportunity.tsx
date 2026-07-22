@@ -48,7 +48,7 @@ export default function InvestmentOpportunity() {
 
           <Card
             title="Deployment Model"
-            value="Energy-as-a-Service"
+            value="Everything-as-a-Service"
             description="Customers subscribe to reliable renewable energy infrastructure"
           />
 

@@ -13,7 +13,7 @@ export default function BusinessModel() {
 
           <p className="mt-6 text-lg leading-8 text-gray-600">
 
-            EaaSGrid operates an Energy-as-a-Service model where
+            EaaSGrid operates an Everything-as-a-Service model where
             infrastructure is deployed, managed and monetised through
             predictable long-term service agreements.
 

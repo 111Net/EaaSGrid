@@ -12,7 +12,7 @@ July 2026
 
 # Company Positioning
 
-EaaSGrid Platform Ltd is building Africa's distributed energy infrastructure through an Energy-as-a-Service business model.
+EaaSGrid Platform Ltd is building Africa's distributed energy infrastructure through an Everything-as-a-Service business model.
 
 
 ---
@@ -21,7 +21,7 @@ EaaSGrid Platform Ltd is building Africa's distributed energy infrastructure thr
 
 ## Title
 
-Powering Africa's Energy Future Through Energy-as-a-Service Infrastructure
+Powering Africa's Energy Future Through Everything-as-a-Service Infrastructure
 
 
 ## Description
@@ -106,7 +106,7 @@ Asset management, maintenance and lifecycle optimisation ensure long-term infras
 
 # Business Model
 
-EaaSGrid operates an Energy-as-a-Service model where infrastructure is deployed, managed and monetised through predictable long-term service agreements.
+EaaSGrid operates an Everything-as-a-Service model where infrastructure is deployed, managed and monetised through predictable long-term service agreements.
 
 
 ## Revenue Streams

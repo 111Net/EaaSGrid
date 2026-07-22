@@ -11,7 +11,7 @@ export default function Hero() {
           <h1 className="text-5xl font-bold tracking-tight text-gray-900">
 
             Powering Africa&apos;s Energy Future
-            Through Energy-as-a-Service Infrastructure
+            Through Everything-as-a-Service Infrastructure
 
           </h1>
 

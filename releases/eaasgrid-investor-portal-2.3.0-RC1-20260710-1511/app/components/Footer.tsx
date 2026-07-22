@@ -9,7 +9,7 @@ export default function Footer() {
         </p>
 
         <p className="mt-2">
-          Energy-as-a-Service infrastructure for Africa.
+          Everything-as-a-Service infrastructure for Africa.
         </p>
 
       </div>

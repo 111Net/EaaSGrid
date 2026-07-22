@@ -21,10 +21,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "EaaSGrid Investor Portal",
   description:
-    "EaaSGrid delivers distributed renewable energy infrastructure through an Energy-as-a-Service business model for businesses, institutions and communities across Africa.",
+    "EaaSGrid delivers distributed renewable energy infrastructure through an Everything-as-a-Service business model for businesses, institutions and communities across Africa.",
   keywords: [
     "EaaSGrid",
-    "Energy-as-a-Service",
+    "Everything-as-a-Service",
     "Renewable Energy",
     "Distributed Energy Infrastructure",
     "Africa",

@@ -28,7 +28,7 @@ exports.getDashboard = async (req, res, next) => {
           headquarters:
             investor.headquarters || "Ibadan, Oyo State, Nigeria",
           project:
-            investor.project || "Energy-as-a-Service Platform"
+            investor.project || "Everything-as-a-Service Platform"
         },
 
         dashboard: {
@@ -81,7 +81,7 @@ exports.getDashboard = async (req, res, next) => {
         sites,
 
         business_model:
-          investor.business_model || "Energy-as-a-Service",
+          investor.business_model || "Everything-as-a-Service",
 
         target_markets:
           investor.target_markets || []

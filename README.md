@@ -1,6 +1,6 @@
 EaaSGrid Platform
 
-A complete Energy-as-a-Service digital infrastructure platform.
+A complete Everything-as-a-Service digital infrastructure platform.
 
 Applications:
 - Investor Showcase

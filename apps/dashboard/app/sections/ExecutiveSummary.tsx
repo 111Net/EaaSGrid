@@ -71,7 +71,7 @@ export default function ExecutiveSummary({
 
             <h1 className="mt-4 text-5xl font-bold leading-tight text-gray-900">
 
-              Energy-as-a-Service Infrastructure Monitoring Platform
+              Everything-as-a-Service Infrastructure Monitoring Platform
 
             </h1>
 
