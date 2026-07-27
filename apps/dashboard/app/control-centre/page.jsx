@@ -1,8 +1,6 @@
 "use client";
 
-import RoleGuard from "@/components/RoleGuard";
-import LogoutButton from "@/components/LogoutButton";
-
+import Navbar from "@/components/layout/Navbar";
 import MetricCard from "@/components/dashboard/MetricCard";
 import EnergyChart from "@/components/charts/EnergyChart";
 import RevenueChart from "@/components/charts/RevenueChart";
@@ -12,247 +10,121 @@ import { useEffect, useState } from "react";
 
 export default function ControlCentre(){
 
-    const [data,setData] = useState(null);
-    const [error,setError] = useState("");
+const [dashboard,setDashboard] = useState(null);
 
 
-    useEffect(()=>{
+useEffect(()=>{
 
-        fetch(
-            process.env.NEXT_PUBLIC_API_URL +
-            "/api/v1/dashboard"
-        )
-        .then(response=>response.json())
-        .then(result=>{
-            setData(result);
-        })
-        .catch(err=>{
-            setError(
-                "Unable to load dashboard data"
-            );
-        });
 
+async function load(){
 
-    },[]);
+const response =
+await fetch(
+process.env.NEXT_PUBLIC_API_URL +
+"/api/v1/dashboard"
+);
 
 
+const data =
+await response.json();
 
-    return (
 
-        <RoleGuard allowedRoles={["ADMIN"]}>
+setDashboard(data.data);
 
 
-        <div
-        style={{
-            padding:"30px",
-            background:"#f8fafc",
-            minHeight:"100vh"
-        }}
-        >
+}
 
 
-            <div
-            style={{
-                display:"flex",
-                justifyContent:"space-between",
-                alignItems:"center",
-                marginBottom:"30px"
-            }}
-            >
+load();
 
 
-                <div>
+},[]);
 
-                    <h1>
-                        EaaSGrid Control Centre
-                    </h1>
 
-                    <p>
-                        Executive Platform Intelligence
-                    </p>
 
-                </div>
+if(!dashboard)
+return <p>Loading Control Centre...</p>;
 
 
-                <LogoutButton/>
 
+return (
 
-            </div>
+<div>
 
+<Navbar />
 
 
-            {
-                error &&
-                <p>
-                    {error}
-                </p>
-            }
+<main
+style={{
+padding:"30px",
+background:"#f4f7fb",
+minHeight:"calc(100vh - 70px)"
+}}
+>
 
 
+<h1>
+Executive Platform Intelligence
+</h1>
 
-            {
-            data &&
 
-            <>
 
+<div
+style={{
+display:"grid",
+gridTemplateColumns:"repeat(4,1fr)",
+gap:"20px"
+}}
+>
 
-            <div
-            style={{
-                display:"grid",
-                gridTemplateColumns:
-                "repeat(auto-fit,minmax(220px,1fr))",
-                gap:"20px"
-            }}
-            >
 
+<MetricCard
+title="Platform Status"
+value={dashboard.dashboard.status}
+/>
 
-                <MetricCard
-                title="Platform Status"
-                value={
-                    data.data.dashboard.status
-                }
-                />
 
+<MetricCard
+title="Pilot Sites"
+value={dashboard.infrastructure.pilot_sites}
+/>
 
-                <MetricCard
-                title="Pilot Sites"
-                value={
-                    data.data.infrastructure.pilot_sites
-                }
-                />
 
+<MetricCard
+title="Capital Requirement"
+value={"₦"+dashboard.investment.required_capital_ngn.toLocaleString()}
+/>
 
-                <MetricCard
-                title="Annual Target"
-                value={
-                    data.data.infrastructure.planned_sites_per_year
-                }
-                />
 
+<MetricCard
+title="Monthly Revenue"
+value={"₦"+dashboard.finance.monthly_revenue.toLocaleString()}
+/>
 
-                <MetricCard
-                title="Capital Requirement"
-                value="₦298,000,000"
-                />
 
+</div>
 
-                <MetricCard
-                title="Monthly Revenue"
-                value={
-                    "₦" +
-                    data.data.finance.monthly_revenue
-                }
-                />
 
 
-                <MetricCard
-                title="Availability"
-                value={
-                    data.data.performance.availability +
-                    "%"
-                }
-                />
+<section
+style={{
+marginTop:"40px"
+}}
+>
 
+<EnergyChart />
 
-            </div>
+<RevenueChart />
 
+</section>
 
 
-            <br/>
+</main>
 
 
-            <section>
+</div>
 
-                <h2>
-                    ⚡ Energy Performance
-                </h2>
+);
 
-
-                <EnergyChart/>
-
-
-            </section>
-
-
-
-
-            <br/>
-
-
-            <section>
-
-                <h2>
-                    💰 Revenue Intelligence
-                </h2>
-
-
-                <RevenueChart/>
-
-
-            </section>
-
-
-
-            <br/>
-
-
-            <section>
-
-                <h2>
-                    Business Model
-                </h2>
-
-
-                <p>
-                    {
-                    data.data.business_model
-                    }
-                </p>
-
-
-            </section>
-
-
-
-            <section>
-
-                <h2>
-                    Target Markets
-                </h2>
-
-
-                <ul>
-
-                {
-                data.data.target_markets.map(
-                    (item,index)=>(
-
-                    <li key={index}>
-                        {item}
-                    </li>
-
-                    )
-                )
-                }
-
-                </ul>
-
-
-            </section>
-
-
-
-            </>
-
-            }
-
-
-        </div>
-
-
-        </RoleGuard>
-
-
-    );
 
 }
