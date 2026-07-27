@@ -1,0 +1,22 @@
+gui:
+
+applications:
+
+
+ - control-centre
+ - customer-portal
+ - partner-portal
+
+
+access:
+
+method:
+
+ browser
+
+
+authentication:
+
+ required: true
+
+

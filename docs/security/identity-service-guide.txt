@@ -1,0 +1,18 @@
+
+EaaSGrid Identity Service
+
+
+Provides:
+
+
+- User authentication
+
+- JWT sessions
+
+- Role permissions
+
+- Protected portals
+
+- Account management
+
+

@@ -1,0 +1,6 @@
+security:
+
+ actions:
+  - vulnerability_scan
+  - firewall_check
+  - access_review

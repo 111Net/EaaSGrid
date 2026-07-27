@@ -1,0 +1,15 @@
+customer_onboarding:
+
+
+workflow:
+
+create_account
+
+assign_tenant
+
+activate_services
+
+enable_billing
+
+generate_reports
+

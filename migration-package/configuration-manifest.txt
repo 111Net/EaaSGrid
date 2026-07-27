@@ -1,0 +1,5 @@
+/data/eaasgrid-platform/.env.example
+/data/eaasgrid-platform/.env
+/data/eaasgrid-platform/apps/dashboard/.env.local
+/data/eaasgrid-platform/apps/api/.env.example
+/data/eaasgrid-platform/apps/investor-portal/.env.local

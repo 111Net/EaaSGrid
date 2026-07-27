@@ -1,0 +1,19 @@
+api_testing:
+
+targets:
+
+- health
+
+- dashboard
+
+- authentication
+
+
+validation:
+
+response_time
+
+availability
+
+errors
+

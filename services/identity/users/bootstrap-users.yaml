@@ -1,0 +1,23 @@
+
+users:
+
+
+- email:
+
+admin@eaasgrid.com
+
+role:
+
+ADMIN
+
+
+
+- email:
+
+operations@eaasgrid.com
+
+role:
+
+OPERATIONS
+
+

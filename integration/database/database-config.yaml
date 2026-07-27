@@ -1,0 +1,24 @@
+database:
+
+engine:
+
+ PostgreSQL
+
+
+version:
+
+ 16
+
+
+connections:
+
+
+primary:
+
+ eaas_db
+
+
+analytics:
+
+ solar_ai
+

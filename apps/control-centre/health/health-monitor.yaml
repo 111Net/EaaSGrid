@@ -1,0 +1,23 @@
+monitoring:
+
+
+services:
+
+
+- api
+
+- database
+
+- lifecycle
+
+- frontend
+
+
+status:
+
+green
+
+amber
+
+red
+

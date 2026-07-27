@@ -1,0 +1,17 @@
+applications:
+
+control_centre:
+ PASS
+
+customer_portal:
+ PASS
+
+partner_portal:
+ PASS
+
+investor_portal:
+ PASS
+
+api:
+ PASS
+

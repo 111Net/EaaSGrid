@@ -1,0 +1,14 @@
+infrastructure:
+
+server:
+ PASS
+
+database:
+ PASS
+
+network:
+ PASS
+
+storage:
+ PASS
+

@@ -1,0 +1,21 @@
+routes:
+
+control_centre:
+
+ /api/control
+
+
+customer:
+
+ /api/customer
+
+
+partner:
+
+ /api/partner
+
+
+billing:
+
+ /api/billing
+

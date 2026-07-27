@@ -1,0 +1,17 @@
+users:
+
+administrators:
+  target: 10
+
+operations:
+  target: 50
+
+customers:
+  target: 500
+
+partners:
+  target: 100
+
+investors:
+  target: 100
+

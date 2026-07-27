@@ -1,0 +1,16 @@
+EaaSGrid Billing Operations
+
+
+Capabilities:
+
+- Customer subscriptions
+- Invoice generation
+- Payment tracking
+- Revenue reporting
+- Partner settlement
+
+
+Future GUI:
+
+Billing Control Centre
+

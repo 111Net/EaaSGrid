@@ -1,0 +1,10 @@
+recovery_testing:
+
+checks:
+
+- backup_exists
+
+- restore_process
+
+- evidence_created
+

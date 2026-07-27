@@ -1,0 +1,12 @@
+tenant_testing:
+
+enabled: true
+
+checks:
+
+- data_isolation
+
+- permissions
+
+- access_control
+

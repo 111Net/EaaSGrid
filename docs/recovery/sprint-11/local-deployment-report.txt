@@ -1,0 +1,66 @@
+==========================================
+EaaSGrid Platform Sprint 11
+Local Deployment Gate Automation
+Date: 2026-07-23
+==========================================
+
+[1] Host System Check
+ Static hostname: user
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: df7541a0755c44c3a673c918a6d6b464
+         Boot ID: 8d761a98627241b383a0d59dd73a858a
+  Virtualization: vmware
+Operating System: Ubuntu 24.04.4 LTS
+          Kernel: Linux 6.8.0-136-generic
+    Architecture: x86-64
+ Hardware Vendor: VMware, Inc.
+  Hardware Model: VMware Virtual Platform
+Firmware Version: 6.00
+   Firmware Date: Thu 2020-11-12
+    Firmware Age: 5y 8month 1w 2d
+
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host noprefixroute 
+    inet 192.168.100.21/24 brd 192.168.100.255 scope global ens33
+    inet6 fe80::20c:29ff:fe09:ac64/64 scope link 
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-5a43a2db7cc6
+    inet6 fe80::e0ac:feff:fee9:ac3b/64 scope link 
+    inet6 fe80::70ce:69ff:fe26:ac6b/64 scope link 
+    inet6 fe80::4824:e6ff:fe66:7886/64 scope link 
+
+[2] Required Services Check
+postgresql : RUNNING
+redis-server : NOT RUNNING
+nginx : RUNNING
+
+[3] Port Availability Check
+PORT 3000 : ACTIVE
+PORT 3001 : ACTIVE
+PORT 4000 : ACTIVE
+PORT 5432 : ACTIVE
+PORT 6379 : ACTIVE
+PORT 80 : ACTIVE
+PORT 443 : NOT ACTIVE
+
+[4] Application Directory Check
+apps/api : FOUND
+apps/dashboard : FOUND
+apps/investor-portal : FOUND
+
+[5] API Health Check
+{"status":"ok","service":"eaasgrid-api"}
+API HEALTH : PASS
+
+[6] Frontend Availability Check
+http://localhost:3000 HTTP STATUS 500
+http://localhost:3001 HTTP STATUS 500
+
+[7] Database Connectivity Check
+/var/run/postgresql:5432 - accepting connections
+
+[8] Redis Connectivity Check
+PONG
+
+[9] Recovery Evidence

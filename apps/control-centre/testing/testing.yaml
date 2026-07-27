@@ -1,0 +1,7 @@
+testing:
+
+ actions:
+  - platform_tests
+  - security_tests
+  - database_tests
+  - generate_report

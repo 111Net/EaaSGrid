@@ -1,0 +1,23 @@
+jwt:
+
+
+algorithm:
+
+HS256
+
+
+expiry:
+
+24h
+
+
+claims:
+
+- user_id
+
+- email
+
+- role
+
+- tenant
+

@@ -1,0 +1,11 @@
+{
+ "service":"eaasgrid-api",
+ "base_url":"http://192.168.100.21:4000",
+ "discovered":"Sun Jul 26 12:49:11 PM UTC 2026",
+ "health_candidates":[
+ "/health",
+ "/api/health",
+ "/api/v1/health"
+ ],
+ "auth_endpoint":"/api/v1/auth/login"
+}

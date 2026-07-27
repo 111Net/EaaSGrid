@@ -1,0 +1,9 @@
+{
+ "api_base":"http://192.168.100.21:4000",
+ "health_endpoint":"/api/v1/health",
+ "login_endpoint":"/api/v1/auth/login",
+ "frontend":"Next.js",
+ "backend":"Express",
+ "database":"PostgreSQL",
+ "generated":"Sun Jul 26 12:52:44 PM UTC 2026"
+}

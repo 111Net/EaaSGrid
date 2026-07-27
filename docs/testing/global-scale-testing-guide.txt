@@ -1,0 +1,12 @@
+EaaSGrid Global Scale Testing
+
+
+Validate:
+
+- User access
+- Tenant isolation
+- API performance
+- Database reliability
+- Recovery procedures
+
+

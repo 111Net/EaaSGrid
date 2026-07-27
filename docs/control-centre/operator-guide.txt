@@ -1,0 +1,19 @@
+EaaSGrid Control Centre
+
+
+Operator workflow:
+
+
+1. Login
+
+2. Check platform status
+
+3. Review alerts
+
+4. Run tests
+
+5. Generate reports
+
+6. Manage operations
+
+

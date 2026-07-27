@@ -1,0 +1,17 @@
+security_controls:
+
+authentication:
+ status: ready
+
+authorization:
+ status: ready
+
+rbac:
+ status: ready
+
+audit_logging:
+ status: ready
+
+tenant_isolation:
+ status: ready
+

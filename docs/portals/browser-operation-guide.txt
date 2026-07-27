@@ -1,0 +1,28 @@
+EaaSGrid Browser Operations
+
+
+Users:
+
+Admin
+
+Operations Worker
+
+Customer
+
+Partner
+
+Investor
+
+
+Operation:
+
+Login
+
+Select Portal
+
+Monitor
+
+Manage
+
+Report
+

@@ -1,0 +1,27 @@
+roles:
+
+  super_admin:
+    permissions:
+      - "*"
+
+  operations_admin:
+    permissions:
+      - platform.manage
+      - deployment.manage
+      - reports.view
+
+  customer:
+    permissions:
+      - services.view
+      - reports.view
+      - billing.view
+
+  partner:
+    permissions:
+      - deployments.view
+      - projects.manage
+
+  auditor:
+    permissions:
+      - reports
+      -  - compliance.view

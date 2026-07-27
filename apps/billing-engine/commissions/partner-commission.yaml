@@ -1,0 +1,18 @@
+commission:
+
+partner:
+
+ tracked: true
+
+
+metrics:
+
+ - installations
+ - revenue_generated
+ - commission_due
+
+
+approval:
+
+ required: true
+

@@ -1,0 +1,16 @@
+analysis:
+
+inputs:
+
+ - system_health
+ - logs
+ - metrics
+ - deployments
+
+
+outputs:
+
+ - health_summary
+ - recommendations
+ - alerts
+

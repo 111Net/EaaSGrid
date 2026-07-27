@@ -1,0 +1,16 @@
+EaaSGrid Beta Testing Guide
+
+
+Test:
+
+1. Login
+
+2. Review dashboard
+
+3. Check services
+
+4. Run reports
+
+5. Validate workflows
+
+

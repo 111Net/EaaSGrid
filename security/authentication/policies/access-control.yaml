@@ -1,0 +1,14 @@
+authorization:
+
+ model:
+  RBAC
+
+rules:
+
+ least_privilege:
+  enabled
+
+audit:
+
+ access_tracking:
+  enabled

@@ -1,0 +1,85 @@
+==========================================
+EaaSGrid Platform Sprint 09
+Code Cleanup & Repository Standardisation
+Date: 2026-07-23
+==========================================
+
+[1] Repository Structure Audit
+FOUND: apps
+FOUND: packages
+FOUND: database
+FOUND: infrastructure
+FOUND: scripts
+FOUND: docs
+
+[2] Temporary File Detection
+/data/eaasgrid-platform/dashboard.log
+/data/eaasgrid-platform/apps/dashboard/.next/dev/logs/next-development.log
+/data/eaasgrid-platform/apps/investor-portal/investor.log
+/data/eaasgrid-platform/apps/investor-portal/.next/dev/logs/next-development.log
+/data/eaasgrid-platform/apps/investor-portal/dashboard.log
+/data/eaasgrid-platform/logs/systemd/eaasgrid-investor.log
+/data/eaasgrid-platform/logs/systemd/eaasgrid-api.error.log
+/data/eaasgrid-platform/logs/systemd/eaasgrid-showcase.error.log
+/data/eaasgrid-platform/logs/systemd/eaasgrid-showcase.log
+/data/eaasgrid-platform/logs/systemd/eaasgrid-dashboard.log
+/data/eaasgrid-platform/logs/systemd/eaasgrid-investor.error.log
+/data/eaasgrid-platform/logs/systemd/eaasgrid-api.log
+/data/eaasgrid-platform/logs/systemd/eaasgrid-dashboard.error.log
+/data/eaasgrid-platform/logs/local/showcase.log
+/data/eaasgrid-platform/logs/local/investor.log
+/data/eaasgrid-platform/logs/local/dashboard.log
+/data/eaasgrid-platform/logs/local/api.log
+/data/eaasgrid-platform/phase7-investor-portal.log
+/data/eaasgrid-platform/phase7-api.log
+/data/eaasgrid-platform/phase7-dashboard.log
+/data/eaasgrid-platform/docs/evidence/sprint-8/2026-07-22/git-commit.log
+/data/eaasgrid-platform/docs/evidence/sprint-8/2026-07-22/migration-release-gate.log
+/data/eaasgrid-platform/docs/evidence/sprint-8/2026-07-22/migration-commit-preflight.log
+
+[3] Git Repository Audit
+ D scripts/install-sprint8.sh
+?? docs/sprint-reports/2026-07-23/
+?? scripts/name.sh
+?? scripts/sprint-9-code-cleanup-standardisation.sh
+?? scripts/sprints/
+phase-7-dashboard
+
+[4] Node Project Validation
+Checking /data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/package.json
+Checking /data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/package.json
+Checking /data/eaasgrid-platform/apps/dashboard/.next/dev/package.json
+Checking /data/eaasgrid-platform/apps/dashboard/.next/dev/build/package.json
+Checking /data/eaasgrid-platform/apps/dashboard/.next/package.json
+Checking /data/eaasgrid-platform/apps/dashboard/.next/build/package.json
+Checking /data/eaasgrid-platform/apps/dashboard/package.json
+Checking /data/eaasgrid-platform/apps/api/package.json
+Checking /data/eaasgrid-platform/apps/investor-portal/.next/dev/package.json
+Checking /data/eaasgrid-platform/apps/investor-portal/.next/dev/build/package.json
+Checking /data/eaasgrid-platform/apps/investor-portal/.next/package.json
+Checking /data/eaasgrid-platform/apps/investor-portal/.next/build/package.json
+Checking /data/eaasgrid-platform/apps/investor-portal/package.json
+Checking /data/eaasgrid-platform/apps/showcase/.next/package.json
+Checking /data/eaasgrid-platform/apps/showcase/.next/build/package.json
+Checking /data/eaasgrid-platform/apps/showcase/package.json
+Checking /data/eaasgrid-platform/packages/ui/package.json
+Checking /data/eaasgrid-platform/packages/config/package.json
+Checking /data/eaasgrid-platform/package.json
+
+[5] Python Project Validation
+/data/eaasgrid-platform/tools/release/validate.py
+/data/eaasgrid-platform/tools/release/release.py
+/data/eaasgrid-platform/tools/release/build.py
+/data/eaasgrid-platform/tools/release/version.py
+/data/eaasgrid-platform/tools/release/package.py
+/data/eaasgrid-platform/tools/release/report.py
+/data/eaasgrid-platform/node_modules/flatted/python/flatted.py
+
+[6] Duplicate Configuration Search
+/data/eaasgrid-platform/.env.example
+/data/eaasgrid-platform/.env
+/data/eaasgrid-platform/apps/dashboard/.env.local
+/data/eaasgrid-platform/apps/api/.env.example
+/data/eaasgrid-platform/apps/investor-portal/.env.local
+
+[7] Recovery Evidence

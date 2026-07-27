@@ -1,0 +1,60 @@
+
+{
+  "roles": {
+
+    "ADMIN": {
+      "landing": "/control-centre",
+      "permissions": [
+        "platform",
+        "users",
+        "finance",
+        "operations"
+      ]
+    },
+
+    "OPERATIONS": {
+      "landing": "/operations",
+      "permissions": [
+        "sites",
+        "devices",
+        "monitoring"
+      ]
+    },
+
+    "PARTNER": {
+      "landing": "/partner",
+      "permissions": [
+        "projects",
+        "services"
+      ]
+    },
+
+    "INVESTOR": {
+      "landing": "/investor",
+      "permissions": [
+        "portfolio",
+        "finance",
+        "reports"
+      ]
+    },
+
+    "CUSTOMER": {
+      "landing": "/customer",
+      "permissions": [
+        "usage",
+        "billing",
+        "support"
+      ]
+    },
+
+    "COLLABORATOR": {
+      "landing": "/collaborator",
+      "permissions": [
+        "shared-projects",
+        "communication"
+      ]
+    }
+
+  }
+}
+

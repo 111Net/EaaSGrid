@@ -1,0 +1,13 @@
+payments:
+
+methods:
+
+ - bank_transfer
+ - online_payment
+ - direct_debit
+
+
+tracking:
+
+ enabled: true
+

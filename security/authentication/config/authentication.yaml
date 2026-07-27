@@ -1,0 +1,19 @@
+authentication:
+
+ provider:
+  local
+
+session:
+
+ timeout_minutes:
+  30
+
+password_policy:
+
+ minimum_length:
+  12
+
+mfa:
+
+ enabled:
+  false

@@ -1,0 +1,17 @@
+operations:
+
+monitoring:
+ ready
+
+backup:
+ ready
+
+disaster_recovery:
+ ready
+
+incident_management:
+ ready
+
+change_management:
+ ready
+

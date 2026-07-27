@@ -1,0 +1,20 @@
+frontend:
+
+framework:
+
+Next.js
+
+
+pages:
+
+- login
+
+- dashboard
+
+- operations-console
+
+
+status:
+
+enabled
+

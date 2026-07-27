@@ -1,0 +1,17 @@
+subscriptions:
+
+ customer:
+  required: true
+
+ plans:
+
+  - Tier_A
+  - Tier_B
+  - Tier_C
+
+ status:
+
+  - active
+  - suspended
+  - cancelled
+

@@ -1,0 +1,22 @@
+
+EaaSGrid Browser Operations
+
+
+Access:
+
+Control Centre:
+http://server-address
+
+
+Functions:
+
+- Platform status
+- Testing
+- Deployment
+- Reports
+- Lifecycle
+- Customers
+- Partners
+- Billing
+
+

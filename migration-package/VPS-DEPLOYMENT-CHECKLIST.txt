@@ -1,0 +1,16 @@
+
+EaaSGrid VPS Deployment Checklist
+
+[ ] Ubuntu Server Ready
+[ ] Docker Installed
+[ ] PostgreSQL Installed
+[ ] Redis Installed
+[ ] Node Installed
+[ ] Python Environment Installed
+[ ] Nginx Configured
+[ ] Firewall Configured
+[ ] SSL Certificate Installed
+[ ] Database Restored
+[ ] Applications Started
+[ ] Health Checks Passed
+

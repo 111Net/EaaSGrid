@@ -1,0 +1,19 @@
+dashboard:
+
+
+widgets:
+
+- platform_health
+
+- customers
+
+- partners
+
+- revenue
+
+- ai_assistant
+
+- expansion
+
+- service_factories
+

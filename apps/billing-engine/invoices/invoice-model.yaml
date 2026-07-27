@@ -1,0 +1,17 @@
+invoice:
+
+ fields:
+
+  - customer
+  - service
+  - billing_period
+  - amount
+  - status
+
+
+status:
+
+ - generated
+ - paid
+ - overdue
+

@@ -1,0 +1,22 @@
+
+EaaSGrid AI Assistant
+
+
+Available requests:
+
+
+"Show platform health"
+
+
+"Explain current alerts"
+
+
+"Summarise today's changes"
+
+
+"Recommend operational actions"
+
+
+"Generate executive report"
+
+

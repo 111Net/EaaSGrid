@@ -1,0 +1,17 @@
+
+EaaSGrid GUI Deployment Checklist
+
+
+[ ] Next.js running
+
+[ ] Authentication connected
+
+[ ] Database connected
+
+[ ] RBAC enabled
+
+[ ] Admin login tested
+
+[ ] Operations login tested
+
+

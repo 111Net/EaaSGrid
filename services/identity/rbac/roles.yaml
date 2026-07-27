@@ -1,0 +1,48 @@
+
+roles:
+
+
+ADMIN:
+
+permissions:
+
+- all
+
+
+
+OPERATIONS:
+
+permissions:
+
+- monitoring
+
+- reports
+
+- diagnostics
+
+
+
+CUSTOMER:
+
+permissions:
+
+- services
+
+- billing
+
+
+
+PARTNER:
+
+permissions:
+
+- projects
+
+
+
+INVESTOR:
+
+permissions:
+
+- metrics
+

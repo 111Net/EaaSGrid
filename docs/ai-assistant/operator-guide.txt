@@ -1,0 +1,10 @@
+
+AI Operations Assistant
+
+
+Purpose:
+
+Assist operators with platform monitoring,
+analysis and recommendations.
+
+

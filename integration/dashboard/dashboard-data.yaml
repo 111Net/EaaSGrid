@@ -1,0 +1,23 @@
+dashboard:
+
+
+live_metrics:
+
+
+- platform_status
+
+- active_customers
+
+- active_sites
+
+- revenue
+
+- service_health
+
+- reports
+
+
+source:
+
+ api_database
+

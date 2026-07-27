@@ -1,0 +1,12 @@
+deployment:
+
+ actions:
+  - deploy
+  - restart
+  - rollback
+  - health_check
+
+ environments:
+  - development
+  - testing
+  - production

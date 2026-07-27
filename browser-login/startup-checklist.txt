@@ -1,0 +1,17 @@
+
+Before Login Test:
+
+
+[ ] PostgreSQL running
+
+[ ] API running
+
+[ ] Next.js frontend running
+
+[ ] Environment variables loaded
+
+[ ] Database connected
+
+[ ] Browser reachable
+
+

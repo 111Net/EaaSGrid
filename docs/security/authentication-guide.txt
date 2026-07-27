@@ -1,0 +1,18 @@
+EaaSGrid Authentication System
+
+
+Supported Users:
+
+- Administrator
+- Operations Team
+- Customer
+- Partner
+- Auditor
+
+
+Security Features:
+
+- Role Based Access Control
+- Session Management
+- Permission Policies
+

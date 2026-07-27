@@ -1,0 +1,23 @@
+tenants:
+
+
+types:
+
+- customer
+
+- partner
+
+- internal
+
+
+isolation:
+
+enabled: true
+
+
+status:
+
+- active
+
+- suspended
+

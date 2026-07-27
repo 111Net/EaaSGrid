@@ -1,0 +1,20 @@
+{
+"name":"EaaSGrid Control Centre",
+
+"widgets":[
+
+"Platform Health",
+
+"API Status",
+
+"Lifecycle Status",
+
+"Reports",
+
+"Operations"
+
+],
+
+"mode":"live"
+
+}

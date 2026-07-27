@@ -1,0 +1,20 @@
+EaaSGrid API Database Integration
+
+
+Connected Components:
+
+
+- Control Centre GUI
+
+- API Services
+
+- PostgreSQL Database
+
+- Lifecycle Automation
+
+
+Purpose:
+
+
+Provide live operational data to the browser interface.
+

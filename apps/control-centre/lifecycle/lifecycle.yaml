@@ -1,0 +1,7 @@
+lifecycle:
+
+ actions:
+  - run_audit
+  - create_backup
+  - generate_report
+  - recovery_test

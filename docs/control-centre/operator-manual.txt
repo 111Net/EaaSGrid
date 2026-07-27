@@ -1,0 +1,12 @@
+EaaSGrid Control Centre
+
+Daily operation:
+
+1. Login
+2. Check platform health
+3. Review alerts
+4. Run tests
+5. Approve deployments
+6. Generate reports
+
+Terminal becomes emergency-only.

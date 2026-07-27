@@ -1,0 +1,21 @@
+{
+"frontend":"Next.js",
+"dashboard":"http://192.168.100.21:3000",
+"api":"http://192.168.100.21:4000",
+"roles":[
+"ADMIN",
+"OPERATIONS",
+"PARTNER",
+"INVESTOR",
+"CUSTOMER",
+"COLLABORATOR"
+],
+"protected_routes":[
+"/control-centre",
+"/operations",
+"/partner",
+"/investor",
+"/customer"
+],
+"generated":"Sun Jul 26 01:04:55 PM UTC 2026"
+}

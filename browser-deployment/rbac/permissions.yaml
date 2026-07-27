@@ -1,0 +1,43 @@
+permissions:
+
+
+ADMIN:
+
+access:
+
+- all
+
+
+OPERATIONS:
+
+access:
+
+- health
+
+- reports
+
+- monitoring
+
+
+CUSTOMER:
+
+access:
+
+- services
+
+- billing
+
+
+PARTNER:
+
+access:
+
+- projects
+
+
+INVESTOR:
+
+access:
+
+- metrics
+

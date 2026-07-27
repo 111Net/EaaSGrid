@@ -1,0 +1,24 @@
+operations_console:
+
+
+widgets:
+
+- platform_health
+
+- customers
+
+- partners
+
+- revenue
+
+- ai_operations
+
+- factories
+
+- reports
+
+
+refresh:
+
+live
+

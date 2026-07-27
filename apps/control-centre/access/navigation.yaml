@@ -1,0 +1,45 @@
+navigation:
+
+
+admin:
+
+- control_centre
+
+- users
+
+- billing
+
+- audit
+
+
+operations_worker:
+
+- health
+
+- monitoring
+
+- reports
+
+
+customer:
+
+- services
+
+- usage
+
+- invoices
+
+
+partner:
+
+- projects
+
+- installations
+
+
+investor:
+
+- metrics
+
+- reports
+

@@ -1,0 +1,8 @@
+{
+"ADMIN":"/control-centre",
+"OPERATIONS":"/operations",
+"PARTNER":"/partner",
+"INVESTOR":"/investor",
+"CUSTOMER":"/customer",
+"COLLABORATOR":"/collaborator"
+}

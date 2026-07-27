@@ -1,0 +1,70 @@
+users:
+
+
+admin:
+
+portal:
+ control-centre
+
+permissions:
+ all
+
+
+operations_worker:
+
+portal:
+ operations-console
+
+permissions:
+ monitor
+ reports
+ diagnostics
+
+
+customer:
+
+portal:
+ customer-portal
+
+permissions:
+ services
+ billing
+ reports
+
+
+partner:
+
+portal:
+ partner-portal
+
+permissions:
+ projects
+ installations
+
+
+investor:
+
+portal:
+ investor-portal
+
+permissions:
+ metrics
+ reports
+
+
+collaborator:
+
+portal:
+ workspace
+
+permissions:
+ assigned_tasks
+
+
+auditor:
+
+portal:
+ compliance
+
+permissions:
+ evidence

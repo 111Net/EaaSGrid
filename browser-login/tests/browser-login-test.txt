@@ -1,0 +1,48 @@
+
+EaaSGrid Browser Login Test
+
+
+STEP 1
+
+Open:
+
+http://192.168.100.21:3000
+
+
+STEP 2
+
+Login:
+
+admin@eaasgrid.com
+
+
+Expected:
+
+Control Centre Opens
+
+
+
+STEP 3
+
+Logout
+
+
+
+STEP 4
+
+Login:
+
+operations@eaasgrid.com
+
+
+Expected:
+
+Operations Console Opens
+
+
+
+RESULT:
+
+PASS / FAIL
+
+

@@ -1,0 +1,17 @@
+database_testing:
+
+engine:
+
+PostgreSQL
+
+
+checks:
+
+- connection_pool
+
+- migrations
+
+- backup_restore
+
+- integrity
+

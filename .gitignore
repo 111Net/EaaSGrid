@@ -55,3 +55,30 @@ node_modules
 
 # Generated audit output
 reports/
+# EaaSGrid temporary backups
+*.backup
+*.backup.*
+*.sql
+
+# Reports and generated documentation
+docs/*reports*/
+docs/*report*.txt
+
+# Temporary files
+bash
+
+# Next.js
+.next/
+node_modules/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Testing artifacts
+beta-testing/
+browser-testing/

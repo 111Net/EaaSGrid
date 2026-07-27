@@ -1,0 +1,24 @@
+{
+
+"name":
+
+"EaaSGrid Revenue Dashboard",
+
+
+"metrics":
+
+[
+
+"Monthly Revenue",
+
+"Recurring Revenue",
+
+"Active Customers",
+
+"Outstanding Payments",
+
+"Partner Payments"
+
+]
+
+}

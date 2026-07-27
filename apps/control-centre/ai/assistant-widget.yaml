@@ -1,0 +1,18 @@
+
+widget:
+
+name:
+
+EaaSGrid AI Assistant
+
+
+functions:
+
+- health_summary
+
+- incident_analysis
+
+- recommendations
+
+- reports
+

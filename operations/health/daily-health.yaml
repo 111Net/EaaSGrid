@@ -1,0 +1,24 @@
+daily_health:
+
+checks:
+
+- api
+
+- database
+
+- frontend
+
+- lifecycle
+
+- backups
+
+
+frequency:
+
+daily
+
+
+status:
+
+green_amber_red
+

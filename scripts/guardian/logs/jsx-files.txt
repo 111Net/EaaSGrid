@@ -1,0 +1,4 @@
+/data/eaasgrid-platform/apps/dashboard/components/RoleGuard.jsx
+/data/eaasgrid-platform/apps/dashboard/app/operations/page.jsx
+/data/eaasgrid-platform/apps/dashboard/app/control-centre/page.jsx
+/data/eaasgrid-platform/apps/dashboard/app/login/page.jsx

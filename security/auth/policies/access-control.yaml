@@ -1,0 +1,7 @@
+authorization:
+
+  model: RBAC
+
+  enforce_least_privilege: true
+
+  audit_access: true

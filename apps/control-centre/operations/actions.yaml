@@ -1,0 +1,25 @@
+operations:
+
+
+actions:
+
+
+run_audit:
+
+enabled: true
+
+
+generate_report:
+
+enabled: true
+
+
+create_backup:
+
+enabled: true
+
+
+service_check:
+
+enabled: true
+

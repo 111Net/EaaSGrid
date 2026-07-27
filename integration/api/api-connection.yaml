@@ -1,0 +1,24 @@
+api:
+
+service:
+
+ eaasgrid-api
+
+
+base_url:
+
+ http://localhost:4000
+
+
+endpoints:
+
+
+health:
+
+ /api/v1/health
+
+
+dashboard:
+
+ /api/v1/dashboard
+

@@ -1,0 +1,15 @@
+{
+ "database":"eaas_db",
+ "identity":{
+   "users_table":"users",
+   "email_column":"email",
+   "password_column":"password_hash",
+   "role_reference":"role_id"
+ },
+ "rbac":{
+   "roles_table":"roles",
+   "permissions_table":"permissions",
+   "mapping_table":"role_permissions"
+ },
+ "generated":"Sun Jul 26 12:37:56 PM UTC 2026"
+}
