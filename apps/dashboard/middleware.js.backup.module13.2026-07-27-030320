@@ -1,0 +1,102 @@
+import { NextResponse } from "next/server";
+
+
+export function middleware(request) {
+
+    const token =
+        request.cookies.get(
+            "eaasgrid_token"
+        );
+
+
+    const pathname =
+        request.nextUrl.pathname;
+
+
+    /*
+      Protected dashboard areas
+      All authenticated users must have
+      eaasgrid_token cookie
+    */
+
+    const protectedRoutes = [
+
+        "/control-centre",
+
+        "/operations",
+
+        "/partner",
+
+        "/investor",
+
+        "/customer",
+
+        "/collaborator"
+
+    ];
+
+
+    const requiresAuth =
+        protectedRoutes.some(
+            route =>
+                pathname.startsWith(route)
+        );
+
+
+    /*
+      Redirect unauthenticated users
+      back to login
+    */
+
+    if (
+        requiresAuth &&
+        !token
+    ) {
+
+        return NextResponse.redirect(
+
+            new URL(
+                "/login",
+                request.url
+            )
+
+        );
+
+    }
+
+
+    /*
+      Allow request
+    */
+
+    return NextResponse.next();
+
+}
+
+
+
+/*
+  Middleware execution scope
+*/
+
+export const config = {
+
+
+    matcher: [
+
+        "/control-centre/:path*",
+
+        "/operations/:path*",
+
+        "/partner/:path*",
+
+        "/investor/:path*",
+
+        "/customer/:path*",
+
+        "/collaborator/:path*"
+
+    ]
+
+
+};

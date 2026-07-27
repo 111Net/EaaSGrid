@@ -5,42 +5,53 @@
   --foreground: #171717;
 }
 
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-
-html {
-  background: #ffffff;
-}
-
-
+html,
 body {
-
   margin: 0;
-
-  background: #ffffff;
-
+  padding: 0;
+  background: var(--background);
   color: var(--foreground);
-
   font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+body{
+
+background:
+linear-gradient(
+135deg,
+#071426,
+#0d47a1
+);
+
+color:white;
 
 }
 
 
-section {
-  position: relative;
-  z-index: 1;
+.grid{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:20px;
+
 }
 
 
-h2 {
-  position: relative;
-  z-index: 2;
+.panel{
+
+background:white;
+
+color:#111;
+
+padding:20px;
+
+border-radius:12px;
+
+margin-top:20px;
+
 }
-
-
