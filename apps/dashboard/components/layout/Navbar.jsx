@@ -1,24 +1,21 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useMemo } from "react";
 import { getSession, clearSession } from "@/lib/session";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Navbar() {
+
+export default function Navbar(){
 
     const router = useRouter();
 
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
+    const user = useMemo(()=>{
 
         const session = getSession();
 
-        if(session?.user){
-            setUser(session.user);
-        }
+        return session?.user || null;
 
-    }, []);
+    },[]);
 
 
     function logout(){
@@ -32,46 +29,43 @@ export default function Navbar() {
 
     return (
 
-        <header
+        <nav
         style={{
-            height:"70px",
+            width:"100%",
+            padding:"18px 30px",
+            background:
+            "linear-gradient(90deg,#071426,#123b63)",
+            color:"#ffffff",
             display:"flex",
             justifyContent:"space-between",
             alignItems:"center",
-            padding:"0 30px",
-            background:"linear-gradient(90deg,#06142e,#123d7a)",
-            color:"white"
+            boxShadow:"0 4px 20px rgba(0,0,0,.3)"
         }}
         >
 
             <div>
 
                 <h2>
-                    ⚡ EaaSGrid Control Centre
+                    ⚡ EaaSGrid
                 </h2>
+
+                <small>
+                    Everything-as-a-Service Platform
+                </small>
 
             </div>
 
 
-            <div
-            style={{
-                display:"flex",
-                alignItems:"center",
-                gap:"20px"
-            }}
-            >
+            <div>
 
-                <div>
-
-                    <div>
-                    {user?.email || "Administrator"}
-                    </div>
-
-                    <small>
-                    Role: {user?.role || "ADMIN"}
-                    </small>
-
-                </div>
+                {
+                user &&
+                <span style={{
+                    marginRight:"20px"
+                }}>
+                    {user.email}
+                </span>
+                }
 
 
                 <button
@@ -85,16 +79,14 @@ export default function Navbar() {
                     cursor:"pointer"
                 }}
                 >
-
                     Logout
-
                 </button>
 
 
             </div>
 
 
-        </header>
+        </nav>
 
     );
 

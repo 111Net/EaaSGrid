@@ -1,5 +1,3 @@
-import DashboardLayout from "@/components/layout/DashboardLayout";
-
 "use client";
 
 import DashboardLayout from "@/components/layout/DashboardLayout";
@@ -7,404 +5,213 @@ import MetricCard from "@/components/dashboard/MetricCard";
 import EnergyChart from "@/components/charts/EnergyChart";
 import RevenueChart from "@/components/charts/RevenueChart";
 
-import { useEffect, useState } from "react";
-
 
 export default function ControlCentre(){
 
-    const [dashboard, setDashboard] = useState(null);
-    const [error, setError] = useState(null);
+return (
 
+<DashboardLayout>
 
-    useEffect(()=>{
 
+<div
+style={{
+padding:"30px"
+}}
+>
 
-        async function loadDashboard(){
 
-            try {
+<div
+style={{
+background:
+"linear-gradient(135deg,#071426,#123b63,#1d6fa5)",
+padding:"40px",
+borderRadius:"20px",
+color:"#ffffff",
+marginBottom:"30px",
+boxShadow:"0 10px 35px rgba(0,0,0,.35)"
+}}
+>
 
-                const response = await fetch(
-                    process.env.NEXT_PUBLIC_API_URL +
-                    "/api/v1/dashboard",
-                    {
-                        cache:"no-store"
-                    }
-                );
+<h1
+style={{
+fontSize:"42px",
+fontWeight:"900",
+marginBottom:"10px"
+}}
+>
+Executive Platform Intelligence
+</h1>
 
 
-                const result = await response.json();
+<p
+style={{
+fontSize:"20px"
+}}
+>
+Real-time EaaSGrid Command Centre
+</p>
 
 
-                if(result.success){
+</div>
 
-                    setDashboard(result.data);
 
-                }
-                else {
 
-                    setError(
-                        "Unable to load dashboard data"
-                    );
+<div
+style={{
+display:"grid",
+gridTemplateColumns:
+"repeat(auto-fit,minmax(250px,1fr))",
+gap:"20px"
+}}
+>
 
-                }
 
+<MetricCard
+title="Platform Status"
+value="Operational"
+subtitle="System condition"
+/>
 
-            }
-            catch(err){
 
-                console.error(err);
+<MetricCard
+title="Pilot Sites"
+value="6"
+subtitle="Deployment portfolio"
+/>
 
-                setError(
-                    "API connection failed"
-                );
 
-            }
+<MetricCard
+title="Annual Target"
+value="60"
+subtitle="Sites planned"
+/>
 
-        }
 
+<MetricCard
+title="Capital Requirement"
+value="₦298,000,000"
+subtitle="Pilot funding"
+/>
 
-        loadDashboard();
 
+<MetricCard
+title="Monthly Revenue"
+value="₦0"
+subtitle="Current revenue"
+/>
 
-    },[]);
 
+<MetricCard
+title="Availability"
+value="0%"
+subtitle="Platform uptime"
+/>
 
 
-    if(error){
+</div>
 
-        return (
 
-            <DashboardLayout>
 
-                <div
-                style={{
-                    padding:"40px"
-                }}
-                >
+<div
+style={{
+marginTop:"40px",
+display:"grid",
+gridTemplateColumns:
+"repeat(auto-fit,minmax(400px,1fr))",
+gap:"25px"
+}}
+>
 
-                    <h2>
-                    Control Centre Error
-                    </h2>
 
-                    <p>
-                    {error}
-                    </p>
+<div
+style={{
+background:"#ffffff",
+padding:"25px",
+borderRadius:"15px"
+}}
+>
 
-                </div>
+<h2>
+⚡ Energy Performance
+</h2>
 
-            </DashboardLayout>
 
-        );
+<EnergyChart />
 
-    }
 
+</div>
 
 
-    if(!dashboard){
 
-        return (
+<div
+style={{
+background:"#ffffff",
+padding:"25px",
+borderRadius:"15px"
+}}
+>
 
-            <DashboardLayout>
+<h2>
+💰 Revenue Intelligence
+</h2>
 
-                <div
-                style={{
-                    padding:"40px"
-                }}
-                >
 
-                    <h2>
-                    Loading EaaSGrid Control Centre...
-                    </h2>
+<RevenueChart />
 
-                </div>
 
-            </DashboardLayout>
+</div>
 
-        );
 
-    }
+</div>
 
 
 
-    return (
+<div
+style={{
+marginTop:"35px",
+background:"#f5f7fb",
+padding:"30px",
+borderRadius:"15px"
+}}
+>
 
-        <DashboardLayout>
 
+<h2>
+Business Model
+</h2>
 
-            <main
-            style={{
-                padding:"30px"
-            }}
-            >
 
+<p>
+Everything-as-a-Service
+</p>
 
-                <h1
-                style={{
-                    fontSize:"32px",
-                    marginBottom:"10px"
-                }}
-                >
-                    Executive Platform Intelligence
-                </h1>
 
 
-                <p
-                style={{
-                    color:"#555",
-                    marginBottom:"30px"
-                }}
-                >
-                    Real-time visibility into EaaSGrid infrastructure,
-                    energy, finance and operations.
-                </p>
+<h2>
+Target Markets
+</h2>
 
 
+<ul>
 
-                <section
+<li>Nigeria</li>
 
-                style={{
+<li>
+Commercial and institutional energy users
+</li>
 
-                    display:"grid",
+</ul>
 
-                    gridTemplateColumns:
-                    "repeat(auto-fit,minmax(220px,1fr))",
 
-                    gap:"20px"
+</div>
 
-                }}
 
-                >
 
+</div>
 
-                    <MetricCard
 
-                    title="Platform Status"
+</DashboardLayout>
 
-                    value={
-                        dashboard.dashboard.status
-                    }
-
-                    />
-
-
-                    <MetricCard
-
-                    title="Pilot Sites"
-
-                    value={
-                        dashboard.infrastructure.pilot_sites
-                    }
-
-                    />
-
-
-                    <MetricCard
-
-                    title="Annual Target"
-
-                    value={
-                        dashboard.infrastructure.planned_sites_per_year
-                    }
-
-                    />
-
-
-                    <MetricCard
-
-                    title="Capital Requirement"
-
-                    value={
-                        "₦" +
-                        dashboard.investment.required_capital_ngn
-                        .toLocaleString()
-                    }
-
-                    />
-
-
-                    <MetricCard
-
-                    title="Monthly Revenue"
-
-                    value={
-                        "₦" +
-                        dashboard.finance.monthly_revenue
-                        .toLocaleString()
-                    }
-
-                    />
-
-
-                    <MetricCard
-
-                    title="Availability"
-
-                    value={
-                        dashboard.performance.availability +
-                        "%"
-                    }
-
-                    />
-
-
-                </section>
-
-
-
-
-
-                <section
-
-                style={{
-
-                    marginTop:"40px",
-
-                    display:"grid",
-
-                    gridTemplateColumns:
-                    "repeat(auto-fit,minmax(400px,1fr))",
-
-                    gap:"25px"
-
-                }}
-
-                >
-
-
-                    <div
-
-                    style={{
-
-                        background:"white",
-
-                        padding:"25px",
-
-                        borderRadius:"15px",
-
-                        boxShadow:
-                        "0 4px 15px rgba(0,0,0,0.08)"
-
-                    }}
-
-                    >
-
-                        <h2>
-                        ⚡ Energy Performance
-                        </h2>
-
-
-                        <p>
-                        Solar Grid Monitoring Active
-                        </p>
-
-
-                        <EnergyChart />
-
-
-                    </div>
-
-
-
-
-
-                    <div
-
-                    style={{
-
-                        background:"white",
-
-                        padding:"25px",
-
-                        borderRadius:"15px",
-
-                        boxShadow:
-                        "0 4px 15px rgba(0,0,0,0.08)"
-
-                    }}
-
-                    >
-
-                        <h2>
-                        💰 Revenue Intelligence
-                        </h2>
-
-
-                        <p>
-                        Financial Engine Connected
-                        </p>
-
-
-                        <RevenueChart />
-
-
-                    </div>
-
-
-
-                </section>
-
-
-
-
-
-                <section
-
-                style={{
-
-                    marginTop:"40px",
-
-                    background:"white",
-
-                    padding:"25px",
-
-                    borderRadius:"15px"
-
-                }}
-
-                >
-
-                    <h2>
-                    Business Model
-                    </h2>
-
-
-                    <p>
-                    {dashboard.business_model}
-                    </p>
-
-
-
-                    <h3>
-                    Target Markets
-                    </h3>
-
-
-                    <ul>
-
-                    {
-                        dashboard.target_markets.map(
-                            (market,index)=>(
-
-                            <li key={index}>
-                                {market}
-                            </li>
-
-                            )
-                        )
-                    }
-
-                    </ul>
-
-
-                </section>
-
-
-
-            </main>
-
-
-        </DashboardLayout>
-
-    );
+);
 
 }
