@@ -32,7 +32,6 @@ grep -R "login(" -n app src components --exclude-dir=.next || true
 echo "[4] Stop all dashboard processes"
 
 pkill -f "next dev" || true
-pkill -f "next start" || true
 
 
 sleep 3

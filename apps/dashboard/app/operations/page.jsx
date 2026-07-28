@@ -1,7 +1,6 @@
-"use client";
-
-import RoleGuard from "@/components/RoleGuard";
-import MetricCard from "@/components/dashboard/MetricCard";
+import DashboardLayout from "@/components/layout/DashboardLayout";
+import IntelligenceCard from "@/components/intelligence/IntelligenceCard";
+import IntelligenceGrid from "@/components/intelligence/IntelligenceGrid";
 
 
 export default function Operations(){
@@ -9,54 +8,105 @@ export default function Operations(){
 
 return (
 
-<RoleGuard allowedRoles={["OPERATIONS","ADMIN"]}>
+<DashboardLayout>
 
 
-<div style={{padding:"30px"}}>
-
-
-<h1>
-Operations Dashboard
+<h1
+style={{
+fontSize:"36px",
+fontWeight:"800"
+}}
+>
+⚙ Operations Intelligence
 </h1>
 
 
-<div style={{
-display:"flex",
-gap:"20px",
-flexWrap:"wrap"
-}}>
+<p>
+Real-time infrastructure operations command centre
+</p>
 
 
-<MetricCard
-title="Active Sites"
-value="0"
-description="Sites online"
-/>
+
+<IntelligenceGrid>
 
 
-<MetricCard
-title="Alerts"
-value="0"
-description="Maintenance alerts"
-/>
+<IntelligenceCard
+title="Platform Health"
+icon="🟢"
+color="#16a34a"
+>
+
+System Status:
+<br/>
+
+Operational
+
+<br/><br/>
+
+API:
+Connected
+
+<br/>
+
+Database:
+Healthy
+
+</IntelligenceCard>
 
 
-<MetricCard
-title="Assets"
-value="0"
-description="Connected devices"
-/>
+
+<IntelligenceCard
+title="Energy Assets"
+icon="⚡"
+color="#f59e0b"
+>
+
+Connected Sites:
+6
+
+<br/>
+
+Solar Monitoring:
+Active
+
+<br/>
+
+Battery Systems:
+Online
+
+</IntelligenceCard>
 
 
-</div>
+
+<IntelligenceCard
+title="Automation Engine"
+icon="🤖"
+color="#7c3aed"
+>
+
+Guardian:
+Active
+
+<br/>
+
+Self Healing:
+Enabled
+
+<br/>
+
+Lifecycle Engine:
+Running
+
+</IntelligenceCard>
 
 
-</div>
+
+</IntelligenceGrid>
 
 
-</RoleGuard>
+
+</DashboardLayout>
 
 );
-
 
 }

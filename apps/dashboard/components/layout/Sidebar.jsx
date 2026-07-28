@@ -1,56 +1,59 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 
 export default function Sidebar(){
 
-const pathname = usePathname();
 
-
-const menu = [
+const menu=[
 
 {
-name:"Overview",
-path:"/control-centre",
-icon:"📊"
+name:"Control Centre",
+icon:"🏢",
+path:"/control-centre"
 },
 
 {
 name:"Operations",
-path:"/operations",
-icon:"⚙️"
+icon:"⚙️",
+path:"/operations"
 },
 
 {
-name:"Energy",
-path:"/energy",
-icon:"⚡"
+name:"Energy Monitoring",
+icon:"⚡",
+path:"/monitoring"
 },
 
 {
-name:"Finance",
-path:"/finance",
-icon:"💰"
+name:"Revenue & Billing",
+icon:"💰",
+path:"/billing"
 },
 
 {
-name:"Customers",
-path:"/customer",
-icon:"👥"
+name:"Analytics",
+icon:"📊",
+path:"/analytics"
 },
 
 {
-name:"Partners",
-path:"/partner",
-icon:"🤝"
+name:"Users",
+icon:"👥",
+path:"/users"
+},
+
+{
+name:"Security",
+icon:"🔐",
+path:"/security"
 },
 
 {
 name:"Settings",
-path:"/settings",
-icon:"🔧"
+icon:"⚙",
+path:"/settings"
 }
 
 ];
@@ -61,32 +64,42 @@ return (
 <aside
 
 style={{
-width:"250px",
-minHeight:"calc(100vh - 70px)",
+
+width:"260px",
+
+minHeight:"100vh",
+
 background:
-"linear-gradient(180deg,#081b3a,#123d7a)",
+"linear-gradient(180deg,#071426,#123b63)",
+
 color:"white",
-padding:"25px 15px"
+
+padding:"25px",
+
+position:"fixed",
+
+left:0,
+
+top:0
+
 }}
 
 >
 
 
-<h3
+<h2
 style={{
-marginBottom:"30px",
-textAlign:"center"
+fontSize:"26px",
+marginBottom:"30px"
 }}
 >
-XaaSGrid
-</h3>
+⚡ XaaSGrid
+</h2>
 
 
-<nav>
 
 {
 menu.map((item)=>(
-
 
 <Link
 
@@ -96,61 +109,40 @@ href={item.path}
 
 style={{
 
-display:"flex",
+display:"block",
 
-alignItems:"center",
+padding:"14px",
 
-gap:"12px",
+marginBottom:"10px",
 
-padding:"12px",
-
-marginBottom:"8px",
-
-borderRadius:"8px",
-
-textDecoration:"none",
+borderRadius:"10px",
 
 color:"white",
 
+textDecoration:"none",
+
 background:
-
-pathname===item.path
-
-?
-
-"rgba(255,255,255,0.20)"
-
-:
-
-"transparent"
+"rgba(255,255,255,.08)"
 
 }}
 
 >
 
-
-<span>
 {item.icon}
-</span>
 
+&nbsp;
 
-<span>
 {item.name}
-</span>
-
 
 </Link>
-
 
 ))
 
 }
 
 
-</nav>
-
-
 </aside>
+
 
 );
 

@@ -10,8 +10,7 @@ return (
 
 <div>
 
-<h1>
-Partner Portal
+<h1 className="page-title">Partner Portal
 </h1>
 
 <p>

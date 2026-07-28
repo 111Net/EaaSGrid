@@ -149,8 +149,7 @@ borderRadius:"15px"
 >
 
 
-<h1>
-EaaSGrid Login
+<h1 className="page-title">EaaSGrid Login
 </h1>
 
 

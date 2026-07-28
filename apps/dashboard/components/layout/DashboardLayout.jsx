@@ -1,6 +1,5 @@
 "use client";
 
-
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
@@ -10,15 +9,11 @@ export default function DashboardLayout({children}){
 
 return (
 
-<div>
-
-
-<Navbar />
-
-
 <div
 style={{
-display:"flex"
+display:"flex",
+minHeight:"100vh",
+background:"#eef4ff"
 }}
 >
 
@@ -27,23 +22,29 @@ display:"flex"
 
 
 <div
-
 style={{
-
 flex:1,
-
-background:"#f4f7fb",
-
-minHeight:"calc(100vh - 70px)"
-
+marginLeft:"260px"
 }}
+>
 
+
+<Navbar />
+
+
+<main
+style={{
+padding:"40px",
+paddingTop:"100px",
+background:
+"linear-gradient(135deg,#eef6ff,#ffffff)",
+minHeight:"100vh"
+}}
 >
 
 {children}
 
-
-</div>
+</main>
 
 
 </div>
@@ -52,6 +53,5 @@ minHeight:"calc(100vh - 70px)"
 </div>
 
 );
-
 
 }

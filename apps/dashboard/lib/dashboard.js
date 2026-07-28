@@ -1,14 +1,14 @@
-const API_URL =
+
+export async function getDashboard(){
+
+const API =
 process.env.NEXT_PUBLIC_API_URL ||
-"http://192.168.100.21:4000";
-
-
-export async function getDashboardData(){
+"http://localhost:4000";
 
 
 const response =
 await fetch(
-`${API_URL}/api/v1/dashboard`,
+`${API}/api/v1/dashboard`,
 {
 cache:"no-store"
 }
@@ -18,17 +18,13 @@ cache:"no-store"
 if(!response.ok){
 
 throw new Error(
-"Dashboard API failed"
+"Dashboard API unavailable"
 );
 
 }
 
 
-const result =
-await response.json();
-
-
-return result.data;
-
+return response.json();
 
 }
+

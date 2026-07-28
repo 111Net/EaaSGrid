@@ -1,57 +1,101 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f7fb;
+  --foreground: #111827;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  padding:0;
+  background:#f4f7fb;
+  color:#111827;
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
 }
+
 
 * {
-  box-sizing: border-box;
-}
-body{
-
-background:
-linear-gradient(
-135deg,
-#071426,
-#0d47a1
-);
-
-color:white;
-
+  box-sizing:border-box;
 }
 
 
-.grid{
+/* Remove blurry rendering */
+h1,
+h2,
+h3 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-display:flex;
 
-flex-wrap:wrap;
+/* XaaSGrid page hero titles */
 
-gap:20px;
+.page-title {
+
+font-size:42px;
+
+font-weight:800;
+
+letter-spacing:-0.5px;
+
+line-height:1.15;
+
+color:#061A40;
+
+text-shadow:none;
+
+filter:none;
+
+-webkit-filter:none;
 
 }
 
 
-.panel{
+.page-subtitle {
+
+font-size:18px;
+
+font-weight:500;
+
+color:#475569;
+
+line-height:1.6;
+
+text-shadow:none;
+
+filter:none;
+
+}
+
+
+/* Dashboard panels */
+
+.panel {
 
 background:white;
 
-color:#111;
+color:#111827;
 
-padding:20px;
+padding:25px;
 
-border-radius:12px;
+border-radius:18px;
 
-margin-top:20px;
+box-shadow:
+0 8px 25px rgba(15,23,42,.08);
+
+}
+
+
+/* Remove accidental blurry transforms */
+
+div {
+
+-webkit-font-smoothing:antialiased;
 
 }

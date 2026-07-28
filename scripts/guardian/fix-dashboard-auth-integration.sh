@@ -32,7 +32,6 @@ rm -rf .next
 echo "[4] Restarting dashboard processes"
 
 pkill -f "next dev" || true
-pkill -f "next start" || true
 
 
 echo "[5] Starting dashboard"

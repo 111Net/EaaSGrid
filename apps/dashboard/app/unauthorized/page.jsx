@@ -14,7 +14,7 @@ flexDirection:"column"
 }}
 >
 
-<h1>403</h1>
+<h1 className="page-title">403</h1>
 
 <h2>Access Denied</h2>
 

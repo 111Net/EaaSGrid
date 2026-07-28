@@ -10,8 +10,7 @@ return (
 
 <div>
 
-<h1>
-Customer Energy Dashboard
+<h1 className="page-title">Customer Energy Dashboard
 </h1>
 
 

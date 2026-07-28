@@ -1,93 +1,63 @@
 "use client";
 
-import { useMemo } from "react";
-import { getSession, clearSession } from "@/lib/session";
-import { useRouter } from "next/navigation";
-
 
 export default function Navbar(){
 
-    const router = useRouter();
 
-    const user = useMemo(()=>{
+return (
 
-        const session = getSession();
+<nav
+style={{
+height:"75px",
+position:"fixed",
+top:0,
+right:0,
+left:"260px",
+zIndex:1000,
 
-        return session?.user || null;
+background:
+"linear-gradient(90deg,#061A40,#0077ff,#00c853)",
 
-    },[]);
+color:"white",
 
+display:"flex",
+alignItems:"center",
+justifyContent:"space-between",
 
-    function logout(){
+padding:"0 35px",
 
-        clearSession();
+fontWeight:"700",
 
-        router.push("/login");
-
-    }
-
-
-    return (
-
-        <nav
-        style={{
-            width:"100%",
-            padding:"18px 30px",
-            background:
-            "linear-gradient(90deg,#071426,#123b63)",
-            color:"#ffffff",
-            display:"flex",
-            justifyContent:"space-between",
-            alignItems:"center",
-            boxShadow:"0 4px 20px rgba(0,0,0,.3)"
-        }}
-        >
-
-            <div>
-
-                <h2>
-                    ⚡ EaaSGrid
-                </h2>
-
-                <small>
-                    Everything-as-a-Service Platform
-                </small>
-
-            </div>
+boxShadow:
+"0 4px 20px rgba(0,0,0,.25)"
+}}
+>
 
 
-            <div>
-
-                {
-                user &&
-                <span style={{
-                    marginRight:"20px"
-                }}>
-                    {user.email}
-                </span>
-                }
+<div
+style={{
+fontSize:"24px",
+letterSpacing:"0.5px"
+}}
+>
+⚡ XaaSGrid Command Centre
+</div>
 
 
-                <button
-                onClick={logout}
-                style={{
-                    background:"#ff4757",
-                    color:"white",
-                    border:"none",
-                    padding:"10px 18px",
-                    borderRadius:"8px",
-                    cursor:"pointer"
-                }}
-                >
-                    Logout
-                </button>
+<div
+style={{
+background:"rgba(255,255,255,.15)",
+padding:"10px 18px",
+borderRadius:"20px"
+}}
+>
+admin@eaasgrid.com
+</div>
 
 
-            </div>
+</nav>
 
 
-        </nav>
-
-    );
+);
 
 }

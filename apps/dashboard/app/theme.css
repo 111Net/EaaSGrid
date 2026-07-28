@@ -1,0 +1,44 @@
+
+.xaas-heading {
+font-size:42px;
+font-weight:900;
+letter-spacing:-0.5px;
+line-height:1.15;
+color:#ffffff;
+text-shadow:none;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+}
+
+
+.xaas-subtitle {
+
+font-size:18px;
+font-weight:500;
+line-height:1.6;
+color:#dbeafe;
+
+}
+
+
+.page-header {
+
+background:
+linear-gradient(
+135deg,
+#071426,
+#123b63,
+#0074D9
+);
+
+padding:40px;
+border-radius:22px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.25);
+
+margin-bottom:35px;
+
+}
+
+

@@ -10,8 +10,7 @@ return (
 
 <div>
 
-<h1>
-Investor Dashboard
+<h1 className="page-title">Investor Dashboard
 </h1>
 
 <p>

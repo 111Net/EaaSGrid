@@ -10,8 +10,7 @@ return (
 
 <div>
 
-<h1>
-Collaborator Workspace
+<h1 className="page-title">Collaborator Workspace
 </h1>
 
 

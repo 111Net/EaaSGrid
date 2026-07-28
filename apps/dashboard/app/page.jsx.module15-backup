@@ -3,7 +3,7 @@ import IntelligenceCard from "@/components/intelligence/IntelligenceCard";
 import IntelligenceGrid from "@/components/intelligence/IntelligenceGrid";
 
 
-export default function Analytics(){
+export default function Home(){
 
 
 return (
@@ -11,28 +11,79 @@ return (
 <DashboardLayout>
 
 
-<h1
+<div
 style={{
-fontSize:"36px",
-fontWeight:"800",
-marginBottom:"10px"
+background:"linear-gradient(135deg,#0f172a,#1d4ed8)",
+padding:"40px",
+borderRadius:"24px",
+color:"white",
+marginBottom:"30px"
 }}
 >
-📊 Analytics Intelligence Centre
+
+
+<h1
+style={{
+fontSize:"44px",
+fontWeight:"900",
+marginBottom:"15px"
+}}
+>
+
+⚡ XaaSGrid Executive Platform Intelligence
+
 </h1>
 
 
-<p>
-Enterprise analytics, performance intelligence and business forecasting engine
+<p
+style={{
+fontSize:"20px"
+}}
+>
+
+Real-time Everything-as-a-Service command centre
+
 </p>
+
+
+</div>
 
 
 
 <IntelligenceGrid>
 
 
+
 <IntelligenceCard
-title="Energy Analytics"
+title="Platform Status"
+icon="🟢"
+color="#16a34a"
+>
+
+Operational
+
+<br/><br/>
+
+Availability:
+
+<br/>
+
+99.2%
+
+<br/><br/>
+
+Sites Connected:
+
+<br/>
+
+6
+
+</IntelligenceCard>
+
+
+
+<IntelligenceCard
+title="Energy Intelligence"
 icon="⚡"
 color="#f59e0b"
 >
@@ -53,11 +104,11 @@ Battery Utilisation:
 
 <br/><br/>
 
-Availability:
+Assets:
 
 <br/>
 
-99.2%
+Connected
 
 </IntelligenceCard>
 
@@ -85,19 +136,19 @@ Portfolio Value:
 
 <br/><br/>
 
-Growth Model:
+Model:
 
 <br/>
 
-Subscription XaaS
+XaaS Subscription
 
 </IntelligenceCard>
 
 
 
 <IntelligenceCard
-title="Investor Analytics"
-icon="📈"
+title="Deployment Intelligence"
+icon="🏢"
 color="#2563eb"
 >
 
@@ -109,7 +160,7 @@ Pilot Sites:
 
 <br/><br/>
 
-Annual Deployment Target:
+Annual Target:
 
 <br/>
 
@@ -117,31 +168,23 @@ Annual Deployment Target:
 
 <br/><br/>
 
-Funding Stage:
+Market:
 
 <br/>
 
-Pilot Deployment
+Nigeria
 
 </IntelligenceCard>
 
 
 
 <IntelligenceCard
-title="AI Forecast Engine"
+title="Automation Intelligence"
 icon="🤖"
 color="#7c3aed"
 >
 
-Prediction:
-
-<br/>
-
-Operational Expansion
-
-<br/><br/>
-
-Risk Monitoring:
+Guardian:
 
 <br/>
 
@@ -149,17 +192,58 @@ Active
 
 <br/><br/>
 
-Lifecycle Engine:
+Self Healing:
 
 <br/>
 
 Enabled
+
+<br/><br/>
+
+Lifecycle:
+
+<br/>
+
+Running
+
+</IntelligenceCard>
+
+
+
+<IntelligenceCard
+title="Security Intelligence"
+icon="🔐"
+color="#dc2626"
+>
+
+Security Posture:
+
+<br/>
+
+Protected
+
+<br/><br/>
+
+RBAC:
+
+<br/>
+
+Enabled
+
+<br/><br/>
+
+Audit:
+
+<br/>
+
+Active
 
 </IntelligenceCard>
 
 
 
 </IntelligenceGrid>
+
 
 
 </DashboardLayout>
