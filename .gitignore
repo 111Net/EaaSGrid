@@ -82,3 +82,43 @@ node_modules/
 # Testing artifacts
 beta-testing/
 browser-testing/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+.next/
+
+# Backups
+*.backup
+*.broken-backup
+
+# Node
+node_modules/
+.next/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+.env.*
+
+# Backups
+*.backup
+*.backup.*
+*.disabled
+
+# Reports
+reports/
+
+# Runtime
+logs/
+*.log
