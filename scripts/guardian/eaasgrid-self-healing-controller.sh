@@ -1,84 +1,94 @@
 #!/bin/bash
 
 #############################################
-# EaaSGrid Platform Self Healing Controller
-# Version: 1.0
-# Purpose:
-# Automated recovery, audit and prevention
+# XaaSGrid Platform Ltd
+# Guardian Self-Healing Controller
+# Sprint 0.4 Repository Cleanup Baseline
 #############################################
 
-set -e
+set -u
 
-ROOT="/data/eaasgrid-platform"
-LOG="$ROOT/scripts/guardian/logs"
-DATE=$(date +"%Y-%m-%d_%H-%M-%S")
+PROJECT="/data/eaasgrid-platform"
+LOG_DIR="$PROJECT/archive/logs"
 
-mkdir -p $LOG
+mkdir -p "$LOG_DIR"
 
-REPORT="$LOG/guardian-$DATE.log"
+LOG_FILE="$LOG_DIR/guardian-$(date +%F).log"
 
-exec > >(tee -a $REPORT)
-exec 2>&1
+exec > >(tee -a "$LOG_FILE") 2>&1
 
 
 echo "======================================"
-echo " EaaSGrid Guardian Started"
-echo " $DATE"
+echo " XaaSGrid Platform Ltd"
+echo " Guardian Self-Healing Controller"
+echo " $(date '+%Y-%m-%d_%H-%M-%S')"
 echo "======================================"
 
 
 
 #############################################
-# SYSTEM CHECK
+# 1 SYSTEM CHECK
 #############################################
 
 echo "[1] Checking system"
 
 df -h
 
+echo ""
+
 free -h
+
+echo ""
 
 uptime
 
 
 
 #############################################
-# NETWORK CHECK
+# 2 NETWORK CHECK
 #############################################
 
 echo "[2] Network"
 
-IP=$(hostname -I | awk '{print $1}')
+SERVER_IP=$(hostname -I | awk '{print $1}')
 
-echo "Server IP: $IP"
+echo "Server IP: $SERVER_IP"
 
-ping -c 2 8.8.8.8 || echo "Internet issue"
+ping -c 2 8.8.8.8 || echo "WARNING: Internet connectivity issue"
 
 
 
 #############################################
-# PORT CLEANUP
+# 3 PORT CHECK
 #############################################
 
 echo "[3] Checking ports"
 
 
-for PORT in 3000 3001 3002 3003 4000; do
+check_port()
+{
+PORT=$1
 
-PID=$(lsof -ti:$PORT || true)
-
-if [ ! -z "$PID" ]; then
-
-echo "Port $PORT used by $PID"
-
+if lsof -i :"$PORT" >/dev/null 2>&1
+then
+    PID=$(lsof -ti :"$PORT")
+    echo "Port $PORT used by $PID"
+else
+    echo "Port $PORT available"
 fi
 
-done
+}
+
+
+check_port 4000
+check_port 3000
+check_port 3001
+check_port 3002
 
 
 
 #############################################
-# POSTGRES CHECK
+# 4 POSTGRESQL CHECK
 #############################################
 
 echo "[4] PostgreSQL"
@@ -86,227 +96,128 @@ echo "[4] PostgreSQL"
 
 if systemctl is-active --quiet postgresql
 then
-
-echo "Postgres OK"
-
+    echo "Postgres OK"
 else
+    echo "Postgres inactive - attempting restart"
 
-echo "Restarting PostgreSQL"
-
-sudo systemctl restart postgresql
+    sudo systemctl restart postgresql
 
 fi
 
 
 
 #############################################
-# DATABASE CONNECTION
+# 5 DATABASE CHECK
 #############################################
 
 echo "[5] Database"
 
 
-sudo -u postgres psql <<EOF
-
-SELECT datname 
-FROM pg_database;
-
-EOF
+sudo -u postgres psql \
+-P pager=off \
+-c "\l" \
+|| echo "Database check failed"
 
 
 
 #############################################
-# REDIS CHECK
+# 6 REDIS CHECK
 #############################################
 
 echo "[6] Redis"
 
 
-if systemctl is-active --quiet redis
+if systemctl list-unit-files | grep -qi redis
 then
 
-echo "Redis OK"
+    if systemctl is-active --quiet redis
+    then
+        echo "Redis running"
+    else
+        echo "Redis installed but stopped"
+        sudo systemctl restart redis
+    fi
 
 else
 
-sudo systemctl restart redis
+    echo "Redis not installed - optional component skipped"
 
 fi
 
 
 
 #############################################
-# NODE ENVIRONMENT
+# 7 API HEALTH CHECK
 #############################################
 
-echo "[7] Node Environment"
-
-node -v
-
-npm -v
+echo "[7] XaaSGrid API Health"
 
 
-
-#############################################
-# INSTALL DEPENDENCIES
-#############################################
-
-echo "[8] Dependency repair"
-
-
-APPS="
-apps/api
-apps/dashboard
-apps/investor-portal
-"
-
-
-for APP in $APPS
-do
-
-if [ -d "$ROOT/$APP" ]
+if curl -fs http://127.0.0.1:4000/api/v1/health >/dev/null
 then
 
-echo "Checking $APP"
+echo "XaaSGrid API healthy"
 
-cd $ROOT/$APP
+else
+
+echo "WARNING: API health check failed"
+
+fi
 
 
-if [ -f package.json ]
+
+#############################################
+# 8 STORAGE CHECK
+#############################################
+
+echo "[8] Storage Monitoring"
+
+
+ROOT_USAGE=$(df / | awk 'NR==2 {print $5}' | tr -d '%')
+
+
+if [ "$ROOT_USAGE" -gt 90 ]
 then
 
-npm install
+echo "WARNING: Root filesystem above 90%"
 
-fi
+else
 
-
-fi
-
-done
-
-
-
-#############################################
-# ENVIRONMENT VALIDATION
-#############################################
-
-echo "[9] Environment"
-
-
-for ENVFILE in $(find $ROOT -name ".env")
-do
-
-echo "Checking $ENVFILE"
-
-cat $ENVFILE
-
-done
-
-
-
-#############################################
-# API CHECK
-#############################################
-
-echo "[10] API"
-
-
-curl -f http://localhost:4000/api/v1/health \
-&& echo "API HEALTHY" \
-|| echo "API FAILED"
-
-
-
-#############################################
-# DASHBOARD CHECK
-#############################################
-
-echo "[11] Dashboard"
-
-
-curl -I http://localhost:3000 \
-|| echo "Dashboard not running"
-
-
-
-#############################################
-# BUILD VALIDATION
-#############################################
-
-echo "[12] Build test"
-
-
-cd $ROOT/apps/dashboard
-
-npm run build || echo "Dashboard build requires attention"
-
-
-
-cd $ROOT/apps/investor-portal
-
-npm run build || echo "Investor portal build requires attention"
-
-
-
-#############################################
-# DATABASE MIGRATION CHECK
-#############################################
-
-echo "[13] Migration audit"
-
-
-if [ -f "$ROOT/scripts/eaas-migration-audit.sh" ]
-then
-
-bash $ROOT/scripts/eaas-migration-audit.sh
+echo "Root filesystem healthy: ${ROOT_USAGE}%"
 
 fi
 
 
 
 #############################################
-# SECURITY CHECK
+# 9 RUNNING SERVICES
 #############################################
 
-echo "[14] Security"
+echo "[9] Service Status"
 
 
-find $ROOT \
--type f \
--name "*.env" \
--print
+echo ""
+
+echo "Node Processes"
+
+ps aux | grep node | grep -v grep || echo "No node processes"
 
 
+echo ""
 
-#############################################
-# BACKUP
-#############################################
+echo "Python Processes"
 
-echo "[15] Recovery Snapshot"
-
-
-BACKUP="/data/backups/eaasgrid"
-
-mkdir -p $BACKUP
-
-
-tar -czf \
-$BACKUP/eaasgrid-$DATE.tar.gz \
-$ROOT/apps \
-$ROOT/packages \
-$ROOT/database
+ps aux | grep python | grep -v grep || echo "No python processes"
 
 
 
 #############################################
-# FINAL STATUS
+# COMPLETE
 #############################################
 
+echo ""
 echo "======================================"
-
-echo "EaaSGrid Guardian Completed"
-
-echo "Report:"
-echo $REPORT
-
+echo " XaaSGrid Guardian Completed"
+echo " Log:"
+echo " $LOG_FILE"
 echo "======================================"
