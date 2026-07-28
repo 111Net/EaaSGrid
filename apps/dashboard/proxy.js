@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 
-function decodePayload(token){
+function decodePayload(token) {
 
     try {
 
@@ -10,16 +10,19 @@ function decodePayload(token){
 
         const base64 =
             payload
-            .replace(/-/g,"+")
-            .replace(/_/g,"/");
+            .replace(/-/g, "+")
+            .replace(/_/g, "/");
 
 
         return JSON.parse(
-            atob(base64)
+            Buffer.from(
+                base64,
+                "base64"
+            ).toString()
         );
 
 
-    } catch {
+    } catch(e){
 
         return null;
 
@@ -31,41 +34,39 @@ function decodePayload(token){
 
 const ROLE_ROUTES = {
 
-
-ADMIN:[
-"/control-centre",
-"/operations",
-"/partner",
-"/investor",
-"/customer",
-"/collaborator"
-],
-
-
-OPERATIONS:[
-"/operations"
-],
+    ADMIN:[
+        "/control-centre",
+        "/operations",
+        "/partner",
+        "/investor",
+        "/customer",
+        "/collaborator"
+    ],
 
 
-PARTNER:[
-"/partner"
-],
+    OPERATIONS:[
+        "/operations"
+    ],
 
 
-INVESTOR:[
-"/investor"
-],
+    PARTNER:[
+        "/partner"
+    ],
 
 
-CUSTOMER:[
-"/customer"
-],
+    INVESTOR:[
+        "/investor"
+    ],
 
 
-COLLABORATOR:[
-"/collaborator"
-]
+    CUSTOMER:[
+        "/customer"
+    ],
 
+
+    COLLABORATOR:[
+        "/collaborator"
+    ]
 
 };
 
@@ -74,100 +75,112 @@ COLLABORATOR:[
 export function proxy(request){
 
 
-const pathname =
-request.nextUrl.pathname;
-
-
-const protectedRoutes = [
-
-"/control-centre",
-"/operations",
-"/partner",
-"/investor",
-"/customer",
-"/collaborator"
-
-];
+    const pathname =
+        request.nextUrl.pathname;
 
 
 
-const requiresAuth =
-protectedRoutes.some(
-route =>
-pathname.startsWith(route)
-);
+    const protectedRoutes = [
+
+        "/control-centre",
+        "/operations",
+        "/partner",
+        "/investor",
+        "/customer",
+        "/collaborator"
+
+    ];
 
 
 
-if(!requiresAuth){
-
-return NextResponse.next();
-
-}
-
-
-
-const cookie =
-request.cookies.get(
-"eaasgrid_token"
-);
+    const requiresAuth =
+        protectedRoutes.some(
+            route =>
+            pathname.startsWith(route)
+        );
 
 
 
-if(!cookie){
+    if(!requiresAuth){
 
-return NextResponse.redirect(
-new URL("/login",request.url)
-);
+        return NextResponse.next();
 
-}
+    }
 
 
 
-const jwt =
-decodePayload(cookie.value);
+    const cookie =
+        request.cookies.get(
+            "eaasgrid_token"
+        );
 
 
 
-if(!jwt || !jwt.role){
+    if(!cookie){
 
-return NextResponse.redirect(
-new URL("/login",request.url)
-);
+        return NextResponse.redirect(
+            new URL(
+                "/login",
+                request.url
+            )
+        );
 
-}
-
-
-
-const role =
-jwt.role.toUpperCase();
+    }
 
 
 
-const allowed =
-ROLE_ROUTES[role] || [];
+    const jwt =
+        decodePayload(
+            cookie.value
+        );
 
 
 
-const permitted =
-allowed.some(
-route =>
-pathname.startsWith(route)
-);
+    if(!jwt || !jwt.role){
+
+        return NextResponse.redirect(
+            new URL(
+                "/login",
+                request.url
+            )
+        );
+
+    }
 
 
 
-if(!permitted){
-
-return NextResponse.redirect(
-new URL("/unauthorized",request.url)
-);
-
-}
+    const role =
+        jwt.role.toUpperCase();
 
 
 
-return NextResponse.next();
+    const allowed =
+        ROLE_ROUTES[role] || [];
+
+
+
+    const permitted =
+        allowed.some(
+            route =>
+            pathname.startsWith(route)
+        );
+
+
+
+    if(!permitted){
+
+        return NextResponse.redirect(
+            new URL(
+                "/unauthorized",
+                request.url
+            )
+        );
+
+    }
+
+
+
+    return NextResponse.next();
 
 
 }
@@ -176,15 +189,15 @@ return NextResponse.next();
 
 export const config = {
 
-matcher:[
+    matcher:[
 
-"/control-centre/:path*",
-"/operations/:path*",
-"/partner/:path*",
-"/investor/:path*",
-"/customer/:path*",
-"/collaborator/:path*"
+        "/control-centre/:path*",
+        "/operations/:path*",
+        "/partner/:path*",
+        "/investor/:path*",
+        "/customer/:path*",
+        "/collaborator/:path*"
 
-]
+    ]
 
 };

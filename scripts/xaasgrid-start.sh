@@ -6,63 +6,72 @@ echo "======================================"
 
 ROOT="/data/eaasgrid-platform"
 
-cd $ROOT || exit 1
+cd "$ROOT" || exit 1
 
 
-echo "[1] Stopping old runtime"
+echo "[1] Cleaning old runtime"
+
 
 pkill -f "next-server" 2>/dev/null
 pkill -f "next dev" 2>/dev/null
 pkill -f "next start" 2>/dev/null
+pkill -f "npm run dev" 2>/dev/null
+pkill -f "npm start" 2>/dev/null
 pkill -f "node src/server.js" 2>/dev/null
 
 
 sleep 5
 
 
-echo "[2] Cleaning dashboard cache"
+echo "[2] Starting API"
 
-rm -rf apps/dashboard/.next
+cd "$ROOT/apps/api" || exit 1
 
 
-echo "[3] Starting API"
-
-cd apps/api
-
-nohup npm start > api-runtime.log 2>&1 &
+nohup node src/server.js \
+> "$ROOT/apps/api/api-runtime.log" 2>&1 &
 
 
 sleep 5
 
 
-echo "[4] Testing API"
+echo "[3] API Health Check"
 
 curl -s http://localhost:4000/api/v1/health
 
 echo ""
 
 
-echo "[5] Starting Dashboard"
+echo "[4] Starting Dashboard"
 
-cd ../dashboard
-
-nohup npm run dev > dashboard-runtime.log 2>&1 &
+cd "$ROOT/apps/dashboard" || exit 1
 
 
-sleep 10
+nohup npm run dev \
+> "$ROOT/apps/dashboard/dashboard-runtime.log" 2>&1 &
 
 
-echo "[6] Checking processes"
+sleep 12
+
+
+echo "[5] Runtime Status"
 
 echo ""
 
-ps aux | grep -E "next|node src/server" | grep -v grep
+ps aux | grep -E "next-server|node src/server.js" | grep -v grep
+
+
+echo ""
+
+echo "[6] Port Check"
+
+ss -tulpn | grep -E "3000|4000"
 
 
 echo ""
 
 echo "======================================"
-echo " XaaSGrid Started Successfully"
+echo " XaaSGrid Started"
 echo "======================================"
 
 echo ""
