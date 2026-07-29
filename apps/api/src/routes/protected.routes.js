@@ -1,22 +1,27 @@
-const router = require("express").Router();
+const express = require("express");
 
-const authenticate = require("../middleware/auth");
+const router = express.Router();
+
+const authenticate =
+require("../middleware/authenticate");
 
 
 router.get(
-"/profile",
-authenticate,
-(req,res)=>{
+    "/profile",
+    authenticate,
+    (req,res)=>{
 
-    res.json({
+        res.json({
 
-        message:"Protected route access granted",
+            success:true,
 
-        user:req.user
+            user:req.user
 
-    });
+        });
 
-});
+    }
+);
+
 
 
 module.exports = router;

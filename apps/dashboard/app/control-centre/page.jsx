@@ -1,154 +1,295 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import MetricCard from "@/components/dashboard/MetricCard";
-import EnergyChart from "@/components/charts/EnergyChart";
-import RevenueChart from "@/components/charts/RevenueChart";
 
 export default function ControlCentre() {
+
+  const [data, setData] = useState(null);
+  const [error, setError] = useState("");
+
+
+  useEffect(() => {
+
+    async function loadDashboard(){
+
+      try {
+
+        const token =
+localStorage.getItem(
+"eaasgrid_token"
+);
+
+
+const response = await fetch(
+
+`${process.env.NEXT_PUBLIC_API_URL}/api/v1/dashboard/summary`,
+
+{
+
+cache:"no-store",
+
+headers:{
+
+Authorization:
+`Bearer ${token}`
+
+}
+
+}
+
+);
+
+
+        if(!response.ok){
+          throw new Error(
+            "Dashboard API unavailable"
+          );
+        }
+
+
+        const result =
+          await response.json();
+
+
+        setData(result);
+
+
+      } catch(err){
+
+        console.error(err);
+
+        setError(
+          "Unable to load platform intelligence"
+        );
+
+      }
+
+    }
+
+
+    loadDashboard();
+
+
+  }, []);
+
+
+
+  if(error){
+
+    return (
+
+      <DashboardLayout>
+
+        <div style={{
+          padding:"40px",
+          color:"red"
+        }}>
+
+          {error}
+
+        </div>
+
+      </DashboardLayout>
+
+    );
+
+  }
+
+
+
+  if(!data){
+
+    return (
+
+      <DashboardLayout>
+
+        <div style={{
+          padding:"40px"
+        }}>
+
+          Loading XaaSGrid intelligence...
+
+        </div>
+
+      </DashboardLayout>
+
+    );
+
+  }
+
+
+
   return (
+
     <DashboardLayout>
+
       <div
         style={{
-          padding: "30px",
+          padding:"30px"
         }}
       >
-        {/* Header */}
+
+
         <div
           style={{
             background:
-              "linear-gradient(135deg,#071426,#123b63,#1d6fa5)",
-            padding: "40px",
-            borderRadius: "20px",
-            color: "#ffffff",
-            marginBottom: "30px",
-            boxShadow: "0 10px 35px rgba(0,0,0,.35)",
+            "linear-gradient(135deg,#071426,#123b63,#1d6fa5)",
+
+            padding:"40px",
+
+            borderRadius:"20px",
+
+            color:"white",
+
+            marginBottom:"30px"
           }}
         >
+
           <h1
             style={{
-              fontSize: "42px",
-              fontWeight: 800,
-              color: "#ffffff",
-              letterSpacing: "-0.8px",
-              marginBottom: "12px",
-              lineHeight: "1.15",
+              fontSize:"42px",
+              fontWeight:"800"
             }}
           >
-            Executive Platform Intelligence
+
+            XaaSGrid Executive Platform Intelligence
+
           </h1>
 
-          <p
-            style={{
-              fontSize: "18px",
-            }}
-          >
-            Real-time XaaSGrid Command Centre
+
+          <p>
+
+            Everything-as-a-Service Command Centre
+
           </p>
+
+
         </div>
 
-        {/* Metrics */}
+
+
         <div
           style={{
-            display: "grid",
+            display:"grid",
             gridTemplateColumns:
-              "repeat(auto-fit,minmax(250px,1fr))",
-            gap: "20px",
+            "repeat(auto-fit,minmax(250px,1fr))",
+            gap:"20px"
           }}
         >
-          <MetricCard
+
+
+          <Metric
             title="Platform Status"
-            value="Operational"
-            subtitle="System condition"
+            value={data.platformStatus}
           />
 
-          <MetricCard
-            title="Pilot Sites"
-            value="6"
-            subtitle="Deployment portfolio"
+
+          <Metric
+            title="Deployment Sites"
+            value={data.totalSites}
           />
 
-          <MetricCard
-            title="Annual Target"
-            value="60"
-            subtitle="Sites planned"
+
+          <Metric
+            title="Customers"
+            value={data.activeCustomers}
           />
 
-          <MetricCard
-            title="Capital Requirement"
-            value="₦298,000,000"
-            subtitle="Pilot funding"
-          />
 
-          <MetricCard
+          <Metric
             title="Monthly Revenue"
-            value="₦0"
-            subtitle="Current revenue"
+            value={`₦${data.monthlyRevenue}`}
           />
 
-          <MetricCard
+
+          <Metric
+            title="Energy Generated"
+            value={data.energyGenerated}
+          />
+
+
+          <Metric
             title="Availability"
-            value="0%"
-            subtitle="Platform uptime"
+            value={data.uptime}
           />
+
+
         </div>
 
-        {/* Charts */}
+
+
         <div
           style={{
-            marginTop: "40px",
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit,minmax(400px,1fr))",
-            gap: "25px",
+            marginTop:"40px",
+            background:"#f5f7fb",
+            padding:"30px",
+            borderRadius:"15px"
           }}
         >
-          <div
-            style={{
-              background: "#ffffff",
-              padding: "25px",
-              borderRadius: "15px",
-            }}
-          >
-            <h2>⚡ Energy Performance</h2>
 
-            <EnergyChart />
-          </div>
+          <h2>
+            Platform Status
+          </h2>
 
-          <div
-            style={{
-              background: "#ffffff",
-              padding: "25px",
-              borderRadius: "15px",
-            }}
-          >
-            <h2>💰 Revenue Intelligence</h2>
 
-            <RevenueChart />
-          </div>
+          <p>
+
+            Last synchronisation:
+
+            {" "}
+
+            {data.timestamp}
+
+          </p>
+
+
         </div>
 
-        {/* Business */}
-        <div
-          style={{
-            marginTop: "35px",
-            background: "#f5f7fb",
-            padding: "30px",
-            borderRadius: "15px",
-          }}
-        >
-          <h2>Business Model</h2>
 
-          <p>Everything-as-a-Service</p>
-
-          <h2>Target Markets</h2>
-
-          <ul>
-            <li>Nigeria</li>
-            <li>Commercial and institutional energy users</li>
-          </ul>
-        </div>
       </div>
+
+
     </DashboardLayout>
+
   );
+
+}
+
+
+
+function Metric({title,value}){
+
+  return (
+
+    <div
+      style={{
+        background:"white",
+        padding:"25px",
+        borderRadius:"15px",
+        boxShadow:
+        "0 5px 20px rgba(0,0,0,.08)"
+      }}
+    >
+
+      <h3>
+        {title}
+      </h3>
+
+
+      <h1
+        style={{
+          marginTop:"15px"
+        }}
+      >
+
+        {value}
+
+      </h1>
+
+
+    </div>
+
+  );
+
 }

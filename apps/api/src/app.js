@@ -2,9 +2,22 @@ const express = require("express");
 
 const app = express();
 
+/*
+|--------------------------------------------------------------------------
+| Routes
+|--------------------------------------------------------------------------
+*/
+
 const routes = require("./routes");
 const authRoutes = require("./auth/auth.routes");
 const protectedRoutes = require("./routes/protected.routes");
+const dashboardRoutes = require("./dashboard/dashboard.routes");
+
+/*
+|--------------------------------------------------------------------------
+| Middleware
+|--------------------------------------------------------------------------
+*/
 
 const corsMiddleware = require("./middleware/cors");
 const securityHeaders = require("./middleware/security");
@@ -13,38 +26,58 @@ const logger = require("./middleware/logger");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 
-
 /*
- Core middleware
+|--------------------------------------------------------------------------
+| Core Middleware
+|--------------------------------------------------------------------------
 */
 
 app.use(corsMiddleware);
 
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
+
 app.use(securityHeaders);
 
 app.use(logger);
 
+/*
+|--------------------------------------------------------------------------
+| Health
+|--------------------------------------------------------------------------
+*/
+
+app.get("/api/v1/health", (req, res) => {
+    res.json({
+        status: "ok",
+        service: "eaasgrid-api",
+        timestamp: new Date().toISOString()
+    });
+});
 
 /*
- Routes
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
 */
 
 app.use("/api/v1/auth", authRoutes);
 
 app.use("/api/protected", protectedRoutes);
 
+app.use("/api/v1/dashboard", dashboardRoutes);
+
 app.use("/api/v1", routes);
 
-
 /*
- Error handling
+|--------------------------------------------------------------------------
+| Error Handling
+|--------------------------------------------------------------------------
 */
 
 app.use(notFound);
 
 app.use(errorHandler);
-
 
 module.exports = app;

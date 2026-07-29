@@ -1,50 +1,113 @@
+const jwt = require("jsonwebtoken");
 
-const {
- verifyToken
+
+function authenticate(req,res,next){
+
+    try {
+
+
+        const authHeader =
+        req.headers.authorization;
+
+
+
+        if(!authHeader){
+
+            return res.status(401).json({
+
+                success:false,
+
+                message:
+                "Authorization token required"
+
+            });
+
+        }
+
+
+
+        const parts =
+        authHeader.split(" ");
+
+
+
+        if(
+            parts.length !== 2 ||
+            parts[0] !== "Bearer"
+        ){
+
+            return res.status(401).json({
+
+                success:false,
+
+                message:
+                "Invalid authorization format"
+
+            });
+
+        }
+
+
+
+        const token =
+        parts[1];
+
+
+
+        const decoded =
+        jwt.verify(
+
+            token,
+
+            process.env.JWT_SECRET
+
+        );
+
+
+
+        req.user = {
+
+            id: decoded.id,
+
+            email: decoded.email,
+
+            role: decoded.role
+
+        };
+
+
+
+        next();
+
+
+
+    }
+
+    catch(error){
+
+
+        console.error(
+            "AUTH ERROR:",
+            error.message
+        );
+
+
+        return res.status(401).json({
+
+            success:false,
+
+            message:
+            "Invalid or expired token"
+
+        });
+
+
+    }
+
+
 }
-=
-require("../utils/jwt");
+
 
 
 module.exports =
-function(req,res,next)
-{
-
-const header =
-req.headers.authorization;
-
-
-if(!header)
-{
- return res.status(401)
- .json({
- message:"Missing token"
- });
-}
-
-
-const token =
-header.replace(
-"Bearer ",
-""
-);
-
-
-try
-{
- req.user =
- verifyToken(token);
-
- next();
-
-}
-catch(error)
-{
- return res.status(401)
- .json({
- message:"Invalid token"
- });
-}
-
-};
-
+authenticate;

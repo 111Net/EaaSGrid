@@ -1,99 +1,34 @@
-export function saveSession(data){
-
-
-if(typeof window !== "undefined"){
-
-
-localStorage.setItem(
-"eaasgrid_token",
-data.token
-);
-
-
-
-localStorage.setItem(
-"eaasgrid_user",
-JSON.stringify(data.user)
-);
-
-
-
-document.cookie =
-`eaasgrid_token=${data.token}; path=/; SameSite=Lax`;
-
-
-
-}
-
-
-}
-
-
-
 export function getSession(){
 
-
-if(typeof window==="undefined")
-return null;
-
-
-
-const token =
-localStorage.getItem(
-"eaasgrid_token"
-);
+    if(typeof window==="undefined"){
+        return null;
+    }
 
 
-
-const user =
-JSON.parse(
-localStorage.getItem(
-"eaasgrid_user"
-)||"null"
-);
+    const token =
+        localStorage.getItem(
+            "eaasgrid_token"
+        );
 
 
-
-return {
-
-token,
-
-user
-
-};
+    const user =
+        localStorage.getItem(
+            "eaasgrid_user"
+        );
 
 
-
-}
-
-
-
-
-export function clearSession(){
+    if(!token || !user){
+        return null;
+    }
 
 
-if(typeof window!=="undefined"){
+    return {
 
+        token,
 
-localStorage.removeItem(
-"eaasgrid_token"
-);
+        user:
+        JSON.parse(user)
 
-
-
-localStorage.removeItem(
-"eaasgrid_user"
-);
-
-
-
-document.cookie =
-"eaasgrid_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-
-
-
-}
-
-
+    };
 
 }
