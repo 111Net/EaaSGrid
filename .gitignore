@@ -23,3 +23,34 @@ dist
 # OS
 .DS_Store
 
+
+# ======================
+# XaaSGrid Runtime
+# ======================
+
+.env
+.env.*
+!.env.example
+
+node_modules/
+
+.next/
+
+dist/
+
+coverage/
+
+*.log
+
+*.pid
+
+
+# Database
+
+*.sql.backup
+
+
+# OS
+
+.DS_Store
+

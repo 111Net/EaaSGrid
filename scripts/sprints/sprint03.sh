@@ -11,97 +11,162 @@ echo "======================================"
 cd $ROOT
 
 
-echo "[1] Creating cleanup report"
-
-mkdir -p reports
-
-
-echo "[2] Checking secrets"
-
-find . \
--name ".env" \
--o -name ".env.local" \
--o -name "*.pem" \
--o -name "*.key" \
-> reports/sprint03-secret-scan.txt || true
-
-
-
-echo "[3] Creating repository folders"
+echo "[1] Creating required repository structure"
 
 mkdir -p \
 docs \
 database \
 scripts/sprints \
-state \
-reports
+reports \
+state
 
 
 
-echo "[4] Creating environment template"
+echo "[2] Scanning for secrets"
+
+find . \
+\( -name ".env" \
+-o -name ".env.local" \
+-o -name "*.pem" \
+-o -name "*.key" \) \
+-not -path "./node_modules/*" \
+-not -path "./.git/*" \
+> reports/sprint03-secret-scan.txt || true
+
+
+
+echo "[3] Creating environment template"
+
 
 if [ -f .env ]; then
 
-cp .env .env.example
+    cp .env .env.example
 
-sed -i \
--e 's/=.*/=CHANGE_ME/g' \
-.env.example
+    sed -i \
+    -E 's/(=.*)/=CHANGE_ME/g' \
+    .env.example
+
+else
+
+    cat > .env.example <<EOF
+NODE_ENV=development
+
+DATABASE_URL=CHANGE_ME
+
+POSTGRES_USER=CHANGE_ME
+POSTGRES_PASSWORD=CHANGE_ME
+POSTGRES_DB=CHANGE_ME
+
+API_PORT=4000
+
+NEXT_PUBLIC_API_URL=http://localhost:4000
+
+EOF
 
 fi
 
 
 
-echo "[5] Updating gitignore"
+echo "[4] Updating .gitignore"
+
+
+touch .gitignore
+
 
 cat >> .gitignore <<EOF
 
-# XaaSGrid runtime
+# ======================
+# XaaSGrid Runtime
+# ======================
+
 .env
-.env.local
+.env.*
+!.env.example
+
+node_modules/
+
+.next/
+
+dist/
+
+coverage/
+
 *.log
-.next
-node_modules
-coverage
-dist
+
+*.pid
+
+
+# Database
+
+*.sql.backup
+
 
 # OS
+
 .DS_Store
 
 EOF
 
 
 
-echo "[6] Repository inventory"
-
-{
-echo "# XaaSGrid Sprint 3 Repository Cleanup"
-echo
-date
-echo
-echo "Applications:"
-ls apps
-echo
-echo "Packages:"
-ls packages 2>/dev/null || true
-echo
-echo "Scripts:"
-find scripts -maxdepth 2 -type f
-} > reports/sprint03-cleanup-report.md
+echo "[5] Repository inventory"
 
 
+cat > reports/sprint03-cleanup-report.md <<EOF
+# XaaSGrid Sprint 3 Repository Cleanup
 
-echo "[7] Update platform state"
+Date:
+$(date)
+
+
+## Repository
+
+Path:
+$ROOT
+
+
+## Applications
+
+$(ls apps)
+
+
+## Packages
+
+$(ls packages 2>/dev/null || echo "No packages folder")
+
+
+## Scripts
+
+$(find scripts -maxdepth 2 -type f | sort)
+
+
+## Secret Scan
+
+$(cat reports/sprint03-secret-scan.txt)
+
+
+## Status
+
+Repository cleanup completed.
+
+EOF
+
+
+
+echo "[6] Updating platform state"
+
 
 cat > state/platform-state.json <<EOF
 {
  "platform":"XaaSGrid",
+ "baseline":"created",
  "current_sprint":3,
  "status":"repository-cleanup-complete",
- "version_control":"git",
+ "git_version_control":true,
  "portable_ready":false
 }
 EOF
+
 
 
 echo
@@ -110,10 +175,6 @@ echo " Sprint 3 Repository Cleanup Complete"
 echo "======================================"
 
 echo
-echo "Review:"
+echo "Report:"
 echo "reports/sprint03-cleanup-report.md"
-
-
-
-
 
