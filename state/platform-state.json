@@ -1,13 +1,14 @@
 {
  "platform":"XaaSGrid",
  "baseline":"created",
- "current_sprint":8,
- "status":"cicd-foundation-complete",
+ "current_sprint":9,
+ "status":"vps-deployment-foundation-complete",
  "git_version_control":true,
  "portable_ready":true,
  "docker_ready":true,
  "environment_managed":true,
  "bootstrap_ready":true,
  "database_foundation_ready":true,
- "cicd_ready":true
+ "cicd_ready":true,
+ "vps_deployment_ready":true
 }
