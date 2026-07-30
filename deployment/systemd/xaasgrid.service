@@ -1,20 +1,13 @@
 [Unit]
-
 Description=XaaSGrid Platform
-
-
 After=docker.service
 
 
 [Service]
 
-Type=simple
-
-WorkingDirectory=/opt/xaasgrid-platform
+WorkingDirectory=/opt/xaasgrid
 
 ExecStart=/usr/bin/docker compose up
-
-ExecStop=/usr/bin/docker compose down
 
 Restart=always
 
