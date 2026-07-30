@@ -1,8 +1,10 @@
 {
-  "platform": "XaaSGrid",
-  "baseline": "created",
-  "current_sprint": "5",
-  "status": "docker-foundation-complete",
-  "git_version_control": true,
-  "portable_ready": true
+  "platform":"XaaSGrid",
+  "baseline":"created",
+  "current_sprint":6,
+  "status":"environment-foundation-complete",
+  "git_version_control":true,
+  "portable_ready":true,
+  "docker_ready":true,
+  "environment_managed":true
 }
