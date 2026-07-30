@@ -1,8 +1,8 @@
 {
  "platform":"XaaSGrid",
  "baseline":"created",
- "current_sprint":12,
- "status":"release-management-complete",
+ "current_sprint":13,
+ "status":"production-repository-cleanup-complete",
  "git_version_control":true,
  "portable_ready":true,
  "docker_ready":true,
@@ -13,5 +13,6 @@
  "vps_deployment_ready":true,
  "monitoring_ready":true,
  "self_healing_ready":true,
- "release_management_ready":true
+ "release_management_ready":true,
+ "repository_production_ready":true
 }
