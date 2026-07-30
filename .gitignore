@@ -10,3 +10,16 @@ tmp/
 coverage/
 .DS_Store
 reports/*.tmp
+
+# XaaSGrid runtime
+.env
+.env.local
+*.log
+.next
+node_modules
+coverage
+dist
+
+# OS
+.DS_Store
+

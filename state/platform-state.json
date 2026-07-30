@@ -1,6 +1,7 @@
 {
-"platform":"XaaSGrid",
-"baseline":"created",
-"current_sprint":2,
-"status":"git-controlled"
+ "platform":"XaaSGrid",
+ "current_sprint":3,
+ "status":"repository-cleanup-complete",
+ "version_control":"git",
+ "portable_ready":false
 }
