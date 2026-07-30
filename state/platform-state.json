@@ -1,8 +1,8 @@
 {
   "platform": "XaaSGrid",
   "baseline": "created",
-  "current_sprint": 4,
-  "status": "portable-installer-complete",
+  "current_sprint": "5A",
+  "status": "repository-preclean-complete",
   "git_version_control": true,
   "portable_ready": true
 }
