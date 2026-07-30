@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="/data/eaasgrid-platform"
+API="$ROOT/apps/api"
+
+echo "======================================"
+echo "EAASGrid Automatic Repair"
+echo "======================================"
+
+echo
+echo "[1] Creating log directories..."
+
+mkdir -p /tmp/apps
+mkdir -p /tmp/eaasgrid
+
+touch /tmp/apps/api.log
+touch /tmp/apps/dashboard.log
+touch /tmp/apps/investor-portal.log
+
+echo "OK"
+
+echo
+echo "[2] Detecting Redis..."
+
+if systemctl list-unit-files | grep -q '^redis-server.service'; then
+    REDIS=redis-server
+elif systemctl list-unit-files | grep -q '^redis.service'; then
+    REDIS=redis
+else
+    REDIS=""
+fi
+
+if [ -n "$REDIS" ]; then
+    sudo systemctl restart "$REDIS" || true
+    echo "Redis service checked."
+else
+    echo "Redis not installed."
+fi
+
+echo
+echo "[3] Checking Express auth route..."
+AUTH_FILE="/data/eaasgrid-platform/apps/api/src/app.js"
+
+if grep -q 'app.use("/api/auth"' "$AUTH_FILE"; then
+    echo "Fixing auth mount path..."
+
+    sed -i \
+    's#app.use("/api/auth"#app.use("/api/v1/auth"#' \
+    "$AUTH_FILE"
+
+    echo "Auth route repaired."
+fi
+
+cd "$API"
+
+APPFILE=""
+
+if [ -f src/app.js ]; then
+    APPFILE="src/app.js"
+elif [ -f app.js ]; then
+    APPFILE="app.js"
+fi
+
+if [ -z "$APPFILE" ]; then
+    echo "Cannot locate app.js"
+    exit 1
+fi
+
+echo "Using $APPFILE"
+
+grep -n "auth.routes" "$APPFILE" || true
+grep -n "app.use" "$APPFILE" || true
+
+if ! grep -q "auth.routes" "$APPFILE"; then
+    echo
+    echo "WARNING:"
+    echo "Authentication routes are probably not mounted."
+fi
+
+echo
+echo "[4] API health..."
+
+curl -s http://127.0.0.1:4000/api/v1/health || true
+
+echo
+echo "[5] Login endpoint..."
+
+curl -s \
+-X POST \
+http://127.0.0.1:4000/api/v1/auth/login \
+-H "Content-Type: application/json" \
+-d '{"email":"admin@eaasgrid.com","password":"Admin@123"}' \
+|| true
+
+echo
+echo "[6] Dashboard process..."
+
+pgrep -af next || true
+
+echo
+echo "[7] Open ports..."
+
+ss -tulpn | grep -E ':3000|:3001|:4000'
+
+echo
+echo "Repair complete."

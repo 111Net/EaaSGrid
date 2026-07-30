@@ -1,0 +1,193 @@
+==========================================
+ XaaSGrid Platform Controller
+ Startup + Health + Recovery
+ 2026-07-29_07-52-33
+==========================================
+
+[1] PostgreSQL
+PASS - PostgreSQL running
+
+[2] API Service
+PASS - API already running
+PASS - API healthy
+
+[3] Dashboard
+PASS - Dashboard running
+
+[4] Investor Portal
+Starting Investor portal
+
+[5] Frontend Validation
+ERROR - Dashboard permission module broken
+
+> dashboard@0.1.0 build
+> next build
+
+▲ Next.js 16.2.10 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 2 errors:
+./apps/dashboard/components/layout/DashboardLayout.jsx:10:1
+Export getCurrentUser doesn't exist in target module
+  [90m 8 |[0m
+  [90m 9 |[0m
+[31m[1m>[0m [90m10 |[0m [36mimport[0m {
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 |[0m     hasPermission,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 |[0m     getCurrentUser
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 |[0m } [36mfrom[0m [32m"@/lib/permissions"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m14 |[0m
+  [90m15 |[0m
+  [90m16 |[0m
+
+The export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-client] (ecmascript).
+Did you mean to import hasPermission?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./apps/dashboard/components/layout/DashboardLayout.jsx
+    ./apps/dashboard/app/users/page.jsx
+
+  Client Component Browser:
+    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]
+    ./apps/dashboard/app/billing/page.jsx [Client Component Browser]
+    ./apps/dashboard/app/billing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]
+    ./apps/dashboard/app/billing/page.jsx [Client Component SSR]
+    ./apps/dashboard/app/billing/page.jsx [Server Component]
+
+
+./apps/dashboard/components/layout/DashboardLayout.jsx:10:1
+Export getCurrentUser doesn't exist in target module
+  [90m 8 |[0m
+  [90m 9 |[0m
+[31m[1m>[0m [90m10 |[0m [36mimport[0m {
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 |[0m     hasPermission,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 |[0m     getCurrentUser
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 |[0m } [36mfrom[0m [32m"@/lib/permissions"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m14 |[0m
+  [90m15 |[0m
+  [90m16 |[0m
+
+The export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-ssr] (ecmascript).
+Did you mean to import hasPermission?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./apps/dashboard/components/layout/DashboardLayout.jsx
+    ./apps/dashboard/app/users/page.jsx
+
+  Client Component Browser:
+    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]
+    ./apps/dashboard/app/billing/page.jsx [Client Component Browser]
+    ./apps/dashboard/app/billing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]
+    ./apps/dashboard/app/billing/page.jsx [Client Component SSR]
+    ./apps/dashboard/app/billing/page.jsx [Server Component]
+
+
+    at <unknown> (./apps/dashboard/components/layout/DashboardLayout.jsx:10:1)
+    at <unknown> (./apps/dashboard/components/layout/DashboardLayout.jsx:10:1)
+npm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path /data/eaasgrid-platform/apps/dashboard
+npm error workspace dashboard@0.1.0
+npm error location /data/eaasgrid-platform/apps/dashboard
+npm error command failed
+npm error command sh -c next build
+
+[6] Permission Engine Check
+REPAIR REQUIRED - getCurrentUser missing
+
+[7] Runtime Log Scan
+Checking /data/eaasgrid-platform/apps/dashboard/.next/dev/logs/next-development.log
+{"timestamp":"00:00:22.603","source":"Server","level":"ERROR","message":"[browser] \"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\\nExport getCurrentUser doesn't exist in target module\\n   8 |\\n   9 |\\n> 10 | import {\\n     | ^^^^^^^\\n> 11 |     hasPermission,\\n     | ^^^^^^^^^^^^^^^^^^\\n> 12 |     getCurrentUser\\n     | ^^^^^^^^^^^^^^^^^^\\n> 13 | } from \\\"@/lib/permissions\\\";\\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  14 |\\n  15 |\\n  16 |\\n\\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-client] (ecmascript).\\nDid you mean to import hasPermission?\\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\\n\\nImport traces:\\n  Client Component Browser:\\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\\n\\n  Client Component SSR:\\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\" \"\""}
+{"timestamp":"00:00:22.603","source":"Browser","level":"ERROR","message":"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\nExport getCurrentUser doesn't exist in target module\n   8 |\n   9 |\n> 10 | import {\n     | ^^^^^^^\n> 11 |     hasPermission,\n     | ^^^^^^^^^^^^^^^^^^\n> 12 |     getCurrentUser\n     | ^^^^^^^^^^^^^^^^^^\n> 13 | } from \"@/lib/permissions\";\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  14 |\n  15 |\n  16 |\n\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-client] (ecmascript).\nDid you mean to import hasPermission?\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\n\nImport traces:\n  Client Component Browser:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\n\n  Client Component SSR:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component] \"\""}
+{"timestamp":"00:00:22.604","source":"Server","level":"ERROR","message":"[browser] \"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\\nExport getCurrentUser doesn't exist in target module\\n   8 |\\n   9 |\\n> 10 | import {\\n     | ^^^^^^^\\n> 11 |     hasPermission,\\n     | ^^^^^^^^^^^^^^^^^^\\n> 12 |     getCurrentUser\\n     | ^^^^^^^^^^^^^^^^^^\\n> 13 | } from \\\"@/lib/permissions\\\";\\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  14 |\\n  15 |\\n  16 |\\n\\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-ssr] (ecmascript).\\nDid you mean to import hasPermission?\\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\\n\\nImport traces:\\n  Client Component Browser:\\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\\n\\n  Client Component SSR:\\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\" \"\""}
+{"timestamp":"00:00:22.604","source":"Browser","level":"ERROR","message":"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\nExport getCurrentUser doesn't exist in target module\n   8 |\n   9 |\n> 10 | import {\n     | ^^^^^^^\n> 11 |     hasPermission,\n     | ^^^^^^^^^^^^^^^^^^\n> 12 |     getCurrentUser\n     | ^^^^^^^^^^^^^^^^^^\n> 13 | } from \"@/lib/permissions\";\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  14 |\n  15 |\n  16 |\n\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-ssr] (ecmascript).\nDid you mean to import hasPermission?\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\n\nImport traces:\n  Client Component Browser:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\n\n  Client Component SSR:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component] \"\""}
+{"timestamp":"00:00:22.692","source":"Server","level":"ERROR","message":"[browser] \"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\\nExport getCurrentUser doesn't exist in target module\\n   8 |\\n   9 |\\n> 10 | import {\\n     | ^^^^^^^\\n> 11 |     hasPermission,\\n     | ^^^^^^^^^^^^^^^^^^\\n> 12 |     getCurrentUser\\n     | ^^^^^^^^^^^^^^^^^^\\n> 13 | } from \\\"@/lib/permissions\\\";\\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  14 |\\n  15 |\\n  16 |\\n\\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-client] (ecmascript).\\nDid you mean to import hasPermission?\\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\\n\\nImport traces:\\n  Client Component Browser:\\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\\n\\n  Client Component SSR:\\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\" \"\""}
+{"timestamp":"00:00:22.693","source":"Browser","level":"ERROR","message":"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\nExport getCurrentUser doesn't exist in target module\n   8 |\n   9 |\n> 10 | import {\n     | ^^^^^^^\n> 11 |     hasPermission,\n     | ^^^^^^^^^^^^^^^^^^\n> 12 |     getCurrentUser\n     | ^^^^^^^^^^^^^^^^^^\n> 13 | } from \"@/lib/permissions\";\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  14 |\n  15 |\n  16 |\n\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-client] (ecmascript).\nDid you mean to import hasPermission?\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\n\nImport traces:\n  Client Component Browser:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\n\n  Client Component SSR:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component] \"\""}
+{"timestamp":"00:00:22.694","source":"Server","level":"ERROR","message":"[browser] \"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\\nExport getCurrentUser doesn't exist in target module\\n   8 |\\n   9 |\\n> 10 | import {\\n     | ^^^^^^^\\n> 11 |     hasPermission,\\n     | ^^^^^^^^^^^^^^^^^^\\n> 12 |     getCurrentUser\\n     | ^^^^^^^^^^^^^^^^^^\\n> 13 | } from \\\"@/lib/permissions\\\";\\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  14 |\\n  15 |\\n  16 |\\n\\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-ssr] (ecmascript).\\nDid you mean to import hasPermission?\\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\\n\\nImport traces:\\n  Client Component Browser:\\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\\n\\n  Client Component SSR:\\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\" \"\""}
+{"timestamp":"00:00:22.694","source":"Browser","level":"ERROR","message":"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\nExport getCurrentUser doesn't exist in target module\n   8 |\n   9 |\n> 10 | import {\n     | ^^^^^^^\n> 11 |     hasPermission,\n     | ^^^^^^^^^^^^^^^^^^\n> 12 |     getCurrentUser\n     | ^^^^^^^^^^^^^^^^^^\n> 13 | } from \"@/lib/permissions\";\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  14 |\n  15 |\n  16 |\n\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-ssr] (ecmascript).\nDid you mean to import hasPermission?\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\n\nImport traces:\n  Client Component Browser:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\n\n  Client Component SSR:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component] \"\""}
+{"timestamp":"00:00:22.695","source":"Browser","level":"ERROR","message":"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\nExport getCurrentUser doesn't exist in target module\n   8 |\n   9 |\n> 10 | import {\n     | ^^^^^^^\n> 11 |     hasPermission,\n     | ^^^^^^^^^^^^^^^^^^\n> 12 |     getCurrentUser\n     | ^^^^^^^^^^^^^^^^^^\n> 13 | } from \"@/lib/permissions\";\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  14 |\n  15 |\n  16 |\n\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-client] (ecmascript).\nDid you mean to import hasPermission?\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\n\nImport traces:\n  Client Component Browser:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\n\n  Client Component SSR:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]"}
+{"timestamp":"00:00:22.695","source":"Browser","level":"ERROR","message":"./apps/dashboard/components/layout/DashboardLayout.jsx:10:1\nExport getCurrentUser doesn't exist in target module\n   8 |\n   9 |\n> 10 | import {\n     | ^^^^^^^\n> 11 |     hasPermission,\n     | ^^^^^^^^^^^^^^^^^^\n> 12 |     getCurrentUser\n     | ^^^^^^^^^^^^^^^^^^\n> 13 | } from \"@/lib/permissions\";\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  14 |\n  15 |\n  16 |\n\nThe export getCurrentUser was not found in module [project]/apps/dashboard/lib/permissions.js [app-ssr] (ecmascript).\nDid you mean to import hasPermission?\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\n\nImport traces:\n  Client Component Browser:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component Browser]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]\n\n  Client Component SSR:\n    ./apps/dashboard/components/layout/DashboardLayout.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Client Component SSR]\n    ./apps/dashboard/app/control-centre/page.jsx [Server Component]"}
+Checking /data/eaasgrid-platform/apps/dashboard/dashboard.log
+Checking /data/eaasgrid-platform/apps/dashboard/dashboard-runtime.log
+[browser] Uncaught Error: ./apps/dashboard/components/layout/DashboardLayout.jsx:10:1
+    at <unknown> (Error: ./apps/dashboard/components/layout/DashboardLayout.jsx:10:1)
+    at <unknown> (Error: (./apps/dashboard/components/layout/DashboardLayout.jsx:10:1)
+[browser] Uncaught Error: ./apps/dashboard/components/layout/DashboardLayout.jsx:10:1
+    at <unknown> (Error: ./apps/dashboard/components/layout/DashboardLayout.jsx:10:1)
+    at <unknown> (Error: (./apps/dashboard/components/layout/DashboardLayout.jsx:10:1)
+[browser] Uncaught Error: ./apps/dashboard/components/layout/DashboardLayout.jsx:10:1
+    at <unknown> (Error: ./apps/dashboard/components/layout/DashboardLayout.jsx:10:1)
+    at <unknown> (Error: (./apps/dashboard/components/layout/DashboardLayout.jsx:10:1)
+Checking /data/eaasgrid-platform/apps/api/sprint9-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint12-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint11-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint10-runtime.log
+Checking /data/eaasgrid-platform/apps/api/api-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint3-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint8-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint4-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint6-runtime.log
+Checking /data/eaasgrid-platform/apps/api/api.log
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+npm error Lifecycle script `dev` failed with error:
+npm error code 1
+npm error path /data/eaasgrid-platform/apps/api
+npm error workspace api@1.0.0
+npm error location /data/eaasgrid-platform/apps/api
+npm error command failed
+npm error command sh -c nodemon src/server.js
+Checking /data/eaasgrid-platform/apps/api/sprint5-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint7-runtime.log
+Checking /data/eaasgrid-platform/apps/investor-portal/investor.log
+Checking /data/eaasgrid-platform/apps/investor-portal/.next/dev/logs/next-development.log
+Checking /data/eaasgrid-platform/apps/investor-portal/dashboard.log
+npm error Lifecycle script `dev` failed with error:
+npm error code 1
+npm error path /data/eaasgrid-platform/apps/investor-portal
+npm error workspace investor-portal@0.1.0
+npm error location /data/eaasgrid-platform/apps/investor-portal
+npm error command failed
+npm error command sh -c next dev --hostname 0.0.0.0
+Checking /data/eaasgrid-platform/apps/investor-portal/investor-runtime.log
+Checking /data/eaasgrid-platform/apps/api.log
+
+[8] Active Services
+user       21131  0.2  0.7 11485652 57812 pts/2  Sl   07:48   0:00 node src/server.js
+user       21161  0.1  0.7 11518364 59008 pts/2  Sl   07:49   0:00 node /data/eaasgrid-platform/node_modules/.bin/next dev
+user       21436  3.3  0.7 11518356 58928 pts/2  Sl+  07:52   0:00 node /data/eaasgrid-platform/node_modules/.bin/next dev -p 3001
+
+[9] Infrastructure
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        20G   15G  3.9G  80% /
+               total        used        free      shared  buff/cache   available
+Mem:           7.7Gi       1.4Gi       4.0Gi        31Mi       2.6Gi       6.3Gi
+Swap:             0B          0B          0B
+
+==========================================
+ PLATFORM STATUS COMPLETE
+==========================================
+
+REPORT:
+/data/eaasgrid-platform/reports/platform-controller/controller-2026-07-29_07-52-33.txt

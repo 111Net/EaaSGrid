@@ -1,0 +1,50 @@
+==========================================
+ EaaSGrid Nginx Automated Test
+==========================================
+Date: Sat Jul 18 02:05:05 AM UTC 2026
+
+[1] Checking required commands...
+PASS: nginx is installed
+PASS: curl is installed
+PASS: ss is installed
+
+[2] Checking Nginx service...
+PASS: Nginx service is active
+
+[3] Validating Nginx configuration...
+PASS: Nginx configuration is valid
+
+[4] Checking application ports...
+PASS: Dashboard is listening on port 3000
+PASS: Investor Portal is listening on port 3001
+PASS: Showcase is listening on port 3002
+PASS: API is listening on port 4000
+
+[5] Testing direct application services...
+PASS: Dashboard direct service: http://127.0.0.1:3000
+PASS: Investor Portal direct service: http://127.0.0.1:3001
+PASS: Showcase direct service: http://127.0.0.1:3002
+PASS: API direct service: http://127.0.0.1:4000/api/v1/health
+
+[6] Testing Nginx proxy routes...
+PASS: Dashboard through Nginx: http://localhost/
+PASS: Investor Portal through Nginx: http://localhost/investor/
+PASS: Showcase through Nginx: http://localhost/showcase/
+PASS: API through Nginx: http://localhost/api/v1/health
+
+[7] Checking Nginx configuration files...
+PASS: EaaSGrid Nginx configuration exists
+PASS: EaaSGrid Nginx configuration is enabled
+
+==========================================
+ TEST SUMMARY
+==========================================
+PASS: 19
+FAIL: 0
+WARN: 0
+
+==========================================
+ OVERALL RESULT: PASS
+==========================================
+
+EaaSGrid Nginx routing is operational.

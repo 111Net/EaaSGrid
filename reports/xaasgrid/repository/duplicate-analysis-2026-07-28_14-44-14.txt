@@ -1,0 +1,55 @@
+======================================
+ EaaSGrid Duplicate Detection Engine
+ Sprint 0.3
+ Date: Tue Jul 28 02:44:14 PM UTC 2026
+ Repository: /data/eaasgrid-platform
+======================================
+
+[1] Duplicate File Names
+--------------------------------------
+
+[2] Backup File Detection
+--------------------------------------
+/data/eaasgrid-platform/scripts/guardian/eaasgrid-platform-auto-repair.sh.backup.2026-07-25-154242
+/data/eaasgrid-platform/scripts/eaas-database-master-verification.sh.backup
+/data/eaasgrid-platform/apps/dashboard/lib/auth.js.backup.2026-07-25-1702
+/data/eaasgrid-platform/apps/dashboard/backups/module16-ui-upgrade/components/layout/DashboardLayout.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/backups/module16-ui-upgrade/app/control-centre/page.jsx.broken-backup
+/data/eaasgrid-platform/apps/dashboard/backups/module16-ui-upgrade/app/login/page.jsx.backup.module12
+/data/eaasgrid-platform/apps/dashboard/components/layout/DashboardLayout.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/users/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/operations/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/control-centre/page.jsx.broken-backup
+/data/eaasgrid-platform/apps/dashboard/app/analytics/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/security/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/settings/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/login/page.jsx.backup.module12
+/data/eaasgrid-platform/apps/dashboard/middleware.js.backup.module13.2026-07-27-030320
+/data/eaasgrid-platform/apps/api/src/app.js.backup.2026-07-25-1524
+/data/eaasgrid-platform/apps/api/src/controllers/company.controller.backup.js
+/data/eaasgrid-platform/apps/api/src/controllers/dashboard.controller.phase5.2.3.backup.js
+/data/eaasgrid-platform/apps/api/src/auth/auth.service.backup.js
+/data/eaasgrid-platform/apps/api/src/app.js.backup
+/data/eaasgrid-platform/apps/api/.env.backup
+/data/eaasgrid-platform/phase9-final-local-release-gate.js.backup-20260716-165850
+/data/eaasgrid-platform/phase9-final-local-release-gate.js.backup-20260716-165829
+/data/eaasgrid-platform/backups/dashboard/phase5/Performance.phase5.3.5.backup.tsx
+/data/eaasgrid-platform/backups/dashboard/phase5/Finance.phase5.3.4.backup.tsx
+/data/eaasgrid-platform/backups/dashboard/phase5/Sites.phase5.3.2.backup.tsx
+/data/eaasgrid-platform/backups/dashboard/phase5/page.phase5.3.backup.tsx
+/data/eaasgrid-platform/backups/dashboard/phase5/Energy.phase5.3.3.backup.tsx
+
+[3] Duplicate Package Detection
+--------------------------------------
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/package.json
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/package.json
+/data/eaasgrid-platform/apps/dashboard/package.json
+/data/eaasgrid-platform/apps/api/package.json
+/data/eaasgrid-platform/apps/investor-portal/package.json
+/data/eaasgrid-platform/apps/showcase/package.json
+/data/eaasgrid-platform/packages/ui/package.json
+/data/eaasgrid-platform/packages/config/package.json
+/data/eaasgrid-platform/package.json
+
+[4] Duplicate Script Families
+--------------------------------------

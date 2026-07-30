@@ -1,0 +1,49 @@
+========================================
+ XaaSGrid Platform Integration Report
+========================================
+
+Generated:
+Thu Jul 30 05:14:53 AM UTC 2026
+
+Hostname:
+user
+
+Operating System:
+Linux user 6.8.0-136-generic #136-Ubuntu SMP PREEMPT_DYNAMIC Wed Jul  1 21:53:05 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+Disk Usage:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        20G   15G  4.1G  79% /
+
+Memory:
+               total        used        free      shared  buff/cache   available
+Mem:           7.7Gi       1.0Gi       4.6Gi        15Mi       2.4Gi       6.7Gi
+Swap:             0B          0B          0B
+
+Running Processes:
+root        1583  0.0  0.2 109644 23256 ?        Ssl  03:52   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root        1679  0.0  0.0  11160  1864 ?        Ss   03:52   0:00 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+www-data    1680  0.0  0.0  12844  4596 ?        S    03:52   0:00 nginx: worker process
+www-data    1681  0.0  0.0  12844  4596 ?        S    03:52   0:00 nginx: worker process
+www-data    1683  0.0  0.0  12844  4596 ?        S    03:52   0:00 nginx: worker process
+www-data    1684  0.0  0.0  12844  4596 ?        S    03:52   0:00 nginx: worker process
+www-data    1685  0.0  0.0  12844  4596 ?        S    03:52   0:00 nginx: worker process
+www-data    1686  0.0  0.0  12844  4596 ?        S    03:52   0:00 nginx: worker process
+www-data    1687  0.0  0.0  12844  4596 ?        S    03:52   0:00 nginx: worker process
+www-data    1688  0.0  0.0  12844  4536 ?        S    03:52   0:00 nginx: worker process
+postgres    1770  0.0  0.3 222868 31296 ?        Ss   03:52   0:00 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
+postgres    1806  0.0  0.1 223000  8680 ?        Ss   03:52   0:00 postgres: 16/main: checkpointer 
+postgres    1807  0.0  0.0 223024  7560 ?        Ss   03:52   0:00 postgres: 16/main: background writer 
+postgres    1825  0.0  0.1 222868 10532 ?        Ss   03:52   0:00 postgres: 16/main: walwriter 
+postgres    1826  0.0  0.1 224476  8844 ?        Ss   03:52   0:00 postgres: 16/main: autovacuum launcher 
+postgres    1827  0.0  0.1 224452  8232 ?        Ss   03:52   0:00 postgres: 16/main: logical replication launcher 
+user        1864  0.0  0.7 11781408 59128 ?      Ssl  03:52   0:01 /usr/bin/node src/server.js
+root        3091  0.0  0.3  36612 27608 ?        Ss   03:54   0:02 /usr/bin/python3 /opt/eaas/watchdog/watchdog_v2.py
+
+Docker Containers:
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                         NAMES
+5b1950fed8d6   redis:7   "docker-entrypoint.s…"   4 seconds ago   Up 4 seconds   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp   eaas-redis
+
+========================================
+ End of Report
+========================================

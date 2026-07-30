@@ -1,0 +1,4 @@
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+452c5406c62f   infrastructure-backend   "uvicorn app.main:ap…"   26 seconds ago   Up 19 seconds   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp   eaas-backend
+2ad1cb1f047b   postgres:15              "docker-entrypoint.s…"   26 seconds ago   Up 19 seconds                                                 eaas-postgres
+e37c399bdef7   redis:7                  "docker-entrypoint.s…"   26 seconds ago   Up 25 seconds   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp   eaas-redis

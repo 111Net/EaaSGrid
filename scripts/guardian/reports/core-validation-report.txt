@@ -1,0 +1,29 @@
+==================================
+EaaSGrid Guardian Core Validation
+Sun Jul 26 12:23:05 PM UTC 2026
+==================================
+[PASS] logger.sh executable and loadable
+[PASS] filesystem.sh directory check
+[PASS] filesystem discovery found JSX files
+Filesystem Summary
+==================
+Location:
+/data/eaasgrid-platform
+
+Owner:
+user:user
+
+Size:
+1.1G
+
+Files:
+33175
+[PASS] filesystem safety guardrail
+[PASS] filesystem.sh executable
+[PASS] logger.sh executable
+
+==================================
+SUMMARY
+PASS: 6
+FAIL: 0
+STATUS: READY

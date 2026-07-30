@@ -1,0 +1,52 @@
+dnsmasq     2841  0.0  0.3 216080 27576 ?        Ss   02:38   0:00 postgres
+dnsmasq     2994  0.0  0.1 216200  8252 ?        Ss   02:38   0:00 postgres: checkpointer 
+dnsmasq     2995  0.0  0.0 216216  7192 ?        Ss   02:38   0:00 postgres: background writer 
+dnsmasq     2997  0.0  0.1 216080 10212 ?        Ss   02:38   0:00 postgres: walwriter 
+dnsmasq     2998  0.0  0.1 217664  8712 ?        Ss   02:38   0:00 postgres: autovacuum launcher 
+dnsmasq     2999  0.0  0.0 217648  7808 ?        Ss   02:38   0:00 postgres: logical replication launcher 
+root        8636  0.0  0.0  16908  7288 pts/0    T    04:19   0:00 sudo -u postgres psql -d eaas_db
+root        8637  0.0  0.0  16908  2752 pts/3    Ss   04:19   0:00 sudo -u postgres psql -d eaas_db
+postgres    8638  0.0  0.1  23488  9516 pts/3    T+   04:19   0:00 /usr/lib/postgresql/16/bin/psql -d eaas_db
+postgres    8709  0.0  0.0   2800  1916 pts/3    T+   04:21   0:00 sh -c -- pager
+postgres    8710  0.0  0.0   6072  2720 pts/3    T+   04:21   0:00 pager
+root        8769  0.0  0.0  16912  7296 pts/0    T    04:22   0:00 sudo -u postgres psql -d eaas_db
+root        8770  0.0  0.0  16912  2752 pts/4    Ss   04:22   0:00 sudo -u postgres psql -d eaas_db
+postgres    8771  0.0  0.1  23488  9396 pts/4    T+   04:22   0:00 /usr/lib/postgresql/16/bin/psql -d eaas_db
+postgres    8814  0.0  0.0   2800  1916 pts/4    T+   04:23   0:00 sh -c -- pager
+postgres    8815  0.0  0.0   6204  2904 pts/4    S+   04:23   0:00 pager
+user       10740  0.0  0.0   2800  1916 pts/2    S+   04:58   0:00 sh -c next dev
+user       10741  0.0  0.7 11518612 59060 pts/2  Sl+  04:58   0:00 node /data/eaasgrid-platform/node_modules/.bin/next dev
+user       10752  0.5  6.7 24616104 542980 pts/2 Sl+  04:58   0:24 next-server (v16.2.10)
+user       10776  0.0  0.9 2793740 74212 pts/2   Sl+  04:58   0:01 node /data/eaasgrid-platform/apps/dashboard/.next/dev/build/aa08c5fcd9f82fd2.js 42591
+root       10873  0.0  0.0  16912  7460 pts/0    T    05:00   0:00 sudo -u postgres psql -d eaas_db
+root       10874  0.0  0.0  16912  2792 pts/5    Ss   05:00   0:00 sudo -u postgres psql -d eaas_db
+postgres   10875  0.0  0.1  23488  9416 pts/5    T+   05:00   0:00 /usr/lib/postgresql/16/bin/psql -d eaas_db
+postgres   10885  0.0  0.0   2800  1912 pts/5    T+   05:00   0:00 sh -c -- pager
+postgres   10886  0.0  0.0   6072  2868 pts/5    S+   05:00   0:00 pager
+root       10973  0.0  0.0  16904  7308 pts/0    T    05:01   0:00 sudo -u postgres psql -d eaas_db
+root       10974  0.0  0.0  16904  2748 pts/6    Ss   05:01   0:00 sudo -u postgres psql -d eaas_db
+postgres   10975  0.0  0.1  23488  9468 pts/6    T+   05:01   0:00 /usr/lib/postgresql/16/bin/psql -d eaas_db
+postgres   10986  0.0  0.0   2800  1916 pts/6    T+   05:01   0:00 sh -c -- pager
+postgres   10987  0.0  0.0   6072  2872 pts/6    S+   05:01   0:00 pager
+user       11920  0.0  0.0   2800  1916 pts/1    S    05:21   0:00 sh -c node src/server.js
+user       11921  0.0  0.7 11781632 61996 pts/1  Sl   05:21   0:01 node src/server.js
+root       12018  0.0  0.0  16908  7336 pts/1    T    05:23   0:00 sudo -u postgres psql -d eaas_db
+root       12019  0.0  0.0  16908  2732 pts/7    Ss   05:23   0:00 sudo -u postgres psql -d eaas_db
+postgres   12020  0.0  0.1  23488  9432 pts/7    T+   05:23   0:00 /usr/lib/postgresql/16/bin/psql -d eaas_db
+postgres   12022  0.0  0.0   2800  1916 pts/7    T+   05:24   0:00 sh -c -- pager
+postgres   12023  0.0  0.0   6072  2720 pts/7    T+   05:24   0:00 pager
+root       15045  0.0  0.0  11160  1920 ?        Ss   06:03   0:00 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+www-data   15049  0.0  0.0  12844  4636 ?        S    06:03   0:00 nginx: worker process
+www-data   15050  0.0  0.0  12844  4636 ?        S    06:03   0:00 nginx: worker process
+www-data   15051  0.0  0.0  12844  4636 ?        S    06:03   0:00 nginx: worker process
+www-data   15052  0.0  0.0  12844  4584 ?        S    06:03   0:00 nginx: worker process
+www-data   15053  0.0  0.0  12844  4636 ?        S    06:03   0:00 nginx: worker process
+www-data   15054  0.0  0.0  12844  4636 ?        S    06:03   0:00 nginx: worker process
+www-data   15055  0.0  0.0  12844  4636 ?        S    06:03   0:00 nginx: worker process
+www-data   15056  0.0  0.0  12844  4576 ?        S    06:03   0:00 nginx: worker process
+postgres   15171  0.0  0.3 222868 31564 ?        Ss   06:03   0:00 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
+postgres   15226  0.0  0.0 223000  6676 ?        Ss   06:03   0:00 postgres: 16/main: checkpointer 
+postgres   15227  0.0  0.1 223024  8540 ?        Ss   06:03   0:00 postgres: 16/main: background writer 
+postgres   15237  0.0  0.1 222868 10740 ?        Ss   06:03   0:00 postgres: 16/main: walwriter 
+postgres   15238  0.0  0.1 224476  9252 ?        Ss   06:03   0:00 postgres: 16/main: autovacuum launcher 
+postgres   15240  0.0  0.1 224452  8412 ?        Ss   06:03   0:00 postgres: 16/main: logical replication launcher 

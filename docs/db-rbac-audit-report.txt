@@ -1,0 +1,95 @@
+============================
+Sat Jul 25 05:52:22 AM UTC 2026
+
+DATABASES
+----------
+                                                         List of databases
+   Name    |   Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |    Access privileges    
+-----------+-----------+----------+-----------------+-------------+-------------+------------+-----------+-------------------------
+ eaas_db   | eaas_user | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =Tc/eaas_user          +
+           |           |          |                 |             |             |            |           | eaas_user=CTc/eaas_user
+ postgres  | postgres  | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ solar_ai  | solar     | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ template0 | postgres  | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres            +
+           |           |          |                 |             |             |            |           | postgres=CTc/postgres
+ template1 | postgres  | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres            +
+           |           |          |                 |             |             |            |           | postgres=CTc/postgres
+(5 rows)
+
+
+TABLES
+------
+               List of relations
+ Schema |       Name       | Type  |   Owner   
+--------+------------------+-------+-----------
+ public | audit_logs       | table | eaas_user
+ public | permissions      | table | eaas_user
+ public | role_permissions | table | eaas_user
+ public | roles            | table | eaas_user
+ public | sessions         | table | eaas_user
+ public | users            | table | eaas_user
+(6 rows)
+
+
+USERS STRUCTURE
+---------------
+                                  Table "public.users"
+    Column     |            Type             | Collation | Nullable |      Default       
+---------------+-----------------------------+-----------+----------+--------------------
+ id            | uuid                        |           | not null | uuid_generate_v4()
+ email         | character varying(255)      |           | not null | 
+ password_hash | text                        |           | not null | 
+ full_name     | character varying(255)      |           |          | 
+ role_id       | uuid                        |           |          | 
+ active        | boolean                     |           |          | true
+ created_at    | timestamp without time zone |           |          | now()
+ updated_at    | timestamp without time zone |           |          | now()
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+    "users_email_key" UNIQUE CONSTRAINT, btree (email)
+Foreign-key constraints:
+    "users_role_id_fkey" FOREIGN KEY (role_id) REFERENCES roles(id)
+Referenced by:
+    TABLE "sessions" CONSTRAINT "sessions_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+
+
+ROLES STRUCTURE
+---------------
+                                 Table "public.roles"
+   Column    |            Type             | Collation | Nullable |      Default       
+-------------+-----------------------------+-----------+----------+--------------------
+ id          | uuid                        |           | not null | uuid_generate_v4()
+ name        | character varying(50)       |           | not null | 
+ description | text                        |           |          | 
+ created_at  | timestamp without time zone |           |          | now()
+Indexes:
+    "roles_pkey" PRIMARY KEY, btree (id)
+    "roles_name_key" UNIQUE CONSTRAINT, btree (name)
+Referenced by:
+    TABLE "role_permissions" CONSTRAINT "role_permissions_role_id_fkey" FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE
+    TABLE "users" CONSTRAINT "users_role_id_fkey" FOREIGN KEY (role_id) REFERENCES roles(id)
+
+
+USER DATA
+---------
+          email          |       full_name        | active |               role_id                
+-------------------------+------------------------+--------+--------------------------------------
+ admin@eaasgrid.com      | EaaSGrid Administrator | t      | 1aed3db7-71e4-494b-9a1d-dfab88944ade
+ operations@eaasgrid.com | EaaSGrid Operations    | t      | f0468270-160f-43b9-baa2-bcbcf3096fb0
+ partner@eaasgrid.com    | EaaSGrid Partner       | t      | c3874835-d843-4e80-943b-ce5054bb0aa2
+ investor@eaasgrid.com   | EaaSGrid Investor      | t      | aaa4c6c1-66fb-4494-99d2-c582c4c15f16
+(4 rows)
+
+
+ROLE DATA
+---------
+                  id                  |     name     |          description          |         created_at         
+--------------------------------------+--------------+-------------------------------+----------------------------
+ 1aed3db7-71e4-494b-9a1d-dfab88944ade | ADMIN        | Full platform administration  | 2026-07-24 19:38:23.228771
+ f0468270-160f-43b9-baa2-bcbcf3096fb0 | OPERATIONS   | Operations console access     | 2026-07-24 19:38:23.228771
+ c3874835-d843-4e80-943b-ce5054bb0aa2 | PARTNER      | Partner management access     | 2026-07-24 19:38:23.228771
+ d99e33b3-da9d-4707-8fb7-101d236aa517 | CUSTOMER     | Customer portal access        | 2026-07-24 19:38:23.228771
+ aaa4c6c1-66fb-4494-99d2-c582c4c15f16 | INVESTOR     | Investor dashboard access     | 2026-07-24 19:38:23.228771
+ a3ec4a8e-2e0a-4fb6-92d1-396ae9d91e62 | COLLABORATOR | External collaboration access | 2026-07-24 19:38:23.228771
+(6 rows)
+

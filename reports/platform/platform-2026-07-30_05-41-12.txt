@@ -1,0 +1,337 @@
+================================================
+ XaaSGrid Platform Operating System
+ FINAL PLATFORM INTEGRATION
+================================================
+
+
+STEP 1
+======================================
+[BACKUP] Running XaaSGrid backup
+======================================
+Creating backup:
+/data/eaasgrid-platform/backups/eaasgrid-backup-20260730-054112.tar.gz
+
+Backup completed successfully
+-rw-rw-r-- 1 user user 15M Jul 30 05:41 /data/eaasgrid-platform/backups/eaasgrid-backup-20260730-054112.tar.gz
+
+STEP 2
+[ENVIRONMENT] Validating environment
+Working directory:
+/data/eaasgrid-platform
+User:
+user
+Date:
+Thu Jul 30 05:41:15 AM UTC 2026
+
+STEP 3
+[DATABASE] Running database validation
+PostgreSQL client detected
+psql (PostgreSQL) 16.14 (Ubuntu 16.14-0ubuntu0.24.04.1)
+PostgreSQL service detected
+
+STEP 4
+[DATABASE] Running database repair checks
+Checking PostgreSQL connectivity
+
+STEP 5
+[API] Running API validation
+Checking API directory...
+API directory: OK
+
+Checking running processes...
+Node process detected
+
+Checking common API ports...
+Port 8000: ACTIVE
+Port 3000: NOT ACTIVE
+Port 3001: NOT ACTIVE
+
+API validation complete
+
+STEP 6
+[API] Running API repair
+API directory found
+package.json detected
+API repair checks complete
+
+STEP 7
+[DASHBOARD] Running dashboard validation
+
+Checking dashboard directory...
+Dashboard directory: OK
+
+Checking package configuration...
+package.json: OK
+
+Checking Next.js process...
+Next.js process: NOT RUNNING
+
+Checking dashboard ports...
+Port 3000: NOT ACTIVE
+Port 3002: NOT ACTIVE
+
+Dashboard validation complete
+
+STEP 8
+[DASHBOARD] Running dashboard repair checks
+No Next.js build cache found
+Checking npm configuration
+10.8.2
+Dashboard repair checks complete
+
+STEP 9
+[INVESTOR] Running investor portal validation
+
+Checking investor portal directory...
+Investor portal directory: OK
+
+Checking package configuration...
+package.json: OK
+
+Checking Next.js investor process...
+Next.js process not detected
+
+Checking investor portal port...
+Port 3001: NOT ACTIVE
+Port 3003: NOT ACTIVE
+
+Investor validation complete
+
+STEP 10
+[INVESTOR] Running investor repair checks
+Checking npm configuration
+10.8.2
+No build cache detected
+Investor repair checks complete
+
+STEP 11
+[AUTH] Running authentication validation
+
+Checking API directory...
+API directory: OK
+
+Checking authentication files...
+src/routes/auth.js : NOT FOUND
+src/routes/authRoutes.js : NOT FOUND
+.env : NOT FOUND
+
+Checking Node API process...
+Node API process detected
+
+Authentication validation complete
+
+STEP 12
+[AUTH] Running authentication repair checks
+
+Checking environment variables...
+.env file missing
+
+Checking auth route references...
+Auth route references detected
+
+Authentication repair checks complete
+
+STEP 13
+[PERMISSIONS] Running permission validation
+
+Checking script permissions...
+-rwxrwxr-x 1 user user 3058 Jul 23 13:04 /data/eaasgrid-platform/scripts/deployment/eaasgrid-browser-login-deployment.sh
+-rwxrwxr-x 1 user user 2401 Jul 16 10:28 /data/eaasgrid-platform/scripts/eaasgrid-qa.sh
+-rwxrwxr-x 1 user user 3711 Jul 29 07:14 /data/eaasgrid-platform/scripts/sprint9-production-launch.sh
+-rwxrwxr-x 1 user user 819 Jul 29 08:28 /data/eaasgrid-platform/scripts/operations/xaasgrid-cleanup.sh
+-rwxrwxr-x 1 user user 4606 Jul 30 04:00 /data/eaasgrid-platform/scripts/xaasgrid-platform-auto-repair.sh
+-rwxrwxr-x 1 user user 1028 Jul 23 04:47 /data/eaasgrid-platform/scripts/sprints/sprint-14-production-deployment.sh
+-rwxrwxr-x 1 user user 3584 Jul 23 04:27 /data/eaasgrid-platform/scripts/sprints/sprint-12-integration-acceptance-gate.sh
+-rwxrwxr-x 1 user user 1028 Jul 23 06:49 /data/eaasgrid-platform/scripts/sprints/sprint-25-ai-operations-intelligence.sh
+-rwxrwxr-x 1 user user 1030 Jul 23 06:43 /data/eaasgrid-platform/scripts/sprints/sprint-24-enterprise-multi-tenant.sh
+-rwxrwxr-x 1 user user 2839 Jul 23 12:48 /data/eaasgrid-platform/scripts/sprints/sprint-41-enterprise-certification.sh
+-rwxrwxr-x 1 user user 1029 Jul 23 05:14 /data/eaasgrid-platform/scripts/sprints/sprint-19-performance-optimisation.sh
+-rwxrwxr-x 1 user user 1026 Jul 23 07:02 /data/eaasgrid-platform/scripts/sprints/sprint-27-governance-compliance.sh
+-rwxrwxr-x 1 user user 3502 Jul 23 08:30 /data/eaasgrid-platform/scripts/sprints/sprint-32-billing-revenue-automation.sh
+-rwxrwxr-x 1 user user 2791 Jul 23 11:02 /data/eaasgrid-platform/scripts/sprints/sprint-35-authentication-rbac.sh
+-rwxrwxr-x 1 user user 2933 Jul 23 11:21 /data/eaasgrid-platform/scripts/sprints/sprint-36-control-centre-implementation.sh
+-rwxrwxr-x 1 user user 131 Jul 23 05:27 /data/eaasgrid-platform/scripts/sprints/sprint-21-customer-acceptance-launch-gate.sh
+-rwxrwxr-x 1 user user 1026 Jul 23 05:09 /data/eaasgrid-platform/scripts/sprints/sprint-18-backup-disaster-recovery.sh
+-rwxrwxr-x 1 user user 1027 Jul 23 05:29 /data/eaasgrid-platform/scripts/sprints/sprint-22-final-production-validation.sh
+-rwxrwxr-x 1 user user 1030 Jul 23 04:53 /data/eaasgrid-platform/scripts/sprints/sprint-15-domain-dns-activation.sh
+-rwxrwxr-x 1 user user 3129 Jul 23 09:22 /data/eaasgrid-platform/scripts/sprints/sprint-34-gui-browser-deployment.sh
+-rwxrwxr-x 1 user user 1026 Jul 23 05:33 /data/eaasgrid-platform/scripts/sprints/sprint-23-continuous-operations-lifecycle.sh
+-rwxrwxr-x 1 user user 1026 Jul 23 04:57 /data/eaasgrid-platform/scripts/sprints/sprint-16-monitoring-observability.sh
+-rwxrwxr-x 1 user user 1026 Jul 23 07:13 /data/eaasgrid-platform/scripts/sprints/sprint-29-customer-self-service-portal.sh
+-rwxrwxr-x 1 user user 3051 Jul 23 11:49 /data/eaasgrid-platform/scripts/sprints/sprint-38-api-database-integration.sh
+-rwxrwxr-x 1 user user 1026 Jul 23 06:53 /data/eaasgrid-platform/scripts/sprints/sprint-26-global-partner-ecosystem.sh
+-rwxrwxr-x 1 user user 2776 Jul 23 08:43 /data/eaasgrid-platform/scripts/sprints/sprint-33-ai-operations-assistant.sh
+-rwxrwxr-x 1 user user 1034 Jul 23 05:04 /data/eaasgrid-platform/scripts/sprints/sprint-17-security-hardening.sh
+-rwxrwxr-x 1 user user 2492 Jul 23 12:33 /data/eaasgrid-platform/scripts/sprints/sprint-39-gui-beta-release.sh
+-rwxrwxr-x 1 user user 1026 Jul 23 07:08 /data/eaasgrid-platform/scripts/sprints/sprint-28-operations-console-gui.sh
+-rwxrwxr-x 1 user user 3705 Jul 23 04:24 /data/eaasgrid-platform/scripts/sprints/sprint-11-local-deployment-gate.sh
+-rwxrwxr-x 1 user user 3020 Jul 23 12:45 /data/eaasgrid-platform/scripts/sprints/sprint-40-global-scale-testing.sh
+-rwxrwxr-x 1 user user 2748 Jul 23 04:20 /data/eaasgrid-platform/scripts/sprints/sprint-09-code-cleanup.sh
+-rwxrwxr-x 1 user user 3458 Jul 23 11:38 /data/eaasgrid-platform/scripts/sprints/sprint-37-multi-tenant-access.sh
+-rwxrwxr-x 1 user user 3892 Jul 23 04:30 /data/eaasgrid-platform/scripts/sprints/sprint-13-vps-migration-preparation.sh
+-rwxrwxr-x 1 user user 3647 Jul 23 07:38 /data/eaasgrid-platform/scripts/sprints/sprint-30-partner-portal-ecosystem.sh
+-rwxrwxr-x 1 user user 2477 Jul 23 12:50 /data/eaasgrid-platform/scripts/sprints/sprint-42-production-launch-gate.sh
+-rwxrwxr-x 1 user user 3036 Jul 23 07:59 /data/eaasgrid-platform/scripts/sprints/sprint-31-control-centre-gui.sh
+-rwxrwxr-x 1 user user 3603 Jul 23 04:22 /data/eaasgrid-platform/scripts/sprints/sprint-10-production-readiness-gate.sh
+-rwxrwxr-x 1 user user 1027 Jul 23 05:20 /data/eaasgrid-platform/scripts/sprints/sprint-20-business-operations-gate.sh
+-rwxrwxr-x 1 user user 5564 Jul 29 06:54 /data/eaasgrid-platform/scripts/sprint5-enterprise-scale-platform.sh
+-rwxrwxr-x 1 user user 4474 Jul 29 06:50 /data/eaasgrid-platform/scripts/sprint3-operational-intelligence.sh
+-rwxrwxr-x 1 user user 4925 Jul 29 07:08 /data/eaasgrid-platform/scripts/sprint8-global-autonomous-cloud.sh
+-rwxrwxr-x 1 user user 1149 Jul 25 05:53 /data/eaasgrid-platform/scripts/eaas-identity-bootstrap.sh
+-rwxrwxr-x 1 user user 922 Jul 30 04:21 /data/eaasgrid-platform/scripts/eaasgridctl.sh
+-rwxrwxr-x 1 user user 4054 Jul 18 01:48 /data/eaasgrid-platform/scripts/test-nginx.sh
+-rwxrwxr-x 1 user user 1922 Jul 29 06:44 /data/eaasgrid-platform/scripts/sprint1-freeze.sh
+-rwxrwxr-x 1 user user 4128 Jul 24 10:05 /data/eaasgrid-platform/scripts/identity/identity-database-foundation.sh
+-rwxrwxr-x 1 user user 3976 Jul 24 10:07 /data/eaasgrid-platform/scripts/identity/identity-api-activation.sh
+-rwxrwxr-x 1 user user 3153 Jul 24 18:49 /data/eaasgrid-platform/scripts/identity/eassgrid-identity-activation.sh
+-rwxrwxr-x 1 user user 2606 Jul 24 18:52 /data/eaasgrid-platform/scripts/identity/eassgrid-user-provisioning.sh
+-rwxrwxr-x 1 user user 2348 Jul 24 19:38 /data/eaasgrid-platform/scripts/identity/identity-schema-reset.sh
+-rwxrwxr-x 1 user user 2258 Jul 24 19:50 /data/eaasgrid-platform/scripts/identity/user-provisioning.sh
+-rwxrwxr-x 1 user user 3140 Jul 23 13:07 /data/eaasgrid-platform/scripts/identity/eaasgrid-identity-service.sh
+-rwxrwxr-x 1 user user 7959 Jul 18 20:24 /data/eaasgrid-platform/scripts/deep-schema-parity.sh
+-rwxrwxr-x 1 user user 3298 Jul 18 01:43 /data/eaasgrid-platform/scripts/setup-nginx.sh
+-rwxrwxr-x 1 user user 2681 Jul 29 07:41 /data/eaasgrid-platform/scripts/sprint14-freeze.sh
+-rwxrwxr-x 1 user user 1761 Jul 30 04:53 /data/eaasgrid-platform/scripts/lib/dashboard.sh
+-rwxrwxr-x 1 user user 1317 Jul 30 05:14 /data/eaasgrid-platform/scripts/lib/reports.sh
+-rwxrwxr-x 1 user user 1633 Jul 30 05:12 /data/eaasgrid-platform/scripts/lib/repair.sh
+-rwxrwxr-x 1 user user 1014 Jul 30 05:27 /data/eaasgrid-platform/scripts/lib/backup.sh
+-rwxrwxr-x 1 user user 1254 Jul 30 05:37 /data/eaasgrid-platform/scripts/lib/routes.sh
+-rwxrwxr-x 1 user user 1899 Jul 30 04:57 /data/eaasgrid-platform/scripts/lib/auth.sh
+-rwxrwxr-x 1 user user 1544 Jul 30 05:09 /data/eaasgrid-platform/scripts/lib/security.sh
+-rwxrwxr-x 1 user user 1128 Jul 30 04:48 /data/eaasgrid-platform/scripts/lib/platform.sh
+-rwxrwxr-x 1 user user 839 Jul 30 04:50 /data/eaasgrid-platform/scripts/lib/database.sh
+-rwxrwxr-x 1 user user 1845 Jul 30 04:55 /data/eaasgrid-platform/scripts/lib/investor.sh
+-rwxrwxr-x 1 user user 2735 Jul 30 05:24 /data/eaasgrid-platform/scripts/lib/cleanup.sh
+-rwxrwxr-x 1 user user 1302 Jul 30 04:52 /data/eaasgrid-platform/scripts/lib/api.sh
+-rwxrwxr-x 1 user user 4570 Jul 29 07:35 /data/eaasgrid-platform/scripts/sprint13-commercial-launch-validation.sh
+-rwxrwxr-x 1 user user 4476 Jul 29 06:52 /data/eaasgrid-platform/scripts/sprint4-ai-automation-platform.sh
+-rwxrwxr-x 1 user user 3783 Jul 29 06:40 /data/eaasgrid-platform/scripts/sprint1-commercial-platform.sh
+-rwxrwxr-x 1 user user 1136 Jul 28 09:00 /data/eaasgrid-platform/scripts/xaasgrid-clean-start.sh
+-rwxrwxr-x 1 user user 2622 Jul 29 07:37 /data/eaasgrid-platform/scripts/sprint13-freeze.sh
+-rwxrwxr-x 1 user user 3950 Jul 29 05:46 /data/eaasgrid-platform/scripts/sprint0-platform-upgrade.sh
+-rwxrwxr-x 1 user user 4267 Jul 23 12:56 /data/eaasgrid-platform/scripts/lifecycle/eaasgrid-operations-lifecycle.sh
+-rwxrwxr-x 1 user user 11439 Jul 18 19:45 /data/eaasgrid-platform/scripts/eaasgrid-audit/controller.sh
+-rwxrwxr-x 1 user user 3007 Jul 23 13:12 /data/eaasgrid-platform/scripts/auth/eaasgrid-live-auth-api.sh
+-rwxrwxr-x 1 user user 2867 Jul 29 06:09 /data/eaasgrid-platform/scripts/sprint1-integration.sh
+-rwxrwxr-x 1 user user 4195 Jul 29 07:19 /data/eaasgrid-platform/scripts/sprint11-global-expansion.sh
+-rwxrwxr-x 1 user user 884 Jul 29 06:25 /data/eaasgrid-platform/scripts/sprint1-route-validation.sh
+-rwxrwxr-x 1 user user 2939 Jul 28 14:52 /data/eaasgrid-platform/scripts/repository/repository-rationalization-engine.sh
+-rwxrwxr-x 1 user user 5172 Jul 28 14:35 /data/eaasgrid-platform/scripts/repository/dependency-analyzer.sh
+-rwxrwxr-x 1 user user 5573 Jul 28 14:28 /data/eaasgrid-platform/scripts/repository/repository-discovery-engine.sh
+-rwxrwxr-x 1 user user 1928 Jul 28 14:45 /data/eaasgrid-platform/scripts/repository/duplicate-detection-engine.sh
+-rwxrwxr-x 1 user user 3037 Jul 23 13:09 /data/eaasgrid-platform/scripts/gui/eaasgrid-gui-login-integration.sh
+-rwxrwxr-x 1 user user 3662 Jul 22 20:59 /data/eaasgrid-platform/scripts/sprint-8-migration-release-gate.sh
+-rwxrwxr-x 1 user user 5778 Jul 29 06:56 /data/eaasgrid-platform/scripts/sprint6-global-platform-expansion.sh
+-rwxrwxr-x 1 user user 3471 Jul 18 02:12 /data/eaasgrid-platform/scripts/install-eaasgrid-services.sh
+-rwxrwxr-x 1 user user 1655 Jul 29 07:16 /data/eaasgrid-platform/scripts/sprint9-freeze.sh
+-rwxrwxr-x 1 user user 1218 Jul 23 16:29 /data/eaasgrid-platform/scripts/eaasgrid-start-platform.sh
+-rwxrwxr-x 1 user user 1252 Jul 28 16:29 /data/eaasgrid-platform/scripts/xaasgrid-start.sh
+-rwxrwxr-x 1 user user 1872 Jul 29 07:26 /data/eaasgrid-platform/scripts/sprint11-freeze.sh
+-rwxrwxr-x 1 user user 3744 Jul 18 01:58 /data/eaasgrid-platform/scripts/start-eaasgrid-local.sh
+-rwxrwxr-x 1 user user 4236 Jul 29 07:17 /data/eaasgrid-platform/scripts/sprint10-enterprise-growth.sh
+-rwxrwxr-x 1 user user 1462 Jul 29 06:49 /data/eaasgrid-platform/scripts/sprint2-freeze.sh
+-rwxrwxr-x 1 user user 981 Jul 29 08:07 /data/eaasgrid-platform/scripts/archive/repairs/xaasgrid-dashboard-runtime-repair.sh
+-rwxrwxr-x 1 user user 2417 Jul 29 06:20 /data/eaasgrid-platform/scripts/archive/repairs/sprint1-route-final-repair.sh
+-rwxrwxr-x 1 user user 1074 Jul 29 08:02 /data/eaasgrid-platform/scripts/archive/repairs/xaasgrid-dashboard-permission-repair.sh
+-rwxrwxr-x 1 user user 1889 Jul 29 06:15 /data/eaasgrid-platform/scripts/archive/repairs/sprint1-route-repair.sh
+-rwxrwxr-x 1 user user 702 Jul 22 21:10 /data/eaasgrid-platform/scripts/archive/repairs/sprint-9-code-cleanup-standardisation.sh
+-rwxrwxr-x 1 user user 1344 Jul 29 08:18 /data/eaasgrid-platform/scripts/archive/repairs/xaasgrid-dashboard-api-repair.sh
+-rwxrwxr-x 1 user user 2417 Jul 29 06:31 /data/eaasgrid-platform/scripts/archive/sprint1/sprint1-route-final-repair.sh
+-rwxrwxr-x 1 user user 5341 Jul 29 06:31 /data/eaasgrid-platform/scripts/archive/sprint1/sprint1-commercial-platform.sh
+-rwxrwxr-x 1 user user 2867 Jul 29 06:31 /data/eaasgrid-platform/scripts/archive/sprint1/sprint1-integration.sh
+-rwxrwxr-x 1 user user 884 Jul 29 06:31 /data/eaasgrid-platform/scripts/archive/sprint1/sprint1-route-validation.sh
+-rwxrwxr-x 1 user user 1889 Jul 29 06:31 /data/eaasgrid-platform/scripts/archive/sprint1/sprint1-route-repair.sh
+-rwxrwxr-x 1 user user 5949 Jul 29 07:00 /data/eaasgrid-platform/scripts/sprint7-autonomous-enterprise-platform.sh
+-rwxrwxr-x 1 user user 2401 Jul 30 05:40 /data/eaasgrid-platform/scripts/final-platform-integration.sh
+-rwxrwxr-x 1 user user 224 Jul 28 09:23 /data/eaasgrid-platform/scripts/xaasgrid-stop.sh
+-rwxrwxr-x 1 user user 6899 Jul 23 13:15 /data/eaasgrid-platform/scripts/activation/eaasgrid-full-browser-login.sh
+-rwxrwxr-x 1 user user 2660 Jul 23 13:00 /data/eaasgrid-platform/scripts/activation/eaasgrid-operations-console-activation.sh
+-rwxrwxr-x 1 user user 3173 Jul 29 05:59 /data/eaasgrid-platform/scripts/sprint0-production-readiness.sh
+-rwxrwxr-x 1 user user 4142 Jul 26 12:29 /data/eaasgrid-platform/scripts/guardian/04-rbac-database-integrity-engine.sh
+-rwxrwxr-x 1 user user 3329 Jul 26 12:43 /data/eaasgrid-platform/scripts/guardian/07-session-repair-and-regression-engine.sh
+-rwxrwxr-x 1 user user 2477 Jul 26 12:17 /data/eaasgrid-platform/scripts/guardian/core/filesystem.sh
+-rwxrwxr-x 1 user user 596 Jul 26 12:15 /data/eaasgrid-platform/scripts/guardian/core/logger.sh
+-rwxrwxr-x 1 user user 3144 Jul 26 13:09 /data/eaasgrid-platform/scripts/guardian/11-role-authorization-engine.sh
+-rwxrwxr-x 1 user user 2689 Jul 26 12:44 /data/eaasgrid-platform/scripts/guardian/08-e2e-browser-api-verification-engine.sh
+-rwxrwxr-x 1 user user 1913 Jul 26 12:52 /data/eaasgrid-platform/scripts/guardian/09-api-contract-intelligence-engine.sh
+-rwxrwxr-x 1 user user 1828 Jul 26 12:48 /data/eaasgrid-platform/scripts/guardian/08b-api-route-intelligence-engine.sh
+-rwxrwxr-x 1 user user 2680 Jul 27 04:09 /data/eaasgrid-platform/scripts/guardian/14-multi-role-dashboard-engine.sh
+-rwxrwxr-x 1 user user 2758 Jul 26 12:22 /data/eaasgrid-platform/scripts/guardian/bin/guardian-core-test.sh
+-rwxrwxr-x 1 user user 1676 Jul 27 02:59 /data/eaasgrid-platform/scripts/guardian/12-role-route-factory.sh
+-rwxrwxr-x 1 user user 3071 Jul 26 12:34 /data/eaasgrid-platform/scripts/guardian/05-authentication-flow-trace-engine.sh
+-rwxr-xr-x 1 user user 2164 Jul 25 15:42 /data/eaasgrid-platform/scripts/guardian/eaasgrid-platform-auto-repair.sh
+-rwxrwxr-x 1 user user 3121 Jul 26 12:27 /data/eaasgrid-platform/scripts/guardian/03-authentication-path-validation-engine.sh
+-rwxrwxr-x 1 user user 2641 Jul 26 12:36 /data/eaasgrid-platform/scripts/guardian/05-schema-intelligence-engine.sh
+-rwxr-xr-x 1 user user 3660 Jul 25 17:21 /data/eaasgrid-platform/scripts/guardian/eaasgrid-platform-launch-controller.sh
+-rwxrwxr-x 1 user user 4016 Jul 26 12:24 /data/eaasgrid-platform/scripts/guardian/02-eaasgrid-dependency-verification-engine.sh
+-rwxrwxr-x 1 user user 1868 Jul 26 12:41 /data/eaasgrid-platform/scripts/guardian/06-session-contract-integrity-engine.sh
+-rwxr-xr-x 1 user user 2834 Jul 25 15:42 /data/eaasgrid-platform/scripts/guardian/upgrade-guardian.sh
+-rwxr-xr-x 1 user user 3620 Jul 28 15:26 /data/eaasgrid-platform/scripts/guardian/eaasgrid-self-healing-controller.sh
+-rwxrwxr-x 1 user user 3124 Jul 27 03:02 /data/eaasgrid-platform/scripts/guardian/13-role-permission-enforcement-engine.sh
+-rwxrwxr-x 1 user user 2757 Jul 26 12:54 /data/eaasgrid-platform/scripts/guardian/10-browser-role-matrix-intelligence-engine.sh
+-rwxrwxr-x 1 user user 340 Jul 28 09:01 /data/eaasgrid-platform/scripts/test-dashboard-api.sh
+-rwxrwxr-x 1 user user 3932 Jul 29 07:27 /data/eaasgrid-platform/scripts/sprint12-autonomous-ai-operations.sh
+-rwxrwxr-x 1 user user 1228 Jul 28 09:13 /data/eaasgrid-platform/scripts/eaasgrid-clean-start.sh
+-rwxrwxr-x 1 user user 3692 Jul 16 08:50 /data/eaasgrid-platform/scripts/data-parity.sh
+-rwxrwxr-x 1 user user 2586 Jul 18 19:59 /data/eaasgrid-platform/scripts/eaasgrid-day1-audit.sh
+-rwxrwxr-x 1 user user 1787 Jul 28 08:51 /data/eaasgrid-platform/scripts/module16-live-intelligence.sh
+-rwxrwxr-x 1 user user 1185 Jul 25 05:51 /data/eaasgrid-platform/scripts/eaas-db-rbac-audit.sh
+-rwxrwxr-x 1 user user 1263 Jul 23 16:19 /data/eaasgrid-platform/scripts/eaasgrid-browser-activation.sh
+-rwxrwxr-x 1 user user 159 Jul 18 00:58 /data/eaasgrid-platform/scripts/eaasgrid-audit.sh
+-rwxrwxr-x 1 user user 863 Jul 28 08:55 /data/eaasgrid-platform/scripts/module16b-control-centre-live.sh
+-rwxrwxr-x 1 user user 3406 Jul 18 20:10 /data/eaasgrid-platform/scripts/index-parity.sh
+-rwxrwxr-x 1 user user 3820 Jul 16 08:14 /data/eaasgrid-platform/scripts/schema-compare.sh
+-rwxrwxr-x 1 user user 2878 Jul 29 06:06 /data/eaasgrid-platform/scripts/sprint0-freeze.sh
+-rwxrwxr-x 1 user user 3582 Jul 29 07:51 /data/eaasgrid-platform/scripts/xaasgrid-platform-controller.sh
+-rwxrwxr-x 1 user user 3361 Jul 29 06:46 /data/eaasgrid-platform/scripts/sprint2-enterprise-revenue.sh
+-rwxrwxr-x 1 user user 2660 Jul 16 08:43 /data/eaasgrid-platform/scripts/validate-migration.sh
+-rwxrwxr-x 1 user user 6129 Jul 16 08:52 /data/eaasgrid-platform/scripts/advanced-schema-parity.sh
+-rwxrwxr-x 1 user user 274 Jul 25 06:24 /data/eaasgrid-platform/scripts/reset-admin-password.sh
+-rwxrwxr-x 1 user user 75 Jul 23 04:10 /data/eaasgrid-platform/scripts/name.sh
+-rwxrwxr-x 1 user user 4044 Jul 16 09:57 /data/eaasgrid-platform/scripts/migration-commit-preflight.sh
+-rwxrwxr-x 1 user user 2710 Jul 16 08:54 /data/eaasgrid-platform/scripts/eaasgrid-migration-release-gate.sh
+-rwxrwxr-x 1 user user 4085 Jul 29 07:39 /data/eaasgrid-platform/scripts/sprint14-production-launch.sh
+-rwxrwxr-x 1 user user 1858 Jul 29 07:29 /data/eaasgrid-platform/scripts/sprint12-freeze.sh
+
+Checking ownership...
+drwxr-xr-x 39 user user 12288 Jul 28 15:37 /data/eaasgrid-platform
+
+Permission validation complete
+
+STEP 14
+[PERMISSIONS] Running permission repair
+
+Applying script executable permissions...
+
+Permission repair complete
+
+STEP 15
+[ROUTES] Running route validation
+
+Checking API route files...
+Routes directory found
+/data/eaasgrid-platform/apps/api/src/routes/dashboard.routes.js
+/data/eaasgrid-platform/apps/api/src/routes/investor.routes.js
+/data/eaasgrid-platform/apps/api/src/routes/database.routes.js
+/data/eaasgrid-platform/apps/api/src/routes/protected.routes.js
+/data/eaasgrid-platform/apps/api/src/routes/platform.js
+/data/eaasgrid-platform/apps/api/src/routes/health.js
+/data/eaasgrid-platform/apps/api/src/routes/auth.routes.js
+/data/eaasgrid-platform/apps/api/src/routes/company.routes.js
+/data/eaasgrid-platform/apps/api/src/routes/index.js
+/data/eaasgrid-platform/apps/api/src/routes/billing.js
+/data/eaasgrid-platform/apps/api/src/routes/health.routes.js
+
+Checking Express route registration...
+Express route registration detected
+
+Route validation complete
+
+STEP 16
+[ROUTE] Running route repair
+Checking API route structure...
+Routes directory found
+Route repair complete
+
+STEP 17
+./scripts/final-platform-integration.sh: line 164: dashboard_api_validation: command not found

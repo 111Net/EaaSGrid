@@ -1,0 +1,355 @@
+======================================
+ EaaSGrid Repository Rationalization Engine
+ Sprint 0.4
+ Date: Tue Jul 28 02:52:58 PM UTC 2026
+ Repository: /data/eaasgrid-platform
+======================================
+
+[1] Archive Structure Proposal
+--------------------------------------
+
+Recommended archive:
+
+archive/
+|
+├── backups/
+|
+├── releases/
+|
+├── deprecated-scripts/
+|
+└── artifacts/
+
+Purpose:
+- Preserve history
+- Reduce active repository noise
+- Improve CI/CD reliability
+
+
+[2] Backup Files Identified
+--------------------------------------
+/data/eaasgrid-platform/scripts/guardian/eaasgrid-platform-auto-repair.sh.backup.2026-07-25-154242
+/data/eaasgrid-platform/scripts/eaas-database-master-verification.sh.backup
+/data/eaasgrid-platform/apps/dashboard/lib/auth.js.backup.2026-07-25-1702
+/data/eaasgrid-platform/apps/dashboard/middleware.js.disabled
+/data/eaasgrid-platform/apps/dashboard/backups/module16-ui-upgrade/components/layout/DashboardLayout.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/backups/module16-ui-upgrade/app/control-centre/page.jsx.broken-backup
+/data/eaasgrid-platform/apps/dashboard/backups/module16-ui-upgrade/app/login/page.jsx.backup.module12
+/data/eaasgrid-platform/apps/dashboard/components/layout/DashboardLayout.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/users/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/operations/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/control-centre/page.jsx.broken-backup
+/data/eaasgrid-platform/apps/dashboard/app/analytics/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/security/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/settings/page.jsx.backup
+/data/eaasgrid-platform/apps/dashboard/app/login/page.jsx.backup.module12
+/data/eaasgrid-platform/apps/dashboard/middleware.js.backup.module13.2026-07-27-030320
+/data/eaasgrid-platform/apps/api/src/app.js.backup.2026-07-25-1524
+/data/eaasgrid-platform/apps/api/src/controllers/company.controller.backup.js
+/data/eaasgrid-platform/apps/api/src/controllers/dashboard.controller.phase5.2.3.backup.js
+/data/eaasgrid-platform/apps/api/src/auth/auth.service.backup.js
+/data/eaasgrid-platform/apps/api/src/app.js.backup
+/data/eaasgrid-platform/apps/api/.env.backup
+/data/eaasgrid-platform/phase9-final-local-release-gate.js.backup-20260716-165850
+/data/eaasgrid-platform/phase9-final-local-release-gate.js.backup-20260716-165829
+/data/eaasgrid-platform/backups/dashboard/phase5/Performance.phase5.3.5.backup.tsx
+/data/eaasgrid-platform/backups/dashboard/phase5/Finance.phase5.3.4.backup.tsx
+/data/eaasgrid-platform/backups/dashboard/phase5/Sites.phase5.3.2.backup.tsx
+/data/eaasgrid-platform/backups/dashboard/phase5/page.phase5.3.backup.tsx
+/data/eaasgrid-platform/backups/dashboard/phase5/Energy.phase5.3.3.backup.tsx
+
+[3] Release Snapshots
+--------------------------------------
+/data/eaasgrid-platform/releases
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/public
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/app
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/public
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/app
+
+[4] Generated Artifacts
+--------------------------------------
+/data/eaasgrid-platform/node_modules
+/data/eaasgrid-platform/node_modules/form-data/node_modules
+/data/eaasgrid-platform/node_modules/wrap-ansi-cjs/node_modules
+/data/eaasgrid-platform/node_modules/simple-update-notifier/node_modules
+/data/eaasgrid-platform/node_modules/eslint-plugin-import/node_modules
+/data/eaasgrid-platform/node_modules/resolve/test/shadowed_core/node_modules
+/data/eaasgrid-platform/node_modules/resolve/test/resolver/symlinked/_/node_modules
+/data/eaasgrid-platform/node_modules/pkg-dir/node_modules
+/data/eaasgrid-platform/node_modules/next/node_modules
+/data/eaasgrid-platform/node_modules/make-dir/node_modules
+/data/eaasgrid-platform/node_modules/jest-util/node_modules
+/data/eaasgrid-platform/node_modules/jest-message-util/node_modules
+/data/eaasgrid-platform/node_modules/jest-cli/node_modules
+/data/eaasgrid-platform/node_modules/jest-validate/node_modules
+/data/eaasgrid-platform/node_modules/tinyglobby/node_modules
+/data/eaasgrid-platform/node_modules/cliui/node_modules
+/data/eaasgrid-platform/node_modules/test-exclude/node_modules
+/data/eaasgrid-platform/node_modules/@eslint-community/eslint-utils/node_modules
+/data/eaasgrid-platform/node_modules/stack-utils/node_modules
+/data/eaasgrid-platform/node_modules/yargs/node_modules
+/data/eaasgrid-platform/node_modules/eslint-config-next/node_modules
+/data/eaasgrid-platform/node_modules/pretty-format/node_modules
+/data/eaasgrid-platform/node_modules/eslint-import-resolver-node/node_modules
+/data/eaasgrid-platform/node_modules/execa/node_modules
+/data/eaasgrid-platform/node_modules/@istanbuljs/load-nyc-config/node_modules
+/data/eaasgrid-platform/node_modules/resolve-cwd/node_modules
+/data/eaasgrid-platform/node_modules/is-bun-module/node_modules
+/data/eaasgrid-platform/node_modules/jest-worker/node_modules
+/data/eaasgrid-platform/node_modules/@jest/core/node_modules
+/data/eaasgrid-platform/node_modules/body-parser/node_modules
+/data/eaasgrid-platform/node_modules/@typescript-eslint/eslint-plugin/node_modules
+/data/eaasgrid-platform/node_modules/@typescript-eslint/visitor-keys/node_modules
+/data/eaasgrid-platform/node_modules/@typescript-eslint/typescript-estree/node_modules
+/data/eaasgrid-platform/node_modules/eslint-module-utils/node_modules
+/data/eaasgrid-platform/node_modules/fast-glob/node_modules
+/data/eaasgrid-platform/node_modules/jest-runtime/node_modules
+/data/eaasgrid-platform/node_modules/string-length/node_modules
+/data/eaasgrid-platform/node_modules/type-is/node_modules
+/data/eaasgrid-platform/node_modules/path-scurry/node_modules
+/data/eaasgrid-platform/node_modules/istanbul-lib-instrument/node_modules
+/data/eaasgrid-platform/node_modules/chokidar/node_modules
+/data/eaasgrid-platform/node_modules/strip-ansi-cjs/node_modules
+/data/eaasgrid-platform/node_modules/string-width-cjs/node_modules
+/data/eaasgrid-platform/node_modules/nodemon/node_modules
+/data/eaasgrid-platform/node_modules/jest-haste-map/node_modules
+/data/eaasgrid-platform/node_modules/sharp/node_modules
+/data/eaasgrid-platform/node_modules/wrap-ansi/node_modules
+/data/eaasgrid-platform/node_modules/jsonwebtoken/node_modules
+/data/eaasgrid-platform/node_modules/jest-snapshot/node_modules
+/data/eaasgrid-platform/node_modules/glob/node_modules
+/data/eaasgrid-platform/node_modules/tsconfig-paths/node_modules
+/data/eaasgrid-platform/apps/dashboard/.next
+/data/eaasgrid-platform/apps/dashboard/node_modules
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/operations/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/operations/install/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/locations/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/commands/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/index/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/resolution/legacy/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/resolution/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/metadata/importlib/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/metadata/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_internal/distributions/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/packages/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/certifi/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/distro/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/colorama/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/colorama/tests/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/webencodings/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pyparsing/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pyparsing/diagram/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/chardet/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/chardet/cli/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/chardet/metadata/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pkg_resources/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/tenacity/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/filters/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/formatters/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/styles/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/lexers/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/tomli/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__
+/data/eaasgrid-platform/apps/api/.venv/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__
+/data/eaasgrid-platform/apps/investor-portal/.next
+/data/eaasgrid-platform/apps/investor-portal/node_modules
+/data/eaasgrid-platform/apps/showcase/.next
+/data/eaasgrid-platform/apps/showcase/node_modules
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/operations/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/operations/install/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/locations/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/commands/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/index/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/resolution/legacy/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/resolution/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/metadata/importlib/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/metadata/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_internal/distributions/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/packages/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/certifi/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/distro/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/colorama/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/colorama/tests/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/webencodings/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pyparsing/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pyparsing/diagram/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/chardet/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/chardet/cli/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/chardet/metadata/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pkg_resources/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/tenacity/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/filters/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/formatters/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/styles/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/lexers/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/tomli/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__
+/data/eaasgrid-platform/.venv/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/_yaml/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/operations/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/operations/install/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/locations/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/commands/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/index/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/resolution/legacy/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/resolution/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/metadata/importlib/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/metadata/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_internal/distributions/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/urllib3/packages/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/certifi/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/distro/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/colorama/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/colorama/tests/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/webencodings/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pyparsing/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pyparsing/diagram/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/chardet/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/chardet/cli/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/chardet/metadata/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pkg_resources/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/tenacity/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pygments/filters/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pygments/formatters/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pygments/styles/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/pygments/lexers/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/tomli/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__
+/data/eaasgrid-platform/venv/lib/python3.12/site-packages/yaml/__pycache__
+
+[5] Deprecated Script Candidates
+--------------------------------------
+/data/eaasgrid-platform/scripts/sprints/sprint-18-backup-disaster-recovery.sh
+/data/eaasgrid-platform/scripts/sprints/sprint-40-global-scale-testing.sh
+/data/eaasgrid-platform/scripts/sprints/sprint-13-vps-migration-preparation.sh
+/data/eaasgrid-platform/scripts/test-nginx.sh
+/data/eaasgrid-platform/scripts/sprint-8-migration-release-gate.sh
+/data/eaasgrid-platform/scripts/guardian/bin/guardian-core-test.sh
+/data/eaasgrid-platform/scripts/guardian/fix-dashboard-auth-integration.sh
+/data/eaasgrid-platform/scripts/guardian/fix-dashboard-login-v2.sh
+/data/eaasgrid-platform/scripts/test-dashboard-api.sh
+/data/eaasgrid-platform/scripts/validate-migration.sh
+/data/eaasgrid-platform/scripts/migration-commit-preflight.sh
+/data/eaasgrid-platform/scripts/eaasgrid-migration-release-gate.sh
+
+[6] Large Files (>50MB)
+--------------------------------------
+
+[7] Recommended Actions
+--------------------------------------
+
+ACTION PLAN:
+
+Phase 1:
+Create archive folders.
+
+Phase 2:
+Move backup artifacts.
+
+Phase 3:
+Remove generated build artifacts from Git tracking.
+
+Phase 4:
+Consolidate duplicate lifecycle scripts.
+
+Phase 5:
+Create clean Sprint 0 baseline commit.
+
+NO FILES WERE MODIFIED.
+
+======================================
+ Rationalization Analysis Complete
+ Report:
+ /data/eaasgrid-platform/reports/repository/rationalization-plan-2026-07-28_14-52-58.txt
+======================================
+

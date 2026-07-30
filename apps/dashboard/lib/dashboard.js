@@ -3,14 +3,26 @@ process.env.NEXT_PUBLIC_API_URL ||
 "http://192.168.100.21:4000";
 
 
-export async function getDashboard(){
+export async function getDashboard(token){
 
     const response =
     await fetch(
-        `${API_URL}/api/v1/dashboard/summary`,
+
+        `${API_URL}/api/v1/dashboard`,
+
         {
-            cache:"no-store"
+
+            cache:"no-store",
+
+            headers:{
+
+                Authorization:
+                `Bearer ${token}`
+
+            }
+
         }
+
     );
 
 
@@ -23,6 +35,10 @@ export async function getDashboard(){
     }
 
 
-    return response.json();
+    const result =
+    await response.json();
+
+
+    return result.data;
 
 }

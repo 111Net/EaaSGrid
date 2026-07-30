@@ -1,0 +1,36 @@
+Current Branch:
+sprint-0-repository-cleanup-checkpoint
+
+Recent Commits:
+6abefba Sprint 0 checkpoint before repository rationalization
+6fa60c4 Module 14 Step 6: Control Centre UI polish, navigation routes, logout
+85c7114 Module 14 Step 5: Control Centre layout integration
+551018a Module 14 step 4: Control Centre logout integration
+162b518 Module 13 complete: RBAC authorization, JWT sessions, dashboard control centre
+c18a6c1 Checkpoint Module 13 RBAC authorization and dashboard intelligence foundation
+e2a61cd Sprint 8 final migration release gate evidence
+27d6a5a Sprint 8 migration release gate completion
+778fe17 chore: repair repository state and add lifecycle audit automation
+cc90e5a chore: remove temporary verification artifacts
+
+Tags:
+dashboard-phase7-stable
+dashboard-v1.0
+investor-portal-v1.0
+module-13-complete
+module-13-rbac-complete
+phase-3-complete
+phase-4-backend-complete
+phase-4-start
+phase-4.2-complete
+phase-7-complete
+sprint-0-before-cleanup
+v1.0.0-rc1
+
+Status:
+On branch sprint-0-repository-cleanup-checkpoint
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	scripts/repository/
+
+nothing added to commit but untracked files present (use "git add" to track)

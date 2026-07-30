@@ -1,0 +1,31 @@
+
+XaaSGrid Sprint 8 Global Autonomous Cloud Report
+
+STATUS:
+COMPLETE
+
+
+Cloud Orchestration:
+READY
+
+
+Resource Optimisation:
+READY
+
+
+Global Billing:
+FOUNDATION READY
+
+
+Disaster Recovery:
+READY
+
+
+Compliance:
+READY
+
+
+Autonomous Cloud Platform:
+READY
+
+

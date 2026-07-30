@@ -1,0 +1,41 @@
+
+==========================================
+ XaaSGrid Sprint 1 Commercial Readiness
+==========================================
+
+
+Customer onboarding:
+CREATED
+
+
+Subscription engine:
+CREATED
+
+
+Billing foundation:
+CREATED
+
+
+Partner portal:
+CREATED
+
+
+Investor portal:
+CREATED
+
+
+Monitoring foundation:
+CREATED
+
+
+Production deployment foundation:
+READY
+
+
+STATUS:
+
+SPRINT 1 FOUNDATION COMPLETE
+
+
+==========================================
+

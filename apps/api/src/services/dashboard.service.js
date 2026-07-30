@@ -1,107 +1,190 @@
 const pool = require("../config/postgres");
 
-async function getDashboardData() {
-  const [
-    providerResult,
-    devicesResult,
-    energyResult,
-    ledgerResult
-  ] = await Promise.all([
-    pool.query(`
-      SELECT
-        provider_code,
-        company_name,
-        email,
-        phone,
-        service_type
-      FROM providers
-      ORDER BY id ASC
-      LIMIT 1
-    `),
 
-    pool.query(`
-      SELECT
-        id,
-        device_code,
-        device_type,
-        manufacturer,
-        connectivity
-      FROM devices
-      ORDER BY id ASC
-    `),
+async function getDashboardData(){
 
-    pool.query(`
-      SELECT
-        COALESCE(SUM(kwh), 0) AS total_kwh,
-        COALESCE(SUM(cost), 0) AS total_cost,
-        COUNT(*)::int AS reading_count
-      FROM energy_usage
-    `),
+const devices =
+await pool.query(`
+SELECT
+id,
+device_code,
+device_type,
+manufacturer,
+connectivity
+FROM devices
+ORDER BY id
+`);
 
-    pool.query(`
-      SELECT
-        COALESCE(SUM(balance_cached), 0) AS portfolio_value
-      FROM ledger_accounts
-    `)
-  ]);
 
-  const provider = providerResult.rows[0] || null;
-  const devices = devicesResult.rows;
-  const energy = energyResult.rows[0] || {};
-  const ledger = ledgerResult.rows[0] || {};
+const energy =
+await pool.query(`
+SELECT
+COALESCE(SUM(kwh),0) total_kwh,
+COALESCE(SUM(cost),0) revenue
+FROM energy_usage
+`);
 
-  return {
-    investor: {
-      company_name: provider?.company_name || "EaaSGrid",
-      project: "Everything-as-a-Service Platform",
-      stage: "Pilot Deployment",
-      funding_currency: "NGN",
-      funding_amount: 298000000,
-      business_model: "Everything-as-a-Service",
-      target_markets: [
-        "Nigeria",
-        "Commercial and institutional energy users"
-      ],
-      pilot_sites: 6,
-      annual_expansion_sites: 60,
-      headquarters: "Ibadan, Oyo State, Nigeria"
-    },
 
-    sites: devices.map(device => ({
-      id: device.id,
-      site_code: device.device_code,
-      site_name: device.device_code || `Device ${device.id}`,
-      status: "Active",
-      device_type: device.device_type,
-      manufacturer: device.manufacturer,
-      connectivity: device.connectivity
-    })),
+const ledger =
+await pool.query(`
+SELECT
+COALESCE(SUM(balance_cached),0) portfolio
+FROM ledger_accounts
+`);
 
-    energy: {
-      monthly_generation_mwh:
-        Number(energy.total_kwh || 0) / 1000,
 
-      battery_utilisation_percent: 0,
 
-      connected_assets: devices.length
-    },
 
-    performance: {
-      availability_percent:
-        devices.length > 0 ? 100 : 0,
+return {
 
-      maintenance_alerts: 0
-    },
+investment:{
+ required_capital_ngn:298000000,
+ currency:"NGN",
+ funding_stage:"Pilot Deployment"
+},
 
-    finance: {
-      monthly_revenue_ngn: Number(energy.total_cost || 0),
+investor:{
+ company_name:"EaaSGrid Energy Services",
+ project:"Everything-as-a-Service Platform",
+ stage:"Pilot Deployment",
+ funding_amount:298000000,
+ funding_currency:"NGN",
+ annual_expansion_sites:60,
+ pilot_sites:6,
+ headquarters:"Ibadan, Oyo State, Nigeria"
+},
 
-      portfolio_value_ngn:
-        Number(ledger.portfolio_value || 0)
-    }
-  };
+
+
+finance:{
+ monthly_revenue:
+ Number(energy.rows[0].revenue || 0),
+
+ portfolio_value_ngn:
+ Number(ledger.rows[0].portfolio || 0)
+},
+
+energy:{
+ monthly_generation_mwh:
+ Number(energy.rows[0].total_kwh || 0)/1000,
+
+ battery_utilisation_percent:100,
+
+ connected_assets:
+ devices.rows.length
+},
+
+performance:{
+ availability_percent:
+ devices.rows.length > 0 ? 100 : 0,
+
+ maintenance_alerts:0
+},
+
+
+
+
+platform:{
+ name:"XaaSGrid",
+ version:"3.0.0",
+ environment:"development",
+ server_time:new Date()
+},
+
+platformStatus:"Operational",
+
+
+totalSites:
+devices.rows.length,
+
+
+infrastructure:{
+ pilot_sites:
+ devices.rows.length,
+
+ planned_sites_per_year:60
+},
+
+pilotSites:
+
+devices.rows.length,
+
+monthlyRevenue:
+Number(energy.rows[0].revenue || 0),
+
+energyGenerated:
+Number(energy.rows[0].total_kwh || 0),
+
+uptime:
+devices.rows.length > 0
+?
+"100%"
+:
+"0%",
+
+
+dashboard:{
+ status:"Operational",
+ last_updated:new Date()
+},
+
+portfolioValue:
+
+Number(ledger.rows[0].portfolio || 0),
+
+
+sites:
+
+devices.rows.map(d=>({
+
+id:d.id,
+
+site_code:d.device_code,
+
+device_type:d.device_type,
+
+manufacturer:d.manufacturer,
+
+connectivity:d.connectivity,
+
+status:
+d.connectivity==="ONLINE"
+?
+"Active"
+:
+"Offline"
+
+})),
+
+dashboard:{
+
+status:"Operational",
+
+last_updated:
+new Date()
+
+},
+
+infrastructure:{
+
+planned_sites_per_year:60
+
+},
+
+investor:{
+
+stage:"Pilot Deployment",
+
+funding_amount:298000000
+
 }
 
-module.exports = {
-  getDashboardData
+};
+
+
+}
+
+
+module.exports={
+getDashboardData
 };

@@ -1,124 +1,12 @@
-# Backups
-backups/
-apps/dashboard/backups/
-apps/api/src/controllers/*.backup.js
-apps/dashboard/app/**/*.backup.tsx
-apps/dashboard/app/**/*.backup.tsbackups/
-apps/dashboard/backups/
-apps/api/src/controllers/*.backup.js
-apps/dashboard/app/**/*.backup.tsx
-apps/dashboard/app/**/*.backup.ts
-
-
-# Dependencies
 node_modules/
-**/node_modules/
-
-# Python environment
-venv/
-.venv/
-
-# Environment secrets
-.env
-.env.*
-
-# Next.js
 .next/
-out/
-
-# Logs
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Build
 dist/
 build/
-
-# IDE
-.vscode/
-.idea/
-
-.env.local
-node_modules
-.next
-# Runtime state
-.runtime/
-*.pid
-
-# Local environment and generated runtime state
-.env
-.env.local
-.env.*.local
-
-# Generated audit output
-reports/
-# EaaSGrid temporary backups
-*.backup
-*.backup.*
-*.sql
-
-# Reports and generated documentation
-docs/*reports*/
-docs/*report*.txt
-
-# Temporary files
-bash
-
-# Next.js
-.next/
-node_modules/
-
-# Environment secrets
 .env
 .env.*
-!.env.example
-
-# Logs
 *.log
-
-# Testing artifacts
-beta-testing/
-browser-testing/
-
-# Python
-.venv/
-__pycache__/
-*.pyc
-
-# Node
-node_modules/
-.next/
-
-# Backups
-*.backup
-*.broken-backup
-
-# Node
-node_modules/
-.next/
-dist/
-
-# Python
-__pycache__/
-*.pyc
-.venv/
-venv/
-
-# Environment
-.env
-.env.*
-
-# Backups
-*.backup
-*.backup.*
-*.disabled
-
-# Reports
-reports/
-
-# Runtime
 logs/
-*.log
+tmp/
+coverage/
+.DS_Store
+reports/*.tmp

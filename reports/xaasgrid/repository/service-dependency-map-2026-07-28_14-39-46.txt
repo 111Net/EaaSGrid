@@ -1,0 +1,291 @@
+Systemd services
+=================
+eaas-storage.path                                                             enabled         enabled
+eaas-guardian.service                                                         disabled        enabled
+eaas-ngrok.service                                                            disabled        enabled
+eaas-showcase-frontend.service                                                enabled         enabled
+eaas-showcase.service                                                         enabled         enabled
+eaas-storage-engine.service                                                   static          -
+eaas-storage-healer.service                                                   enabled         enabled
+eaas-storage-recovery.service                                                 static          -
+eaas-storage-watchdog.service                                                 enabled         enabled
+eaas-watchdog.service                                                         enabled         enabled
+eaas.service                                                                  enabled         enabled
+eaasgrid-api.service                                                          enabled         enabled
+eaasgrid-dashboard.service                                                    disabled        enabled
+eaasgrid-guardian.service                                                     enabled         enabled
+eaasgrid-investor.service                                                     disabled        enabled
+eaasgrid-lifecycle.service                                                    static          -
+eaasgrid-showcase.service                                                     enabled         enabled
+data-cache-eaasgrid.swap.swap                                                 generated       -
+eaas-storage-healer.timer                                                     disabled        enabled
+eaasgrid-guardian.timer                                                       enabled         enabled
+eaasgrid-lifecycle.timer                                                      enabled         enabled
+
+Service definitions:
+--------------------------------
+/etc/systemd/system/eaasgrid-api.service
+[Unit]
+Description=EaaSGrid API
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=user
+Group=user
+WorkingDirectory=/data/eaasgrid-platform/apps/api
+Environment=NODE_ENV=production
+EnvironmentFile=/data/eaasgrid-platform/.env
+ExecStart=/usr/bin/node src/server.js
+Restart=always
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaasgrid-dashboard.service
+[Unit]
+Description=EaaSGrid Dashboard
+After=network.target eaasgrid-api.service
+
+[Service]
+Type=simple
+User=user
+Group=user
+WorkingDirectory=/data/eaasgrid-platform/apps/dashboard
+Environment=NODE_ENV=production
+Environment=PORT=3000
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaasgrid-guardian.service
+[Unit]
+Description=EAASGrid Platform Guardian Self Healing
+After=network.target
+
+[Service]
+Type=oneshot
+User=user
+WorkingDirectory=/data/eaasgrid-platform
+ExecStart=/data/eaasgrid-platform/scripts/guardian/eaasgrid-platform-auto-repair.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaasgrid-investor.service
+[Unit]
+Description=EaaSGrid Investor Portal
+After=network.target eaasgrid-api.service
+
+[Service]
+Type=simple
+User=user
+Group=user
+WorkingDirectory=/data/eaasgrid-platform/apps/investor-portal
+Environment=NODE_ENV=production
+Environment=PORT=3001
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaasgrid-lifecycle.service
+[Unit]
+Description=EaaSGrid Enterprise Lifecycle Controller
+After=network.target
+
+[Service]
+Type=oneshot
+User=user
+WorkingDirectory=/data/eaasgrid-lifecycle
+ExecStart=/data/eaasgrid-lifecycle/operations/run-lifecycle-now.sh
+--------------------------------
+/etc/systemd/system/eaasgrid-showcase.service
+[Unit]
+Description=EaaSGrid Showcase
+After=network.target eaasgrid-api.service
+
+[Service]
+Type=simple
+User=user
+Group=user
+WorkingDirectory=/data/eaasgrid-platform/apps/showcase
+Environment=NODE_ENV=production
+Environment=PORT=3002
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaas-guardian.service
+[Unit]
+Description=EAAS Guardian
+
+After=network.target
+
+[Service]
+ExecStart=/opt/eaas/scripts/monitor.sh
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaas-ngrok.service
+[Unit]
+Description=EAAS Ngrok Tunnel
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=user
+ExecStart=/snap/bin/ngrok http 8000 --log=stdout
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaas.service
+[Unit]
+Description=EAAS Autonomous Control System
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=root
+
+# Start EAAS CLI engine
+ExecStart=/opt/eaas/cli/eaas start
+
+# Restart if it crashes
+Restart=always
+RestartSec=10
+
+# Logs go to journalctl
+StandardOutput=journal
+StandardError=journal
+
+# Environment
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaas-showcase-frontend.service
+[Unit]
+Description=EAAS Showcase Frontend
+After=network.target
+
+[Service]
+User=user
+WorkingDirectory=/opt/eaas/eaas-showcase/frontend
+ExecStart=/usr/bin/python3 -m http.server 3000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaas-showcase.service
+[Unit]
+Description=EAAS Showcase Backend
+After=network.target
+
+[Service]
+User=user
+WorkingDirectory=/opt/eaas/eaas-showcase/backend
+ExecStart=/opt/eaas/eaas-showcase/backend/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaas-storage-engine.service
+[Unit]
+Description=EAAS Storage Engine v2
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/eaas/storage-engine-v2.sh
+--------------------------------
+/etc/systemd/system/eaas-storage-healer.service
+[Unit]
+Description=EAAS Storage Auto-Healer
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/eaas/storage-healer.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaas-storage-recovery.service
+[Unit]
+Description=EAAS Storage Auto-Recovery Engine
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/eaas/storage-healer.sh
+--------------------------------
+/etc/systemd/system/eaas-storage-watchdog.service
+[Unit]
+Description=EAAS Watchdog Service
+After=eaas-platform.service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /opt/eaas/eaas-platform/scripts/watchdog.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------
+/etc/systemd/system/eaas-watchdog.service
+[Unit]
+Description=EAAS Production Watchdog v2
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/eaas/watchdog
+
+ExecStart=/usr/bin/python3 /opt/eaas/watchdog/watchdog_v2.py
+
+Restart=always
+RestartSec=5
+
+# Prevent silent failures
+StandardOutput=journal
+StandardError=journal
+
+# Optional safety limits
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+[Install]
+WantedBy=multi-user.target

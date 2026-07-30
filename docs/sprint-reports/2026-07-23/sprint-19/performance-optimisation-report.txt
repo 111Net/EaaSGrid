@@ -1,0 +1,24 @@
+==========================================
+EaaSGrid Platform Sprint 19
+Performance Optimisation Automation
+Date: 2026-07-23
+==========================================
+
+[1] System Resource Baseline
+CPU:
+8
+Memory:
+               total        used        free      shared  buff/cache   available
+Mem:           7.7Gi       947Mi       5.7Gi        15Mi       1.4Gi       6.8Gi
+Swap:             0B          0B          0B
+Disk:
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           790M  1.7M  788M   1% /run
+/dev/sda2        20G   14G  5.1G  73% /
+tmpfs           3.9G  1.1M  3.9G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/sdc1       196G   18G  168G  10% /data
+/dev/sdb         79G   21G   54G  28% /data/cache
+tmpfs           790M   16K  790M   1% /run/user/1000
+
+[2] Application Response Testing

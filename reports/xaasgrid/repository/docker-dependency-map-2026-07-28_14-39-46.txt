@@ -1,0 +1,12 @@
+Docker containers
+==================
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+4e877787b452   infrastructure-backend   "uvicorn app.main:ap…"   24 seconds ago   Up 20 seconds   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp   eaas-backend
+6adb29b2b505   postgres:15              "docker-entrypoint.s…"   24 seconds ago   Up 20 seconds                                                 eaas-postgres
+e1b49a608d5e   redis:7                  "docker-entrypoint.s…"   24 seconds ago   Up 23 seconds   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp   eaas-redis
+
+IMAGE                           ID             DISK USAGE   CONTENT SIZE   EXTRA
+infrastructure-backend:latest   61739fdc4c0c       1.17GB             0B   U    
+postgres:15                     27deb4ec2bb4        445MB             0B   U    
+prom/alertmanager:latest        8349dcbd5a88       80.1MB             0B        
+redis:7                         abe89191aa1b        113MB             0B   U    

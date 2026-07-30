@@ -1,0 +1,119 @@
+#!/bin/bash
+
+#########################################
+# XaaSGrid Authentication Module
+#########################################
+
+API_DIR="/data/eaasgrid-platform/apps/api"
+
+
+authentication_validation() {
+
+    echo "[AUTH] Running authentication validation"
+
+
+    echo
+    echo "Checking API directory..."
+
+    if [ -d "$API_DIR" ]
+    then
+        echo "API directory: OK"
+    else
+        echo "API directory missing: $API_DIR"
+        return
+    fi
+
+
+    echo
+    echo "Checking authentication files..."
+
+
+    AUTH_FILES=(
+        "src/routes/auth.js"
+        "src/routes/authRoutes.js"
+        ".env"
+    )
+
+
+    for file in "${AUTH_FILES[@]}"
+    do
+
+        if [ -f "$API_DIR/$file" ]
+        then
+            echo "$file : FOUND"
+        else
+            echo "$file : NOT FOUND"
+        fi
+
+    done
+
+
+    echo
+    echo "Checking Node API process..."
+
+    if pgrep -f "node" >/dev/null
+    then
+        echo "Node API process detected"
+    else
+        echo "Node API process not detected"
+    fi
+
+
+    echo
+    echo "Authentication validation complete"
+
+}
+
+
+
+authentication_repair() {
+
+    echo "[AUTH] Running authentication repair checks"
+
+
+    if [ ! -d "$API_DIR" ]
+    then
+        echo "API directory missing"
+        return
+    fi
+
+
+    echo
+    echo "Checking environment variables..."
+
+
+    if [ -f "$API_DIR/.env" ]
+    then
+
+        echo ".env file exists"
+
+        if grep -q "JWT" "$API_DIR/.env"
+        then
+            echo "JWT configuration detected"
+        else
+            echo "JWT configuration not detected"
+        fi
+
+    else
+
+        echo ".env file missing"
+
+    fi
+
+
+    echo
+    echo "Checking auth route references..."
+
+
+    if grep -R "auth" "$API_DIR/src" >/dev/null 2>&1
+    then
+        echo "Auth route references detected"
+    else
+        echo "No auth route references detected"
+    fi
+
+
+    echo
+    echo "Authentication repair checks complete"
+
+}

@@ -1,0 +1,237 @@
+const pool = require("../config/postgres");
+
+async function getDashboardData() {
+  const [
+    customerResult,
+    subscriptionResult,
+    contractResult,
+    providerResult,
+    deviceResult,
+    energyResult,
+    ledgerResult
+  ] = await Promise.all([
+
+    pool.query(`
+      SELECT COUNT(*)::int AS count
+      FROM customers
+      WHERE status='ACTIVE'
+    `),
+
+    pool.query(`
+      SELECT COUNT(*)::int AS count
+      FROM customer_subscriptions
+      WHERE status='ACTIVE'
+    `),
+
+    pool.query(`
+      SELECT COUNT(*)::int AS count
+      FROM contracts
+    `),
+
+    pool.query(`
+      SELECT
+        COUNT(*)::int AS count,
+        MAX(company_name) AS company_name
+      FROM providers
+    `),
+
+    pool.query(`
+      SELECT
+        id,
+        device_code,
+        device_type,
+        manufacturer,
+        connectivity
+      FROM devices
+      ORDER BY id
+    `),
+
+    pool.query(`
+      SELECT
+        COALESCE(SUM(kwh),0)  AS total_kwh,
+        COALESCE(SUM(cost),0) AS total_cost
+      FROM energy_usage
+      WHERE timestamp >= date_trunc('month',CURRENT_DATE)
+    `),
+
+    pool.query(`
+      SELECT
+        COALESCE(SUM(balance_cached),0)
+        AS portfolio_value
+      FROM ledger_accounts
+    `)
+
+  ]);
+
+  const customers =
+    customerResult.rows[0].count;
+
+  const subscriptions =
+    subscriptionResult.rows[0].count;
+
+  const contracts =
+    contractResult.rows[0].count;
+
+  const provider =
+    providerResult.rows[0];
+
+  const devices =
+    deviceResult.rows;
+
+  const connectedAssets =
+    devices.filter(
+      d => d.connectivity === "ONLINE"
+    ).length;
+
+  const monthlyEnergy =
+    Number(
+      energyResult.rows[0].total_kwh || 0
+    );
+
+  const monthlyRevenue =
+    Number(
+      energyResult.rows[0].total_cost || 0
+    );
+
+  const portfolio =
+    Number(
+      ledgerResult.rows[0].portfolio_value || 0
+    );
+
+  const availability =
+    devices.length
+      ? Number(
+          (
+            connectedAssets /
+            devices.length *
+            100
+          ).toFixed(2)
+        )
+      : 0;
+
+  return {
+
+    investor: {
+
+      company_name:
+        provider.company_name || "EaaSGrid",
+
+      headquarters:
+        "Ibadan, Oyo State, Nigeria",
+
+      project:
+        "Everything-as-a-Service Platform",
+
+      stage:
+        "Pilot Deployment",
+
+      funding_currency:
+        "NGN",
+
+      funding_amount:
+        298000000,
+
+      business_model:
+        "Everything-as-a-Service",
+
+      target_markets: [
+        "Nigeria",
+        "Commercial",
+        "Industrial",
+        "Healthcare",
+        "Education"
+      ],
+
+      pilot_sites:
+        devices.length,
+
+      annual_expansion_sites:
+        60
+
+    },
+
+    finance: {
+
+      monthly_revenue_ngn:
+        monthlyRevenue,
+
+      portfolio_value_ngn:
+        portfolio
+
+    },
+
+    energy: {
+
+      monthly_generation_mwh:
+        Number(
+          (
+            monthlyEnergy / 1000
+          ).toFixed(2)
+        ),
+
+      battery_utilisation_percent:
+        availability,
+
+      connected_assets:
+        connectedAssets
+
+    },
+
+    performance: {
+
+      availability_percent:
+        availability,
+
+      maintenance_alerts: 0
+
+    },
+
+    business: {
+
+      customers,
+
+      subscriptions,
+
+      contracts,
+
+      providers:
+        provider.count
+
+    },
+
+    sites:
+
+      devices.map(device => ({
+
+        id:
+          device.id,
+
+        site_code:
+          device.device_code,
+
+        site_name:
+          device.device_code,
+
+        status:
+          device.connectivity === "ONLINE"
+            ? "Active"
+            : "Offline",
+
+        device_type:
+          device.device_type,
+
+        manufacturer:
+          device.manufacturer,
+
+        connectivity:
+          device.connectivity
+
+      }))
+
+  };
+
+}
+
+module.exports = {
+  getDashboardData
+};

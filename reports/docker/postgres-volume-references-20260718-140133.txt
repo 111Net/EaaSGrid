@@ -1,0 +1,2 @@
+infrastructure_postgres_data -> /data/cache/docker/volumes/infrastructure_postgres_data/_data -> /var/lib/postgresql/data
+

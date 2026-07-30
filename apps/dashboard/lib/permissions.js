@@ -45,3 +45,39 @@ export function canAccess(route, permissions=[]){
     );
 
 }
+
+
+export function getCurrentUser(){
+
+    if(typeof window === "undefined"){
+        return null;
+    }
+
+
+    try {
+
+        const user =
+            localStorage.getItem("user");
+
+
+        if(!user){
+            return null;
+        }
+
+
+        return JSON.parse(user);
+
+
+    } catch(error){
+
+        console.error(
+            "Unable to load current user",
+            error
+        );
+
+        return null;
+
+    }
+
+}
+

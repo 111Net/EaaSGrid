@@ -1,0 +1,13 @@
+==========================================
+EaaSGrid Platform Sprint 14
+Production Deployment Automation
+Date: 2026-07-23
+==========================================
+
+[1] Operating System Validation
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.4 LTS
+Release:	24.04
+Codename:	noble
+
+[2] Required Runtime Check

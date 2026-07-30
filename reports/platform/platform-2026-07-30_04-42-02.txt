@@ -1,0 +1,8 @@
+================================================
+ XaaSGrid Platform Operating System
+ FINAL PLATFORM INTEGRATION
+================================================
+
+
+STEP 1
+./scripts/final-platform-integration.sh: line 67: platform_backup: command not found

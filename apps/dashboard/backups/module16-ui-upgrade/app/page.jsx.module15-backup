@@ -1,0 +1,253 @@
+import DashboardLayout from "@/components/layout/DashboardLayout";
+import IntelligenceCard from "@/components/intelligence/IntelligenceCard";
+import IntelligenceGrid from "@/components/intelligence/IntelligenceGrid";
+
+
+export default function Home(){
+
+
+return (
+
+<DashboardLayout>
+
+
+<div
+style={{
+background:"linear-gradient(135deg,#0f172a,#1d4ed8)",
+padding:"40px",
+borderRadius:"24px",
+color:"white",
+marginBottom:"30px"
+}}
+>
+
+
+<h1
+style={{
+fontSize:"44px",
+fontWeight:"900",
+marginBottom:"15px"
+}}
+>
+
+⚡ XaaSGrid Executive Platform Intelligence
+
+</h1>
+
+
+<p
+style={{
+fontSize:"20px"
+}}
+>
+
+Real-time Everything-as-a-Service command centre
+
+</p>
+
+
+</div>
+
+
+
+<IntelligenceGrid>
+
+
+
+<IntelligenceCard
+title="Platform Status"
+icon="🟢"
+color="#16a34a"
+>
+
+Operational
+
+<br/><br/>
+
+Availability:
+
+<br/>
+
+99.2%
+
+<br/><br/>
+
+Sites Connected:
+
+<br/>
+
+6
+
+</IntelligenceCard>
+
+
+
+<IntelligenceCard
+title="Energy Intelligence"
+icon="⚡"
+color="#f59e0b"
+>
+
+Monthly Generation:
+
+<br/>
+
+18.6 MWh
+
+<br/><br/>
+
+Battery Utilisation:
+
+<br/>
+
+82%
+
+<br/><br/>
+
+Assets:
+
+<br/>
+
+Connected
+
+</IntelligenceCard>
+
+
+
+<IntelligenceCard
+title="Revenue Intelligence"
+icon="💰"
+color="#16a34a"
+>
+
+Monthly Revenue:
+
+<br/>
+
+₦2,400,000
+
+<br/><br/>
+
+Portfolio Value:
+
+<br/>
+
+₦298,000,000
+
+<br/><br/>
+
+Model:
+
+<br/>
+
+XaaS Subscription
+
+</IntelligenceCard>
+
+
+
+<IntelligenceCard
+title="Deployment Intelligence"
+icon="🏢"
+color="#2563eb"
+>
+
+Pilot Sites:
+
+<br/>
+
+6
+
+<br/><br/>
+
+Annual Target:
+
+<br/>
+
+60 Sites
+
+<br/><br/>
+
+Market:
+
+<br/>
+
+Nigeria
+
+</IntelligenceCard>
+
+
+
+<IntelligenceCard
+title="Automation Intelligence"
+icon="🤖"
+color="#7c3aed"
+>
+
+Guardian:
+
+<br/>
+
+Active
+
+<br/><br/>
+
+Self Healing:
+
+<br/>
+
+Enabled
+
+<br/><br/>
+
+Lifecycle:
+
+<br/>
+
+Running
+
+</IntelligenceCard>
+
+
+
+<IntelligenceCard
+title="Security Intelligence"
+icon="🔐"
+color="#dc2626"
+>
+
+Security Posture:
+
+<br/>
+
+Protected
+
+<br/><br/>
+
+RBAC:
+
+<br/>
+
+Enabled
+
+<br/><br/>
+
+Audit:
+
+<br/>
+
+Active
+
+</IntelligenceCard>
+
+
+
+</IntelligenceGrid>
+
+
+
+</DashboardLayout>
+
+);
+
+}

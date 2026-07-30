@@ -1,0 +1,58 @@
+#!/bin/bash
+
+ROOT="/data/eaasgrid-platform"
+
+SPRINT=$2
+
+echo "======================================"
+echo " XaaSGrid Lifecycle Engine"
+echo "======================================"
+
+case "$1" in
+
+sprint)
+
+if [ -z "$SPRINT" ]; then
+echo "Usage: ./scripts/xaasgrid sprint <number>"
+exit 1
+fi
+
+SCRIPT="$ROOT/scripts/sprints/sprint$(printf "%02d" $SPRINT).sh"
+
+if [ ! -f "$SCRIPT" ]; then
+echo "Sprint module not found:"
+echo "$SCRIPT"
+exit 1
+fi
+
+echo "Executing Sprint $SPRINT"
+
+bash "$SCRIPT"
+
+;;
+
+health)
+
+echo "Running platform health check"
+bash "$ROOT/scripts/engine/validator.sh"
+
+;;
+
+*)
+
+echo "
+XaaSGrid Lifecycle Engine
+
+Commands:
+
+sprint 1-12
+health
+
+Example:
+
+./scripts/xaasgrid sprint 1
+"
+
+;;
+
+esac

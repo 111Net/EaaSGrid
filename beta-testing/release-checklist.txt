@@ -1,0 +1,17 @@
+
+EaaSGrid Beta Release Checklist
+
+
+[ ] Login works
+
+[ ] Dashboard loads
+
+[ ] API connected
+
+[ ] Database connected
+
+[ ] Reports generated
+
+[ ] User workflows tested
+
+

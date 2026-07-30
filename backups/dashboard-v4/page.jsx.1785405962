@@ -1,0 +1,340 @@
+"use client";
+
+import {useEffect,useState} from "react";
+import DashboardLayout from "@/components/layout/DashboardLayout";
+
+
+export default function ControlCentre(){
+
+const [dashboard,setDashboard]=useState(null);
+const [error,setError]=useState("");
+
+
+useEffect(()=>{
+
+async function load(){
+
+try{
+
+const token =
+localStorage.getItem(
+"eaasgrid_token"
+);
+
+
+const res =
+await fetch(
+`${process.env.NEXT_PUBLIC_API_URL}/api/v1/dashboard`,
+{
+cache:"no-store",
+headers:{
+Authorization:`Bearer ${token}`
+}
+}
+);
+
+
+const json =
+await res.json();
+
+
+setDashboard(json.data);
+
+
+}catch(e){
+
+setError(
+"Unable to load XaaSGrid intelligence"
+);
+
+}
+
+}
+
+
+load();
+
+
+},[]);
+
+
+
+if(error)
+return <DashboardLayout>
+<h2>{error}</h2>
+</DashboardLayout>
+
+
+
+if(!dashboard)
+return <DashboardLayout>
+<h2>Loading XaaSGrid Intelligence...</h2>
+</DashboardLayout>
+
+
+
+const Card=({title,value})=>(
+
+<div style={{
+background:"#ffffff",
+borderRadius:"16px",
+padding:"25px",
+boxShadow:"0 5px 20px #0001"
+}}>
+
+<div style={{
+fontSize:"14px",
+color:"#666"
+}}>
+{title}
+</div>
+
+<div style={{
+fontSize:"30px",
+fontWeight:"800",
+marginTop:"10px"
+}}>
+{value}
+</div>
+
+</div>
+
+);
+
+
+
+return (
+
+<DashboardLayout>
+
+<div style={{
+padding:"30px"
+}}>
+
+
+<h1>
+⚡ XaaSGrid Command Centre
+</h1>
+
+
+<p>
+Everything-as-a-Service Platform Intelligence
+</p>
+
+
+
+<div style={{
+display:"grid",
+gridTemplateColumns:
+"repeat(auto-fit,minmax(220px,1fr))",
+gap:"20px",
+marginTop:"30px"
+}}>
+
+
+<Card
+title="Platform Status"
+value={
+dashboard.dashboard.status
+}
+/>
+
+
+<Card
+title="Deployment Sites"
+value={
+dashboard.infrastructure.active_sites
+}
+/>
+
+
+<Card
+title="Pilot Sites"
+value={
+dashboard.infrastructure.pilot_sites
+}
+/>
+
+
+<Card
+title="Monthly Revenue"
+value={
+`₦${dashboard.finance.monthly_revenue}`
+}
+/>
+
+
+<Card
+title="Portfolio Value"
+value={
+`₦${dashboard.finance.portfolio_value}`
+}
+/>
+
+
+<Card
+title="Energy Generated"
+value={
+`${dashboard.energy.monthly_generation} MWh`
+}
+/>
+
+
+<Card
+title="Connected Assets"
+value={
+dashboard.energy.connected_assets
+}
+/>
+
+
+<Card
+title="Availability"
+value={
+`${dashboard.performance.availability}%`
+}
+/>
+
+
+</div>
+
+
+
+<div style={{
+marginTop:"40px",
+background:"#fff",
+padding:"30px",
+borderRadius:"18px"
+}}>
+
+
+<h2>
+Investor Overview
+</h2>
+
+
+<p>
+Funding Stage:
+<b>
+{" "}
+{dashboard.investment.funding_stage}
+</b>
+</p>
+
+
+<p>
+Required Capital:
+<b>
+{" "}
+₦{dashboard.investment.required_capital_ngn}
+</b>
+</p>
+
+
+<p>
+Expansion Target:
+<b>
+{" "}
+{dashboard.infrastructure.planned_sites_per_year}
+sites/year
+</b>
+</p>
+
+
+</div>
+
+
+
+
+<div style={{
+marginTop:"40px"
+}}>
+
+<h2>
+Deployment Assets
+</h2>
+
+
+<table
+style={{
+width:"100%",
+background:"#fff",
+borderRadius:"15px",
+padding:"20px"
+}}
+>
+
+<thead>
+
+<tr>
+<th>Site</th>
+<th>Type</th>
+<th>Manufacturer</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{
+dashboard.sites.map(site=>(
+
+<tr key={site.id}>
+
+<td>
+{site.site_code}
+</td>
+
+<td>
+{site.device_type}
+</td>
+
+<td>
+{site.manufacturer}
+</td>
+
+<td>
+{site.connectivity}
+</td>
+
+
+</tr>
+
+))
+
+}
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+<p style={{
+marginTop:"30px"
+}}>
+Last synchronisation:
+{" "}
+{
+new Date(
+dashboard.dashboard.last_updated
+).toLocaleString()
+}
+
+</p>
+
+
+</div>
+
+</DashboardLayout>
+
+);
+
+
+}

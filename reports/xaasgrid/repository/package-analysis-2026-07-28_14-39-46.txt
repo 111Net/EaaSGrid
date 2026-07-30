@@ -1,0 +1,220 @@
+Package inventory
+=================
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/package.json
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/package.json
+/data/eaasgrid-platform/apps/dashboard/package.json
+/data/eaasgrid-platform/apps/api/package.json
+/data/eaasgrid-platform/apps/investor-portal/package.json
+/data/eaasgrid-platform/apps/showcase/package.json
+/data/eaasgrid-platform/packages/ui/package.json
+/data/eaasgrid-platform/packages/config/package.json
+/data/eaasgrid-platform/package.json
+
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/package.json
+Dependencies:
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+Dev Dependencies:
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/package.json
+Dependencies:
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+Dev Dependencies:
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/apps/dashboard/package.json
+Dependencies:
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "recharts": "^3.10.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+Dev Dependencies:
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/apps/api/package.json
+Dependencies:
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "joi": "^18.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.22.0",
+    "ws": "^8.21.0"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
+  }
+}
+Dev Dependencies:
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
+  }
+}
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/apps/investor-portal/package.json
+Dependencies:
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+Dev Dependencies:
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/apps/showcase/package.json
+Dependencies:
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+Dev Dependencies:
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/packages/ui/package.json
+Dependencies:
+Dev Dependencies:
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/packages/config/package.json
+Dependencies:
+Dev Dependencies:
+--------------------------------
+PACKAGE: /data/eaasgrid-platform/package.json
+Dependencies:
+  "dependencies": {
+    "ws": "^8.21.0"
+  }
+}
+Dev Dependencies:
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "turbo": "^2.10.3",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "ws": "^8.21.0"
+  }
+}

@@ -1,0 +1,418 @@
+==============================================
+ EaaSGrid Day 1 Existing Automation Discovery
+==============================================
+Date: Sat Jul 18 07:29:56 PM UTC 2026
+Repository: /data/eaasgrid-platform
+
+=== EXISTING AUDIT CONTROLLER ===
+#!/usr/bin/env bash
+set -uo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+AUDIT_ROOT="$ROOT_DIR/scripts/eaasgrid-audit"
+REPORT_ROOT="$ROOT_DIR/docs/audits"
+
+TIMESTAMP="$(date '+%Y-%m-%dT%H:%M:%S%z')"
+DATE="$(date '+%Y-%m-%d')"
+AUDIT_DIR="$REPORT_ROOT/$DATE"
+
+mkdir -p "$AUDIT_DIR"
+
+REPORT_MD="$AUDIT_DIR/platform-state.md"
+REPORT_JSON="$AUDIT_DIR/platform-state.json"
+
+STATUS="PASS"
+PASS_COUNT=0
+WARN_COUNT=0
+FAIL_COUNT=0
+
+declare -a CHECKS
+
+record_check() {
+    local category="$1"
+    local check="$2"
+    local status="$3"
+    local details="$4"
+
+    CHECKS+=("$category|$check|$status|$details")
+
+    case "$status" in
+        PASS)
+            PASS_COUNT=$((PASS_COUNT + 1))
+            ;;
+        WARN)
+            WARN_COUNT=$((WARN_COUNT + 1))
+            STATUS="WARN"
+            ;;
+        FAIL)
+            FAIL_COUNT=$((FAIL_COUNT + 1))
+            STATUS="FAIL"
+            ;;
+    esac
+}
+
+check_command() {
+    local command="$1"
+
+    if command -v "$command" >/dev/null 2>&1; then
+        record_check "environment" "command:$command" "PASS" "Available"
+    else
+        record_check "environment" "command:$command" "FAIL" "Unavailable"
+    fi
+}
+
+check_file() {
+    local file="$1"
+
+    if [ -f "$ROOT_DIR/$file" ]; then
+        record_check "repository" "file:$file" "PASS" "Exists"
+    else
+        record_check "repository" "file:$file" "FAIL" "Missing"
+    fi
+}
+
+run_opening_state() {
+
+    # ------------------------------------------------------------
+    # 1. REPOSITORY
+    # ------------------------------------------------------------
+
+    if [ -d "$ROOT_DIR" ]; then
+        record_check "repository" "repository_path" "PASS" "$ROOT_DIR"
+    else
+        record_check "repository" "repository_path" "FAIL" "Repository missing"
+    fi
+
+    for required_dir in apps packages database scripts tools docs infrastructure; do
+        if [ -d "$ROOT_DIR/$required_dir" ]; then
+            record_check "repository" "directory:$required_dir" "PASS" "Exists"
+        else
+            record_check "repository" "directory:$required_dir" "WARN" "Missing"
+        fi
+    done
+
+    # ------------------------------------------------------------
+    # 2. SYSTEM IDENTITY
+    # ------------------------------------------------------------
+
+    record_check "system" "user" "PASS" "$(whoami)"
+    record_check "system" "hostname" "PASS" "$(hostname)"
+    record_check "system" "working_directory" "PASS" "$(pwd)"
+    record_check "system" "operating_system" "PASS" "$(uname -srm)"
+
+    # ------------------------------------------------------------
+    # 3. GIT BASELINE
+    # ------------------------------------------------------------
+
+    if [ -d "$ROOT_DIR/.git" ]; then
+        record_check "git" "repository" "PASS" "Git repository detected"
+
+        branch="$(git -C "$ROOT_DIR" branch --show-current 2>/dev/null || true)"
+        commit="$(git -C "$ROOT_DIR" rev-parse --short HEAD 2>/dev/null || true)"
+        status_count="$(git -C "$ROOT_DIR" status --short 2>/dev/null | wc -l | tr -d ' ')"
+
+        record_check "git" "branch" "PASS" "${branch:-detached-or-unknown}"
+        record_check "git" "commit" "PASS" "${commit:-unknown}"
+
+        if [ "$status_count" -eq 0 ]; then
+            record_check "git" "working_tree" "PASS" "Clean"
+        else
+            record_check "git" "working_tree" "WARN" "$status_count changed/untracked entries"
+        fi
+    else
+        record_check "git" "repository" "WARN" "Git metadata not found"
+    fi
+
+    # ------------------------------------------------------------
+    # 4. PROJECT IDENTITY
+    # ------------------------------------------------------------
+
+    check_file "package.json"
+    check_file "version.json"
+    check_file "README.md"
+
+    package_name="$(node -e '
+        try {
+            const p=require("./package.json");
+            console.log(p.name || "unknown");
+        } catch(e) {
+            console.log("unavailable");
+        }
+    ' 2>/dev/null || echo "unavailable")"
+
+    package_version="$(node -e '
+        try {
+            const p=require("./package.json");
+            console.log(p.version || "unknown");
+        } catch(e) {
+            console.log("unavailable");
+        }
+    ' 2>/dev/null || echo "unavailable")"
+
+    version_product="$(node -e '
+        try {
+            const p=require("./version.json");
+            console.log(p.product || "unknown");
+        } catch(e) {
+            console.log("unavailable");
+        }
+    ' 2>/dev/null || echo "unavailable")"
+
+    version_number="$(node -e '
+        try {
+            const p=require("./version.json");
+            console.log(p.version || "unknown");
+        } catch(e) {
+            console.log("unavailable");
+        }
+    ' 2>/dev/null || echo "unavailable")"
+
+    record_check "project" "package_name" "PASS" "$package_name"
+    record_check "project" "package_version" "PASS" "$package_version"
+    record_check "project" "version_product" "PASS" "$version_product"
+    record_check "project" "version_json_version" "PASS" "$version_number"
+
+    if [ "$package_version" = "$version_number" ]; then
+        record_check "project" "version_consistency" "PASS" "Versions match"
+    else
+        record_check "project" "version_consistency" "WARN" \
+            "package.json=$package_version; version.json=$version_number"
+    fi
+
+    # ------------------------------------------------------------
+    # 5. REQUIRED COMMANDS
+    # ------------------------------------------------------------
+
+    for command in git node npm psql pg_isready sha256sum; do
+        check_command "$command"
+    done
+
+    # ------------------------------------------------------------
+    # 6. RUNNING SERVICE STATE
+    # ------------------------------------------------------------
+
+    if pg_isready >/dev/null 2>&1; then
+        record_check "services" "postgresql" "PASS" "Accepting connections"
+    else
+        record_check "services" "postgresql" "FAIL" "Unavailable"
+    fi
+
+    for port in 3000 3001 3002 4000; do
+        if command -v ss >/dev/null 2>&1 && \
+           ss -ltn 2>/dev/null | grep -q ":$port "; then
+            record_check "services" "tcp_port:$port" "PASS" "Listening"
+        else
+            record_check "services" "tcp_port:$port" "WARN" "Not listening"
+        fi
+    done
+
+    # ------------------------------------------------------------
+    # 7. DATABASE CONNECTION STATE
+    # ------------------------------------------------------------
+
+    if command -v psql >/dev/null 2>&1; then
+        if psql -Atqc "SELECT 1;" >/dev/null 2>&1; then
+            record_check "database" "local_connection" "PASS" "Connection successful"
+
+            db_name="$(psql -Atqc 'SELECT current_database();' 2>/dev/null || echo unknown)"
+            db_user="$(psql -Atqc 'SELECT current_user;' 2>/dev/null || echo unknown)"
+            db_schema="$(psql -Atqc 'SELECT current_schema();' 2>/dev/null || echo unknown)"
+
+            record_check "database" "database_name" "PASS" "$db_name"
+            record_check "database" "database_user" "PASS" "$db_user"
+            record_check "database" "schema" "PASS" "$db_schema"
+        else
+            record_check "database" "local_connection" "WARN" \
+                "Default psql connection unavailable"
+        fi
+    fi
+}
+
+write_markdown() {
+
+    {
+        echo "# EaaSGrid Platform Audit"
+        echo
+        echo "## Opening State"
+        echo
+        echo "- **Audit Date:** $DATE"
+        echo "- **Timestamp:** $TIMESTAMP"
+        echo "- **Repository:** $ROOT_DIR"
+        echo "- **Overall Status:** $STATUS"
+        echo
+        echo "## Summary"
+        echo
+        echo "| Status | Count |"
+        echo "|---|---:|"
+        echo "| PASS | $PASS_COUNT |"
+
+=== EXISTING AUTOMATION SCRIPTS ===
+scripts/advanced-schema-parity.sh
+scripts/data-parity.sh
+scripts/deep-schema-parity.sh
+scripts/eaasgrid-audit/controller.sh
+scripts/eaasgrid-audit.sh
+scripts/eaasgrid-migration-release-gate.sh
+scripts/eaasgrid-qa.sh
+scripts/index-parity.sh
+scripts/install-eaasgrid-services.sh
+scripts/migration-commit-preflight.sh
+scripts/schema-compare.sh
+scripts/setup-nginx.sh
+scripts/start-eaasgrid-local.sh
+scripts/test-nginx.sh
+scripts/validate-migration.sh
+tools/release/build.py
+tools/release/package.py
+tools/release/release.py
+tools/release/report.py
+tools/release/validate.py
+tools/release/version.py
+
+=== EXISTING REPORTS ===
+docs/audits/2026-07-18/platform-state.json
+docs/audits/2026-07-18/platform-state.md
+reports/audit-discovery/day1-existing-automation-20260718-192956.txt
+reports/docker/docker-reconciliation-20260718-140133.txt
+reports/docker/docker-reconciliation-20260718-140233.txt
+reports/docker/eaas-backend-20260718-140133.json
+reports/docker/eaas-postgres-20260718-140133.json
+reports/docker/eaas-redis-20260718-140133.json
+reports/docker/eaas-redis-20260718-140233.json
+reports/docker/postgres-volume-references-20260718-140133.txt
+reports/docker/reverent_engelbart-20260718-140133.json
+reports/nginx-test-report-20260718-014913.txt
+reports/nginx-test-report-20260718-014958.txt
+reports/nginx-test-report-20260718-015021.txt
+reports/nginx-test-report-20260718-015210.txt
+reports/nginx-test-report-20260718-015441.txt
+reports/nginx-test-report-20260718-020505.txt
+reports/nginx-test-report-20260718-021419.txt
+
+=== PACKAGE SCRIPTS ===
+
+--- apps/dashboard/.next/dev/package.json ---
+
+--- apps/dashboard/.next/dev/build/package.json ---
+
+--- apps/dashboard/.next/package.json ---
+
+--- apps/dashboard/.next/build/package.json ---
+
+--- apps/dashboard/node_modules/typescript/package.json ---
+{
+  "test": "hereby runtests-parallel --light=false",
+  "test:eslint-rules": "hereby run-eslint-rules-tests",
+  "build": "npm run build:compiler && npm run build:tests",
+  "build:compiler": "hereby local",
+  "build:tests": "hereby tests",
+  "build:tests:notypecheck": "hereby tests --no-typecheck",
+  "clean": "hereby clean",
+  "gulp": "hereby",
+  "lint": "hereby lint",
+  "knip": "hereby knip",
+  "format": "dprint fmt",
+  "setup-hooks": "node scripts/link-hooks.mjs"
+}
+
+--- apps/dashboard/package.json ---
+{
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "eslint"
+}
+
+--- apps/api/package.json ---
+{
+  "start": "node src/server.js",
+  "test": "jest"
+}
+
+--- apps/investor-portal/.next/dev/package.json ---
+
+--- apps/investor-portal/.next/dev/build/package.json ---
+
+--- apps/investor-portal/.next/package.json ---
+
+--- apps/investor-portal/.next/build/package.json ---
+
+--- apps/investor-portal/node_modules/typescript/package.json ---
+{
+  "test": "hereby runtests-parallel --light=false",
+  "test:eslint-rules": "hereby run-eslint-rules-tests",
+  "build": "npm run build:compiler && npm run build:tests",
+  "build:compiler": "hereby local",
+  "build:tests": "hereby tests",
+  "build:tests:notypecheck": "hereby tests --no-typecheck",
+  "clean": "hereby clean",
+  "gulp": "hereby",
+  "lint": "hereby lint",
+  "knip": "hereby knip",
+  "format": "dprint fmt",
+  "setup-hooks": "node scripts/link-hooks.mjs"
+}
+
+--- apps/investor-portal/package.json ---
+{
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "eslint"
+}
+
+--- apps/showcase/.next/package.json ---
+
+--- apps/showcase/.next/build/package.json ---
+
+--- apps/showcase/node_modules/typescript/package.json ---
+{
+  "test": "hereby runtests-parallel --light=false",
+  "test:eslint-rules": "hereby run-eslint-rules-tests",
+  "build": "npm run build:compiler && npm run build:tests",
+  "build:compiler": "hereby local",
+  "build:tests": "hereby tests",
+  "build:tests:notypecheck": "hereby tests --no-typecheck",
+  "clean": "hereby clean",
+  "gulp": "hereby",
+  "lint": "hereby lint",
+  "knip": "hereby knip",
+  "format": "dprint fmt",
+  "setup-hooks": "node scripts/link-hooks.mjs"
+}
+
+--- apps/showcase/package.json ---
+{
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "eslint"
+}
+
+--- packages/ui/package.json ---
+{
+  "test": "echo \"Error: no test specified\" && exit 1"
+}
+
+--- packages/config/package.json ---
+
+=== GIT STATUS ===
+## phase-7-dashboard
+ D apps/api/src/config/database.js
+?? .runtime/
+?? apps/api/src/config/database.js.disabled
+?? docs/audits/
+?? eaasgrid-migration-release-gate-report.txt
+?? eaasgrid-production-audit-20260718-110648.txt
+?? eaasgrid-schema-comparison-report.txt
+?? reports/
+?? scripts/eaasgrid-audit.sh
+?? scripts/eaasgrid-audit/
+?? scripts/install-eaasgrid-services.sh
+?? scripts/setup-nginx.sh
+?? scripts/start-eaasgrid-local.sh
+?? scripts/test-nginx.sh
+
+==============================================
+DISCOVERY COMPLETE
+==============================================

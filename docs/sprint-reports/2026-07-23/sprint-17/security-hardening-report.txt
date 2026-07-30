@@ -1,0 +1,54 @@
+==========================================
+EaaSGrid Platform Sprint 17
+Security Hardening Automation
+Date: 2026-07-23
+==========================================
+
+[1] System Security Information
+Linux user 6.8.0-136-generic #136-Ubuntu SMP PREEMPT_DYNAMIC Wed Jul  1 21:53:05 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+PRETTY_NAME="Ubuntu 24.04.4 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.4 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+[2] Firewall Audit
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere                  
+8000                       ALLOW IN    Anywhere                  
+3001/tcp                   ALLOW IN    Anywhere                  
+80                         ALLOW IN    Anywhere                  
+443                        ALLOW IN    Anywhere                  
+8080                       ALLOW IN    Anywhere                  
+8080/tcp                   ALLOW IN    Anywhere                  
+3002/tcp                   ALLOW IN    Anywhere                  
+3000                       ALLOW IN    Anywhere                  
+3000/tcp                   ALLOW IN    Anywhere                  
+4000/tcp                   ALLOW IN    Anywhere                  
+22/tcp (v6)                ALLOW IN    Anywhere (v6)             
+8000 (v6)                  ALLOW IN    Anywhere (v6)             
+3001/tcp (v6)              ALLOW IN    Anywhere (v6)             
+80 (v6)                    ALLOW IN    Anywhere (v6)             
+443 (v6)                   ALLOW IN    Anywhere (v6)             
+8080 (v6)                  ALLOW IN    Anywhere (v6)             
+8080/tcp (v6)              ALLOW IN    Anywhere (v6)             
+3002/tcp (v6)              ALLOW IN    Anywhere (v6)             
+3000 (v6)                  ALLOW IN    Anywhere (v6)             
+3000/tcp (v6)              ALLOW IN    Anywhere (v6)             
+4000/tcp (v6)              ALLOW IN    Anywhere (v6)             
+
+

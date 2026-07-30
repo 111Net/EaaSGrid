@@ -1,0 +1,52 @@
+==========================================
+ EaaSGrid Nginx Automated Test
+==========================================
+Date: Sat Jul 18 01:49:14 AM UTC 2026
+
+[1] Checking required commands...
+PASS: nginx is installed
+PASS: curl is installed
+PASS: ss is installed
+
+[2] Checking Nginx service...
+PASS: Nginx service is active
+
+[3] Validating Nginx configuration...
+PASS: Nginx configuration is valid
+
+[4] Checking application ports...
+FAIL: Dashboard is not listening on port 3000
+FAIL: Investor Portal is not listening on port 3001
+FAIL: Showcase is not listening on port 3002
+FAIL: API is not listening on port 4000
+
+[5] Testing direct application services...
+FAIL: Dashboard direct service: http://127.0.0.1:3000 returned HTTP 000
+FAIL: Investor Portal direct service: http://127.0.0.1:3001 returned HTTP 000
+FAIL: Showcase direct service: http://127.0.0.1:3002 returned HTTP 000
+FAIL: API direct service: http://127.0.0.1:4000/api/v1/health returned HTTP 000
+
+[6] Testing Nginx proxy routes...
+FAIL: Dashboard through Nginx: http://localhost/ returned HTTP 502
+FAIL: Investor Portal through Nginx: http://localhost/investor/ returned HTTP 502
+FAIL: Showcase through Nginx: http://localhost/showcase/ returned HTTP 502
+FAIL: API through Nginx: http://localhost/api/v1/health returned HTTP 502
+
+[7] Checking Nginx configuration files...
+PASS: EaaSGrid Nginx configuration exists
+PASS: EaaSGrid Nginx configuration is enabled
+
+==========================================
+ TEST SUMMARY
+==========================================
+PASS: 7
+FAIL: 12
+WARN: 0
+
+==========================================
+ OVERALL RESULT: FAIL
+==========================================
+
+One or more checks failed.
+Review the report:
+/data/eaasgrid-platform/reports/nginx-test-report-20260718-014913.txt

@@ -1,0 +1,8 @@
+==========================================
+EaaSGrid Platform Sprint 15
+Domain & DNS Activation Automation
+Date: 2026-07-23
+==========================================
+
+[1] Domain Configuration Check
+Target Domain: www.eaasgrid.com

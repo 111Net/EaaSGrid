@@ -1,0 +1,373 @@
+==================================================
+ EaaSGrid DOCKER RECONCILIATION
+==================================================
+Sat Jul 18 02:02:33 PM UTC 2026
+
+=== PRE-CHECK ===
+DockerRootDir=/data/cache/docker
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        20G   13G  5.7G  70% /
+/dev/sdb         79G   21G   54G  28% /data/cache
+
+=== BACKING UP CONTAINER METADATA ===
+BACKUP CREATED: eaas-redis
+
+=== PRESERVING POSTGRES VOLUME REFERENCES ===
+
+No PostgreSQL container found.
+
+=== REMOVING OBSOLETE BACKEND ===
+
+=== REMOVING OLD POSTGRES CONTAINER ONLY ===
+eaas-postgres already absent
+
+=== REMOVING ABANDONED CONTAINER ===
+
+=== REMOVING OBSOLETE IMAGES ===
+backend image already absent
+frontend image already absent
+
+=== CLEANING UNUSED BUILD CACHE ===
+ID						RECLAIMABLE	SIZE		LAST ACCESSED
+xw8t4b4qxkclyg2vdkasd4n9q               	true 		65.52kB   	4 weeks ago
+3rkv996oh8jm025gccn3weqxa               	true 	61.07kB   	4 weeks ago
+hb8v2vcjd9tfn1bfmicj8acjg               	true 	65.61kB   	4 weeks ago
+c1ocqdrgi9k86sacnzcivjwuy               	true 	60.46kB   	4 weeks ago
+0bgw4ha93kt1xw6jwl1gdrtqt               	true 	61.96kB   	4 weeks ago
+210h9ug9yvnd2d6lotjhwn9v5               	true 	61.05kB   	4 weeks ago
+2npvrnkelvitppqzaa4aopcjh               	true 	62.01kB   	4 weeks ago
+788r6fjqjwxtq9atcl6e11i9w               	true 	65.97kB   	4 weeks ago
+h3dcbmzioia28mo2fcvp8s1qp               	true 	62.62kB   	4 weeks ago
+mmez3ffh3p7rip3p3fnqdfagv               	true 	61.49kB   	4 weeks ago
+svnop7vwd27phvx1qgihmn62l               	true 	65.9kB    	4 weeks ago
+toy5u4mw7vl3mpolynh7rmdru               	true 	61.52kB   	4 weeks ago
+epawysqwso3qby5fu2ctubwk9               	true 	62.75kB   	4 weeks ago
+wg3j6uss9hgnz5t6ok49jz88r               	true 	62.02kB   	4 weeks ago
+okcj5rdlassfuf6vibmfmaez9               	true 	60.46kB   	4 weeks ago
+t2wsv84l909gk999mt28rbkur               	true 	69kB      	3 weeks ago
+2tnueum1zko4ris024n4uhtc1               	true 	20.87MB   	4 weeks ago
+jyx1c115xd4cu9f7znjo2k5aw               	true 	60.99kB   	4 weeks ago
+petuzw3atj8pc3mv5t09dpr2s               	true 	63.22kB   	4 weeks ago
+rcjrlocyzrdg3w6d1pw8250mj               	true 	66.45kB   	4 weeks ago
+7rg2zjvdeza8sx5h96najvpfz               	true 	65.42kB   	4 weeks ago
+g4vawxnmsw31wjs7q84lz3l6j               	true 	61.14kB   	4 weeks ago
+uy5bkc6gz0y3saxgyvny757cz               	true 	60.99kB   	4 weeks ago
+meje9n6jw4l6xxriif49ifa9u               	true 	61.8MB    	4 weeks ago
+9i9ofy6syzl1bt9n6svwbaqsc               	true 	65.42kB   	4 weeks ago
+i3vohyv0dl13jnqlm1yxn5qpk               	true 	66.54kB   	4 weeks ago
+pgkl2nkds87zi0nxwka4uz03t               	true 	60.73kB   	4 weeks ago
+4z9zyx4og2q7rxgabnn7u95p1               	true 	60.75kB   	4 weeks ago
+r5n4vmb2staf54md0aoyt18rx               	true 	62.02kB   	4 weeks ago
+viid6sdassrjuswj5rtzwnpfv               	true 	65.9kB    	4 weeks ago
+6y7u5e51r6un79fmc62myk4en               	true 	60.84kB   	4 weeks ago
+8kxpuvivpjsz4knbliggerpje               	true 	65.42kB   	4 weeks ago
+wxfv165hc5h5azyvp05eazjyy               	true 	62.07kB   	4 weeks ago
+y1ho2xfxi817tcu3leb6xc9ol               	true 	61.06kB   	4 weeks ago
+m6vwlc2ehf15k2qcqrwr8pmgy               	true 	47.78MB   	Less than a second ago
+vl0vm2jpsivaaibtonu1dpoww               	true 	59.47MB   	1 second ago
+nbe58pt2xvvht04e58tue3gdc               	true 	65.97kB   	4 weeks ago
+ogg7awf7ks23vbxq77qxxcnkc               	true 	66.54kB   	4 weeks ago
+jesb427lk5b3f02ja9qhsnx9s               	true 	66.45kB   	4 weeks ago
+k3oapdpftcb32v87df7ahx5xv               	true 	62.09kB   	4 weeks ago
+i4mra06ujjbtoyhi6om4qqhwp               	true 	66B       	Less than a second ago
+cmgtcpai4af7evh928t6k0xri               	true 	63.47MB   	Less than a second ago
+l3e2b4tic3qpf8znyqvdocikh               	true 	63.51kB   	4 weeks ago
+p7xlqqyvt1rvseewgfg3ypuwx               	true 	33B       	Less than a second ago
+7abfrgfullx3t1ur6ml11zx5e               	true 	61.07kB   	4 weeks ago
+gsgx6a6pgxrjeb7tbrp8fucb8               	true 	65.97kB   	4 weeks ago
+in49qy1aus1a9kbs2nklfxx6f               	true 	66.62kB   	4 weeks ago
+jnm8k5i2ruc0045x7jkyny5h9               	true 	20.86MB   	1 second ago
+2i06pehkzryys6iivcd8n8c4a               	true 	62.44MB   	1 second ago
+aenlwonk9mvm5v5wqeqxcqhqb               	true 	8.972MB   	1 second ago
+iiyll9qcmr6xnw6gw568ve2qs               	true 	63.47MB   	Less than a second ago
+1ojzxvnnfn0992e4e9hlqua4o               	true 	68B       	Less than a second ago
+4uu3arxzxb4sidff4a5fevotu               	true 	0B        	Less than a second ago
+wlrobnonew2pbehsh471eqqcn               	true 	63.52MB   	1 second ago
+r7cleko9fhougnwlfr7df7ysr               	true 	14B       	Less than a second ago
+y0a341rr8n2spxvydycyhxm7w               	true 	78B       	1 second ago
+kk4xuik49pmrej0z1n6z91rfe               	true 	86B       	Less than a second ago
+2ge6gd9mmri0ks0sdcbs7zqpu               	true 	0B        	Less than a second ago
+d8d4lg0ku4g19woxe98zohner               	true 	86B       	Less than a second ago
+vrm87usgkrea5i4ajgqzcx44j               	true 	0B        	Less than a second ago
+p16xlol7mtoxb8jw5y2nxk8er               	true 	0B        	Less than a second ago
+jrtynlmgu5huo4xeeyuief8zd               	true 	0B        	Less than a second ago
+pcscnwdt403nrx91fiqfso9f7               	true 	0B        	Less than a second ago
+dzkys7tpfuxabd7b42dy18q7j               	true 	0B        	Less than a second ago
+0lq5ch58uqevrovcswsn6yktm               	true 	0B        	Less than a second ago
+v3tgjij49o4c5cfgowmdb2j1t               	true 	0B        	2 seconds ago
+cn9noe5bva5j81t0idynjbvfc               	true 	0B        	Less than a second ago
+qewq6hkbytjyfe54yyf3kqjzk               	true 	0B        	Less than a second ago
+y7x3581wgccqsdfkzg2lozrly               	true 	0B        	Less than a second ago
+Total:	475.2MB
+
+=== CLEANING DANGLING IMAGES ===
+Total reclaimed space: 0B
+
+=== VERIFYING REDIS ===
+Redis=running Restart=always
+
+=== FINAL CONTAINERS ===
+NAMES        IMAGE     STATUS          PORTS
+eaas-redis   redis:7   Up 23 minutes   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp
+
+=== FINAL VOLUMES ===
+DRIVER    VOLUME NAME
+local     0a0d7642dd1039ea9f744cf9e61c07074c322607464d84ef6bae38e7d24cb2b8
+local     0acc567dd31500eb64b44bb46554e1e99d467e521f9021ce4b6aeb7e8d03ff96
+local     0af8faf0f9b19916cc8b99b8c90445c70b7c4cddff4a84dc07a2ce2f59f52e8d
+local     0c0af79ddf1332a44057e5d6715d61274a241e759dd06e36beb78d3fc90b5a56
+local     0c641e5a67eb222cff583b0f67a6fb4e614f0214e854418856fb9d05055875f5
+local     0d3e93657f0111fcae6c2fa95693b58abd7842b2598ee61c3defdc73ca50e9d9
+local     0f21eb8d3c68e43530803fe49f1c28388732625bd62196859e2396b32fc34113
+local     0f8650fe5ea50e2878b119e4217f9c8699ec281ca91d4c421858c18d0740d947
+local     00b5108f359ba3d4cf642ed301cacf8d94c75c52b3aba0e7d6472776f9304b86
+local     00bf1e5ef8d8a57a6a71070d9dc11eecd8dbaa1e068f91df6242b66116888b66
+local     1db55dae1ad12d97ffa8588635227fd1d166de5a803298651dce88d2d765b47f
+local     1e6d68def110a77f20e1f86cf9f7313a1ee1eabc8edabbdff0dbb1288f1c3b6d
+local     2afdd4904d2c0282c1bb9b58b3767356f38819dc705fd550937bc1e8f966cc21
+local     2b2413bf49e7ee9a825a9a383586abc497867da3120513e387a8d9550169548d
+local     2d7bccd85403d3a992e143f2ff4771dcfc35669f6e9ad0526a4be378c55182df
+local     2e2aa1480ae79df25ccdf08af38fdfb4933f3dc646d2985685ee28e5549fa8b0
+local     2f6c0718bf71fe053d8602a7b9ce4114b3b9d7502c804e90fa3504f7b3af7947
+local     2f8f971aea795fedc284687c5d4f0ee3af4c68391e6d56777b7787a981c479f1
+local     2faf070631546c81104469fd7f23d829d065826b327eea911091f00c705871e3
+local     3b8f2ef35c848a3b673c9af29f009c5b7091eb90eb067dddcfe274bc91905efe
+local     3bdf94af1e3a6095a55113a0fcacb6b606693762a76ca1662171a3c6833dc788
+local     3c25c1c91a141c2857a5efb7a34c35939ad4216119f702c4d72e9fdefdd3a794
+local     4b33d429dbba141514989bd62f3fbe31b40a67d574752921609bc8e6c0ba4244
+local     4b933e503282056850fb8a36e27ade3174af21181354ea97b96b5ea5793985f0
+local     4cbc0f8c801e8c21755c9ce8bb71dbd7d0717297e418ac86f92a5b5891892b67
+local     4d478520582e452437df3d9528514f69b56e63dd8520dd12bd9280bcdf26abe8
+local     4eb1068f04ec903a6ff7907cf9fa5bdeb07040ba89bf5a61977611d542da5101
+local     5ab11f98a5289a39247f60ce9da0f276b74fdb916998d9d8650e97500513e70f
+local     5b8b6e49f9e6384abf3e251e1760062b8f6b7cc2f73803c438f59a05e7109994
+local     5b92c3eb81953dfbace0445fd36cd1f499985a0bf97877d2b1f79d919dda8e3a
+local     5c7eefdf1f83b2298856f1a69293442eb48e6fe8aec81782e66f4b06b876de79
+local     5ca9452cd4ff7661a9ee557ec8a07376df9f59e2c9a9e1a1012b8c9bc01dfb18
+local     5f6e59bb294d63a8cd568daa96a3b14fe2d4c8acc7782a272a28fbafe92a0415
+local     6a7cb4e6cc4b590468ceeb30223554038be0e3b9e41c456c79704525a9785feb
+local     6b10cfcdb620b42738740f6436104ea540085c4649d60332dbc166be0286786e
+local     6d7f22f20aa2ce8f0f00c945d67fc9edabe3ecd2ab4cc49d1761ed68f7973c3d
+local     6f33baa6a028b9c511ee503ef4f16b2f5792970608f6873fa30cd7979b8e6b06
+local     6f77a5d63b0bfbbbd6be22cd957f6844aa6cd6101ddc92251ebc85e38747ebbb
+local     6fbfea41b47030c7e7adfcee206d285e064296a8d2966cdc5132f727d35a93ce
+local     6fe2b8f513976bc1b49a92ecc0da333f9e3569932e918babcd722a90120fa3b9
+local     06bad69dc62d0f8d61d1fda82aee1f77a8f6839e804d2e6c984519bbc4d893d9
+local     7abfba12c9bf22ef1cfe8f7d8f5137a3295ad7106abbf3f8f08c83ec380d3831
+local     7b870a201e139504fb35b9ff2789870699c3ee5571a33cec0e5376d9e2418a0b
+local     7b89643e561f340713c69176f977fd876e2eb668021433f40fc783f3e43a8908
+local     7c078c4a7997fbb3a40ad19247245c6adc9af7aaa2fc51d81a3ca66a9c4c512e
+local     7cbbbc77cec0088e246239f2cc1a1b9e158221eba93b70efdce5c5b3ce0f6185
+local     7cc3041f47f2a1476dca57e8fba430655b6d6dcb4d512afa63706a1be7cea6ea
+local     7d9b48b0bed71ced3ca9b5e1342af622fde94a0ec38d183c36a8f1ec28086e85
+local     07a57201f00ba4a9d6fe4a6a09b2d35481d9222fb7838da0c111fe75b5f3c513
+local     07aa16de96c43883ebe760173f7302639e1e210108f0528e9147638344524257
+local     07dbf57f65682c6379ea500b1f2b825919420ccd3da93724a07a853e1bd33fc7
+local     8a0e6b6fce2c1df1139c2a22558d9c43bb0809b54ffe35c92f79d117e307025f
+local     8b7a227ab537883ec9031b45d6965a63757890c614d86db5bc2aa27e99f0f34e
+local     8b2627043089094a9e827f8e1982c8aa80e2e0491d666eda058e5d04eadea3b2
+local     8bd33dc6a09a3da3ade3330574db4bac9fdfdaef0eb74c88c585440875f5002f
+local     8c02ed7999e38e4c8733fcd39c94b4fa5b797f07c41bee7ceb9670827cf2039b
+local     8c6ccb04a8911e6c8cef623383a7a8615dc8c8e3f0eaaee3a5f435c62d490f31
+local     8e1553276724b64d4a8f7cf53535765724622f59b524420016682b834436a604
+local     8f722c67584b2e2d0d14e4cd96ce33ecdb88804642e4712ffaac543494d23541
+local     08fc0e575507fce468f1e45a613331aebf5acf4507e145a41ad74fea98fcd740
+local     9a34dbcb25283348178eba6a3205dbf5f11af5ccf4187e3d7d510182df5281ca
+local     9c8d67a069e6ce3e398d9927d2023607ff34017ac5726453b49b8dbbd60e6c13
+local     9d8ddb532f26ca9250973f8a59e168734cbaa397afb3347064d90047a4387c70
+local     9d15e8f4d77cc6ba38cfcb13acf5066652034d999db8edf4905f1a5b0aadd199
+local     9e966e2b48ac6f26b34e9cecfd1fc9f8486961b830565b9b9674b02518e88905
+local     013c6ddd0c78be432b60bd9d842a2f878d3d9d9aca41f4a40cbb51ce9c69146a
+local     015fa84f599acf846248167264666e708737d8e9da2f3b1f508741c37cfc98c4
+local     19dc3091c6da0d5d03892591669c5edd9f50eaeae9f1d7769a7f48f9815add08
+local     30fe5a1dabe63daf908d52cd5c1f99278cd0d6f005f1e88fc7297720e4d5f46c
+local     32b067cec08f12a1dca3f22a550d783f9af8d7e0a5e67fd53f78db93103f3878
+local     36a13257eea44a6fccbcc106a67408f6c42959e04de35d287642327796c56bb8
+local     036fa87d6ee420eedb31038266b9c6f5c6785920df96a26f3abed1d76f7187ab
+local     39a0037d3ef144ea632d9f174a71e26af6b5954300e358a2a622b28008f8d13a
+local     40ef7e4780147ef0bef49b6211af892d1fee132c8eea6bb09f9ff0fa262695bd
+local     0045fb5094c451acf43f42783283cbdbce8eef2ff5251a5d74e2faf023348bf4
+local     47e197ec0c0ab802c65f133d1cd80522a55f67ec5f5fff876b248774b869f4bb
+local     47f635745bea2f4e11cbb8f58c107e12deed1dfa59db1ac2c66a55f6c6bb5d4f
+local     48b32f27c3e8fcadf64b83fcdc0015abdb7117ac2d58685d8a594154dc0c2c64
+local     49d731607ab0840eda532b7ef7c7d16d35bf410645cf656adcdae108a2e14efc
+local     50c026196b16fb8d0a0498070c25adebe78f8c99ebe6d0e1ca03491b86af4cad
+local     55ec2e945cee30722b44780e54b8f838e915452551290700b7235a665fbc9a25
+local     58f4e2033e0dff92efe16e6bfbae48607e0f6f305de491378c800e0951cc8f75
+local     69b83e61e6e0fdbe38875987e5d0bfc44a7beb43b782b790d21c70423c33fa73
+local     76f6180f708fb5e56b2fb257b6648c1f837974be5d75cc58211fc805e94dfcc5
+local     77e69ff82a61db8703b97357bf988491c44102b8615a86f57ae3b39dfcf2bc34
+local     79c9973f517f9bbe318a99e391ab1137c40475fc527988e2beeb333e7d86f798
+local     82ec0b4368ec11018d1d33803a14e72b59f8a2a37778c23ac28080133b64e55e
+local     82f739e934136a628ef7ccd843e61e868399b4e1cd4b01d1dea0ca2db76be31b
+local     87e41136f12ff070d895a8bf856dfaa6517dda35cc5bc2a4fefbca1e87c54ad2
+local     93e817706f7d477a12d71c3d6809fd45fd8ed0d94fe50cd6570bb31807edde55
+local     94e3109681e35a0bf6bf6a2df714c37dd32f2813b96180cc2a12fc0de245cb94
+local     95a21812fbe9f258a5a77590c99fc8e8e5f94fffe51d9f3e6f4ad4b2d6a75126
+local     95d566b6869cd7142a4b4c629c5256e7d0fead1889be4588fabeeabdd6611ed8
+local     112bebf39f3cf6fb7eab649339e68ae32ad9c4fc05070115aff6211aa5666e66
+local     148b7a4d86eb1f365c58380201ba1428a0966c207ec7230662360cb7efffa770
+local     184e17df92465dc98fdbf150a5f3f9f6573a5f73cc30e0456d58d9848725dc1b
+local     220bbd84ee16147c0e7786f3e7e74c28546c27fd745de889b64effd775430bf6
+local     226f04ae7c77f3bf6c82d660cd4339408e6e0b1f2febced2ee5ab8e20af533da
+local     253b4ce4baf8a5dad283b6c8fa3c4c1dc0fd267eb2553e245edda046f56c0087
+local     259ef211cb8181228e97a726c853c2acc9dc099704bc08c1fee2d7fc85ac52b9
+local     325ac02cc36a8edf94faf1f34b5fba1cf3a376eeb20c754a50cd5ed0634944f1
+local     346e0527c1e20d450f8793a54a6690af617a9137b65fdba0c5fb25fa4db042b6
+local     358b7c41092ed614056c214b039327b0d682efd0859182b12a62305b80d0dd41
+local     413c0da5e7b00d91c113bfb458f1d3c1cfbb48feb0e754d77087b20a73e11d96
+local     420c5e53f65a3970d04e25066b8c1da5e2f1610021fc04bf0da3453780f96cdc
+local     00484d614fcefec6538908cce852ddd6d441718f35b9fce71bd4c2c737e43d87
+local     0489fe4da741d83969d364be36ccf2f00a3ccf3e331840deb738ea9636171d2b
+local     561dc1d0b273d3494fc632f2d88d60f3ecab1280a4f25e9f9630da29245ce77c
+local     599ba8b7250ece96d8fd81feae6fa526fa52385587c8d18c3b49402faaa53a91
+local     602f068efd14ba7066fff2db5e55bec63525e654b421fa411e96bd2a64b38220
+local     616d0ae38d86d376b46ca5d608030415bc737e7d0c7a54b3c6fb94a8732c971e
+local     702f201eb6343e3b9440b8738f5cb83eb18d6add0f4d0b3e2707de72bcfd8988
+local     708f199eff06c9efdcffeacdf8ad079362ea67fd4a13738df88ca5e1b60cda56
+local     779c53e902197ea1211e4afb2978a2397aa48f5f9e040e3beba4e7db9e2b8c84
+local     800e8f92e8d5ae5d397c7413c28084c20b7bdce1695bef5a2432dc83f027ced9
+local     811c4bd22e3290b18824e2939e97ebea94d057c0c4a3201a94fb54b14191d2e1
+local     836bb4529e74e83144fdb077f58bf5c6ea23e10c361dc18af1d90271351800bd
+local     921bdc8dbc60611ddefa4652385b8089bfd8451ff354c7efb2c725d666f3478c
+local     968f2bce3bf43a9828131609ee9fdc84a6fa5eb778dc0447a5c25dde2f7caa3b
+local     1020b4eba9c593052e2c37ee2fe67272440a08cbcb8bb66c7d78cc76b2840634
+local     1400d15222f1b18cd40575895e52f3e80823b69249d8565decd985fabb874d91
+local     1662bfa135a18488c600421a9e6aaec73c3755ba3327fb65cefc597c6b1a283d
+local     2049ceafa2725bf8729444c959985c95e969c2c566db3bb0059a072eec2a0ff1
+local     2207a20471f8a6e3a24ec99d2bcea0d22c4c9093b58e8317cbc1d13fca7efc81
+local     2816cfb1990e516e5e51f86157960e3e795451bdd0a1382bf6b123ea5ad35cf8
+local     3162f4c173c966080ae55769fc531ecc26fde4f479ac075b00edadfb0db8d8f1
+local     03704c69442ab11c0b528f40b2d81eafb01bf126def00ece7fd60a318b00ff75
+local     04321f8e4f93bb114736d47003af15a89d750c13326043d1ac35cdb564b3f40c
+local     6348e7f9fec96b00e4c6a0b8f35144454a1cf8cc156b6ca0f1c1725d3beedff0
+local     6450caa438bd6ee9c45799b975c47d4ad74f35750a9780bb1e19e73e004643a2
+local     9564fc896079d93aa3321e837c839a3cf3012b508f9dc360a3fb75b860b77119
+local     9912b75bd5d48f829d1d8ee8459841571cfca358ec215d5d174440a308807ac0
+local     9985d2485ac460890d79126a3cc1a6d41898fdd99029b5d98fbc77a87356ab9b
+local     20075e140326ac08aa73588d95cfd8c47988eef4ffc57d627229293b250f0c33
+local     39133e48b97a6124b0954f2c0995adde8e802002b030755659372c95abbdca3d
+local     40025c3d38d0d80b68d3358a942d388726ea239dccfbe14b5fd4d17a23403e35
+local     43792d30f3f9fe2e234937d387d7652c93a27c042d451f5873757c00d4e6c50c
+local     54655ccf5ba671349092fd9da2eb3aea5aea361374ecc64f15fb8928af2abd68
+local     61903fa4d1246e806f1045b1b74efa2c2fe182326bc64a9193f3d9dee317713d
+local     94104ce3caf79bd533145e28d9988af0e249f415a42cf061c6e2d5dce5346afd
+local     430807e885003e25ee1da1460e80d40ad42e9b2ecec45c98488be2d0a20a459c
+local     584141f6ce3b2f28f90d6bbba85cd4f8fcfe4ffaf26efafe37b05ce296dd662d
+local     676583c7ef9e2c6ae2df0d6adf236ec8a02f93dd201e6ab36d5a54fc027f8f8e
+local     879404bccd357bc1da6d448de25d988f5dbc2e35565f31204a1099b21f9f51c0
+local     975823cec68705ff287e5bb701af7a9a9087f71035eb1e249703993e3109af4a
+local     1077883be084de9afc7c1e6cb53378677c3b2d0eb63cab83455007b223bc0005
+local     5129262bdb2b1339a31834404a3981b82995cbbc8f4f06e3b9bfbdc74dc1e1d8
+local     36789201e0539ff99211a2ebad72e9646fd1ce89aab87b5b72197227de07f338
+local     83030997afa7665b9133edc569eea33953be431cc7df9216940d6cd06c6bfbba
+local     328575000e1fb3d05e474998641db515e13604de7eb00bf6b77a0380ad26f8fa
+local     727685928de5a2a323fbec21bd6c192d56c3a045f4662f5e6fc1fa6d8ddb1abc
+local     a2fd04f8c06ceefe7af82f457220c4427790b8aac997483b5ba752937debc008
+local     a6b55d9321f58b0e970d92fd6fc05fbfb15f4f9fe5d09c9627bf2e9502e291f5
+local     a6d403bf25f6e3b8d5f5e775b7646f70ab56ce8823b866ed05d1b1c5da0572c9
+local     a8dbfa1d0d0d79884990f7996c2653d0d2ed518d89687aa0a04b36806ea47a1b
+local     a9dabee95a474f7b01b874bf18378d05106abf64ed1ef2cea9ce75eeefa2fb50
+local     a11c1ff8847473ff38964665de57e690d30c5ae43ffa5d5e4f277ccdd2b2adb3
+local     a22aa15a5faef80c38cf0bd413f295db1428e9c740f645f4c01a0ee156207687
+local     a23ea09d51ea98098c5f5fbda63feeeeec5605945f50ddbe4e2bf02e24443380
+local     a78f886f28cd72b45bec2aa183fda0e6c3a3a1279c1307edeabcec613594e43a
+local     a79de3a26d1105d27041198fff9b7ee1cc81cadb5be60417ece62391435ca051
+local     a6974978f113542a5e6b1f819b2c10fbe1086677b80e27b63d6526146edead72
+local     a8968977ca55d4705fee494cc9aa19da805d4dbf37dc7c2f0eba678875e19da5
+local     aae73963182f0b61505f4f7cda3aa6c86540fb1313d2d3ab6369309e26e21a02
+local     acb2467c0abd723e9bcce9af6c29eb96f4666c2cd84eeea638de0f9a359cd7ea
+local     b0df9976617bac625d1407ae85f8fcb704ef86443c98e6b16abb17b529a4d812
+local     b0f7f1a5863c09a87bc3dbeeea988052e80d60528034575e7f1f8f7d417202c5
+local     b1ec8803515bc3b2c4424fcbab334d1208b7ba35ed2bda5b4a62faa881268274
+local     b6fa53a3ade245d317254556d7d620e9fce06e4154f959936b0d353912c1b2db
+local     b7bb2de2de051673b205ab13be2194f4dbd00bee3aec69c8430f4f05ac3a4494
+local     b54f499087007f2f54c4fd2b6390ae2632ce3f59fe17579d148a1913bb4d1a79
+local     b64a474e8dfd07cf048f308b66e7cc0050561b33515fb042e510cf1fee77c243
+local     b391e8ed9bcdc2886d17d93d29560b5ce1d5bc78a70bca0eb90b3c6097042323
+local     b525f56ab2c5b5006c43f216427f94a2cc213e1c77b6254f2e65456199ce3327
+local     b615ff3c539386e3116bbf4b373b198441ce9f6219fcb6deebd76665de9cc06e
+local     b6916d90e7b7255034a910a5b054d9f60394ab0bf1524ba9fbd3665591383628
+local     b41039d2c932777dbee1525c5edca4c2754b62197045aa2ce1e41d80100340bf
+local     b1373376a9dc2f14149ffbfc2c0262256cb24c78511ced8cbf57d826c62ef576
+local     ba835259ce85819b17f6bddb909343f1bb366b0026c314f01c512d5782cc4cde
+local     c01f79797c32ad38ad89da503960d7fec9362b758e025ba7065ce3a1c2ba0894
+local     c4d47fe53be0baeaa0662c7eb94c382b36232f6b32628ba4e671dab8d4649f9b
+local     c9eb420f46a2ae166b9cce6b3526303de620ffa3eb24472e59e95fd7765f253f
+local     c9f4eaf05cbdb4cba2020019719a5013e85d2b96c99364ec4929399553e294ec
+local     c19d1c4e4d1af4d62cee0111f103da2859984677c51e29d665d30f224d1ef4aa
+local     c25b7e622ad0c4587a246f45850eaa8a6e0ef53a5ae0111bd8b7300f655685e2
+local     c82d776f84daf62d898cec318ad33537f5bc4bbc0d52d5e503e2c34479a643a7
+local     c148d429e26af37d717bd6f84a24d2c0f991103c53d75920d005028ee9332bd2
+local     c4255f3531e6790a04a4362ad2e7e8661735b757bda3130d07d4cc60fffc1c79
+local     cbf8a351df70b83f4203c45bcb7a636ff89e48debe4e2eebec4c69377bd4a6db
+local     cfd5f8dc9127ceb1667ac16d7db268f16da39d433834244b7e38f0c7ee6cb569
+local     d1d54b05839fd0e2ba6310717ff6fd07fe3d0766a154aba6970421b7e9c2a30f
+local     d1e4a683f9bd52d9bebea366339e636d64acc2a5b71474c625d981a64cad7ccb
+local     d4a057d77b1f1d589606ff3be628ac7bbd7c534a732aee1b3c7cb70287c77612
+local     d11c627e6825f05c374dca955153ea08aab48e60fc0215dadc5162a0a43e96fb
+local     d11d344751ffc596fdd54ccc71faf04a48cd76a7fe0c717474b93768aae4a1d9
+local     d67a3820ac69d5025df8214f475d4b2f56d36c26f851ea96675c96e9eee42ab8
+local     d67bfc7556eabb1613a7e42896b445b1b8779ffdd1f1c75638477d2784892e4f
+local     d91fb6665a3437acd79e36582b33c8fdc46af36a7c75d2898fbb06e3e111e725
+local     d164a0e3928c93ace23ab90303cc3c146d0125dffa36897fa0145d46a751c214
+local     d260043fb3c4135aee459d0572c4b646685c72b7dabcae0c169c0247512d7f86
+local     d705023a5bdad6923526c6178e320578637a464b2f32bf5317f34dc5ea3a603a
+local     d8952450c5fe12411534fdd300c3539241b706c39e2306f8eb8fc511cf3ee879
+local     dae258d8bdd2a777b73b4b8d6bc2968f016e5b12b97ebf9f1f297738646631b0
+local     dfa39fee3894abd40705cfbcb9fc166a6b1ede8df78edd46a726c42b16b573ce
+local     dfdac5da54acd27040ebf1f9df9033ba196c8efb899d535165f1c39798362762
+local     e3c86ebba60de86a76527cc6559e8683ee88f67212237da45b2683bb5ca3f2c7
+local     e14a3f55603682cb341b7a0a77a44c48f564bc04e236f8f8594d706f8a0d53d7
+local     e53aad590bb8ade9d9c3a6640720158af58bbbf83a3ba4b7e782128d92ccbab6
+local     e70de9dee0360003d06cf24f3e9c21a61461e3069e57f24034a7272bdb0dac57
+local     e279b1e9a3f19a9e3e1d9df4c59bf606fbe97324856a6c8953c46892ffe7a9df
+local     e685fd7802f32ee945e8ef415c2ca158dd89f68cb6f3e9886f5eabe2e183dbce
+local     e97957e680fad5211c953284c858a0ea12a38eaa82ddf4dd9d285359da222346
+local     eb0e8a9d024f05a11338779dd435f7f5e040e7b4e39ce8b5ce947f052a7cc1d8
+local     ed2a4294b59f8f88e2a6412b1a915042fcde82d54676ed9a632fafaa512bf3b0
+local     efe25d3a3aeb11c25e810a8a839f63a55af684168a2841ff929a59b87fd946f5
+local     f1d8ed9cbc3a86e55120bced8dbdce22fb4f9872b8f6840f40fbf43b1951b63b
+local     f01ecb2be812fe0b36c144d97cb09655dc9d3bba863fe2dec27b63cbbfd91f07
+local     f5b7621302763d2a9f0e447b72a98d2b2d42a5fd4a38a5f57469e4f3c284a014
+local     f6bdc85585f2340c8fe68600e84e8934ce731da1a4ad3e3914d384e456a78d68
+local     f09a347f171e3994d3c67c72901cf5b53ce33458956879931388411eed9e026d
+local     f43e1a319271998f3c6975d5f2d1a976cc8ddd7258f6be620a15e3bb84241726
+local     f69e720f3fd06daf8be8365a8d15666c6c5df962c8d1e4c14dd48fcfccc91b4a
+local     f1693bf8dbd2527013d954bb759189fc9c53c884590e1445b18e69be314be7a3
+local     fa2f8853afc1ba9b0a90d0ab63e9029078d41a5eb02b9c8b7c337f4638946724
+local     fa4a679a97691888ad300348f213ed0e59f4f238f33c5e1a8fde6af99ce39875
+local     fbb8ad830e3d48a049cd0b7b43864fa5718e2a9701c758ab5b4b57534b18a639
+local     fd2f532510dffee68bf6cc65bf96b7eeec56d72004c854916c1da8b81f31853a
+local     fe1bd57aa573a8a8aa4e1669d5040d3cc593270cc9844f12ff023175d76cc001
+local     fee57ec7877833fc43b1e5b739af32c732f46b51c82b0d9534a08f9aa38d6009
+local     infrastructure_pgdata
+local     infrastructure_postgres_data
+local     solar_ai_platform_certbot-etc
+local     solar_ai_platform_certbot-var
+local     solar_ai_platform_db_data
+local     solar_ai_platform_solar_db_data
+
+=== DOCKER STORAGE ===
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          3         1         637.6MB   524.7MB (82%)
+Containers      1         1         0B        0B
+Local Volumes   235       1         191.7MB   191.7MB (99%)
+Build Cache     0         0         0B        0B
+
+=== NATIVE POSTGRESQL ===
+active
+LISTEN 0      200        127.0.0.1:5432       0.0.0.0:*    users:(("postgres",pid=1299,fd=6))                                                                                                                                                                                             
+
+=== FINAL FILESYSTEM ===
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        20G   13G  5.7G  70% /
+/dev/sdb         79G   19G   56G  26% /data/cache
+
+=== FINAL DOCKER ROOT ===
+DockerRootDir=/data/cache/docker
+
+==================================================
+ RECONCILIATION COMPLETE
+==================================================
+REPORT: /data/eaasgrid-platform/reports/docker/docker-reconciliation-20260718-140233.txt

@@ -1,0 +1,17 @@
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1511/package.json
+/data/eaasgrid-platform/releases/eaasgrid-investor-portal-2.3.0-RC1-20260710-1520/package.json
+/data/eaasgrid-platform/apps/dashboard/.next/dev/package.json
+/data/eaasgrid-platform/apps/dashboard/.next/dev/build/package.json
+/data/eaasgrid-platform/apps/dashboard/package.json
+/data/eaasgrid-platform/apps/api/package.json
+/data/eaasgrid-platform/apps/investor-portal/.next/dev/package.json
+/data/eaasgrid-platform/apps/investor-portal/.next/dev/build/package.json
+/data/eaasgrid-platform/apps/investor-portal/.next/package.json
+/data/eaasgrid-platform/apps/investor-portal/.next/build/package.json
+/data/eaasgrid-platform/apps/investor-portal/package.json
+/data/eaasgrid-platform/apps/showcase/.next/package.json
+/data/eaasgrid-platform/apps/showcase/.next/build/package.json
+/data/eaasgrid-platform/apps/showcase/package.json
+/data/eaasgrid-platform/packages/ui/package.json
+/data/eaasgrid-platform/packages/config/package.json
+/data/eaasgrid-platform/package.json

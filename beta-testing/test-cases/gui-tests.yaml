@@ -1,0 +1,41 @@
+tests:
+
+
+- name:
+
+Login Test
+
+expected:
+
+Dashboard loads
+
+
+
+- name:
+
+API Health Test
+
+expected:
+
+GREEN
+
+
+
+- name:
+
+Database Test
+
+expected:
+
+CONNECTED
+
+
+
+- name:
+
+Report Test
+
+expected:
+
+Generated
+

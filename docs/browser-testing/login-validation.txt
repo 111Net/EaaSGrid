@@ -1,0 +1,38 @@
+
+EaaSGrid Browser Login Test
+
+
+Test 1:
+
+Open browser
+
+
+Test 2:
+
+Login:
+
+admin@eaasgrid.com
+
+
+Expected:
+
+Control Centre opens
+
+
+Test 3:
+
+Logout
+
+
+Test 4:
+
+Login:
+
+operations@eaasgrid.com
+
+
+Expected:
+
+Operations Console opens
+
+

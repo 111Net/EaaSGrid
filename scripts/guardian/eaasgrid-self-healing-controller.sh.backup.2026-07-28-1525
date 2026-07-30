@@ -1,0 +1,159 @@
+#!/bin/bash
+
+###############################################
+# XaaSGrid Platform Ltd
+# Guardian Self-Healing Controller
+# Sprint 0.4 Repository Rationalization
+###############################################
+
+DATE=$(date +"%Y-%m-%d_%H-%M-%S")
+
+echo "======================================"
+echo " XaaSGrid Platform Ltd"
+echo " Guardian Self-Healing Controller"
+echo " $DATE"
+echo "======================================"
+
+PROJECT_DIR="/data/eaasgrid-platform"
+
+
+###############################################
+# [1] SYSTEM CHECK
+###############################################
+
+echo "[1] Checking system"
+
+df -h
+
+free -h
+
+uptime
+
+
+###############################################
+# [2] NETWORK CHECK
+###############################################
+
+echo "[2] Network"
+
+SERVER_IP=$(hostname -I | awk '{print $1}')
+
+echo "Server IP: $SERVER_IP"
+
+ping -c 2 8.8.8.8
+
+
+###############################################
+# [3] PORT CHECK
+###############################################
+
+echo "[3] Checking ports"
+
+PORT=4000
+
+PID=$(lsof -t -i:$PORT 2>/dev/null)
+
+if [ -n "$PID" ]; then
+    echo "Port $PORT used by $PID"
+else
+    echo "Port $PORT available"
+fi
+
+
+###############################################
+# [4] POSTGRESQL CHECK
+###############################################
+
+echo "[4] PostgreSQL"
+
+if systemctl is-active --quiet postgresql; then
+    echo "Postgres OK"
+else
+    echo "Postgres down - attempting restart"
+    sudo systemctl restart postgresql
+fi
+
+
+###############################################
+# [5] DATABASE CHECK
+###############################################
+
+echo "[5] Database"
+
+sudo -u postgres psql -c "\l" 2>/dev/null
+
+
+###############################################
+# [6] REDIS CHECK
+###############################################
+
+echo "[6] Redis"
+
+if systemctl status redis.service >/dev/null 2>&1; then
+
+    echo "Redis detected"
+
+    sudo systemctl restart redis.service
+
+    echo "Redis service restarted"
+
+else
+
+    echo "Redis not installed - optional component skipped"
+
+fi
+
+
+###############################################
+# [7] API HEALTH CHECK
+###############################################
+
+echo "[7] API Health"
+
+if curl -s http://localhost:4000/api/v1/health >/dev/null; then
+
+    echo "XaaSGrid API healthy"
+
+else
+
+    echo "API health check failed"
+
+fi
+
+
+###############################################
+# [8] DISK WARNING
+###############################################
+
+echo "[8] Disk Monitoring"
+
+ROOT_USAGE=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
+
+if [ "$ROOT_USAGE" -ge 90 ]; then
+
+    echo "WARNING: Root filesystem above 90%"
+
+else
+
+    echo "Disk usage normal"
+
+fi
+
+
+###############################################
+# [9] PROCESS SUMMARY
+###############################################
+
+echo "[9] Running Services"
+
+ps aux | grep -E "node|npm|next|postgres" | grep -v grep
+
+
+###############################################
+# COMPLETE
+###############################################
+
+echo "======================================"
+echo " XaaSGrid Guardian Completed"
+echo " $DATE"
+echo "======================================"

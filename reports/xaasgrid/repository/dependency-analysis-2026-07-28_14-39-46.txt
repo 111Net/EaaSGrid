@@ -1,0 +1,30 @@
+=====================================
+ EaaSGrid Dependency Analyzer
+ Sprint 0.2
+ Date: Tue Jul 28 02:39:46 PM UTC 2026
+ Repository: /data/eaasgrid-platform
+=====================================
+
+[1] PACKAGE DEPENDENCY ANALYSIS
+
+[2] SCRIPT DEPENDENCY ANALYSIS
+
+[3] SYSTEMD DEPENDENCY ANALYSIS
+
+[4] DOCKER ANALYSIS
+
+[5] APPLICATION DEPENDENCY MAP
+
+[6] RISK SUMMARY
+Potential cleanup risks:
+
+Generated reports:
+/data/eaasgrid-platform/reports/repository/package-analysis-2026-07-28_14-39-46.txt
+/data/eaasgrid-platform/reports/repository/script-dependency-map-2026-07-28_14-39-46.txt
+/data/eaasgrid-platform/reports/repository/service-dependency-map-2026-07-28_14-39-46.txt
+/data/eaasgrid-platform/reports/repository/docker-dependency-map-2026-07-28_14-39-46.txt
+/data/eaasgrid-platform/reports/repository/application-dependency-map-2026-07-28_14-39-46.txt
+
+=====================================
+ Dependency Analysis Completed
+=====================================

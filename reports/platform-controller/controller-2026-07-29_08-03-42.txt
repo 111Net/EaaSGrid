@@ -1,0 +1,90 @@
+==========================================
+ XaaSGrid Platform Controller
+ Startup + Health + Recovery
+ 2026-07-29_08-03-42
+==========================================
+
+[1] PostgreSQL
+PASS - PostgreSQL running
+
+[2] API Service
+PASS - API already running
+PASS - API healthy
+
+[3] Dashboard
+PASS - Dashboard running
+
+[4] Investor Portal
+PASS - Investor portal running
+
+[5] Frontend Validation
+PASS - Dashboard build validation
+
+[6] Permission Engine Check
+PASS - getCurrentUser exists
+
+[7] Runtime Log Scan
+Checking /data/eaasgrid-platform/apps/dashboard/dashboard.log
+Checking /data/eaasgrid-platform/apps/dashboard/dashboard-runtime.log
+    0: Looking up typed data for 7 tasks from database failed
+    3: Failed to open SST file /data/eaasgrid-platform/apps/dashboard/.next/dev/cache/turbopack/v16.2.10/00000067.sst
+    4: No such file or directory (os error 2)
+Failed to restore task data (corrupted database or bug): Meta for batch of 16 tasks
+    0: Looking up typed data for 16 tasks from database failed
+    3: Failed to open SST file /data/eaasgrid-platform/apps/dashboard/.next/dev/cache/turbopack/v16.2.10/00000067.sst
+    4: No such file or directory (os error 2)
+Persisting failed: Unable to write SST file 00000091.sst
+    No such file or directory (os error 2)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Checking /data/eaasgrid-platform/apps/api/sprint9-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint12-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint11-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint10-runtime.log
+Checking /data/eaasgrid-platform/apps/api/api-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint3-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint8-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint4-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint6-runtime.log
+Checking /data/eaasgrid-platform/apps/api/api.log
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+npm error Lifecycle script `dev` failed with error:
+npm error code 1
+npm error path /data/eaasgrid-platform/apps/api
+npm error workspace api@1.0.0
+npm error location /data/eaasgrid-platform/apps/api
+npm error command failed
+npm error command sh -c nodemon src/server.js
+Checking /data/eaasgrid-platform/apps/api/sprint5-runtime.log
+Checking /data/eaasgrid-platform/apps/api/sprint7-runtime.log
+Checking /data/eaasgrid-platform/apps/investor-portal/.next/dev/logs/next-development.log
+Checking /data/eaasgrid-platform/apps/investor-portal/dashboard.log
+npm error Lifecycle script `dev` failed with error:
+npm error code 1
+npm error path /data/eaasgrid-platform/apps/investor-portal
+npm error workspace investor-portal@0.1.0
+npm error location /data/eaasgrid-platform/apps/investor-portal
+npm error command failed
+npm error command sh -c next dev --hostname 0.0.0.0
+Checking /data/eaasgrid-platform/apps/investor-portal/investor-runtime.log
+Checking /data/eaasgrid-platform/apps/api.log
+
+[8] Active Services
+user       21131  0.0  0.7 11485652 58020 pts/2  Sl   07:49   0:00 node src/server.js
+user       21161  0.0  0.7 11518364 59008 pts/2  Sl   07:49   0:00 node /data/eaasgrid-platform/node_modules/.bin/next dev
+user       21436  0.0  0.7 11518356 58928 pts/2  Sl   07:52   0:00 node /data/eaasgrid-platform/node_modules/.bin/next dev -p 3001
+
+[9] Infrastructure
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        20G   15G  3.9G  80% /
+               total        used        free      shared  buff/cache   available
+Mem:           7.7Gi       1.6Gi       3.8Gi        31Mi       2.6Gi       6.1Gi
+Swap:             0B          0B          0B
+
+==========================================
+ PLATFORM STATUS COMPLETE
+==========================================
+
+REPORT:
+/data/eaasgrid-platform/reports/platform-controller/controller-2026-07-29_08-03-42.txt

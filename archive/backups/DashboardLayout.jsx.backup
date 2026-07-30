@@ -1,0 +1,58 @@
+"use client";
+
+
+import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
+
+
+export default function DashboardLayout({children}){
+
+
+return (
+
+<div>
+
+
+<Sidebar />
+
+
+<div
+
+style={{
+
+marginLeft:"260px"
+
+}}
+
+>
+
+
+<Navbar />
+
+
+<main
+
+style={{
+
+padding:"30px",
+
+background:"#eef3f8",
+
+minHeight:"100vh"
+
+}}
+
+>
+
+{children}
+
+</main>
+
+
+</div>
+
+
+);
+
+
+}

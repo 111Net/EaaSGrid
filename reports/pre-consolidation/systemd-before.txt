@@ -1,0 +1,11 @@
+● eaas-showcase-frontend.service                                                                           loaded failed failed    EAAS Showcase Frontend
+● eaas-showcase.service                                                                                    loaded failed failed    EAAS Showcase Backend
+● eaas-storage-healer.service                                                                              loaded failed failed    EAAS Storage Auto-Healer
+  eaas-storage-watchdog.service                                                                            loaded active running   EAAS Watchdog Service
+  eaas-watchdog.service                                                                                    loaded active running   EAAS Production Watchdog v2
+  eaas.service                                                                                             loaded active running   EAAS Autonomous Control System
+  eaasgrid-api.service                                                                                     loaded active running   EaaSGrid API
+● eaasgrid-guardian.service                                                                                loaded failed failed    EAASGrid Platform Guardian Self Healing
+  eaasgrid-showcase.service                                                                                loaded active running   EaaSGrid Showcase
+  eaasgrid-guardian.timer                                                                                  loaded active waiting   Daily EaaSGrid Guardian
+  eaasgrid-lifecycle.timer                                                                                 loaded active waiting   EaaSGrid Enterprise Lifecycle Controller Schedule
