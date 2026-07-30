@@ -1,8 +1,8 @@
 {
   "platform": "XaaSGrid",
   "baseline": "created",
-  "current_sprint": "5A",
-  "status": "repository-preclean-complete",
+  "current_sprint": "5",
+  "status": "docker-foundation-complete",
   "git_version_control": true,
   "portable_ready": true
 }
