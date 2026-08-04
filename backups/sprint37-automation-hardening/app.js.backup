@@ -128,46 +128,7 @@ operationsRoutes
 
 
 
-
-
-// Sprint 38 Analytics Engine
-
-const analyticsRoutes =
-require("./analytics/analytics.routes");
-
-
-app.use(
-"/api/analytics",
-analyticsRoutes
-);
-
-
-// Sprint 38 AI Engine
-
-const aiRoutes =
-require("./ai/ai.routes");
-
-
-app.use(
-"/api/ai",
-aiRoutes
-);
-
 // 404 HANDLER LAST
-
-
-
-// Sprint 41 Customer Onboarding
-
-const onboardingRoutes =
-require("./onboarding/onboarding.routes");
-
-
-app.use(
-"/api/onboarding",
-onboardingRoutes
-);
-
 
 app.use((req,res)=>{
 

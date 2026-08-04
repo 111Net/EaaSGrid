@@ -1,0 +1,42 @@
+
+==========================================
+
+XaaSGrid Sprint 36 Certification
+
+Operations Intelligence Center
+
+==========================================
+
+
+Operations API:
+
+PASS
+
+
+Health Monitoring:
+
+PASS
+
+
+Metrics Foundation:
+
+PASS
+
+
+Operations Dashboard:
+
+PASS
+
+
+Documentation:
+
+PASS
+
+
+Status:
+
+READY
+
+
+==========================================
+

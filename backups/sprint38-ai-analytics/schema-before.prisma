@@ -1,0 +1,254 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  email String @unique
+
+  passwordHash String
+
+  role String @default("user")
+
+  createdAt DateTime @default(now())
+}
+
+model Company {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  createdAt DateTime @default(now())
+}
+
+model Customer {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  email String @unique
+
+  createdAt DateTime @default(now())
+}
+
+model AuditLog {
+  id Int @id @default(autoincrement())
+
+  action String
+
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id String @id @default(uuid())
+
+  name String
+
+  description String?
+
+  category String
+
+  active Boolean @default(true)
+
+  createdAt DateTime @default(now())
+
+  plans Plan[]
+}
+
+model Plan {
+  id String @id @default(uuid())
+
+  name String
+
+  price Float
+
+  currency String @default("NGN")
+
+  billingCycle String
+
+  active Boolean @default(true)
+
+  serviceId String
+
+  service Service @relation(fields: [serviceId], references: [id])
+
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id String @id @default(uuid())
+
+  customerId String
+
+  planId String
+
+  status String @default("ACTIVE")
+
+  startDate DateTime @default(now())
+
+  endDate DateTime?
+
+  plan Plan @relation(fields: [planId], references: [id])
+}
+
+model Invoice {
+  id String @id @default(uuid())
+
+  customerId String
+
+  subscriptionId String
+
+  amount Float
+
+  currency String @default("NGN")
+
+  status String @default("ISSUED")
+
+  issuedDate DateTime @default(now())
+
+  dueDate DateTime?
+}
+
+model PaymentTransaction {
+  id String @id @default(uuid())
+
+  invoiceId String
+
+  provider String
+
+  reference String
+
+  amount Float
+
+  status String
+
+  createdAt DateTime @default(now())
+}
+
+model PricingRule {
+  id String @id @default(uuid())
+
+  planId String
+
+  discount Float @default(0)
+
+  duration String
+}
+
+model PaymentProvider {
+  id String @id @default(uuid())
+
+  name String
+
+  country String?
+
+  active Boolean @default(false)
+
+  createdAt DateTime @default(now())
+}
+
+model PaymentEvent {
+  id String @id @default(uuid())
+
+  transactionId String
+
+  eventType String
+
+  payload String
+
+  createdAt DateTime @default(now())
+}
+
+model GatewayConfig {
+  id String @id @default(uuid())
+
+  provider String
+
+  environment String @default("sandbox")
+
+  enabled Boolean @default(false)
+
+  createdAt DateTime @default(now())
+}
+
+model CustomerUser {
+  id String @id @default(uuid())
+
+  email String @unique
+
+  passwordHash String
+
+  companyId String?
+
+  status String @default("ACTIVE")
+
+  createdAt DateTime @default(now())
+}
+
+model Organization {
+  id String @id @default(uuid())
+
+  name String
+
+  createdAt DateTime @default(now())
+}
+
+model Tenant {
+  id String @id @default(uuid())
+
+  name String
+
+  organizationId String
+
+  createdAt DateTime @default(now())
+}
+
+model Role {
+  id String @id @default(uuid())
+
+  name String @unique
+
+  description String?
+}
+
+model Permission {
+  id String @id @default(uuid())
+
+  name String @unique
+
+  description String?
+}
+
+model UserRole {
+  id String @id @default(uuid())
+
+  userId String
+
+  roleId String
+
+  createdAt DateTime @default(now())
+}
+
+model RolePermission {
+  id String @id @default(uuid())
+
+  roleId String
+
+  permissionId String
+}
+
+model TenantAudit {
+  id String @id @default(uuid())
+
+  tenantId String
+
+  action String
+
+  createdAt DateTime @default(now())
+}

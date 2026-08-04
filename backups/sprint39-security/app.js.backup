@@ -155,20 +155,6 @@ aiRoutes
 
 // 404 HANDLER LAST
 
-
-
-// Sprint 41 Customer Onboarding
-
-const onboardingRoutes =
-require("./onboarding/onboarding.routes");
-
-
-app.use(
-"/api/onboarding",
-onboardingRoutes
-);
-
-
 app.use((req,res)=>{
 
 res.status(404).json({
