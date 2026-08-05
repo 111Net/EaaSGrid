@@ -1,0 +1,23 @@
+{
+
+ "checks":[
+
+  "security",
+
+  "availability",
+
+  "documentation",
+
+  "support",
+
+  "monitoring",
+
+  "backup",
+
+  "deployment"
+
+ ],
+
+ "status":"ready"
+
+}

@@ -1,0 +1,21 @@
+{
+
+ "journey":[
+
+  "registration",
+
+  "authentication",
+
+  "dashboard-access",
+
+  "service-management",
+
+  "billing",
+
+  "support"
+
+ ],
+
+ "status":"validated"
+
+}

@@ -1,0 +1,31 @@
+{
+
+ "platform":"XaaSGrid",
+
+ "modules":[
+
+  "authentication",
+
+  "customer-management",
+
+  "partner-management",
+
+  "billing",
+
+  "payments",
+
+  "analytics",
+
+  "AI operations",
+
+  "marketplace",
+
+  "governance",
+
+  "security"
+
+ ],
+
+ "status":"production-ready"
+
+}

@@ -1,0 +1,17 @@
+{
+
+ "partnerCapabilities":[
+
+  "API-access",
+
+  "marketplace-integration",
+
+  "customer-management",
+
+  "billing-integration"
+
+ ],
+
+ "status":"ready"
+
+}
