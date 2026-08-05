@@ -1,0 +1,17 @@
+{
+
+ "restoreSteps":[
+
+  "validate-backup",
+
+  "restore-database",
+
+  "restore-services",
+
+  "validate-platform"
+
+ ],
+
+ "automation":"enabled"
+
+}

@@ -1,0 +1,21 @@
+{
+
+ "disasterRecovery":true,
+
+ "scenarios":[
+
+  "database-failure",
+
+  "server-loss",
+
+  "cloud-region-failure",
+
+  "application-failure"
+
+ ],
+
+ "recoveryMode":"automated",
+
+ "status":"ready"
+
+}

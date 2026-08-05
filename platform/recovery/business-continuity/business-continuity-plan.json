@@ -1,0 +1,19 @@
+{
+
+ "continuityObjectives":[
+
+  "service-availability",
+
+  "data-protection",
+
+  "customer-continuity",
+
+  "partner-continuity"
+
+ ],
+
+ "priority":"enterprise",
+
+ "status":"ready"
+
+}
