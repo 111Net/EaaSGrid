@@ -1,0 +1,18 @@
+[
+ {
+  "role":"SUPER_ADMIN",
+  "permissions":["all"]
+ },
+ {
+  "role":"OPERATIONS",
+  "permissions":["monitor","manage"]
+ },
+ {
+  "role":"PARTNER",
+  "permissions":["integration","view"]
+ },
+ {
+  "role":"INVESTOR",
+  "permissions":["readonly"]
+ }
+]

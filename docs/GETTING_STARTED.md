@@ -1,21 +1,37 @@
 
 # XaaSGrid Getting Started
 
-XaaSGrid is an Everything-as-a-Service infrastructure platform.
 
-## Deployment Options
+## Requirements
 
-- Virtual Machine
-- VPS
-- Cloud Infrastructure
+- Ubuntu 22/24
+- Docker
+- Docker Compose
+- Git
 
-## Core Components
 
-- API Platform
-- Dashboard
-- Identity Management
-- Billing Engine
-- Payment Framework
-- Customer Portal
-- SaaS Marketplace
+## Deployment
+
+
+git clone repository
+
+cd XaaSGrid
+
+cp .env.production.example .env
+
+docker compose up -d
+
+
+## Access
+
+
+Dashboard:
+
+http://SERVER-IP:3000
+
+
+API:
+
+http://SERVER-IP:4000
+
 

@@ -1,16 +1,18 @@
-# XaaSGrid Security
+
+# Security Controls
+
 
 Implemented:
 
-- Authentication foundation
-- Password hashing
-- Environment separation
-- Database protection
-- API health monitoring
 
-Future:
+- Security headers
 
-- MFA
-- SSO
-- Enterprise IAM
+- JWT authentication
+
+- Container isolation
+
+- Database separation
+
+- Redis service isolation
+
 

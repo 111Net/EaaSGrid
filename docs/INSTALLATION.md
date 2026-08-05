@@ -1,18 +1,26 @@
-# XaaSGrid Installation
 
-Requirements:
+# Installation Guide
 
-- Docker
-- Docker Compose
-- Linux VM/VPS/Cloud Server
 
-Installation:
+## VM/VPS/Cloud Deployment
 
-git clone XaaSGrid
+
+1. Install Docker
+
+2. Clone repository
+
+3. Configure environment
+
+4. Start containers
+
 
 docker compose up -d
 
-Validation:
 
-curl http://localhost:4000/api/health
+
+Verify:
+
+
+docker ps
+
 
