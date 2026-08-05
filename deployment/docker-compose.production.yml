@@ -1,0 +1,19 @@
+services:
+
+  xaasgrid-postgres:
+    image: postgres:15
+    restart: unless-stopped
+
+  xaasgrid-redis:
+    image: redis:7
+    restart: unless-stopped
+
+  xaasgrid-api:
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+
+  xaasgrid-dashboard:
+    restart: unless-stopped
+    ports:
+      - "3000:3000"

@@ -1,11 +1,9 @@
-
 # Contributing to XaaSGrid
 
+1. Create branch
 
-Steps:
+2. Test locally
 
-1. Fork repository
-2. Create feature branch
 3. Submit pull request
 
-
+4. Maintain production standards
