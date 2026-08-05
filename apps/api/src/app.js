@@ -1,21 +1,16 @@
 const express = require("express");
 
+const corsMiddleware = require("./middleware/cors");
+const securityHeaders = require("./middleware/security");
+const logger = require("./middleware/logger");
+
+
 const app = express();
 
 
 // =====================================
 // Middleware
 // =====================================
-
-const corsMiddleware =
-    require("./middleware/cors");
-
-const securityHeaders =
-    require("./middleware/security");
-
-const logger =
-    require("./middleware/logger");
-
 
 app.use(corsMiddleware);
 
@@ -27,95 +22,45 @@ app.use(express.json());
 
 
 // =====================================
-// Root
-// =====================================
-
-app.get("/", (req, res) => {
-
-    res.json({
-
-        service: "XaaSGrid API",
-
-        status: "running",
-
-        version: "1.0.0"
-
-    });
-
-});
-
-
-// =====================================
-// Health
-// =====================================
-
-app.get("/api/health", (req,res)=>{
-
-    res.json({
-
-        status:"ok",
-
-        service:"XaaSGrid API",
-
-        timestamp:new Date().toISOString()
-
-    });
-
-});
-
-
-// =====================================
 // Authentication
 // =====================================
 
-app.use(
-    "/api/auth",
-    require("./auth/auth.routes")
-);
+try {
+
+    app.use(
+        "/api/auth",
+        require("./auth/auth.routes")
+    );
+
+    console.log("Loaded: /api/auth");
+
+}
+catch(error){
+
+    console.log(
+        "Skipped: /api/auth"
+    );
+
+}
 
 
 // =====================================
-// Core API Routes
+// Dynamic Route Loader
 // =====================================
 
-const routes =
-    require("./routes");
-
-
-app.use(
-    "/api",
-    routes
-);
-
-
-
-// =====================================
-// Enterprise Modules
-// =====================================
-
-function registerOptionalRoute(
-    path,
-    modulePath
-){
+function loadRoute(path,modulePath){
 
     try {
 
-
-        const route =
-            require(modulePath);
-
-
         app.use(
             path,
-            route
+            require(modulePath)
         );
-
 
         console.log(
             "Loaded:",
             path
         );
-
 
     }
     catch(error){
@@ -130,70 +75,168 @@ function registerOptionalRoute(
 }
 
 
+// =====================================
+// Core Platform Routes
+// =====================================
 
-// Enterprise Administration
-
-registerOptionalRoute(
-"/api/enterprise",
-"./enterprise/enterprise.routes"
+loadRoute(
+    "/api/dashboard",
+    "./routes/dashboard.routes"
 );
 
 
-
-// Enterprise Control Plane
-
-registerOptionalRoute(
-"/api/enterprise-control",
-"./enterprise-control/enterprise-control.routes"
+loadRoute(
+    "/api/company",
+    "./routes/company.routes"
 );
 
 
-
-// Operations Intelligence
-
-registerOptionalRoute(
-"/api/operations",
-"./operations/operations.routes"
+loadRoute(
+    "/api/billing",
+    "./routes/billing"
 );
 
 
-
-// Analytics Engine
-
-registerOptionalRoute(
-"/api/analytics",
-"./analytics/analytics.routes"
+loadRoute(
+    "/api/platform",
+    "./routes/platform"
 );
-
-
-
-// Customer onboarding
-
-registerOptionalRoute(
-"/api/onboarding",
-"./onboarding/onboarding.routes"
-);
-
 
 
 // =====================================
-// 404 HANDLER
-// MUST ALWAYS BE LAST
+// Enterprise Modules
 // =====================================
 
-app.use((req,res)=>{
+loadRoute(
+    "/api/enterprise",
+    "./enterprise/enterprise.routes"
+);
 
-    res.status(404).json({
 
-        success:false,
+loadRoute(
+    "/api/enterprise-control",
+    "./enterprise-control/enterprise-control.routes"
+);
 
-        message:"Route not found"
 
-    });
+loadRoute(
+    "/api/operations",
+    "./operations/operations.routes"
+);
 
-});
+
+loadRoute(
+    "/api/analytics",
+    "./analytics/analytics.routes"
+);
+
+
+loadRoute(
+    "/api/onboarding",
+    "./onboarding/onboarding.routes"
+);
 
 
 // =====================================
+// Intelligence Engine
+// =====================================
+
+loadRoute(
+    "/api/v1/intelligence",
+    "./routes/intelligence"
+);
+
+
+// =====================================
+// Health
+// =====================================
+
+app.get(
+    "/api/health",
+    (req,res)=>{
+
+        res.json({
+
+            status:"ok",
+
+            service:"xaasgrid-api",
+
+            timestamp:new Date()
+
+        });
+
+    }
+);
+
+
+// =====================================
+// Runtime Verification
+// =====================================
+
+app.get(
+    "/api/v1/intelligence-check",
+    (req,res)=>{
+
+        res.json({
+
+            success:true,
+
+            module:"intelligence",
+
+            status:"registered"
+
+        });
+
+    }
+);
+
+
+// =====================================
+// API Version
+// =====================================
+
+app.get(
+    "/api/version",
+    (req,res)=>{
+
+        res.json({
+
+            success:true,
+
+            service:"XaaSGrid API",
+
+            version:"43.8.5",
+
+            environment:
+                process.env.NODE_ENV || "production",
+
+            timestamp:
+                new Date().toISOString()
+
+        });
+
+    }
+);
+
+
+// =====================================
+// GLOBAL 404 HANDLER
+// ALWAYS LAST
+// =====================================
+
+app.use(
+    (req,res)=>{
+
+        res.status(404).json({
+
+            success:false,
+
+            message:"Route not found"
+
+        });
+
+    }
+);
+
 
 module.exports = app;
