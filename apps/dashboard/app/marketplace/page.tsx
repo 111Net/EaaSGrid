@@ -1,27 +1,42 @@
 
+"use client";
 
-export default async function Marketplace(){
+import {services} from "../../lib/enterpriseData";
+
+
+export default function Marketplace(){
 
 return (
 
-<main>
+<main style={{padding:"35px"}}>
 
-<h1>XaaSGrid Marketplace</h1>
-
-<h2>Everything-as-a-Service Catalog</h2>
+<h1>XaaS Marketplace</h1>
 
 
-<ul>
+{services.map(s=>(
 
-<li>Solar-as-a-Service</li>
+<div
+key={s.name}
+style={{
+background:"white",
+padding:"20px",
+margin:"15px"
+}}
+>
 
-<li>Security-as-a-Service</li>
+<h3>{s.name}</h3>
 
-<li>AI-as-a-Service</li>
+<p>
+Provider: {s.provider}
+</p>
 
-<li>Backup-as-a-Service</li>
+<p>
+Customers: {s.customers}
+</p>
 
-</ul>
+</div>
+
+))}
 
 
 </main>

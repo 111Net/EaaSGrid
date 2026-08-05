@@ -1,52 +1,38 @@
+
 "use client";
+
+import {activities} from "../../lib/enterpriseData";
 
 
 export default function Activity(){
-
-
-const events=[
-
-"Lagos Energy Solutions Ltd activated Solar Monitoring",
-
-"Afrex Cloud Services Plc upgraded Enterprise Support",
-
-"GreenGrid Infrastructure Africa lifecycle moved to OPERATE",
-
-"NovaSecure Technologies completed compliance review"
-
-];
-
 
 return (
 
 <main style={{padding:"35px"}}>
 
-<h1>
-Enterprise Activity Stream
-</h1>
+<h1>Enterprise Activity Stream</h1>
 
 
-{events.map(event=>(
+{activities.map(a=>(
 
 <div
-key={event}
+key={a}
 style={{
-background:"#fff",
+background:"white",
 padding:"15px",
-margin:"10px",
-borderRadius:"8px"
+margin:"10px"
 }}
 >
 
-{event}
+{a}
 
 </div>
 
 ))}
 
-
 </main>
 
-);
+)
 
 }
+

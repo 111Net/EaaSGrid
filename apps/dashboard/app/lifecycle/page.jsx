@@ -1,60 +1,40 @@
+
 "use client";
 
+import {lifecycle} from "../../lib/enterpriseData";
+
+
 export default function Lifecycle(){
-
-const services=[
-{
-client:"GreenGrid Infrastructure Africa",
-service:"Solar-as-a-Service Enterprise",
-stage:"OPERATE"
-},
-{
-client:"Lagos Energy Solutions Ltd",
-service:"Smart Energy Monitoring",
-stage:"MONITOR"
-},
-{
-client:"NovaSecure Technologies",
-service:"Managed Cybersecurity Platform",
-stage:"OPTIMIZE"
-}
-];
-
 
 return (
 
 <main style={{padding:"35px"}}>
 
-<h1>
-Lifecycle Management as a Service
-</h1>
-
-<p>
-Enterprise service lifecycle orchestration
-</p>
+<h1>Lifecycle Management as a Service</h1>
 
 
-{services.map((item)=>(
+{lifecycle.map(x=>(
 
 <div
-key={item.client}
+key={x.client}
 style={{
 background:"white",
 padding:"20px",
-margin:"15px",
-borderRadius:"10px"
+margin:"15px"
 }}
 >
 
-<h3>{item.client}</h3>
+<h3>{x.client}</h3>
+
+<p>{x.service}</p>
 
 <p>
-Service: {item.service}
+Lifecycle Stage: {x.stage}
 </p>
 
-<strong>
-Lifecycle Stage: {item.stage}
-</strong>
+<p>
+Health: {x.health}
+</p>
 
 
 </div>
@@ -64,6 +44,7 @@ Lifecycle Stage: {item.stage}
 
 </main>
 
-);
+)
 
 }
+
