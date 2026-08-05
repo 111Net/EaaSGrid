@@ -1,0 +1,13 @@
+{
+ "organizations":[
+   "enterprise",
+   "partner",
+   "customer"
+ ],
+ "features":[
+   "users",
+   "roles",
+   "billing",
+   "analytics"
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "controls":[
+   "security",
+   "audit",
+   "logging",
+   "data-protection"
+ ],
+ "standards":[
+   "ISO27001-ready",
+   "SOC2-ready"
+ ]
+}

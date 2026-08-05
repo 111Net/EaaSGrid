@@ -1,0 +1,15 @@
+{
+ "roles":[
+   "platform-admin",
+   "enterprise-admin",
+   "operator",
+   "analyst",
+   "customer"
+ ],
+ "permissions":[
+   "dashboard",
+   "billing",
+   "analytics",
+   "operations"
+ ]
+}

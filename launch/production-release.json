@@ -1,0 +1,13 @@
+{
+ "platform":"XaaSGrid",
+ "release":"46.0",
+ "environment":"production",
+ "components":[
+   "api",
+   "dashboard",
+   "database",
+   "redis",
+   "automation",
+   "marketplace"
+ ]
+}

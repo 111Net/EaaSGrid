@@ -1,0 +1,10 @@
+{
+ "tenantLifecycle":[
+   "created",
+   "configured",
+   "active",
+   "suspended",
+   "archived"
+ ],
+ "isolation":"logical"
+}

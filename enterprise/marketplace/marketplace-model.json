@@ -1,0 +1,13 @@
+{
+ "marketplace":[
+   "services",
+   "partners",
+   "integrations"
+ ],
+ "workflow":[
+   "publish",
+   "approve",
+   "activate",
+   "monitor"
+ ]
+}
