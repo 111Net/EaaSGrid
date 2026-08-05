@@ -2,23 +2,24 @@
 
 
 const API_URL =
-process.env.NEXT_PUBLIC_API_URL || "/api";
+process.env.NEXT_PUBLIC_API_URL ||
+"/api";
 
 
 
 export async function apiRequest(
-    endpoint:string,
-    options:RequestInit = {}
+    endpoint,
+    options = {}
 ){
 
     const token =
         typeof window !== "undefined"
-        ? localStorage.getItem("xaasgrid_token")
+        ? localStorage.getItem("token")
         : null;
 
 
 
-    const headers:any = {
+    const headers = {
 
         "Content-Type":
         "application/json",
@@ -38,49 +39,42 @@ export async function apiRequest(
 
 
 
-    return fetch(
+    const response =
+        await fetch(
+            `${API_URL}${endpoint}`,
+            {
 
-        `${API_URL}${endpoint}`,
+                ...options,
 
-        {
+                headers
 
-            ...options,
+            }
+        );
 
-            headers
 
-        }
 
-    );
+    return response;
 
 }
 
 
 
-
-export async function getApi(
-endpoint:string
-){
+export async function getApi(endpoint){
 
     return apiRequest(
-
         endpoint,
-
         {
-
             method:"GET"
-
         }
-
     );
 
 }
-
 
 
 
 export async function postApi(
-endpoint:string,
-body:any
+    endpoint,
+    body
 ){
 
     return apiRequest(
@@ -93,27 +87,6 @@ body:any
 
             body:
             JSON.stringify(body)
-
-        }
-
-    );
-
-}
-
-
-
-
-export async function deleteApi(
-endpoint:string
-){
-
-    return apiRequest(
-
-        endpoint,
-
-        {
-
-            method:"DELETE"
 
         }
 

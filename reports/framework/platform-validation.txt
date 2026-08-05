@@ -1,0 +1,11 @@
+XaaSGrid Platform Validation
+
+Date:
+Tue Aug  4 07:34:09 PM UTC 2026
+
+Containers:
+NAME                                     IMAGE                                  COMMAND                  SERVICE              CREATED          STATUS                          PORTS
+eaasgrid-platform-xaasgrid-api-1         eaasgrid-platform-xaasgrid-api         "docker-entrypoint.s…"   xaasgrid-api         21 minutes ago   Up 21 minutes                   0.0.0.0:4000->4000/tcp, :::4000->4000/tcp
+eaasgrid-platform-xaasgrid-dashboard-1   eaasgrid-platform-xaasgrid-dashboard   "docker-entrypoint.s…"   xaasgrid-dashboard   21 minutes ago   Up 20 minutes                   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp
+eaasgrid-platform-xaasgrid-postgres-1    postgres:15                            "docker-entrypoint.s…"   xaasgrid-postgres    21 minutes ago   Restarting (1) 44 seconds ago   
+eaasgrid-platform-xaasgrid-redis-1       redis:7                                "docker-entrypoint.s…"   xaasgrid-redis       21 minutes ago   Up 21 minutes                   0.0.0.0:6379->6379/tcp, :::6379->6379/tcp

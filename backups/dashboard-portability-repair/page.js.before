@@ -1,0 +1,267 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+export default function Home() {
+
+  const [health, setHealth] = useState(null);
+  const [operations, setOperations] = useState(null);
+  const [analytics, setAnalytics] = useState(null);
+
+  useEffect(() => {
+
+    async function loadPlatform() {
+
+      try {
+
+        const api =
+          process.env.NEXT_PUBLIC_API_URL ||
+          "http://localhost:4000";
+
+
+        const healthResponse =
+          await fetch(`${api}/api/health`);
+
+        const healthData =
+          await healthResponse.json();
+
+
+        const operationsResponse =
+          await fetch(`${api}/api/operations/overview`);
+
+        const operationsData =
+          await operationsResponse.json();
+
+
+        const analyticsResponse =
+          await fetch(`${api}/api/analytics/overview`);
+
+        const analyticsData =
+          await analyticsResponse.json();
+
+
+
+        setHealth(healthData);
+        setOperations(operationsData);
+        setAnalytics(analyticsData);
+
+
+      } catch(error) {
+
+        console.error(
+          "Dashboard connection error",
+          error
+        );
+
+      }
+
+    }
+
+
+    loadPlatform();
+
+
+  }, []);
+
+
+
+  const modules = [
+
+    {
+      name:"Enterprise Administration",
+      description:"Organizations, tenants, RBAC and governance",
+      link:"/enterprise"
+    },
+
+    {
+      name:"Customer Portal",
+      description:"Customer onboarding and subscriptions",
+      link:"/customer"
+    },
+
+
+    {
+      name:"Operations Intelligence",
+      description:"Infrastructure monitoring and service health",
+      link:"/operations"
+    },
+
+
+    {
+      name:"Analytics Engine",
+      description:"Platform metrics and AI recommendations",
+      link:"/analytics"
+    },
+
+
+    {
+      name:"Marketplace",
+      description:"Services and XaaS catalog",
+      link:"/marketplace"
+    },
+
+
+    {
+      name:"Administration",
+      description:"Platform administration",
+      link:"/admin"
+    }
+
+  ];
+
+
+
+return (
+
+<main style={{
+padding:"40px",
+fontFamily:"Arial, sans-serif"
+}}>
+
+
+<h1>
+XaaSGrid Console
+</h1>
+
+
+<p>
+Everything-as-a-Service Enterprise Platform
+</p>
+
+
+
+<hr />
+
+
+
+<h2>
+Platform Status
+</h2>
+
+
+<div>
+
+
+<p>
+API:
+{" "}
+{health?.status || "Checking..."}
+</p>
+
+
+<p>
+Operations:
+{" "}
+{operations?.status || "Checking..."}
+</p>
+
+
+<p>
+Analytics:
+{" "}
+{analytics?.status || "Checking..."}
+</p>
+
+
+</div>
+
+
+
+
+<hr />
+
+
+<h2>
+Platform Modules
+</h2>
+
+
+<div style={{
+display:"grid",
+gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",
+gap:"20px"
+}}>
+
+
+{
+modules.map((module)=>(
+<div
+key={module.name}
+style={{
+border:"1px solid #ddd",
+padding:"20px",
+borderRadius:"10px"
+}}
+>
+
+
+<h3>
+{module.name}
+</h3>
+
+
+<p>
+{module.description}
+</p>
+
+
+<a href={module.link}>
+Open Module →
+</a>
+
+
+</div>
+))
+}
+
+
+</div>
+
+
+
+<hr />
+
+
+<h2>
+Analytics Snapshot
+</h2>
+
+
+<pre>
+
+{
+JSON.stringify(
+analytics,
+null,
+2
+)
+}
+
+</pre>
+
+
+
+<h2>
+Operations Snapshot
+</h2>
+
+
+<pre>
+
+{
+JSON.stringify(
+operations,
+null,
+2
+)
+}
+
+</pre>
+
+
+
+</main>
+
+);
+
+}

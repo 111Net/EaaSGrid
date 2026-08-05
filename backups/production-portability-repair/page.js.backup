@@ -1,0 +1,283 @@
+"use client";
+
+
+import { useEffect, useState } from "react";
+
+
+
+export default function Home(){
+
+
+const [health,setHealth]=useState(null);
+
+const [operations,setOperations]=useState(null);
+
+const [analytics,setAnalytics]=useState(null);
+
+
+
+useEffect(()=>{
+
+
+async function load(){
+
+
+try{
+
+
+const healthResponse =
+await fetch("/api/health");
+
+
+const operationsResponse =
+await fetch("/api/operations/overview");
+
+
+const analyticsResponse =
+await fetch("/api/analytics/overview");
+
+
+
+setHealth(
+await healthResponse.json()
+);
+
+
+setOperations(
+await operationsResponse.json()
+);
+
+
+setAnalytics(
+await analyticsResponse.json()
+);
+
+
+
+}catch(error){
+
+console.log(error);
+
+}
+
+
+
+}
+
+
+
+load();
+
+
+
+},[]);
+
+
+
+
+const modules=[
+
+
+{
+name:"Enterprise Administration",
+description:"Organizations, tenants, RBAC and governance",
+link:"/enterprise"
+},
+
+
+{
+name:"Customer Portal",
+description:"Customer onboarding and subscriptions",
+link:"/customer"
+},
+
+
+{
+name:"Operations Intelligence",
+description:"Infrastructure monitoring and service health",
+link:"/operations"
+},
+
+
+{
+name:"Analytics Engine",
+description:"Platform metrics and AI recommendations",
+link:"/analytics"
+},
+
+
+{
+name:"Marketplace",
+description:"Services and XaaS catalog",
+link:"/marketplace"
+},
+
+
+{
+name:"Administration",
+description:"Platform administration",
+link:"/admin"
+}
+
+
+
+];
+
+
+
+return (
+
+<main style={{padding:"40px"}}>
+
+
+<h1>
+XaaSGrid Console
+</h1>
+
+
+<p>
+Everything-as-a-Service Enterprise Platform
+</p>
+
+
+
+<hr />
+
+
+
+<h2>
+Platform Status
+</h2>
+
+
+<p>
+API:
+{" "}
+{health?.status || "Checking..."}
+</p>
+
+
+<p>
+Operations:
+{" "}
+{operations?.status || "Checking..."}
+</p>
+
+
+<p>
+Analytics:
+{" "}
+{analytics?.status || "Checking..."}
+</p>
+
+
+
+<hr />
+
+
+
+<h2>
+Platform Modules
+</h2>
+
+
+
+<div
+style={{
+display:"grid",
+gridTemplateColumns:
+"repeat(auto-fit,minmax(260px,1fr))",
+gap:"20px"
+}}
+>
+
+
+{
+modules.map((item)=>(
+
+
+<div
+key={item.name}
+style={{
+border:"1px solid #ccc",
+padding:"20px",
+borderRadius:"10px"
+}}
+>
+
+
+<h3>
+{item.name}
+</h3>
+
+
+<p>
+{item.description}
+</p>
+
+
+<a href={item.link}>
+Open Module →
+</a>
+
+
+</div>
+
+
+))
+}
+
+
+</div>
+
+
+
+
+<hr />
+
+
+<h2>
+Analytics Snapshot
+</h2>
+
+
+<pre>
+
+{
+JSON.stringify(
+analytics,
+null,
+2
+)
+}
+
+</pre>
+
+
+
+
+<h2>
+Operations Snapshot
+</h2>
+
+
+<pre>
+
+{
+JSON.stringify(
+operations,
+null,
+2
+)
+}
+
+</pre>
+
+
+
+</main>
+
+);
+
+
+}

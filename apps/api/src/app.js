@@ -3,12 +3,9 @@ const express = require("express");
 const app = express();
 
 
-// Core routes
-
-const routes = require("./routes");
-
-
+// =====================================
 // Middleware
+// =====================================
 
 const corsMiddleware =
     require("./middleware/cors");
@@ -20,8 +17,6 @@ const logger =
     require("./middleware/logger");
 
 
-// Middleware
-
 app.use(corsMiddleware);
 
 app.use(securityHeaders);
@@ -31,156 +26,174 @@ app.use(logger);
 app.use(express.json());
 
 
-
+// =====================================
 // Root
+// =====================================
 
-app.get("/", (req,res)=>{
+app.get("/", (req, res) => {
 
-res.json({
+    res.json({
 
-service:"XaaSGrid API",
+        service: "XaaSGrid API",
 
-status:"running",
+        status: "running",
 
-version:"1.0.0"
+        version: "1.0.0"
+
+    });
 
 });
 
-});
 
-
-
+// =====================================
 // Health
+// =====================================
 
-app.get("/api/health",(req,res)=>{
+app.get("/api/health", (req,res)=>{
 
-res.json({
+    res.json({
 
-status:"ok",
+        status:"ok",
 
-service:"XaaSGrid API",
+        service:"XaaSGrid API",
 
-timestamp:new Date().toISOString()
+        timestamp:new Date().toISOString()
+
+    });
 
 });
 
-});
 
-
-
+// =====================================
 // Authentication
+// =====================================
 
 app.use(
-"/api/auth",
-require("./auth/auth.routes")
+    "/api/auth",
+    require("./auth/auth.routes")
+);
+
+
+// =====================================
+// Core API Routes
+// =====================================
+
+const routes =
+    require("./routes");
+
+
+app.use(
+    "/api",
+    routes
 );
 
 
 
-// Main API
+// =====================================
+// Enterprise Modules
+// =====================================
 
-app.use(
-"/api",
-routes
-);
+function registerOptionalRoute(
+    path,
+    modulePath
+){
+
+    try {
+
+
+        const route =
+            require(modulePath);
+
+
+        app.use(
+            path,
+            route
+        );
+
+
+        console.log(
+            "Loaded:",
+            path
+        );
+
+
+    }
+    catch(error){
+
+        console.log(
+            "Skipped:",
+            path
+        );
+
+    }
+
+}
 
 
 
-// Sprint 34
 // Enterprise Administration
 
-const enterpriseRoutes =
-require("./enterprise/enterprise.routes");
-
-
-app.use(
+registerOptionalRoute(
 "/api/enterprise",
-enterpriseRoutes
+"./enterprise/enterprise.routes"
 );
 
 
 
-// Sprint 35
 // Enterprise Control Plane
 
-const enterpriseControlRoutes =
-require("./enterprise-control");
-
-
-app.use(
+registerOptionalRoute(
 "/api/enterprise-control",
-enterpriseControlRoutes
+"./enterprise-control/enterprise-control.routes"
 );
 
 
 
-// Sprint 36
-// Operations Intelligence Center
+// Operations Intelligence
 
-const operationsRoutes =
-require("./operations/operations.routes");
-
-
-app.use(
+registerOptionalRoute(
 "/api/operations",
-operationsRoutes
+"./operations/operations.routes"
 );
 
 
 
+// Analytics Engine
 
-
-// Sprint 38 Analytics Engine
-
-const analyticsRoutes =
-require("./analytics/analytics.routes");
-
-
-app.use(
+registerOptionalRoute(
 "/api/analytics",
-analyticsRoutes
+"./analytics/analytics.routes"
 );
 
 
-// Sprint 38 AI Engine
 
-const aiRoutes =
-require("./ai/ai.routes");
+// Customer onboarding
 
-
-app.use(
-"/api/ai",
-aiRoutes
-);
-
-// 404 HANDLER LAST
-
-
-
-// Sprint 41 Customer Onboarding
-
-const onboardingRoutes =
-require("./onboarding/onboarding.routes");
-
-
-app.use(
+registerOptionalRoute(
 "/api/onboarding",
-onboardingRoutes
+"./onboarding/onboarding.routes"
 );
 
+
+
+// =====================================
+// 404 HANDLER
+// MUST ALWAYS BE LAST
+// =====================================
 
 app.use((req,res)=>{
 
-res.status(404).json({
+    res.status(404).json({
 
-success:false,
+        success:false,
 
-message:"Route not found"
+        message:"Route not found"
+
+    });
 
 });
 
-});
 
-
+// =====================================
 
 module.exports = app;

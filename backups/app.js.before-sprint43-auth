@@ -1,0 +1,186 @@
+const express = require("express");
+
+const app = express();
+
+
+// Core routes
+
+const routes = require("./routes");
+
+
+// Middleware
+
+const corsMiddleware =
+    require("./middleware/cors");
+
+const securityHeaders =
+    require("./middleware/security");
+
+const logger =
+    require("./middleware/logger");
+
+
+// Middleware
+
+app.use(corsMiddleware);
+
+app.use(securityHeaders);
+
+app.use(logger);
+
+app.use(express.json());
+
+
+
+// Root
+
+app.get("/", (req,res)=>{
+
+res.json({
+
+service:"XaaSGrid API",
+
+status:"running",
+
+version:"1.0.0"
+
+});
+
+});
+
+
+
+// Health
+
+app.get("/api/health",(req,res)=>{
+
+res.json({
+
+status:"ok",
+
+service:"XaaSGrid API",
+
+timestamp:new Date().toISOString()
+
+});
+
+});
+
+
+
+// Authentication
+
+app.use(
+"/api/auth",
+require("./auth/auth.routes")
+);
+
+
+
+// Main API
+
+app.use(
+"/api",
+routes
+);
+
+
+
+// Sprint 34
+// Enterprise Administration
+
+const enterpriseRoutes =
+require("./enterprise/enterprise.routes");
+
+
+app.use(
+"/api/enterprise",
+enterpriseRoutes
+);
+
+
+
+// Sprint 35
+// Enterprise Control Plane
+
+const enterpriseControlRoutes =
+require("./enterprise-control");
+
+
+app.use(
+"/api/enterprise-control",
+enterpriseControlRoutes
+);
+
+
+
+// Sprint 36
+// Operations Intelligence Center
+
+const operationsRoutes =
+require("./operations/operations.routes");
+
+
+app.use(
+"/api/operations",
+operationsRoutes
+);
+
+
+
+
+
+// Sprint 38 Analytics Engine
+
+const analyticsRoutes =
+require("./analytics/analytics.routes");
+
+
+app.use(
+"/api/analytics",
+analyticsRoutes
+);
+
+
+// Sprint 38 AI Engine
+
+const aiRoutes =
+require("./ai/ai.routes");
+
+
+app.use(
+"/api/ai",
+aiRoutes
+);
+
+// 404 HANDLER LAST
+
+
+
+// Sprint 41 Customer Onboarding
+
+const onboardingRoutes =
+require("./onboarding/onboarding.routes");
+
+
+app.use(
+"/api/onboarding",
+onboardingRoutes
+);
+
+
+app.use((req,res)=>{
+
+res.status(404).json({
+
+success:false,
+
+message:"Route not found"
+
+});
+
+});
+
+
+
+module.exports = app;

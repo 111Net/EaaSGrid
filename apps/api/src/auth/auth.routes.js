@@ -1,62 +1,77 @@
+const express = require("express");
 
-const express=require("express");
+const router = express.Router();
 
-const router=express.Router();
 
-const jwt=require("jsonwebtoken");
+const users = [
+{
+ id:1,
+ email:"admin@xaasgrid.com",
+ password:"admin123",
+ role:"SUPER_ADMIN"
+},
+
+{
+ id:2,
+ email:"enterprise@xaasgrid.com",
+ password:"enterprise123",
+ role:"ENTERPRISE_ADMIN"
+},
+
+{
+ id:3,
+ email:"operations@xaasgrid.com",
+ password:"operations123",
+ role:"OPERATIONS"
+}
+
+];
 
 
 router.post("/login",(req,res)=>{
 
 
-const {
-email,
-password
-}=req.body;
+const {email,password}=req.body;
 
 
-if(
-email==="admin@xaasgrid.com"
-&&
-password==="admin123"
-)
-
-{
-
-const token=jwt.sign(
-{
-email,
-role:"admin"
-},
-process.env.JWT_SECRET,
-{
-expiresIn:"24h"
-}
+const user =
+users.find(
+u =>
+u.email===email &&
+u.password===password
 );
 
 
-return res.json({
 
-success:true,
+if(!user){
 
-token,
-
-user:{
-email,
-role:"admin"
-}
-
-});
-
-
-}
-
-
-res.status(401).json({
+return res.status(401).json({
 
 success:false,
 
 message:"Invalid credentials"
+
+});
+
+}
+
+
+
+res.json({
+
+success:true,
+
+token:"xaasgrid-demo-token",
+
+user:{
+
+id:user.id,
+
+email:user.email,
+
+role:user.role
+
+}
 
 });
 
@@ -65,4 +80,3 @@ message:"Invalid credentials"
 
 
 module.exports=router;
-
