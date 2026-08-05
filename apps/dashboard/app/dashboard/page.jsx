@@ -1,127 +1,76 @@
 "use client";
 
+import { MODULES } from "../../lib/moduleRegistry";
+import ModuleCard from "../../components/ModuleCard";
+import Sidebar from "../../components/Sidebar";
 
-import {useEffect,useState} from "react";
+export default function DashboardPage(){
 
-import {useRouter} from "next/navigation";
-
-import {getSession} from "../../lib/auth";
-
-import Logout from "../../components/logout";
-
+const role = "SUPER_ADMIN";
 
 
-export default function Dashboard(){
-
-
-const router=useRouter();
-
-const [session,setSession]=useState(null);
-
-
-
-useEffect(()=>{
-
-
-const data=getSession();
-
-
-if(!data){
-
-router.push("/login");
-
-return;
-
-}
-
-
-setSession(data);
-
-
-},[]);
-
-
-
-if(!session){
-
-return (
-
-<div>
-Loading XaaSGrid Console...
-</div>
-
-);
-
-}
-
+const modules =
+MODULES[role] || [];
 
 
 return (
 
-<div>
+<div
+style={{
+display:"flex",
+minHeight:"100vh"
+}}
+>
+
+
+<Sidebar role={role}/>
+
+
+<div
+style={{
+padding:"30px",
+flex:1
+}}
+>
 
 
 <h1>
-XaaSGrid Console
+XaaSGrid Enterprise Console
 </h1>
 
 
-<h2>
-User
-</h2>
-
-
 <p>
-{session.user.email}
+Role:
+<strong>
+{" "}{role}
+</strong>
 </p>
-
-
-<h2>
-Role
-</h2>
-
-
-<p>
-{session.user.role}
-</p>
-
-
-
-<Logout />
 
 
 <hr/>
 
 
-<h3>
-Available Modules
-</h3>
+<h2>
+Platform Modules
+</h2>
 
 
-<ul>
+{
+modules.map(
+(module)=>(
 
-<li>
-Enterprise Administration
-</li>
+<ModuleCard
+key={module.route}
+module={module}
+/>
 
-<li>
-Operations Intelligence
-</li>
+)
 
-<li>
-Analytics Engine
-</li>
-
-<li>
-Customer Platform
-</li>
-
-<li>
-Marketplace
-</li>
+)
+}
 
 
-</ul>
+</div>
 
 
 </div>
