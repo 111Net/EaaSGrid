@@ -1,0 +1,17 @@
+{
+
+ "objectives":[
+
+  "availability",
+
+  "performance",
+
+  "recovery",
+
+  "scaling"
+
+ ],
+
+ "slo":"defined"
+
+}

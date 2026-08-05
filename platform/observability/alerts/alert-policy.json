@@ -1,0 +1,19 @@
+{
+
+ "alerts":[
+
+  "service-down",
+
+  "database-failure",
+
+  "high-resource",
+
+  "security-event",
+
+  "deployment-failure"
+
+ ],
+
+ "notification":"enabled"
+
+}

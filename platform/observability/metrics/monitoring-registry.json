@@ -1,0 +1,23 @@
+{
+
+ "platform":"XaaSGrid",
+
+ "monitors":[
+
+  "api-health",
+
+  "database-health",
+
+  "redis-health",
+
+  "container-status",
+
+  "system-resource"
+
+ ],
+
+ "status":"enabled",
+
+ "version":"62.0"
+
+}

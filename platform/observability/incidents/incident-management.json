@@ -1,0 +1,21 @@
+{
+
+ "incidentManagement":true,
+
+ "workflow":[
+
+  "detect",
+
+  "notify",
+
+  "investigate",
+
+  "recover",
+
+  "report"
+
+ ],
+
+ "status":"ready"
+
+}
