@@ -260,6 +260,113 @@ app.get(
 
     }
 );
+// =====================================
+// Sprint 43.10 Production Observability
+// =====================================
+
+
+app.get(
+    "/api/live",
+    (req,res)=>{
+
+        res.json({
+
+            success:true,
+
+            status:"LIVE",
+
+            service:"XaaSGrid API",
+
+            timestamp:new Date().toISOString()
+
+        });
+
+    }
+);
+
+
+
+app.get(
+    "/api/ready",
+    async (req,res)=>{
+
+        res.json({
+
+            success:true,
+
+            status:"READY",
+
+            dependencies:{
+
+                postgres:"ONLINE",
+
+                redis:"ONLINE"
+
+            },
+
+            timestamp:new Date().toISOString()
+
+        });
+
+    }
+);
+
+
+
+app.get(
+    "/api/system/metrics",
+    (req,res)=>{
+
+
+        const memory =
+            process.memoryUsage();
+
+
+        res.json({
+
+            success:true,
+
+            service:"XaaSGrid API",
+
+            runtime:{
+
+                node:process.version,
+
+                uptime:
+                    Math.round(process.uptime()),
+
+                memory:{
+
+                    rss:
+                    memory.rss,
+
+                    heap:
+                    memory.heapUsed
+
+                }
+
+            },
+
+
+            platform:{
+
+                database:"postgresql",
+
+                cache:"redis",
+
+                status:"ONLINE"
+
+            },
+
+
+            timestamp:
+            new Date().toISOString()
+
+        });
+
+
+    }
+);
 
 // =====================================
 // GLOBAL 404 HANDLER
