@@ -28,3 +28,11 @@ build/
 # IDE
 .vscode/
 .idea/
+
+# XaaSGrid runtime backups
+backups/
+
+# Sprint recovery scripts
+scripts/debug-*
+scripts/fix-sprint*
+scripts/sprint43.8*
