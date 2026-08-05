@@ -30,7 +30,6 @@ services:
       retries: 5
 
 
-
   xaasgrid-redis:
 
     image: redis:7
@@ -83,9 +82,11 @@ services:
     depends_on:
 
       xaasgrid-postgres:
+
         condition: service_healthy
 
       xaasgrid-redis:
+
         condition: service_healthy
 
 
@@ -143,4 +144,6 @@ volumes:
 
   infrastructure_postgres_data:
 
-    external: false
+    external: true
+
+    name: eaasgrid-platform_infrastructure_postgres_data
