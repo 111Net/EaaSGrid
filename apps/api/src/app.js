@@ -989,3 +989,27 @@ app.use(
 
 
 module.exports = app;
+
+
+// =====================================
+// Sprint 53 Marketplace Platform
+// =====================================
+
+
+loadRoute(
+    "/api/marketplace",
+    "./marketplace/marketplace.routes"
+);
+
+
+loadRoute(
+    "/api/partners",
+    "./partners/partners.routes"
+);
+
+
+loadRoute(
+    "/api/developer",
+    "./developer-api/developer.routes"
+);
+
