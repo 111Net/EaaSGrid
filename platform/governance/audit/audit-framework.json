@@ -1,0 +1,21 @@
+{
+
+ "auditSystem":true,
+
+ "auditTypes":[
+
+  "security",
+
+  "operations",
+
+  "customer",
+
+  "partner",
+
+  "financial"
+
+ ],
+
+ "logging":"enabled"
+
+}

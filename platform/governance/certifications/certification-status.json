@@ -1,0 +1,25 @@
+{
+
+ "certifications":[
+
+  {
+
+   "name":"ISO27001",
+
+   "status":"prepared"
+
+  },
+
+  {
+
+   "name":"SOC2",
+
+   "status":"prepared"
+
+  }
+
+ ],
+
+ "platform":"XaaSGrid"
+
+}

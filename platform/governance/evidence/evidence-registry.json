@@ -1,0 +1,19 @@
+{
+
+ "evidenceSources":[
+
+  "system-health",
+
+  "security-events",
+
+  "deployment-history",
+
+  "access-records",
+
+  "configuration-history"
+
+ ],
+
+ "collection":"automated"
+
+}

@@ -1,0 +1,21 @@
+{
+
+ "policies":[
+
+  "security-policy",
+
+  "access-control",
+
+  "data-protection",
+
+  "incident-management",
+
+  "change-management"
+
+ ],
+
+ "approvalWorkflow":true,
+
+ "status":"active"
+
+}

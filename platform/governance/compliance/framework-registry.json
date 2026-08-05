@@ -1,0 +1,23 @@
+{
+
+ "platform":"XaaSGrid",
+
+ "frameworks":[
+
+  "ISO27001",
+
+  "SOC2",
+
+  "GDPR",
+
+  "NIST",
+
+  "PCI-DSS"
+
+ ],
+
+ "status":"prepared",
+
+ "version":"59.0"
+
+}
