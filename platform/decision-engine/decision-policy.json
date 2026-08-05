@@ -1,0 +1,17 @@
+{
+
+ "platform":"XaaSGrid",
+
+ "decisionModes":[
+
+  "recommendation",
+
+  "automation",
+
+  "self-healing"
+
+ ],
+
+ "approvalRequired":false
+
+}

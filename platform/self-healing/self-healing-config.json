@@ -1,0 +1,19 @@
+{
+
+ "enabled":true,
+
+ "actions":[
+
+  "service-health-check",
+
+  "container-restart",
+
+  "dependency-validation",
+
+  "deployment-verification"
+
+ ],
+
+ "environment":"production"
+
+}

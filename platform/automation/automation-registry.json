@@ -1,0 +1,19 @@
+{
+
+ "automations":[
+
+  "docker-health-monitor",
+
+  "api-health-monitor",
+
+  "database-validation",
+
+  "redis-validation",
+
+  "deployment-check"
+
+ ],
+
+ "status":"active"
+
+}

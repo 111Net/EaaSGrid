@@ -1,0 +1,27 @@
+{
+ "platform":"XaaSGrid",
+
+ "agents":[
+
+  {
+   "name":"health-agent",
+   "role":"Platform health monitoring",
+   "status":"enabled"
+  },
+
+  {
+   "name":"operations-agent",
+   "role":"Operational automation",
+   "status":"enabled"
+  },
+
+  {
+   "name":"security-agent",
+   "role":"Security intelligence",
+   "status":"enabled"
+  }
+
+ ],
+
+ "version":"56.0"
+}
