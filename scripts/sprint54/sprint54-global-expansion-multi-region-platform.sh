@@ -203,11 +203,33 @@ echo
 
 echo "[11] Database Validation"
 
+DB_USER=$(docker inspect xaasgrid-postgres \
+--format='{{range .Config.Env}}{{println .}}{{end}}' \
+| grep POSTGRES_USER \
+| cut -d= -f2)
+
+DB_NAME=$(docker inspect xaasgrid-postgres \
+--format='{{range .Config.Env}}{{println .}}{{end}}' \
+| grep POSTGRES_DB \
+| cut -d= -f2)
+
+
+if [ -z "$DB_USER" ] || [ -z "$DB_NAME" ]; then
+
+    echo "Database configuration discovery failed"
+    exit 1
+
+fi
+
 
 docker exec xaasgrid-postgres \
-psql -U eaas_user \
--d eaas_db \
+psql \
+-U "$DB_USER" \
+-d "$DB_NAME" \
 -c "\dt"
+
+
+echo "Database validation complete"
 
 
 echo "[12] Creating Sprint 54 report"
