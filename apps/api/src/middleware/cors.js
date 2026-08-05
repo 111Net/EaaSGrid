@@ -1,25 +1,55 @@
 const cors = require("cors");
 
-const corsOptions = {
 
-    origin: [
-        "http://localhost:3000",
-        "http://localhost:3001"
-    ],
-
-    methods: [
-        "GET",
-        "POST",
-        "PUT",
-        "DELETE"
-    ],
-
-    allowedHeaders: [
-        "Content-Type",
-        "Authorization"
-    ]
-
-};
+const allowedOrigins = (
+process.env.CORS_ORIGINS ||
+"http://localhost:3000,http://localhost:3001"
+)
+.split(",");
 
 
-module.exports = cors(corsOptions);
+
+module.exports = cors({
+
+origin(origin, callback){
+
+
+if(!origin)
+{
+return callback(null,true);
+}
+
+
+if(
+allowedOrigins.includes(origin)
+)
+{
+return callback(null,true);
+}
+
+
+return callback(
+new Error("CORS policy blocked request")
+);
+
+},
+
+
+methods:[
+"GET",
+"POST",
+"PUT",
+"PATCH",
+"DELETE"
+],
+
+
+allowedHeaders:[
+"Content-Type",
+"Authorization"
+],
+
+
+credentials:true
+
+});
