@@ -1,0 +1,51 @@
+
+{
+
+ "providers": {
+
+
+   "paystack": {
+
+      "enabled": true,
+
+      "region": "africa"
+
+   },
+
+
+   "flutterwave": {
+
+      "enabled": true,
+
+      "region": "africa"
+
+   },
+
+
+   "stripe": {
+
+      "enabled": true,
+
+      "region": "international"
+
+   },
+
+
+   "bank_transfer": {
+
+      "enabled": true
+
+   },
+
+
+   "mobile_money": {
+
+      "enabled": true
+
+   }
+
+
+ }
+
+}
+
