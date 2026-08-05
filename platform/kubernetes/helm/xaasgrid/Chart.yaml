@@ -1,0 +1,11 @@
+apiVersion: v2
+
+name: xaasgrid
+
+description: XaaSGrid Enterprise Platform
+
+type: application
+
+version: 61.0.0
+
+appVersion: "61"

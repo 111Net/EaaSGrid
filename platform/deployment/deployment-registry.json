@@ -1,0 +1,17 @@
+{
+
+ "automation":[
+
+  "docker-compose",
+
+  "kubernetes",
+
+  "helm",
+
+  "cloud-init"
+
+ ],
+
+ "status":"enabled"
+
+}

@@ -1,0 +1,17 @@
+{
+
+ "environments":[
+
+  "development",
+
+  "staging",
+
+  "production"
+
+ ],
+
+ "deployment":"automated",
+
+ "platform":"XaaSGrid"
+
+}

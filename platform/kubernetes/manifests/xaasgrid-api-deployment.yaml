@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: xaasgrid-api
+
+  namespace: xaasgrid-production
+
+spec:
+
+  replicas: 3
+
+  selector:
+
+    matchLabels:
+
+      app: xaasgrid-api
+
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: xaasgrid-api
+
+
+    spec:
+
+      containers:
+
+      - name: api
+
+        image: xaasgrid-api:latest
+
+        ports:
+
+        - containerPort: 4000

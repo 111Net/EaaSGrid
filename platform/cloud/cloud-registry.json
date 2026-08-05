@@ -1,0 +1,29 @@
+{
+
+ "platform":"XaaSGrid",
+
+ "providers":[
+
+  "AWS",
+
+  "Azure",
+
+  "Google Cloud"
+
+ ],
+
+ "deploymentModel":[
+
+  "container",
+
+  "kubernetes",
+
+  "multi-region"
+
+ ],
+
+ "status":"ready",
+
+ "version":"61.0"
+
+}
