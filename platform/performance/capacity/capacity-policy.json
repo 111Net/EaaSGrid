@@ -1,0 +1,19 @@
+{
+
+ "metrics":[
+
+  "cpu",
+
+  "memory",
+
+  "containers",
+
+  "database",
+
+  "network"
+
+ ],
+
+ "scaling":"enabled"
+
+}

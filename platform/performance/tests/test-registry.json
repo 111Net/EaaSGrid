@@ -1,0 +1,23 @@
+{
+
+ "platform":"XaaSGrid",
+
+ "tests":[
+
+  "api-health",
+
+  "database-connectivity",
+
+  "redis-performance",
+
+  "container-health",
+
+  "resource-check"
+
+ ],
+
+ "status":"enabled",
+
+ "version":"60.0"
+
+}

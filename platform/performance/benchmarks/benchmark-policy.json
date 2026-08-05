@@ -1,0 +1,33 @@
+{
+
+ "benchmarks":[
+
+  {
+
+   "service":"api",
+
+   "target":"healthy"
+
+  },
+
+  {
+
+   "service":"postgres",
+
+   "target":"available"
+
+  },
+
+  {
+
+   "service":"redis",
+
+   "target":"available"
+
+  }
+
+ ],
+
+ "environment":"production"
+
+}
