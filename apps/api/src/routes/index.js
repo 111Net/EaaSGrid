@@ -1,3 +1,4 @@
+const intelligenceRoutes = require("./intelligence");
 const express = require("express");
 
 const router = express.Router();
@@ -31,5 +32,7 @@ router.use(
     "/platform",
     require("./platform.metrics")
 );
+
+router.use("/intelligence", intelligenceRoutes);
 
 module.exports = router;
