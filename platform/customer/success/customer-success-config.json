@@ -1,0 +1,21 @@
+{
+
+ "customerSuccess":true,
+
+ "features":[
+
+  "health-score",
+
+  "customer-status",
+
+  "engagement-monitoring",
+
+  "retention-alerts",
+
+  "renewal-management"
+
+ ],
+
+ "status":"active"
+
+}

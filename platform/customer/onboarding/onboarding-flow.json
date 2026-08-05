@@ -1,0 +1,19 @@
+{
+
+ "steps":[
+
+  "account-registration",
+
+  "identity-verification",
+
+  "tenant-creation",
+
+  "service-activation",
+
+  "first-value-delivery"
+
+ ],
+
+ "automation":true
+
+}

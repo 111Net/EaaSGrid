@@ -1,0 +1,27 @@
+{
+
+ "platform":"XaaSGrid",
+
+ "lifecycleStages":[
+
+  "lead",
+
+  "registered",
+
+  "onboarding",
+
+  "activated",
+
+  "active",
+
+  "renewal",
+
+  "expansion"
+
+ ],
+
+ "automation":"enabled",
+
+ "version":"57.0"
+
+}

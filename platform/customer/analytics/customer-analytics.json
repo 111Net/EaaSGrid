@@ -1,0 +1,19 @@
+{
+
+ "metrics":[
+
+  "customer_activity",
+
+  "product_usage",
+
+  "subscription_status",
+
+  "support_health",
+
+  "growth_signal"
+
+ ],
+
+ "status":"enabled"
+
+}
