@@ -1,0 +1,13 @@
+{
+ "providers":[
+   "Paystack",
+   "Flutterwave",
+   "Stripe"
+ ],
+ "functions":[
+   "invoice",
+   "payment",
+   "subscription",
+   "renewal"
+ ]
+}

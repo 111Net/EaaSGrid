@@ -1,0 +1,13 @@
+{
+ "contracts":[
+    "customer",
+    "partner",
+    "enterprise"
+ ],
+ "states":[
+    "draft",
+    "approved",
+    "active",
+    "expired"
+ ]
+}

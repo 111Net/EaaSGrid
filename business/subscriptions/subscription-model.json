@@ -1,0 +1,22 @@
+{
+ "plans":[
+   {
+    "name":"Starter",
+    "status":"active"
+   },
+   {
+    "name":"Business",
+    "status":"active"
+   },
+   {
+    "name":"Enterprise",
+    "status":"active"
+   }
+ ],
+ "lifecycle":[
+    "trial",
+    "active",
+    "renewal",
+    "expired"
+ ]
+}

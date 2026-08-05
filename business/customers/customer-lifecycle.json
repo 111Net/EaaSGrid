@@ -1,0 +1,10 @@
+{
+ "customerStages":[
+   "lead",
+   "registered",
+   "verified",
+   "active",
+   "enterprise",
+   "suspended"
+ ]
+}

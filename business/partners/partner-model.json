@@ -1,0 +1,9 @@
+{
+ "partnerLifecycle":[
+    "application",
+    "approval",
+    "activation",
+    "revenue-share",
+    "renewal"
+ ]
+}
