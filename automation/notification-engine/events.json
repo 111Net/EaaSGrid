@@ -1,0 +1,8 @@
+{
+ "events":[
+   "welcome",
+   "activation",
+   "billing",
+   "renewal"
+ ]
+}

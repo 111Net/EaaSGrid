@@ -1,0 +1,10 @@
+{
+ "stages":[
+   "visitor",
+   "lead",
+   "registered",
+   "trial",
+   "customer",
+   "enterprise"
+ ]
+}

@@ -2,36 +2,15 @@
 # XaaSGrid Getting Started
 
 
-## Requirements
-
-- Ubuntu 22/24
-- Docker
-- Docker Compose
-- Git
+Deployment:
 
 
-## Deployment
+1. Clone repository
 
+2. Configure environment
 
-git clone repository
+3. Start Docker services
 
-cd XaaSGrid
-
-cp .env.production.example .env
-
-docker compose up -d
-
-
-## Access
-
-
-Dashboard:
-
-http://SERVER-IP:3000
-
-
-API:
-
-http://SERVER-IP:4000
+4. Validate API
 
 

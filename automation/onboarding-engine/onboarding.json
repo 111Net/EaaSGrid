@@ -1,0 +1,8 @@
+{
+ "workflow":[
+   "registration",
+   "verification",
+   "activation",
+   "deployment"
+ ]
+}

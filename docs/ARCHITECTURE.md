@@ -1,22 +1,18 @@
+
 # XaaSGrid Architecture
 
-Everything-as-a-Service Platform
 
 Components:
 
-- API Layer
+
+- API Platform
+
 - Dashboard
-- PostgreSQL Database
-- Redis Cache
-- Authentication
-- Billing Engine
-- Payment Framework
-- Customer Portal
-- Marketplace Foundation
 
-Deployment Targets:
+- PostgreSQL
 
-- VM
-- VPS
-- Cloud Infrastructure
+- Redis
+
+- Automation Engines
+
 
