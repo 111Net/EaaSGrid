@@ -1,0 +1,19 @@
+{
+
+ "developerPlatform":true,
+
+ "features":[
+
+  "api-registration",
+
+  "api-keys",
+
+  "integration-management",
+
+  "usage-monitoring"
+
+ ],
+
+ "status":"enabled"
+
+}

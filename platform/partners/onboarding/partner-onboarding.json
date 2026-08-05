@@ -1,0 +1,21 @@
+{
+
+ "workflow":[
+
+  "partner-registration",
+
+  "verification",
+
+  "agreement",
+
+  "api-access",
+
+  "activation"
+
+ ],
+
+ "automation":true,
+
+ "status":"ready"
+
+}

@@ -1,0 +1,17 @@
+{
+
+ "vendorManagement":true,
+
+ "capabilities":[
+
+  "vendor-registration",
+
+  "product-listing",
+
+  "approval",
+
+  "performance-monitoring"
+
+ ]
+
+}

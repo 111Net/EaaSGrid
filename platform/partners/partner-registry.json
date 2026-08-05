@@ -1,0 +1,25 @@
+{
+
+ "platform":"XaaSGrid",
+
+ "partners":[
+
+ ],
+
+ "partnerTypes":[
+
+  "technology",
+
+  "reseller",
+
+  "service-provider",
+
+  "integration"
+
+ ],
+
+ "status":"enabled",
+
+ "version":"58.0"
+
+}
