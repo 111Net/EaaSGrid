@@ -36,3 +36,6 @@ backups/
 scripts/debug-*
 scripts/fix-sprint*
 scripts/sprint43.8*
+
+# Certification reports
+reports/
