@@ -1,34 +1,94 @@
+"use client";
 
+import { useEffect, useState } from "react";
+import { getApi } from "../../../lib/api";
 
-export default function Governance(){
+export default function Governance() {
+    const [security, setSecurity] = useState(null);
+    const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-return (
+    useEffect(() => {
+        Promise.all([
+            getApi("/enterprise-control/governance/security"),
+            getApi("/enterprise-control/governance/audit")
+        ])
+            .then(async ([securityResponse, auditResponse]) => {
+                const securityData = await securityResponse.json();
+                const auditData = await auditResponse.json();
 
-<div>
+                if (
+                    !securityResponse.ok ||
+                    !securityData.success
+                ) {
+                    throw new Error(
+                        securityData.message || "Unable to load security status"
+                    );
+                }
 
+                if (
+                    !auditResponse.ok ||
+                    !auditData.success
+                ) {
+                    throw new Error(
+                        auditData.message || "Unable to load audit events"
+                    );
+                }
 
-<h1>
-Governance Dashboard
-</h1>
+                setSecurity(securityData);
+                setEvents(auditData.events || []);
+            })
+            .catch((err) => {
+                setError(err.message || "Unable to load governance data");
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, []);
 
+    return (
+        <section>
+            <h1>Governance</h1>
 
-<p>
-Audit, security and compliance monitoring.
-</p>
+            <p>
+                Enterprise security and administrative governance.
+            </p>
 
+            {loading && <p>Loading governance status...</p>}
 
-<div>
+            {error && (
+                <p>
+                    Unable to load governance data: {error}
+                </p>
+            )}
 
-Security Status:
+            {!loading && !error && (
+                <>
+                    <h2>Security</h2>
 
-READY
+                    <p>
+                        Status:{" "}
+                        <strong>
+                            {security?.securityStatus || "UNKNOWN"}
+                        </strong>
+                    </p>
 
-</div>
+                    <h2>Audit Events</h2>
 
-
-</div>
-
-);
-
+                    {events.length === 0 ? (
+                        <p>No audit events recorded.</p>
+                    ) : (
+                        <ul>
+                            {events.map((event, index) => (
+                                <li key={event.id || index}>
+                                    {event.action || event.message || JSON.stringify(event)}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </>
+            )}
+        </section>
+    );
 }
-

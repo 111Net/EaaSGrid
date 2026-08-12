@@ -1,82 +1,65 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
+const { PrismaClient } = require("@prisma/client");
+const { generateToken } = require("./jwt.service");
 
 const router = express.Router();
+const prisma = new PrismaClient();
 
+router.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body || {};
 
-const users = [
-{
- id:1,
- email:"admin@xaasgrid.com",
- password:"admin123",
- role:"SUPER_ADMIN"
-},
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Email and password required"
+            });
+        }
 
-{
- id:2,
- email:"enterprise@xaasgrid.com",
- password:"enterprise123",
- role:"ENTERPRISE_ADMIN"
-},
+        const user = await prisma.user.findUnique({
+            where: { email }
+        });
 
-{
- id:3,
- email:"operations@xaasgrid.com",
- password:"operations123",
- role:"OPERATIONS"
-}
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid credentials"
+            });
+        }
 
-];
+        const passwordValid = await bcrypt.compare(
+            password,
+            user.passwordHash
+        );
 
+        if (!passwordValid) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid credentials"
+            });
+        }
 
-router.post("/login",(req,res)=>{
+        const token = generateToken(user);
 
+        return res.json({
+            success: true,
+            token,
+            user: {
+                id: user.id,
+                email: user.email,
+                role: user.role
+            }
+        });
 
-const {email,password}=req.body;
+    } catch (error) {
+        console.error("AUTH_LOGIN_ERROR:", error);
 
-
-const user =
-users.find(
-u =>
-u.email===email &&
-u.password===password
-);
-
-
-
-if(!user){
-
-return res.status(401).json({
-
-success:false,
-
-message:"Invalid credentials"
-
+        return res.status(500).json({
+            success: false,
+            message: "Authentication service error"
+        });
+    }
 });
 
-}
-
-
-
-res.json({
-
-success:true,
-
-token:"xaasgrid-demo-token",
-
-user:{
-
-id:user.id,
-
-email:user.email,
-
-role:user.role
-
-}
-
-});
-
-
-});
-
-
-module.exports=router;
+module.exports = router;

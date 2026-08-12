@@ -1,33 +1,20 @@
+"use client";
+
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
+export default function AppShell({ children }) {
+    return (
+        <div className="app-shell xg-shell">
+            <Sidebar />
 
-export default function AppShell({children}){
+            <div className="workspace xg-workspace">
+                <Header />
 
-return (
-
-<div className="app-shell">
-
-<Sidebar/>
-
-
-<div className="workspace">
-
-<Header/>
-
-
-<main className="content">
-
-{children}
-
-</main>
-
-
-</div>
-
-
-</div>
-
-)
-
+                <main className="content xg-content">
+                    {children}
+                </main>
+            </div>
+        </div>
+    );
 }

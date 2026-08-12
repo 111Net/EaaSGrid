@@ -1,66 +1,72 @@
-
 const express = require("express");
+const prisma = require("../../database/prisma");
 
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+    try {
+        const organizations = await prisma.organization.findMany({
+            orderBy: {
+                createdAt: "desc"
+            }
+        });
 
+        res.json({
+            success: true,
+            organizations: organizations.map((organization) => ({
+                id: organization.id,
+                name: organization.name,
+                status: "ACTIVE",
+                createdAt: organization.createdAt
+            }))
+        });
+    } catch (error) {
+        console.error("Organizations GET error:", error);
 
-let organizations = [
-
-{
-id:"demo-org",
-name:"XaaSGrid Demo Enterprise",
-status:"ACTIVE"
-}
-
-];
-
-
-
-router.get("/",(req,res)=>{
-
-res.json({
-
-success:true,
-
-organizations
-
+        res.status(500).json({
+            success: false,
+            message: "Unable to load organizations"
+        });
+    }
 });
 
+router.post("/", async (req, res) => {
+    try {
+        const name =
+            typeof req.body?.name === "string"
+                ? req.body.name.trim()
+                : "";
+
+        if (!name) {
+            return res.status(400).json({
+                success: false,
+                message: "Organization name is required"
+            });
+        }
+
+        const organization = await prisma.organization.create({
+            data: {
+                name
+            }
+        });
+
+        res.status(201).json({
+            success: true,
+            organization: {
+                id: organization.id,
+                name: organization.name,
+                status: "ACTIVE",
+                createdAt: organization.createdAt
+            }
+        });
+    } catch (error) {
+        console.error("Organizations POST error:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Unable to create organization"
+        });
+    }
 });
-
-
-
-router.post("/",(req,res)=>{
-
-
-const organization = {
-
-id:"org-"+Date.now(),
-
-name:req.body.name || "New Organization",
-
-status:"ACTIVE"
-
-};
-
-
-organizations.push(organization);
-
-
-
-res.json({
-
-success:true,
-
-organization
-
-});
-
-
-});
-
-
 
 module.exports = router;
-

@@ -14,7 +14,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
 
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
 
     volumes:
       - infrastructure_postgres_data:/var/lib/postgresql/data
@@ -39,7 +39,7 @@ services:
     restart: unless-stopped
 
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
 
     healthcheck:
       test:
@@ -64,7 +64,7 @@ services:
     restart: unless-stopped
 
     ports:
-      - "4000:4000"
+      - "127.0.0.1:4000:4000"
 
     environment:
 
@@ -77,6 +77,7 @@ services:
       REDIS_URL: ${REDIS_URL}
 
       JWT_SECRET: ${JWT_SECRET}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://192.168.100.21:3000}
 
 
     depends_on:
@@ -113,6 +114,8 @@ services:
 
     build:
 
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-/api}
       context: ./apps/dashboard
 
 
@@ -124,12 +127,12 @@ services:
 
     ports:
 
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
 
 
     environment:
 
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-/api}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-/api}
 
 
     depends_on:

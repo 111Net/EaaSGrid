@@ -1,74 +1,60 @@
-
-
 const express = require("express");
+const prisma = require("../../database/prisma");
 
 const router = express.Router();
 
+router.get("/roles", async (req, res) => {
+    try {
+        const roles = await prisma.role.findMany({
+            orderBy: {
+                name: "asc"
+            },
+            select: {
+                id: true,
+                name: true,
+                description: true
+            }
+        });
 
+        res.json({
+            success: true,
+            roles
+        });
+    } catch (error) {
+        console.error("RBAC roles GET error:", error);
 
-const roles = [
-
-"ADMIN",
-
-"OPERATOR",
-
-"FINANCE",
-
-"CUSTOMER"
-
-];
-
-
-
-const permissions = [
-
-"users.read",
-
-"users.write",
-
-"billing.read",
-
-"billing.write",
-
-"tenant.manage",
-
-"organization.manage"
-
-];
-
-
-
-router.get("/roles",(req,res)=>{
-
-
-res.json({
-
-success:true,
-
-roles
-
+        res.status(500).json({
+            success: false,
+            message: "Unable to load roles"
+        });
+    }
 });
 
+router.get("/permissions", async (req, res) => {
+    try {
+        const permissions = await prisma.permission.findMany({
+            orderBy: {
+                name: "asc"
+            },
+            select: {
+                id: true,
+                name: true,
+                description: true
+            }
+        });
 
+        res.json({
+            success: true,
+            permissions
+        });
+    } catch (error) {
+        console.error("RBAC permissions GET error:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Unable to load permissions"
+        });
+    }
 });
-
-
-
-router.get("/permissions",(req,res)=>{
-
-
-res.json({
-
-success:true,
-
-permissions
-
-});
-
-
-});
-
-
 
 module.exports = router;
-

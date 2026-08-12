@@ -365,7 +365,7 @@ loadRoute(
 
 loadRoute(
     "/api/enterprise-control",
-    "./enterprise-control/enterprise-control.routes"
+    "./enterprise-control"
 );
 
 
