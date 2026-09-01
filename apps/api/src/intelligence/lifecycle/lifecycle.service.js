@@ -1,21 +1,11 @@
-const lifecycle = [
- {
-   customer:"Lagos Industrial Power Services",
-   service:"Energy-as-a-Service",
-   stage:"Production",
-   health:"Healthy"
- },
- {
-   customer:"African Smart Infrastructure Group",
-   service:"Infrastructure Monitoring",
-   stage:"Scaling",
-   health:"Healthy"
- }
-];
+const prisma = require("../../database/prisma");
 
+async function getLifecycle() {
+    return prisma.lifecycleInstance.findMany({
+        orderBy: { id: "asc" }
+    });
+}
 
 module.exports = {
- getLifecycle(){
-    return lifecycle;
- }
+    getLifecycle
 };

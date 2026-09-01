@@ -5,11 +5,11 @@ const app = require("../src/app");
 describe("Database API", () => {
 
 
-    test("GET /api/v1/database returns database records", async () => {
+    test("GET /api/database returns database records", async () => {
 
 
         const response = await request(app)
-            .get("/api/v1/database");
+            .get("/api/database");
 
 
         expect(response.statusCode)

@@ -1,28 +1,22 @@
-const prisma = require("../database/prisma")
+const prisma = require("../database/prisma");
 
 exports.testDatabase = async (req, res) => {
     try {
-        const { data, error } = await prisma
-            .from("companies")
-            .select("*");
-
-        if (error) {
-            return res.status(500).json({
-                success: false,
-                error: error.message
-            });
-        }
+        const result = await prisma.$queryRaw`SELECT NOW() AS now`;
 
         res.json({
             success: true,
-            rows: data.length,
-            data
+            status: "connected",
+            database: "postgresql",
+            timestamp: result[0].now
         });
 
-    } catch (err) {
+    } catch (error) {
         res.status(500).json({
             success: false,
-            error: err.message
+            status: "error",
+            database: "postgresql",
+            error: error.message
         });
     }
 };

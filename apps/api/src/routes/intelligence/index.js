@@ -1,43 +1,64 @@
-const express=require("express");
+const express = require("express");
 
-const router=express.Router();
+const router = express.Router();
 
-const metrics=require("../../intelligence/metrics/metrics.service");
-const activity=require("../../intelligence/activity/activity.service");
-const lifecycle=require("../../intelligence/lifecycle/lifecycle.service");
-const health=require("../../intelligence/health/service-health");
-
-
-router.get("/metrics",(req,res)=>{
-res.json({
-success:true,
-data:metrics.getMetrics()
-});
-});
+const metrics = require("../../intelligence/metrics/metrics.service");
+const activity = require("../../intelligence/activity/activity.service");
+const lifecycle = require("../../intelligence/lifecycle/lifecycle.service");
+const health = require("../../intelligence/health/service-health");
 
 
-router.get("/activity",(req,res)=>{
-res.json({
-success:true,
-data:activity.getActivity()
-});
-});
-
-
-router.get("/lifecycle",(req,res)=>{
-res.json({
-success:true,
-data:lifecycle.getLifecycle()
-});
+router.get("/metrics", async (req, res) => {
+    try {
+        res.json({
+            success: true,
+            data: await metrics.getMetrics()
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
 });
 
 
-router.get("/services",(req,res)=>{
-res.json({
-success:true,
-data:health.getHealth()
-});
+router.get("/activity", async (req, res) => {
+    try {
+        res.json({
+            success: true,
+            data: await activity.getActivity()
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
 });
 
 
-module.exports=router;
+router.get("/lifecycle", async (req, res) => {
+    try {
+        res.json({
+            success: true,
+            data: await lifecycle.getLifecycle()
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+
+router.get("/services", (req, res) => {
+    res.json({
+        success: true,
+        data: health.getHealth()
+    });
+});
+
+
+module.exports = router;

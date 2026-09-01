@@ -35,30 +35,10 @@ loadRoute(
 
 // =====================================
 // Middleware
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -71,57 +51,17 @@ app.use(logger);
 app.use(express.json());
 
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Authentication
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -144,57 +84,17 @@ catch(error){
 }
 
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Dynamic Route Loader
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -225,57 +125,17 @@ function loadRoute(path,modulePath){
 }
 
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Core Platform Routes
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -288,6 +148,11 @@ loadRoute(
 loadRoute(
     "/api/company",
     "./routes/company.routes"
+);
+
+loadRoute(
+    "/api/database",
+    "./routes/database.routes"
 );
 
 
@@ -303,57 +168,17 @@ loadRoute(
 );
 
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Enterprise Modules
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -387,117 +212,37 @@ loadRoute(
 );
 
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Intelligence Engine
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
 loadRoute(
-    "/api/v1/intelligence",
+    "/api/intelligence",
     "./routes/intelligence"
 );
 
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Health
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -519,62 +264,22 @@ app.get(
 );
 
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Runtime Verification
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
 app.get(
-    "/api/v1/intelligence-check",
+    "/api/intelligence-check",
     (req,res)=>{
 
         res.json({
@@ -591,57 +296,17 @@ app.get(
 );
 
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // API Version
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -682,57 +347,17 @@ modules:[
     }
 );
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Sprint 43.9 Platform Certification
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -760,57 +385,17 @@ app.get(
 
     }
 );
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // Sprint 43.10 Production Observability
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 
@@ -918,58 +503,18 @@ app.get(
     }
 );
 
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 // GLOBAL 404 HANDLER
 // ALWAYS LAST
-loadRoute(
-    "/api/rbac",
-    "./routes/rbac"
-);
 
-loadRoute(
-    "/api/users",
-    "./routes/users"
-);
 
-loadRoute(
-    "/api/collaboration",
-    "./routes/collaboration"
-);
 
-loadRoute(
-    "/api/docs",
-    "./routes/docs"
-);
 
-loadRoute(
-    "/api/public",
-    "./routes/public"
-);
 
 // =====================================
 

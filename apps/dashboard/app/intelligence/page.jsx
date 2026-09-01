@@ -16,17 +16,17 @@ const [lifecycle,setLifecycle]=useState([]);
 
 useEffect(()=>{
 
-fetch("/api/v1/intelligence/metrics")
+fetch("/api/intelligence/metrics")
 .then(r=>r.json())
 .then(x=>setMetrics(x.data));
 
 
-fetch("/api/v1/intelligence/activity")
+fetch("/api/intelligence/activity")
 .then(r=>r.json())
 .then(x=>setActivity(x.data));
 
 
-fetch("/api/v1/intelligence/lifecycle")
+fetch("/api/intelligence/lifecycle")
 .then(r=>r.json())
 .then(x=>setLifecycle(x.data));
 

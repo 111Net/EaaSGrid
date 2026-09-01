@@ -4,10 +4,10 @@ const app = require("../src/app");
 
 describe("Health API", () => {
 
-    test("GET /api/v1/health returns status ok", async () => {
+    test("GET /api/health returns status ok", async () => {
 
         const response = await request(app)
-            .get("/api/v1/health");
+            .get("/api/health");
 
 
         expect(response.statusCode)

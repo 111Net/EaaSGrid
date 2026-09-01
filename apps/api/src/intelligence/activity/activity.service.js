@@ -1,27 +1,18 @@
-const events = [
-    {
-        company:"GreenGrid Energy Nigeria Ltd",
-        event:"Solar service activated",
-        status:"SUCCESS",
-        time:new Date()
-    },
-    {
-        company:"NovaBank Digital Services",
-        event:"API integration completed",
-        status:"SUCCESS",
-        time:new Date()
-    },
-    {
-        company:"Continental Logistics Cloud",
-        event:"Lifecycle upgrade deployed",
-        status:"RUNNING",
-        time:new Date()
-    }
-];
+const prisma = require("../../database/prisma");
 
+async function getActivity() {
+    const events = await prisma.activityEvent.findMany({
+        orderBy: { id: "desc" }
+    });
+
+    return events.map(event => ({
+        company: event.company,
+        event: event.event,
+        status: event.status,
+        time: event.createdAt
+    }));
+}
 
 module.exports = {
-    getActivity(){
-        return events;
-    }
+    getActivity
 };

@@ -252,3 +252,48 @@ model TenantAudit {
 
   createdAt DateTime @default(now())
 }
+
+
+// ============================================================
+// INTELLIGENCE OPERATIONAL TABLES
+// Existing PostgreSQL tables mapped through Prisma.
+// Physical table names are preserved with @@map.
+// ============================================================
+
+model CustomerAccount {
+  id      Int     @id @default(autoincrement())
+  company String? @db.VarChar(200)
+  country String? @db.VarChar(100)
+  status  String? @db.VarChar(50)
+
+  @@map("customer_accounts")
+}
+
+model ActivityEvent {
+  id        Int       @id @default(autoincrement())
+  company   String?   @db.VarChar(200)
+  event     String?   @db.VarChar(255)
+  status    String?   @db.VarChar(50)
+  createdAt DateTime? @default(now()) @db.Timestamp(6) @map("created_at")
+
+  @@map("activity_events")
+}
+
+model LifecycleInstance {
+  id       Int     @id @default(autoincrement())
+  customer String? @db.VarChar(200)
+  service  String? @db.VarChar(200)
+  stage    String? @db.VarChar(100)
+  health   String? @db.VarChar(50)
+
+  @@map("lifecycle_instances")
+}
+
+model PlatformMetric {
+  id          Int       @id @default(autoincrement())
+  metricName  String?   @db.VarChar(100) @map("metric_name")
+  metricValue Decimal?  @db.Decimal @map("metric_value")
+  createdAt   DateTime? @default(now()) @db.Timestamp(6) @map("created_at")
+
+  @@map("platform_metrics")
+}

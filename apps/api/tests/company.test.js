@@ -4,10 +4,10 @@ const app = require("../src/app");
 
 describe("Company API", () => {
 
-    test("GET /api/v1/company returns company data", async () => {
+    test("GET /api/company returns company data", async () => {
 
         const response = await request(app)
-            .get("/api/v1/company");
+            .get("/api/company");
 
 
         console.log("COMPANY RESPONSE:", response.body);
@@ -21,8 +21,8 @@ describe("Company API", () => {
             .toBe(true);
 
 
-        expect(response.body.data.company_name)
-            .toBeDefined();
+        expect(Array.isArray(response.body.data))
+            .toBe(true);
 
     }, 15000);
 
