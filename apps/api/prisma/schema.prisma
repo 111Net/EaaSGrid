@@ -299,3 +299,23 @@ model PlatformMetric {
 
   @@map("platform_metrics")
 }
+
+model ApiRequestTelemetry {
+  id                 Int      @id @default(autoincrement())
+  bucketStart        DateTime @map("bucket_start")
+  bucketMinutes      Int      @default(1) @map("bucket_minutes")
+  method             String   @db.VarChar(16)
+  path               String   @db.VarChar(500)
+  totalRequests      Int      @default(0) @map("total_requests")
+  successfulRequests Int      @default(0) @map("successful_requests")
+  clientErrors       Int      @default(0) @map("client_errors")
+  serverErrors       Int      @default(0) @map("server_errors")
+  totalDurationMs    BigInt   @default(0) @map("total_duration_ms")
+  maxDurationMs      Int      @default(0) @map("max_duration_ms")
+  createdAt          DateTime @default(now())
+
+  @@unique([bucketStart, method, path])
+  @@index([bucketStart])
+  @@index([path])
+  @@map("api_request_telemetry")
+}
