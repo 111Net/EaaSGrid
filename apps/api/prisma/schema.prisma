@@ -293,6 +293,8 @@ model PlatformMetric {
   id          Int       @id @default(autoincrement())
   metricName  String?   @db.VarChar(100) @map("metric_name")
   metricValue Decimal?  @db.Decimal @map("metric_value")
+  sourceType  String?   @db.VarChar(50) @map("source_type")
+  source      String?   @db.VarChar(255)
   createdAt   DateTime? @default(now()) @db.Timestamp(6) @map("created_at")
 
   @@map("platform_metrics")

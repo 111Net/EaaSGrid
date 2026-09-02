@@ -48,7 +48,34 @@ async function getMetrics() {
 
         uptime: uptime?.metricValue != null
             ? Number(uptime.metricValue)
-            : 0
+            : 0,
+
+        provenance: {
+            revenue: {
+                type: revenue?.sourceType || "UNKNOWN",
+                source: revenue?.source || null
+            },
+
+            customers: {
+                type: "DATABASE_DERIVED",
+                source: "customer_accounts.count"
+            },
+
+            services: {
+                type: services?.sourceType || "UNKNOWN",
+                source: services?.source || null
+            },
+
+            apiRequests: {
+                type: apiRequests?.sourceType || "UNKNOWN",
+                source: apiRequests?.source || null
+            },
+
+            uptime: {
+                type: uptime?.sourceType || "UNKNOWN",
+                source: uptime?.source || null
+            }
+        }
     };
 }
 
