@@ -3,6 +3,7 @@ const express = require("express");
 const corsMiddleware = require("./middleware/cors");
 const securityHeaders = require("./middleware/security");
 const logger = require("./middleware/logger");
+const prisma = require("./database/prisma");
 
 
 const app = express();
@@ -425,23 +426,51 @@ app.get(
     "/api/ready",
     async (req,res)=>{
 
-        res.json({
+        try {
 
-            success:true,
+            await prisma.$queryRaw`SELECT 1`;
 
-            status:"READY",
+            res.status(200).json({
 
-            dependencies:{
+                success:true,
 
-                postgres:"ONLINE",
+                status:"READY",
 
-                redis:"ONLINE"
+                dependencies:{
 
-            },
+                    postgres:"ONLINE"
 
-            timestamp:new Date().toISOString()
+                },
 
-        });
+                timestamp:new Date().toISOString()
+
+            });
+
+        }
+        catch(error){
+
+            console.error(
+                "Readiness check failed:",
+                error.message
+            );
+
+            res.status(503).json({
+
+                success:false,
+
+                status:"NOT_READY",
+
+                dependencies:{
+
+                    postgres:"OFFLINE"
+
+                },
+
+                timestamp:new Date().toISOString()
+
+            });
+
+        }
 
     }
 );
